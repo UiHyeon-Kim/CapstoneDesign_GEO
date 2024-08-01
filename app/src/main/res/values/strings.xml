@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CapstoneDesign_GEO</string>
+    <string name="Greetings">내 근처의 장소들\n지오와 함께해요!</string>
 </resources>
