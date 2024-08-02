@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 기존 스타일 -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- 내 커스텀 테마 -->
+        <item name="colorPrimary">@color/mainblue</item>
+        <item name="colorPrimaryDark">@color/mainblue</item>
+        <item name="colorAccent">@color/subblue</item>
+    </style>
+
+    <!-- 투명 상태바 -->
+    <style name="TransparentStatusBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/mainblue</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+</resources>

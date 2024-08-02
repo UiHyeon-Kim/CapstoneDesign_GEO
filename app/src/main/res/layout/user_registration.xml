@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -18,27 +18,32 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/geo_icon" />
 
-    <Button
-        android:id="@+id/button"
+    <android.widget.Button
+        android:id="@+id/button1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#4F89F8"
+        android:layout_marginBottom="1dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/notosans_black"
+        android:includeFontPadding="false"
         android:text="시 작 하 기"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
+
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/notosans"
+        android:fontFamily="@font/notosans_black"
+        android:includeFontPadding="false"
         android:text="지오와 함께 찾아요"
         android:textAlignment="center"
         android:textSize="22sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +53,8 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"
+        android:fontFamily="@font/notosans"
+        android:includeFontPadding="false"
         android:text="@string/Greetings"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
