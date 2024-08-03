@@ -22,7 +22,8 @@
             </intent-filter>
         </activity>
         <!-- 기타 액티비티 선언 -->
-        <activity android:name=".ui.User_Registration" />
+        <activity android:name=".ui.UserRegistration" />
+        <activity android:name=".ui.UserRegNickname" />
 
 
     </application>
