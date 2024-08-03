@@ -3,14 +3,16 @@
     <!-- 기존 스타일 -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- 내 커스텀 테마 -->
-        <item name="colorPrimary">@color/mainblue</item>
-        <item name="colorPrimaryDark">@color/mainblue</item>
-        <item name="colorAccent">@color/subblue</item>
+        <item name="colorPrimary">@color/mainblue</item>        <!-- 주요 색상 -->
+        <item name="colorPrimaryDark">@color/mainblue</item>    <!-- 상태바 색상 -->
+        <item name="colorAccent">@color/subblue</item>          <!-- 강조 색상 -->
     </style>
 
     <!-- 투명 상태바 -->
     <style name="TransparentStatusBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- 상태바를 투명으로 설정 -->
         <item name="android:statusBarColor">@color/mainblue</item>
+        <!-- 상태바의 텍스트 색상(아이콘 색상)을 다크 모드로 설정 -->
         <item name="android:windowLightStatusBar">true</item>
     </style>
 </resources>

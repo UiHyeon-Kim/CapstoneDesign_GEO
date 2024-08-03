@@ -4,13 +4,22 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toobar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/mainblue"
+        android:theme="@style/ThemeOverlay.AppCompat.Light"/>
+
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:text="1/6 단계" />
+        android:text="1/6 단계"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/textView4"
@@ -18,7 +27,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:text="닉네임을 입력해주세요!" />
+        android:text="닉네임을 입력해주세요!"
+        android:textSize="22sp" />
 
     <TextView
         android:id="@+id/textView5"
@@ -26,7 +36,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:text="두 자리 이상 입력해주세요." />
+        android:text="두 자리 이상 입력해주세요."
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/editTextText"
@@ -36,7 +47,8 @@
         android:layout_marginRight="16dp"
         android:ems="10"
         android:hint="흠"
-        android:inputType="text" />
+        android:inputType="text"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView6"
@@ -50,5 +62,6 @@
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="확 인" />
+        android:text="확 인"
+        android:textSize="22sp" />
 </LinearLayout>
