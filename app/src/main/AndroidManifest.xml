@@ -24,7 +24,7 @@
         <!-- 추가된 액티비티 선언 -->
         <activity android:name=".ui.UserRegistration" />
         <activity android:name=".ui.UserRegNickname" />
-
+        <activity android:name=".ui.UserRegComplete" />
 
     </application>
 
