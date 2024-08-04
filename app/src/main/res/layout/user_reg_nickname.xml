@@ -6,10 +6,7 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toobar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/mainblue"
-        android:theme="@style/ThemeOverlay.AppCompat.Light" />
+        style="@style/ToolbarStyles"/>
 
 
     <TextView
@@ -76,16 +73,20 @@
         android:layout_marginRight="16dp"
         android:visibility="invisible" />
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btnNext"
+        android:layout_below="@id/textView6"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnNext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/mainblue"
-        android:fontFamily="@font/notosans_black"
-        android:includeFontPadding="false"
-        android:text="확 인"
-        android:textColor="#FFFFFF"
-        android:textSize="22sp" />
+        android:text="확  인"
+        style="@style/ButtonStyles"/>
 
 </RelativeLayout>

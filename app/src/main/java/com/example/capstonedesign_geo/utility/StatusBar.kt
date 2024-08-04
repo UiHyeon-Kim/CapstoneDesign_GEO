@@ -5,6 +5,7 @@ import android.os.Build
 import android.view.View
 import androidx.core.content.ContextCompat
 
+// 상태바 색 변경 함수
 fun Activity.setStatusBarColor(color: Int) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
         window.statusBarColor = color

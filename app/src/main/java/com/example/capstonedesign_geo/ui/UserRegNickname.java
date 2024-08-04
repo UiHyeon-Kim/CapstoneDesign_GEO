@@ -13,7 +13,7 @@ public class UserRegNickname extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_reg_nickname);
-
+        // 상태바 색 변경
         StatusBarKt.setStatusBarColor(this, getResources().getColor(R.color.mainblue));
     }
 }

@@ -17,7 +17,7 @@ class UserRegistration : AppCompatActivity() {
         setContentView(binding.root)
         // 상태바 색상 변경
         setStatusBarColor(ContextCompat.getColor(this, R.color.transparent))
-
+        // 코틀린 이벤트 리스너 - 인텐트
         binding.btnStart.setOnClickListener {
             val intent = Intent(this, UserRegNickname::class.java)
             startActivity(intent)
