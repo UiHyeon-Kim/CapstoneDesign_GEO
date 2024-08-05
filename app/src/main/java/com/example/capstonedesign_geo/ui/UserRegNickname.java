@@ -9,6 +9,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -55,6 +56,10 @@ public class UserRegNickname extends AppCompatActivity {
             startActivity(intent);
         });
 
+        // 뒤로가기 버튼 이벤트 리스너
+        ImageButton btnBack = findViewById(R.id.backButton);
+        btnBack.setOnClickListener(view -> onBackPressed());
+
         // EditText 입력에 따른 처리를 하기 위한 이벤트 리스너
         editNickname.addTextChangedListener(new TextWatcher() {
             @Override
@@ -73,6 +78,7 @@ public class UserRegNickname extends AppCompatActivity {
             }
         });
     }
+
     // editText에 적어둔 텍스트 저장해둠
     private void saveNickname(String nickname){
         SharedPreferences sharedPreferences = getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
