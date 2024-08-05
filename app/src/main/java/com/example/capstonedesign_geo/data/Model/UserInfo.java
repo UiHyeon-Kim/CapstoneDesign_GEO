@@ -1,7 +1,8 @@
 package com.example.capstonedesign_geo.data.Model;
 
 public class UserInfo {
-    //private int androidId;
+    private int userId;
+    private String androidId;
     private String nickname;
     private boolean userType;
     private int age;

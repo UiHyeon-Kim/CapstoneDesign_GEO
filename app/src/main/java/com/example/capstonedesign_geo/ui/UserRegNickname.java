@@ -1,6 +1,7 @@
 package com.example.capstonedesign_geo.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
@@ -36,9 +37,8 @@ public class UserRegNickname extends AppCompatActivity {
             String nickname = editNickname.getText().toString();
             saveNickname(nickname); // 닉네임 저장
 
-
-            //Intent intent = new Intent(UserRegNickname.this, UserRegUserType.class);
-            //startActivity(intent);
+            Intent intent = new Intent(UserRegNickname.this, UserRegUsertype.class);
+            startActivity(intent);
         });
     }
     // editText에 적어둔 텍스트 저장해둠
