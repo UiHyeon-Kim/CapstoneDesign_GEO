@@ -48,7 +48,7 @@
         android:textSize="18sp" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button2"
+        android:id="@+id/btnNoneDis"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/textView14"
@@ -63,10 +63,10 @@
         android:textSize="20sp" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button3"
+        android:id="@+id/btnDis"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/button2"
+        android:layout_below="@id/btnNoneDis"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="16dp"
@@ -78,7 +78,7 @@
         android:textSize="20sp" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button4"
+        android:id="@+id/btnNext"
         style="@style/ButtonStyles"
         android:layout_alignParentBottom="true"
         android:text=" 확 인 " />
