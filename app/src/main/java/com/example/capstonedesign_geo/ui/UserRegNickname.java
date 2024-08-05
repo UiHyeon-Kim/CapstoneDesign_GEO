@@ -46,6 +46,7 @@ public class UserRegNickname extends AppCompatActivity {
         // 사용자 ID 생성 (UUID)
         userId = UUID.randomUUID().toString();
 
+        // 확인 버튼 이벤트 리스너
         btnNext.setOnClickListener(view -> {
             String nickname = editNickname.getText().toString();
             saveNickname(nickname); // 닉네임 저장
@@ -68,7 +69,7 @@ public class UserRegNickname extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                btnNext.setEnabled(s.length() > 0);
+                btnNext.setEnabled(s.length() > 1);
             }
         });
     }

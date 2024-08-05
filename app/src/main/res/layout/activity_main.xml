@@ -6,17 +6,4 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.MainActivity">
-
-    <androidx.appcompat.widget.Toolbar style="@style/ToolbarStyles" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        style="@style/ButtonStyles" />
-
-</LinearLayout>
+    tools:context=".ui.MainActivity"/>
