@@ -34,15 +34,7 @@ public class MainActivity extends AppCompatActivity {
             finish(); // 현재 액티비티 종료
         }
 
-        /*// 메인 화면 개발 전 임시 버튼
-        Button btnUser = findViewById(R.id.btn_user);
-        btnUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, UserRegistration.class);
-                startActivity(intent);
-            }
-        });*/
+
     }
 
     // SharedPreferences에 사용자 데이터가 모두 저장되어 있는지 확인

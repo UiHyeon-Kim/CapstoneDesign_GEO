@@ -31,4 +31,5 @@
         <item name="android:layout_height">56dp</item>
         <item name="android:background">@color/mainblue</item>
     </style>
+
 </resources>
