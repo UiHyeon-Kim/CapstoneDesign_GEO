@@ -36,7 +36,8 @@ public class UserRegNickname extends AppCompatActivity {
             String nickname = editNickname.getText().toString();
             saveNickname(nickname); // 닉네임 저장
 
-            //Intent intent = new Intent(UserRegNickname.this, UserRegType.class);
+
+            //Intent intent = new Intent(UserRegNickname.this, UserRegUserType.class);
             //startActivity(intent);
         });
     }
