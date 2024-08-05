@@ -25,6 +25,8 @@
         <activity android:name=".ui.UserRegistration" />
         <activity android:name=".ui.UserRegNickname" />
         <activity android:name=".ui.UserRegComplete" />
+        <activity android:name=".ui.UserRegNickname" />
+        <activity android:name=".ui.UserRegUsertype" />
 
     </application>
 
