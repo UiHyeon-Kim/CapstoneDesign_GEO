@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/geo_icon" />
 
-    <android.widget.Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnStart"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
