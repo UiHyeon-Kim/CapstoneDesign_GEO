@@ -1,6 +1,7 @@
 package com.example.capstonedesign_geo.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -37,9 +38,9 @@ public class UserRegUserType extends AppCompatActivity {
         btnNoneDis = findViewById(R.id.btnNoneDis);
         userRepository = new UserRepository(this); //클래스에 저장할 객체
 
-//        //UserRegUserType 페이지에서 UserRegAge 페이지로 옮긴다는 뜻
-//        btnNext.setOnClickListener(Intent intent = new Intent(UserRegUserType.this, UserRegAge.class));
-//        startActivity(intent); //intent 객체가 가지고 있는 걸 startActivity가 실행하는 함수
+        //UserRegUserType 페이지에서 UserRegAge 페이지로 옮긴다는 뜻
+        btnNext.setOnClickListener(Intent intent = new Intent(UserRegUserType.this, UserRegAge.class));
+        startActivity(intent); //intent 객체가 가지고 있는 걸 startActivity가 실행하는 함수
 
         btnNoneDis.setOnClickListener(view -> {
             saveUsertype(true);
