@@ -18,6 +18,7 @@ public class UserRepository {
     public void saveUser(UserInfo user){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
+        values.put(UserDatabaseHelper.COLUMN_ANDROIDID, user.getAndroidId());
         values.put(UserDatabaseHelper.COLUMN_NICKNAME, user.getNickname());
         values.put(UserDatabaseHelper.COLUMN_USER_TYPE, user.UserType() ? 1:0);
         values.put(UserDatabaseHelper.COLUMN_AGE, user.getAge());

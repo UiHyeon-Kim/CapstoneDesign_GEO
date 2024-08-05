@@ -23,10 +23,10 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
     // 테이블 생성
     private static final String TABLE_CREATE =
             "CREATE TABLE " + TABLE_USER + " (" +
-            COLUMN_USERID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            // COLUMN_ANDROIDID + "INTEGER," +
+            COLUMN_USERID + " TEXT," +
+            COLUMN_ANDROIDID + "TEXT," +
             COLUMN_NICKNAME + " TEXT, " +
-            COLUMN_USER_TYPE + " TEXT, " +
+            COLUMN_USER_TYPE + " INTEGER, " +
             COLUMN_AGE + " INTEGER, " +
             COLUMN_LOCATION + " TEXT, " +
             COLUMN_HAS_PET + " INTEGER, " +

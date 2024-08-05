@@ -1,7 +1,7 @@
 package com.example.capstonedesign_geo.data.Model;
 
 public class UserInfo {
-    private int userId;
+    private String userId;
     private String androidId;
     private String nickname;
     private boolean userType;
@@ -10,7 +10,9 @@ public class UserInfo {
     private boolean hasPet;
     private String favoriteTags;
 
-    public UserInfo(String nickname, boolean userType, int age, String location, boolean hasPet, String favoriteTags){
+    public UserInfo(String userId, String androidId, String nickname, boolean userType, int age, String location, boolean hasPet, String favoriteTags){
+        this.userId = userId;
+        this.androidId = androidId;
         this.nickname = nickname;
         this.userType = userType;
         this.age = age;
@@ -18,6 +20,12 @@ public class UserInfo {
         this.hasPet = hasPet;
         this.favoriteTags = favoriteTags;
     }
+
+    public String getUserId() {return userId;}
+    public void setUserId(String userId) {this.userId = userId;}
+
+    public String getAndroidId() {return androidId;}
+    public void setAndroidId(String androidId) {this.androidId = androidId;}
 
     public String getNickname() {return nickname;}
     public void setNickname(String nickname) {this.nickname=nickname;}

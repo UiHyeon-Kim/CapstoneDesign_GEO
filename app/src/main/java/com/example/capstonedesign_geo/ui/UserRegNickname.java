@@ -3,6 +3,7 @@ package com.example.capstonedesign_geo.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,11 +16,15 @@ import com.example.capstonedesign_geo.data.Model.UserInfo;
 import com.example.capstonedesign_geo.data.repository.UserRepository;
 import com.example.capstonedesign_geo.utility.StatusBarKt;
 
+import java.util.UUID;
+
 public class UserRegNickname extends AppCompatActivity {
 
     private EditText editNickname;
     private Button btnNext;
     private UserRepository userRepository;
+    private String androidId;
+    private String userId;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,6 +37,21 @@ public class UserRegNickname extends AppCompatActivity {
         editNickname = findViewById(R.id.editNickname);
         btnNext = findViewById(R.id.btnNext);
         userRepository = new UserRepository(this);
+
+        // 기기 일련번호 가져오기
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            try {
+                androidId=Build.getSerial();
+            } catch (SecurityException e) {
+                e.printStackTrace();
+                androidId="unknown";
+            }
+        } else {
+            androidId = Build.SERIAL;
+        }
+
+        // 사용자 ID 생성 (UUID)
+        userId = UUID.randomUUID().toString();
 
         btnNext.setOnClickListener(view -> {
             String nickname = editNickname.getText().toString();
@@ -46,10 +66,12 @@ public class UserRegNickname extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("nickname", nickname);
+        editor.putString("androidId", androidId);
+        editor.putString("userId", userId);
         editor.apply();
 
         // SQLite 데이터베이스에 닉네임 저장
-        UserInfo userInfo = new UserInfo(nickname, false,0,null,false,null);
+        UserInfo userInfo = new UserInfo(userId, androidId, nickname, false,0,null,false, null);
         userRepository.saveUser(userInfo);
     }
 }
