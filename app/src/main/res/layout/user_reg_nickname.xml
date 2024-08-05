@@ -106,6 +106,7 @@
         android:id="@+id/btnNext"
         android:layout_alignParentBottom="true"
         android:text="확  인"
-        style="@style/ButtonStyles"/>
+        style="@style/ButtonStyles"
+        android:enabled="false" />
 
 </RelativeLayout>

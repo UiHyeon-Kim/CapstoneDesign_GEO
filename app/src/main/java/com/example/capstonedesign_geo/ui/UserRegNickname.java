@@ -3,8 +3,10 @@ package com.example.capstonedesign_geo.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -39,16 +41,7 @@ public class UserRegNickname extends AppCompatActivity {
         userRepository = new UserRepository(this);
 
         // 기기 일련번호 가져오기
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            try {
-                androidId=Build.getSerial();
-            } catch (SecurityException e) {
-                e.printStackTrace();
-                androidId="unknown";
-            }
-        } else {
-            androidId = Build.SERIAL;
-        }
+        androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
 
         // 사용자 ID 생성 (UUID)
         userId = UUID.randomUUID().toString();
@@ -59,6 +52,24 @@ public class UserRegNickname extends AppCompatActivity {
 
             Intent intent = new Intent(UserRegNickname.this, UserRegUsertype.class);
             startActivity(intent);
+        });
+
+        // EditText 입력에 따른 처리를 하기 위한 이벤트 리스너
+        editNickname.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                btnNext.setEnabled(s.length() > 0);
+            }
         });
     }
     // editText에 적어둔 텍스트 저장해둠
