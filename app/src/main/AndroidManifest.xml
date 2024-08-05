@@ -26,6 +26,13 @@
         <activity android:name=".ui.UserRegNickname" />
         <activity android:name=".ui.UserRegComplete" />
 
+        <!-- 네이버지도 클라이언트 ID지정 -->
+        <meta-data
+            android:name="com.naver.maps.map.CLIENT_ID"
+            android:value="jbhzsc7nk4" />
+
+
+
     </application>
 
 </manifest>

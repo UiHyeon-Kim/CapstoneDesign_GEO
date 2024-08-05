@@ -34,6 +34,13 @@ public class MainActivity extends AppCompatActivity {
             finish(); // 현재 액티비티 종료
         }
 
+        //네이버지도 fragment 인스턴스
+        NaverFragment naverFragment = new NaverFragment();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.fragment_zone, naverFragment).commit();
+
+
+
 
     }
 
@@ -44,4 +51,5 @@ public class MainActivity extends AppCompatActivity {
                sharedPreferences.contains("age") && sharedPreferences.contains("location") &&
                sharedPreferences.contains("hasPet") && sharedPreferences.contains("favoriteTags");
     }
+
 }

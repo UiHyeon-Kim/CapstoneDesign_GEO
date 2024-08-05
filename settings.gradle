@@ -16,6 +16,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven {
+            url 'https://repository.map.naver.com/archive/maven'
+        } //네이버지도 maven 저장소
     }
 }
 
