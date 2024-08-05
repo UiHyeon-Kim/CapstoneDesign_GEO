@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             finish(); // 현재 액티비티 종료
         }*/
 
-        //네이버지도 fragment 인스턴스
+        //네이버지도 fragment 인스턴스 적용
         NaverFragment naverFragment = new NaverFragment();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_zone, naverFragment).commit();
