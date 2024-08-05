@@ -1,7 +1,6 @@
 package com.example.capstonedesign_geo.ui;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -26,13 +25,13 @@ public class MainActivity extends AppCompatActivity {
             return insets; // UI 요소가 시스템 UI에 가려지지 않게 함
         });
 
-        if (isUserPreferencesComplete()) {  // 사용자 선호조 조사가 완료된 경우
+        /*if (isUserPreferencesComplete()) {  // 사용자 선호조 조사가 완료된 경우
             setContentView(R.layout.activity_main); // 메인 화면으로 이동
         } else {    // 사용자 선호도 조사가 완료되지 않은 경우 첫 번째 화면으로 이동
             Intent intent = new Intent(MainActivity.this, UserRegistration.class);
             startActivity(intent);
             finish(); // 현재 액티비티 종료
-        }
+        }*/
 
         //네이버지도 fragment 인스턴스
         NaverFragment naverFragment = new NaverFragment();

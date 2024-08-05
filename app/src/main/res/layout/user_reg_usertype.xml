@@ -55,7 +55,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="16dp"
-        android:background="@drawable/rounded_button"
+        android:background="@drawable/rounded_disable"
         android:fontFamily="@font/notosans_bold"
         android:includeFontPadding="false"
         android:text="비장애인"
@@ -70,12 +70,13 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="16dp"
-        android:background="@drawable/rounded_button"
+        android:background="@drawable/rounded_disable"
         android:fontFamily="@font/notosans_bold"
         android:includeFontPadding="false"
         android:text="장애인"
         android:textColor="#FFFFFF"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnNext"

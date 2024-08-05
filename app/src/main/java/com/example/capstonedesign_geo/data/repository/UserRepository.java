@@ -16,8 +16,9 @@ public class UserRepository {
 
     // 사용자 정보를 데이터베이스에 저장
     public void saveUser(UserInfo user){
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        values.put(UserDatabaseHelper.COLUMN_ANDROIDID, user.getAndroidId());
         values.put(UserDatabaseHelper.COLUMN_NICKNAME, user.getNickname());
         values.put(UserDatabaseHelper.COLUMN_USER_TYPE, user.UserType() ? 1:0);
         values.put(UserDatabaseHelper.COLUMN_AGE, user.getAge());
@@ -28,7 +29,7 @@ public class UserRepository {
     }
 
     // 사용자 정보를 데이터베이스에서 가져오는 메서드 (예시)
-   /* public UserInfo getUser(String nickname) {
+    /*public UserInfo getUser(String nickname) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.query(UserDatabaseHelper.TABLE_USER,
                 null,
@@ -40,12 +41,7 @@ public class UserRepository {
 
         if (cursor != null && cursor.moveToFirst()) {
             UserInfo user = new UserInfo(
-                    cursor.getString(cursor.getColumnIndex(UserDatabaseHelper.COLUMN_NICKNAME)),
-                    cursor.getString(cursor.getColumnIndex(UserDatabaseHelper.COLUMN_USER_TYPE)),
-                    cursor.getInt(cursor.getColumnIndex(UserDatabaseHelper.COLUMN_AGE)),
-                    cursor.getString(cursor.getColumnIndex(UserDatabaseHelper.COLUMN_LOCATION)),
-                    cursor.getInt(cursor.getColumnIndex(UserDatabaseHelper.COLUMN_HAS_PET)) == 1,
-                    cursor.getString(cursor.getColumnIndex(UserDatabaseHelper.COLUMN_FAVORITE_TAGS))
+                    cursor.getString(cursor.getColumnIndex(UserDatabaseHelper.COLUMN_USERID)),
             );
             cursor.close();
             return user;
@@ -62,6 +58,8 @@ public class UserRepository {
     public void updateUser(UserInfo user) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
+        values.put(UserDatabaseHelper.COLUMN_ANDROIDID, user.getAndroidId());
+        values.put(UserDatabaseHelper.COLUMN_NICKNAME, user.getNickname());
         values.put(UserDatabaseHelper.COLUMN_USER_TYPE, user.UserType() ? 1:0);
         values.put(UserDatabaseHelper.COLUMN_AGE, user.getAge());
         values.put(UserDatabaseHelper.COLUMN_LOCATION, user.getLocation());
@@ -69,7 +67,7 @@ public class UserRepository {
         values.put(UserDatabaseHelper.COLUMN_FAVORITE_TAGS, user.getFavoriteTags());
 
         String selection = UserDatabaseHelper.COLUMN_NICKNAME + " = ?";
-        String[] selectionArgs = {user.getNickname()};
+        String[] selectionArgs = {String.valueOf(user.getUserId())};
 
         db.update(UserDatabaseHelper.TABLE_USER, values, selection, selectionArgs);
     }

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 비활성화 상태의 배경 색 -->
+    <item android:drawable="@color/subblue" android:state_enabled="false"/>
+    <!-- 활성화 상태의 배경 색 -->
+    <item android:drawable="@color/mainblue"/>
+</selector>
