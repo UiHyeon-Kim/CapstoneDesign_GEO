@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- 현재 위치 추적을 위해 사용 허가를 받는 권한 설정 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -30,6 +35,16 @@
         <activity android:name=".ui.UserRegHasPet" />
         <activity android:name=".ui.UserRegFavorite" />
         <activity android:name=".ui.UserRegComplete" />
+        <activity android:name=".ui.UserRegNickname" />
+        <activity android:name=".ui.UserRegUsertype" />
+
+        <!-- 네이버지도 클라이언트 ID지정 -->
+        <meta-data
+            android:name="com.naver.maps.map.CLIENT_ID"
+            android:value="jbhzsc7nk4" />
+
+
+
 
     </application>
 
