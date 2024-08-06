@@ -7,7 +7,7 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class UserRegHaspet extends AppCompatActivity {
+public class UserRegHasPet extends AppCompatActivity {
 
     private Button btnNext;
 
@@ -16,7 +16,7 @@ public class UserRegHaspet extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         btnNext.setOnClickListener(view -> {
-            Intent intent = new Intent(UserRegHaspet.this, UserRegFavorite.class);
+            Intent intent = new Intent(UserRegHasPet.this, UserRegFavorite.class);
             startActivity(intent);
         });
     }

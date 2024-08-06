@@ -16,7 +16,7 @@ public class UserRegLocation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         btnNext.setOnClickListener(view -> {
-            Intent intent = new Intent(UserRegLocation.this, UserRegHaspet.class);
+            Intent intent = new Intent(UserRegLocation.this, UserRegHasPet.class);
             startActivity(intent);
         });
     }

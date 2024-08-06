@@ -14,7 +14,7 @@ import com.example.capstonedesign_geo.R;
 import com.example.capstonedesign_geo.data.repository.UserRepository;
 import com.example.capstonedesign_geo.utility.StatusBarKt;
 
-public class UserRegUsertype extends AppCompatActivity {
+public class UserRegUserType extends AppCompatActivity {
 
     private Button btnNext, btnDis, btnNoneDis; //장애인, 비장애인, 확인 버튼 변수
     private UserRepository userRepository; //Repository안에 저장하는 클래스명
@@ -41,7 +41,7 @@ public class UserRegUsertype extends AppCompatActivity {
 
         //UserRegUserType 페이지에서 UserRegAge 페이지로 옮긴다는 뜻
         btnNext.setOnClickListener(view -> {
-            Intent intent = new Intent(UserRegUsertype.this, UserRegAge.class);
+            Intent intent = new Intent(UserRegUserType.this, UserRegAge.class);
             startActivity(intent); //intent 객체가 가지고 있는 걸 startActivity가 실행하는 함수
         });
 
