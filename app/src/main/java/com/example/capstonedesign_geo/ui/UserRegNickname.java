@@ -18,8 +18,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.example.capstonedesign_geo.R;
-import com.example.capstonedesign_geo.data.Model.UserInfo;
-import com.example.capstonedesign_geo.data.repository.UserRepository;
 import com.example.capstonedesign_geo.utility.StatusBarKt;
 
 import java.util.UUID;
@@ -29,7 +27,6 @@ public class UserRegNickname extends AppCompatActivity {
     private EditText editNickname;
     private TextView nicknameFeedback;
     private Button btnNext;
-    private UserRepository userRepository;
     private String androidId;
     private String userId;
 
@@ -44,7 +41,6 @@ public class UserRegNickname extends AppCompatActivity {
         editNickname = findViewById(R.id.editNickname);
         nicknameFeedback = findViewById(R.id.nicknameFeedback);
         btnNext = findViewById(R.id.btnNext);
-        userRepository = new UserRepository(this);
 
         // 기기 일련번호 가져오기
         androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
@@ -68,9 +64,7 @@ public class UserRegNickname extends AppCompatActivity {
         // EditText 입력에 따른 처리를 하기 위한 이벤트 리스너
         editNickname.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int i, int i1, int i2) {
-                // 텍스트가 변경되기 전의 상태 처리
-                }
+            public void beforeTextChanged(CharSequence s, int i, int i1, int i2) { /* 텍스트가 변경되기 전의 상태 처리 */ }
 
             @Override
             public void onTextChanged(CharSequence s, int i, int i1, int i2) {
@@ -84,9 +78,7 @@ public class UserRegNickname extends AppCompatActivity {
             }
 
             @Override
-            public void afterTextChanged(Editable s) {
-                // 텍스트가 변경된 후의 상태 처리
-            }
+            public void afterTextChanged(Editable s) { /* 텍스트가 변경된 후의 상태 처리 */ }
         });
     }
 
@@ -98,12 +90,9 @@ public class UserRegNickname extends AppCompatActivity {
         editor.putString("androidId", androidId);
         editor.putString("userId", userId);
         editor.apply();
-
-        // SQLite 데이터베이스에 닉네임 저장
-        UserInfo userInfo = new UserInfo(userId, androidId, nickname, false,0,null,false, null);
-        userRepository.saveUser(userInfo);
     }
 
+    // EditText 입력에 따른 TextView 변경 함수
     private void passNickname(String nickname, TextView nicknameFeedback) {
         int maxLen = 20;
         int minLen = 2;

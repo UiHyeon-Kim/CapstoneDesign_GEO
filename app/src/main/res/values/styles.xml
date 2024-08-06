@@ -32,4 +32,13 @@
         <item name="android:background">@color/mainblue</item>
     </style>
 
+    <style name="SpinnerStyles">
+        <item name="android:overlapAnchor">false</item>
+        <item name="overlapAnchor">false</item>
+        <item name="android:spinnerMode">dialog</item>
+        <item name="android:dropDownWidth">match_parent</item>
+        <item name="android:background">@drawable/bg_spinner</item>
+        <item name="android:padding">16dp</item>
+    </style>
+
 </resources>

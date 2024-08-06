@@ -13,8 +13,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.capstonedesign_geo.R;
-import com.example.capstonedesign_geo.data.Model.UserInfo;
-import com.example.capstonedesign_geo.data.repository.UserRepository;
 import com.example.capstonedesign_geo.utility.StatusBarKt;
 
 public class UserRegUserType extends AppCompatActivity {
@@ -22,7 +20,6 @@ public class UserRegUserType extends AppCompatActivity {
     private Button btnNext, btnDis, btnNoneDis; //장애인, 비장애인, 확인 버튼 변수
     private ImageButton backButton;
     private TextView tvNickname;
-    private UserRepository userRepository; //Repository안에 저장하는 클래스명
     private String nickname;
 
 
@@ -38,7 +35,6 @@ public class UserRegUserType extends AppCompatActivity {
         btnNoneDis = findViewById(R.id.btnNoneDis);
         backButton = findViewById(R.id.backButton);
         tvNickname = findViewById(R.id.tvNickname);
-        userRepository = new UserRepository(this); //클래스에 저장할 객체
 
         getUserNickname();
         tvNickname.setText(nickname + "님의 유형을 선택해주세요 !");
@@ -50,14 +46,14 @@ public class UserRegUserType extends AppCompatActivity {
         });
 
         btnNoneDis.setOnClickListener(view -> {
-            saveUsertype(true);
+            saveUsertype(false);
             btnNoneDis.setBackgroundResource(R.drawable.rounded_button);
             btnDis.setBackgroundResource(R.drawable.rounded_disable);
             btnNext.setEnabled(true);
         });
 
         btnDis.setOnClickListener(view -> {
-            saveUsertype(false);
+            saveUsertype(true);
             btnNoneDis.setBackgroundResource(R.drawable.rounded_disable);
             btnDis.setBackgroundResource(R.drawable.rounded_button);
             btnNext.setEnabled(true);
@@ -72,17 +68,6 @@ public class UserRegUserType extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean("user_type",ut);
         editor.apply();
-
-        SharedPreferences prefs = getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
-        String userId = prefs.getString("userId", null);
-
-        if (userId != null) {
-            UserInfo userInfo = userRepository.getUser(userId);
-            if (userInfo != null) {
-                userInfo.setUserType(ut);
-                userRepository.updateUser(userInfo);
-            }
-        }
     }
 
     private void getUserNickname(){

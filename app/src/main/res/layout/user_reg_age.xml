@@ -74,8 +74,7 @@
         android:layout_margin="20dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:padding="16dp"
-        android:spinnerMode="dropdown" />
+        style="@style/SpinnerStyles" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnNext"
