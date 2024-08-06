@@ -1,14 +1,12 @@
-package com.example.capstonedesign_geo.ui;
+package com.example.capstonedesign_geo.ui.fragment;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.capstonedesign_geo.R;
 import com.gun0912.tedpermission.PermissionListener;
@@ -19,8 +17,6 @@ import com.naver.maps.map.MapView;
 import com.naver.maps.map.NaverMap;
 import com.naver.maps.map.OnMapReadyCallback;
 import com.naver.maps.map.util.FusedLocationSource;
-
-import java.util.List;
 
 
 public class NaverFragment extends Fragment implements OnMapReadyCallback {

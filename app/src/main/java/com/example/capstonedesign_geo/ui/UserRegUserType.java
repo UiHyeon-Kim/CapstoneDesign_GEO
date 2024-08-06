@@ -6,26 +6,22 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.capstonedesign_geo.R;
-import com.example.capstonedesign_geo.data.repository.UserRepository;
 import com.example.capstonedesign_geo.utility.StatusBarKt;
 
-public class UserRegUsertype extends AppCompatActivity {
+public class UserRegUserType extends AppCompatActivity {
 
     private Button btnNext, btnDis, btnNoneDis; //장애인, 비장애인, 확인 버튼 변수
-    private UserRepository userRepository; //Repository안에 저장하는 클래스명
+    private ImageButton backButton;
+    private TextView tvNickname;
+    private String nickname;
 
-    private void saveUsertype(boolean ut){
-        //문자를 적었을 때, 페이지 이동을 해도 남아있다. 이걸 안 하면 계속 재저장해야함
-        SharedPreferences sharedPreferences = getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("user_type",ut);
-        editor.apply();
-    }
 
     @SuppressLint("ResourceAsColor")
     @Override
@@ -37,26 +33,45 @@ public class UserRegUsertype extends AppCompatActivity {
         btnNext = findViewById(R.id.btnNext);
         btnDis = findViewById(R.id.btnDis);
         btnNoneDis = findViewById(R.id.btnNoneDis);
-        userRepository = new UserRepository(this); //클래스에 저장할 객체
+        backButton = findViewById(R.id.backButton);
+        tvNickname = findViewById(R.id.tvNickname);
+
+        getUserNickname();
+        tvNickname.setText(nickname + "님의 유형을 선택해주세요 !");
 
         //UserRegUserType 페이지에서 UserRegAge 페이지로 옮긴다는 뜻
         btnNext.setOnClickListener(view -> {
-            Intent intent = new Intent(UserRegUsertype.this, UserRegAge.class);
+            Intent intent = new Intent(UserRegUserType.this, UserRegAge.class);
             startActivity(intent); //intent 객체가 가지고 있는 걸 startActivity가 실행하는 함수
         });
 
-
         btnNoneDis.setOnClickListener(view -> {
-            saveUsertype(true);
+            saveUsertype(false);
             btnNoneDis.setBackgroundResource(R.drawable.rounded_button);
             btnDis.setBackgroundResource(R.drawable.rounded_disable);
+            btnNext.setEnabled(true);
         });
 
         btnDis.setOnClickListener(view -> {
-            saveUsertype(false);
+            saveUsertype(true);
             btnNoneDis.setBackgroundResource(R.drawable.rounded_disable);
             btnDis.setBackgroundResource(R.drawable.rounded_button);
+            btnNext.setEnabled(true);
         });
 
+        backButton.setOnClickListener(view -> onBackPressed());
+    }
+
+    private void saveUsertype(boolean ut){
+        //문자를 적었을 때, 페이지 이동을 해도 남아있다. 이걸 안 하면 계속 재저장해야함
+        SharedPreferences sharedPreferences = getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("user_type",ut);
+        editor.apply();
+    }
+
+    private void getUserNickname(){
+        SharedPreferences prefs = getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
+        nickname = prefs.getString("nickname", null);
     }
 }

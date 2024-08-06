@@ -35,8 +35,6 @@
         <activity android:name=".ui.UserRegHasPet" />
         <activity android:name=".ui.UserRegFavorite" />
         <activity android:name=".ui.UserRegComplete" />
-        <activity android:name=".ui.UserRegNickname" />
-        <activity android:name=".ui.UserRegUsertype" />
 
         <!-- 네이버지도 클라이언트 ID지정 -->
         <meta-data
