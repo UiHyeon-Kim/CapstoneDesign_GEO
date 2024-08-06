@@ -2,6 +2,7 @@ package com.example.capstonedesign_geo.data.repository;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.capstonedesign_geo.data.Model.UserInfo;
@@ -30,6 +31,8 @@ public class UserRepository {
 
     // 사용자 정보를 데이터베이스에서 가져오는 메서드 (예시)
     /*public UserInfo getUser(String nickname) {
+    // 사용자 정보를 데이터베이스에서 가져오는 메서드
+    public UserInfo getUser(String nickname) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.query(UserDatabaseHelper.TABLE_USER,
                 null,
@@ -43,6 +46,27 @@ public class UserRepository {
             UserInfo user = new UserInfo(
                     cursor.getString(cursor.getColumnIndex(UserDatabaseHelper.COLUMN_USERID)),
             );
+            // 각 칼럼의 인덱스를 얻음
+            int userIdIndex = cursor.getColumnIndex(UserDatabaseHelper.COLUMN_USERID);
+            int androidIdIndex = cursor.getColumnIndex(UserDatabaseHelper.COLUMN_ANDROIDID);
+            int nicknameIndex = cursor.getColumnIndex(UserDatabaseHelper.COLUMN_NICKNAME);
+            int userTypeIndex = cursor.getColumnIndex(UserDatabaseHelper.COLUMN_USER_TYPE);
+            int ageIndex = cursor.getColumnIndex(UserDatabaseHelper.COLUMN_AGE);
+            int locationIndex = cursor.getColumnIndex(UserDatabaseHelper.COLUMN_LOCATION);
+            int hasPetIndex = cursor.getColumnIndex(UserDatabaseHelper.COLUMN_HAS_PET);
+            int favoriteTagsIndex = cursor.getColumnIndex(UserDatabaseHelper.COLUMN_FAVORITE_TAGS);
+
+            // 각 칼럼의 값을 가져옴
+            String userId = cursor.getString(userIdIndex);
+            String androidId = cursor.getString(androidIdIndex);
+            String nicknameValue = cursor.getString(nicknameIndex);
+            boolean userType = cursor.getInt(userTypeIndex) == 1;
+            int age = cursor.getInt(ageIndex);
+            String location = cursor.getString(locationIndex);
+            boolean hasPet = cursor.getInt(hasPetIndex) == 1;
+            String favoriteTags = cursor.getString(favoriteTagsIndex);
+
+            UserInfo user = new UserInfo(userId, androidId, nicknameValue, userType, age, location, hasPet, favoriteTags);
             cursor.close();
             return user;
         }
@@ -52,7 +76,7 @@ public class UserRepository {
         }
 
         return null;
-    }*/
+    }
 
     // 사용자 정보 업데이트
     public void updateUser(UserInfo user) {

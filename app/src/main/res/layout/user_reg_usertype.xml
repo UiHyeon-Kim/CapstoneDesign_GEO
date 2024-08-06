@@ -1,12 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        style="@style/ToolbarStyles"
-        />
+        style="@style/ToolbarStyles" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/toolbar"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="#00000000"
+        android:contentDescription=" "
+        app:srcCompat="@drawable/back_button" />
 
     <TextView
         android:id="@+id/textView12"
@@ -21,7 +35,7 @@
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/tvNickname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/textView12"
@@ -30,7 +44,7 @@
         android:layout_marginRight="16dp"
         android:fontFamily="@font/notosans_bold"
         android:includeFontPadding="false"
-        android:text="(닉네임)님의 유형을 선택해주세요 !"
+        android:text="님의 유형을 선택해주세요 !"
         android:textColor="#000000"
         android:textSize="22sp" />
 
@@ -38,7 +52,7 @@
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textView13"
+        android:layout_below="@id/tvNickname"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:fontFamily="@font/notosans"
@@ -82,5 +96,6 @@
         android:id="@+id/btnNext"
         style="@style/ButtonStyles"
         android:layout_alignParentBottom="true"
+        android:enabled="false"
         android:text=" 확 인 " />
 </RelativeLayout>

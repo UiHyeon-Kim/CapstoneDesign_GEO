@@ -5,4 +5,6 @@
     <color name="mainblue">#4F89F8</color>
     <color name="subblue">#D8E6FF</color>
     <color name="transparent">#00000000</color>
+    <color name="warning">#FF0000</color>
+    <color name="pass">#4CAF50</color>
 </resources>
