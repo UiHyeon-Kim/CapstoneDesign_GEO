@@ -37,6 +37,8 @@ android {
 
 dependencies {
 
+    implementation 'io.github.ParkSangGwon:tedpermission-normal:3.3.0' //권한 설정 오픈소스
+    implementation 'com.google.android.gms:play-services-location:21.0.1' //네이버지도 SDK
     implementation 'com.naver.maps:map-sdk:3.19.0' //네이버지도 의존성 부여
     implementation libs.appcompat
     implementation libs.material
