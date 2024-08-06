@@ -33,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             finish(); // 현재 액티비티 종료
         }
-
-
     }
 
     // SharedPreferences에 사용자 데이터가 모두 저장되어 있는지 확인

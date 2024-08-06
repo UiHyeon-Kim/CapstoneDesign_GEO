@@ -7,6 +7,8 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.capstonedesign_geo.R;
+
 public class UserRegLocation extends AppCompatActivity {
 
     private Button btnNext;
@@ -14,6 +16,8 @@ public class UserRegLocation extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        btnNext = findViewById(R.id.btnNext);
 
         btnNext.setOnClickListener(view -> {
             Intent intent = new Intent(UserRegLocation.this, UserRegHasPet.class);

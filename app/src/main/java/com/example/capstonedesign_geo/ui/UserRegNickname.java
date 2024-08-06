@@ -70,7 +70,7 @@ public class UserRegNickname extends AppCompatActivity {
             @Override
             public void beforeTextChanged(CharSequence s, int i, int i1, int i2) {
                 // 텍스트가 변경되기 전의 상태 처리
-            }
+                }
 
             @Override
             public void onTextChanged(CharSequence s, int i, int i1, int i2) {
