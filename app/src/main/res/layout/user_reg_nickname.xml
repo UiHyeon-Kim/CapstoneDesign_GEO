@@ -21,7 +21,6 @@
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
         android:background="#00000000"
-        android:background="#00000000"
         android:contentDescription=" "
         app:srcCompat="@drawable/back_button" />
 
