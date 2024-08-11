@@ -1,23 +1,18 @@
 package com.example.capstonedesign_geo.ui.fragment;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+
 import com.example.capstonedesign_geo.R;
-import com.gun0912.tedpermission.PermissionListener;
 import com.naver.maps.geometry.LatLng;
 import com.naver.maps.map.CameraPosition;
 import com.naver.maps.map.LocationTrackingMode;
-import com.naver.maps.map.MapFragment;
 import com.naver.maps.map.MapView;
 import com.naver.maps.map.NaverMap;
-import com.naver.maps.map.NaverMapOptions;
 import com.naver.maps.map.OnMapReadyCallback;
 import com.naver.maps.map.UiSettings;
 import com.naver.maps.map.util.FusedLocationSource;
@@ -55,14 +50,7 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
                 new FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE); //런타임 권한 처리를 위해 생성자에 액티비티 객체를 전달하고 권한 요청 코드를 지정해 줘야 한다
 
         return rootView;
-
-
-
-
-
     }
-
-
 
     @Override
     public void onMapReady(NaverMap naverMap){
@@ -147,7 +135,4 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
         super.onLowMemory();
         mapView.onLowMemory();
     }
-
-
-
 }

@@ -14,7 +14,6 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.capstonedesign_geo.R;
 import com.example.capstonedesign_geo.ui.fragment.NaverFragment;
 import com.gun0912.tedpermission.PermissionListener;
-import com.gun0912.tedpermission.normal.TedPermission;
 
 import java.util.List;
 
@@ -51,12 +50,12 @@ public class MainActivity extends AppCompatActivity {
         };
 
         //권한설정
-        TedPermission.create()
+        /*TedPermission.create()
                 .setPermissionListener(permissionListener)
                 .setRationaleMessage("앱을 사용하려면, 접근 권한이 필요합니다.")
                 .setDeniedMessage("권한이 거부되었습니다. 이를 다시 얻으려면, [설정] > [권한]으로 이동하세요.")
                 .setPermissions(Manifest.permission.ACCESS_FINE_LOCATION)
-                .check();
+                .check();*/
 
 
         /*if (isUserPreferencesComplete()) {  // 사용자 선호조 조사가 완료된 경우
