@@ -6,14 +6,15 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.capstonedesign_geo.R;
+import com.example.capstonedesign_geo.ui.adapter.CustomSpinnerAdapter;
 import com.example.capstonedesign_geo.utility.StatusBarKt;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class UserRegAge extends AppCompatActivity {
 
     private Button btnNext;
     private Spinner yearSpinner;
+    private CustomSpinnerAdapter adapter;
     private int age;
 
     @Override
@@ -42,16 +44,15 @@ public class UserRegAge extends AppCompatActivity {
             years.add(String.valueOf(i));
         }
 
-        // 배열 어댑터를 사용해 연도 리스트를 Spinner에 설정
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, years);
-        // 드롭다운 리스트의 레이아웃 설정
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        yearSpinner.setAdapter(adapter); // Spinner에 어댑터 적용
+        // 커스텀 어댑터 초기화
+        adapter = new CustomSpinnerAdapter(this, years);
+        yearSpinner.setAdapter(adapter);
 
         yearSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // 항목을 선택했을 때
+                age = adapter.getCount();
                 btnNext.setEnabled(true);
             }
 
@@ -61,12 +62,15 @@ public class UserRegAge extends AppCompatActivity {
 
         btnNext.setOnClickListener(view -> {
             String selectedYear = yearSpinner.getSelectedItem().toString();
-            int age = currentYear - Integer.parseInt(selectedYear);
+            int age = currentYear - Integer.parseInt(selectedYear); // 현재 연도에서 선택한 연도를 빼서 나이 계산
             saveAge(age);
 
             Intent intent = new Intent(UserRegAge.this, UserRegLocation.class);
             startActivity(intent);
         });
+
+        ImageButton btnBack = findViewById(R.id.backButton);
+        btnBack.setOnClickListener(view -> onBackPressed());
     }
 
     private void saveAge(int age) {

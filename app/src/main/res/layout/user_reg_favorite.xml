@@ -1,13 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/ToolbarStyles" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/toolbar"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:scaleType="centerInside"
+        android:background="#00000000"
+        android:contentDescription=" "
+        app:srcCompat="@drawable/back_button" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="16dp"
+        android:text="6/6단계"
+        android:textColor="@color/mainblue"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvNickname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView12"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="16dp"
+        android:fontFamily="@font/notosans_bold"
+        android:includeFontPadding="false"
+        android:text="선호하는 태그를 선택해주세요!"
+        android:textColor="#000000"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvNickname"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:fontFamily="@font/notosans"
+        android:includeFontPadding="false"
+        android:text="선택한 태그를 더 자주 추천해드려요."
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_below="@id/textView14"
+        app:chipSpacing="10dp"
+        app:singleSelection="false" >
+        
+        <com.google.android.material.chip.Chip
+            style="@style/ChipStyles"
+            android:id="@+id/chip1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="음식점"
+            android:fontFamily="@font/notosans"
+            android:includeFontPadding="false"/>
+
+        <com.google.android.material.chip.Chip
+            style="@style/ChipStyles"
+            android:id="@+id/chip2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="카페"/>
+
+        <com.google.android.material.chip.Chip
+            style="@style/ChipStyles"
+            android:id="@+id/chip3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="숙박" />
+
+        <com.google.android.material.chip.Chip
+            style="@style/ChipStyles"
+            android:id="@+id/chip4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="공원" />
+
+        <com.google.android.material.chip.Chip
+            style="@style/ChipStyles"
+            android:id="@+id/chip5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="축제" />
+
+        <com.google.android.material.chip.Chip
+            style="@style/ChipStyles"
+            android:id="@+id/chip6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="문화시설" />
+
+        <com.google.android.material.chip.Chip
+            style="@style/ChipStyles"
+            android:id="@+id/chip7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="레포츠" />
+
+        <com.google.android.material.chip.Chip
+            style="@style/ChipStyles"
+            android:id="@+id/chip8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="가족 여행" />
+
+        <com.google.android.material.chip.Chip
+            style="@style/ChipStyles"
+            android:id="@+id/chip9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="혼자 여행" />
+
+        <com.google.android.material.chip.Chip
+            style="@style/ChipStyles"
+            android:id="@+id/chip10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="역사관광지" />
+
+        <com.google.android.material.chip.Chip
+            style="@style/ChipStyles"
+            android:id="@+id/chip11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="휴양관광지" />
+
+        <com.google.android.material.chip.Chip
+            style="@style/ChipStyles"
+            android:id="@+id/chip12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="애견동반" />
+
+        <com.google.android.material.chip.Chip
+            style="@style/ChipStyles"
+            android:id="@+id/chip13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="주차시설" />
+
+    </com.google.android.material.chip.ChipGroup>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnNext"
         style="@style/ButtonStyles"
         android:layout_alignParentBottom="true"
-        android:text=" 확 인 " />
+        android:text=" 완 료 하 기 " />
 
 </RelativeLayout>

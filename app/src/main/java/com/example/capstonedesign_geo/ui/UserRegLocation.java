@@ -23,7 +23,7 @@ public class UserRegLocation extends AppCompatActivity {
         btnNext = findViewById(R.id.btnNext);
 
         btnNext.setOnClickListener(view -> {
-            Intent intent = new Intent(UserRegLocation.this, UserRegHaspet.class);
+            Intent intent = new Intent(UserRegLocation.this, UserRegHasPet.class);
             startActivity(intent);
         });
     }

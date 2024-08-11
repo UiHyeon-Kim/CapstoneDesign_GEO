@@ -30,8 +30,6 @@ public class UserRepository {
     }
 }
 
-    // 사용자 정보를 데이터베이스에서 가져오는 메서드 (예시)
-    /*public UserInfo getUser(String nickname) {
     // 사용자 정보를 데이터베이스에서 가져오는 메서드
     public UserInfo getUser(String nickname) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -44,9 +42,6 @@ public class UserRepository {
                 null);
 
         if (cursor != null && cursor.moveToFirst()) {
-            UserInfo user = new UserInfo(
-                    cursor.getString(cursor.getColumnIndex(UserDatabaseHelper.COLUMN_USERID)),
-            );
             // 각 칼럼의 인덱스를 얻음
             int userIdIndex = cursor.getColumnIndex(UserDatabaseHelper.COLUMN_USERID);
             int androidIdIndex = cursor.getColumnIndex(UserDatabaseHelper.COLUMN_ANDROIDID);

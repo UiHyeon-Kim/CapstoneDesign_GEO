@@ -49,8 +49,6 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnComplete"
         style="@style/ButtonStyles"
-        android:layout_width="0dp"
-        android:layout_height="46dp"
         android:text="@string/btnComplete"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
