@@ -1,23 +1,34 @@
 package com.example.capstonedesign_geo.ui;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.capstonedesign_geo.R;
+import com.example.capstonedesign_geo.ui.fragment.BottomSheet;
 import com.example.capstonedesign_geo.ui.fragment.NaverFragment;
 import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.normal.TedPermission;
 
 import java.util.List;
 
+
 public class MainActivity extends AppCompatActivity {
+
+    BottomSheet bottomsheet;
+    Button menubutton;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,12 +61,28 @@ public class MainActivity extends AppCompatActivity {
         };
 
         //권한설정
-        /*TedPermission.create()
+        TedPermission.create()
                 .setPermissionListener(permissionListener)
                 .setRationaleMessage("앱을 사용하려면, 접근 권한이 필요합니다.")
                 .setDeniedMessage("권한이 거부되었습니다. 이를 다시 얻으려면, [설정] > [권한]으로 이동하세요.")
                 .setPermissions(Manifest.permission.ACCESS_FINE_LOCATION)
-                .check();*/
+                .check();
+
+        //mainmenu bottomsheet
+        menubutton = findViewById(R.id.menubutton);
+
+        menubutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bottomsheet = new BottomSheet();
+                bottomsheet.show(getSupportFragmentManager(), bottomsheet.getTag());
+            }
+        });
+
+        //툴바 사용
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
 
 
         /*if (isUserPreferencesComplete()) {  // 사용자 선호조 조사가 완료된 경우
@@ -66,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
             finish(); // 현재 액티비티 종료
         }*/
     }
+
 
     // SharedPreferences에 사용자 데이터가 모두 저장되어 있는지 확인
     private boolean isUserPreferencesComplete() {
