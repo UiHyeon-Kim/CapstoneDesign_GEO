@@ -11,23 +11,24 @@ import com.example.capstonedesign_geo.data.db.UserDatabaseHelper;
 public class UserRepository {
     private UserDatabaseHelper dbHelper;
 
-    public UserRepository(Context context){
+    public UserRepository(Context context) {
         dbHelper = new UserDatabaseHelper(context);
     }
 
     // 사용자 정보를 데이터베이스에 저장
-    public void saveUser(UserInfo user){
+    public void saveUser(UserInfo user) {
         ContentValues values = new ContentValues();
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         values.put(UserDatabaseHelper.COLUMN_ANDROIDID, user.getAndroidId());
         values.put(UserDatabaseHelper.COLUMN_NICKNAME, user.getNickname());
-        values.put(UserDatabaseHelper.COLUMN_USER_TYPE, user.UserType() ? 1:0);
+        values.put(UserDatabaseHelper.COLUMN_USER_TYPE, user.UserType() ? 1 : 0);
         values.put(UserDatabaseHelper.COLUMN_AGE, user.getAge());
         values.put(UserDatabaseHelper.COLUMN_LOCATION, user.getLocation());
-        values.put(UserDatabaseHelper.COLUMN_HAS_PET, user.HasPet() ? 1:0);
+        values.put(UserDatabaseHelper.COLUMN_HAS_PET, user.HasPet() ? 1 : 0);
         values.put(UserDatabaseHelper.COLUMN_FAVORITE_TAGS, user.getFavoriteTags());
         db.insert(UserDatabaseHelper.TABLE_USER, null, values);
     }
+}
 
     // 사용자 정보를 데이터베이스에서 가져오는 메서드
     public UserInfo getUser(String nickname) {

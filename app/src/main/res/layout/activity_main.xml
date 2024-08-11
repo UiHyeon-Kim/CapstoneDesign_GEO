@@ -8,21 +8,10 @@
     android:orientation="vertical"
     tools:context=".ui.MainActivity">
 
-    <androidx.appcompat.widget.Toolbar style="@style/ToolbarStyles" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button" />
-
     <FrameLayout
         android:id="@+id/fragment_zone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </FrameLayout>
-
-    <androidx.appcompat.widget.AppCompatButton
-        style="@style/ButtonStyles" />
 
 </LinearLayout>
