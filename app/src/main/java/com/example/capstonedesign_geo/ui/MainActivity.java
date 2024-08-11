@@ -3,6 +3,7 @@ package com.example.capstonedesign_geo.ui;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +13,10 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.capstonedesign_geo.R;
 import com.example.capstonedesign_geo.ui.fragment.NaverFragment;
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.normal.TedPermission;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 .add(R.id.fragment_zone, naverFragment).commit();
 
         //권한리스너
-        /*final PermissionListener permissionListener = new PermissionListener() {
+        final PermissionListener permissionListener = new PermissionListener() {
             @Override
             public void onPermissionGranted() {
                 Toast.makeText(MainActivity.this, "권한 설정 완료했습니다.", Toast.LENGTH_SHORT).show();
@@ -51,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 .setRationaleMessage("앱을 사용하려면, 접근 권한이 필요합니다.")
                 .setDeniedMessage("권한이 거부되었습니다. 이를 다시 얻으려면, [설정] > [권한]으로 이동하세요.")
                 .setPermissions(Manifest.permission.ACCESS_FINE_LOCATION)
-                .check();*/
+                .check();
 
 
         /*if (isUserPreferencesComplete()) {  // 사용자 선호조 조사가 완료된 경우
@@ -67,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean isUserPreferencesComplete() {
         SharedPreferences sharedPreferences =getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
         return sharedPreferences.contains("nickname") && sharedPreferences.contains("userType") &&
-               sharedPreferences.contains("age") && sharedPreferences.contains("location") &&
-               sharedPreferences.contains("hasPet") && sharedPreferences.contains("favoriteTags");
+                sharedPreferences.contains("age") && sharedPreferences.contains("location") &&
+                sharedPreferences.contains("hasPet") && sharedPreferences.contains("favoriteTags");
     }
 }
