@@ -1,9 +1,7 @@
 package com.example.capstonedesign_geo.ui;
 
 import android.Manifest;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -31,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     Button menubutton;
     Toolbar toolbar;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,28 +79,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //툴바 사용
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
 
+//오류나서 잠깐 주석처리 했어열
 
-        if (isUserPreferencesComplete()) {  // 사용자 선호조 조사가 완료된 경우
-            setContentView(R.layout.activity_main); // 메인 화면으로 이동
-        } else {    // 사용자 선호도 조사가 완료되지 않은 경우 첫 번째 화면으로 이동
-            Intent intent = new Intent(MainActivity.this, UserRegistration.class);
-            startActivity(intent);
-            overridePendingTransition(0,0); // 액티비티 전환시 애니메이션 삭제
-            finish(); // 현재 액티비티 종료
-        }
-    }
-
-
-    // SharedPreferences에 사용자 데이터가 모두 저장되어 있는지 확인
-    private boolean isUserPreferencesComplete() {
-        SharedPreferences sharedPreferences =getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
-        return sharedPreferences.contains("nickname") && sharedPreferences.contains("userType") &&
-                sharedPreferences.contains("age") && sharedPreferences.contains("location") &&
-                sharedPreferences.contains("hasPet") && sharedPreferences.contains("favoriteTags");
+//        if (isUserPreferencesComplete()) {  // 사용자 선호조 조사가 완료된 경우
+//            setContentView(R.layout.activity_main); // 메인 화면으로 이동
+//        } else {    // 사용자 선호도 조사가 완료되지 않은 경우 첫 번째 화면으로 이동
+//            Intent intent = new Intent(MainActivity.this, UserRegistration.class);
+//            startActivity(intent);
+//            overridePendingTransition(0,0); // 액티비티 전환시 애니메이션 삭제
+//            finish(); // 현재 액티비티 종료
+//        }
     }
 }
+
+
+
+//    // SharedPreferences에 사용자 데이터가 모두 저장되어 있는지 확인
+//    private boolean isUserPreferencesComplete() {
+//        SharedPreferences sharedPreferences =getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
+//        return sharedPreferences.contains("nickname") && sharedPreferences.contains("userType") &&
+//                sharedPreferences.contains("age") && sharedPreferences.contains("location") &&
+//                sharedPreferences.contains("hasPet") && sharedPreferences.contains("favoriteTags");
+//    }
