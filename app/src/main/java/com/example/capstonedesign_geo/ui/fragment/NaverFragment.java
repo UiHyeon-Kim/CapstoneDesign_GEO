@@ -71,9 +71,9 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
         //위치 및 각도 조정
         CameraPosition cameraPosition = new CameraPosition(
                 new LatLng(37.709, 127.04),   // 위치 지정
-                9,                                     // 줌 레벨
-                45,                                       // 기울임 각도
-                45                                     // 방향
+                16,                                     // 줌 레벨
+                0,                                       // 기울임 각도
+                0                                     // 방향
         );
         naverMap.setCameraPosition(cameraPosition);
 
