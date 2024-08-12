@@ -39,7 +39,6 @@ public class UserRegComplete extends AppCompatActivity {
                 userInfoTemp.isUserType(),
                 userInfoTemp.getAge(),
                 userInfoTemp.getLocation(),
-                userInfoTemp.isHasPet(),
                 userInfoTemp.getFavoriteTags()
             );
             userRepository.saveUser(userInfo);
@@ -61,9 +60,8 @@ public class UserRegComplete extends AppCompatActivity {
         boolean userType = sharedPreferences.getBoolean("userType", false);
         int age = sharedPreferences.getInt("age", 0);
         String location = sharedPreferences.getString("location", null);
-        boolean hasPet = sharedPreferences.getBoolean("hasPet", false);
         String favoriteTags = sharedPreferences.getString("favoriteTags", null);
 
-        UserInfo userInfo = new UserInfo(userId, androidId, nickname, userType, age, location, hasPet, favoriteTags);
+        UserInfo userInfo = new UserInfo(userId, androidId, nickname, userType, age, location,  favoriteTags);
     }
 }

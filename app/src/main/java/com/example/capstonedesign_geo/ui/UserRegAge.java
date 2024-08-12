@@ -39,8 +39,9 @@ public class UserRegAge extends AppCompatActivity {
 
         // 연도를 저장할 리스트 생성
         List<String> years = new ArrayList<>();
+        years.add(getString(R.string.yearSelect)); // 기본값 설정
         int currentYear = Calendar.getInstance().get(Calendar.YEAR); // 현재 연도 가져오기
-        for (int i = currentYear; i >= 1950; i--) {
+        for (int i = currentYear; i >= 1950; i--) { // 1950년부터 현재 연도까지 저장
             years.add(String.valueOf(i));
         }
 
@@ -49,11 +50,15 @@ public class UserRegAge extends AppCompatActivity {
         yearSpinner.setAdapter(adapter);
 
         yearSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
+            @Override // 매개변수 1.선택한 어댑터 뷰 2.선택한 뷰 3.선택한 항목의 인덱스 4.선택한 항목의 아이디
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // 항목을 선택했을 때
                 age = adapter.getCount();
-                btnNext.setEnabled(true);
+                if (position == 0) { // 기본값인 경우
+                    btnNext.setEnabled(false);
+                } else { // 기본값이 아닌 경우
+                    btnNext.setEnabled(true);
+                }
             }
 
             @Override

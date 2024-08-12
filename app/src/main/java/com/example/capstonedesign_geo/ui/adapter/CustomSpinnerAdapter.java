@@ -13,8 +13,8 @@ import java.util.List;
 
 public class CustomSpinnerAdapter extends BaseAdapter {
 
-    private final List<String> list;
-    private final LayoutInflater inflater;
+    private List<String> list;
+    private LayoutInflater inflater;
     private String text;
 
     public CustomSpinnerAdapter(Context context, List<String> list) {
@@ -24,8 +24,7 @@ public class CustomSpinnerAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        if (list != null) return list.size();
-        else return 0;
+        return (list != null) ? list.size() : 0;
     }
 
     @Override
@@ -62,8 +61,9 @@ public class CustomSpinnerAdapter extends BaseAdapter {
         return convertView;
     }
 
-    // 스피너에서 선택된 아이템을 액티비티에서 꺼내옴
-    public String getItem() {
-        return text;
+    public void updateData(List<String> list) {
+        this.list.clear();
+        this.list.addAll(list);
+        notifyDataSetChanged();
     }
 }

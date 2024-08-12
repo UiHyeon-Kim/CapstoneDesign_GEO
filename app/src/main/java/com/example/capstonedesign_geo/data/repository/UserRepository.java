@@ -24,7 +24,6 @@ public class UserRepository {
         values.put(UserDatabaseHelper.COLUMN_USER_TYPE, user.UserType() ? 1:0);
         values.put(UserDatabaseHelper.COLUMN_AGE, user.getAge());
         values.put(UserDatabaseHelper.COLUMN_LOCATION, user.getLocation());
-        values.put(UserDatabaseHelper.COLUMN_HAS_PET, user.HasPet() ? 1:0);
         values.put(UserDatabaseHelper.COLUMN_FAVORITE_TAGS, user.getFavoriteTags());
         db.insert(UserDatabaseHelper.TABLE_USER, null, values);
     }
@@ -48,7 +47,6 @@ public class UserRepository {
             int userTypeIndex = cursor.getColumnIndex(UserDatabaseHelper.COLUMN_USER_TYPE);
             int ageIndex = cursor.getColumnIndex(UserDatabaseHelper.COLUMN_AGE);
             int locationIndex = cursor.getColumnIndex(UserDatabaseHelper.COLUMN_LOCATION);
-            int hasPetIndex = cursor.getColumnIndex(UserDatabaseHelper.COLUMN_HAS_PET);
             int favoriteTagsIndex = cursor.getColumnIndex(UserDatabaseHelper.COLUMN_FAVORITE_TAGS);
 
             // 각 칼럼의 값을 가져옴
@@ -58,10 +56,9 @@ public class UserRepository {
             boolean userType = cursor.getInt(userTypeIndex) == 1;
             int age = cursor.getInt(ageIndex);
             String location = cursor.getString(locationIndex);
-            boolean hasPet = cursor.getInt(hasPetIndex) == 1;
             String favoriteTags = cursor.getString(favoriteTagsIndex);
 
-            UserInfo user = new UserInfo(userId, androidId, nicknameValue, userType, age, location, hasPet, favoriteTags);
+            UserInfo user = new UserInfo(userId, androidId, nicknameValue, userType, age, location, favoriteTags);
             cursor.close();
             return user;
         }
@@ -82,7 +79,6 @@ public class UserRepository {
         values.put(UserDatabaseHelper.COLUMN_USER_TYPE, user.UserType() ? 1:0);
         values.put(UserDatabaseHelper.COLUMN_AGE, user.getAge());
         values.put(UserDatabaseHelper.COLUMN_LOCATION, user.getLocation());
-        values.put(UserDatabaseHelper.COLUMN_HAS_PET, user.HasPet() ? 1:0);
         values.put(UserDatabaseHelper.COLUMN_FAVORITE_TAGS, user.getFavoriteTags());
 
         String selection = UserDatabaseHelper.COLUMN_NICKNAME + " = ?";

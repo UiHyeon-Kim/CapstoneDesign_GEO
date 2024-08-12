@@ -29,7 +29,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="16dp"
-        android:text="2/6단계"
+        android:text="2/5단계"
         android:textColor="@color/mainblue"
         android:textSize="18sp" />
 

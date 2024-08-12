@@ -3,8 +3,13 @@
     <style name="Base.Theme.CapstoneDesign_GEO" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-
     </style>
 
     <style name="Theme.CapstoneDesign_GEO" parent="Base.Theme.CapstoneDesign_GEO" />
+
+    <style name="Widget.My.Spinner" parent="Widget.AppCompat.Spinner">
+        <item name="android:overlapAnchor">true</item>          <!-- 드랍다운 메뉴가 스피너와 겹치는지 여부 -->
+        <item name="android:spinnerMode">dropdown</item>        <!-- 드랍다운 형식과 팝업(다이얼로그)형태 선택 -->
+        <item name="android:dropDownWidth">match_parent</item>  <!-- 드랍다운 메뉴 가로 길이 설정 -->
+    </style>
 </resources>

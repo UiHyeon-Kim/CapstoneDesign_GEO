@@ -31,7 +31,7 @@
         android:layout_marginRight="16dp"
         android:fontFamily="@font/notosans"
         android:includeFontPadding="false"
-        android:text="4/6 단계"
+        android:text="4/5 단계"
         android:textColor="@color/mainblue"
         android:textSize="18sp" />
 
@@ -83,12 +83,14 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:background="@drawable/bg_spinner"
-        android:padding="16dp" />
+        android:padding="16dp"
+        android:enabled="false"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnNext"
         style="@style/ButtonStyles"
         android:layout_alignParentBottom="true"
-        android:text=" 확 인 " />
+        android:text=" 확 인 "
+        android:enabled="false" />
 
 </RelativeLayout>

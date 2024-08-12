@@ -12,19 +12,17 @@ public class UserInfoTemp implements Parcelable {
     private boolean userType;
     private int age;
     private String location;
-    private boolean hasPet;
     private String favoriteTags;
 
     public UserInfoTemp() {}
 
-    public UserInfoTemp(String userId, String androidId, String nickname, boolean userType, int age, String location, boolean hasPet, String favoriteTags){
+    public UserInfoTemp(String userId, String androidId, String nickname, boolean userType, int age, String location, String favoriteTags){
         this.userId = userId;
         this.androidId = androidId;
         this.nickname = nickname;
         this.userType = userType;
         this.age = age;
         this.location = location;
-        this.hasPet = hasPet;
         this.favoriteTags = favoriteTags;
     }
 
@@ -35,7 +33,6 @@ public class UserInfoTemp implements Parcelable {
         userType = in.readByte() != 0;
         age = in.readInt();
         location = in.readString();
-        hasPet = in.readByte() != 0;
         favoriteTags = in.readString();
     }
 
@@ -64,7 +61,6 @@ public class UserInfoTemp implements Parcelable {
         dest.writeByte((byte) (userType ? 1 : 0));
         dest.writeInt(age);
         dest.writeString(location);
-        dest.writeByte((byte) (hasPet ? 1 : 0));
         dest.writeString(favoriteTags);
     }
 
@@ -114,14 +110,6 @@ public class UserInfoTemp implements Parcelable {
 
     public void setLocation(String location) {
         this.location = location;
-    }
-
-    public boolean isHasPet() {
-        return hasPet;
-    }
-
-    public void setHasPet(boolean hasPet) {
-        this.hasPet = hasPet;
     }
 
     public String getFavoriteTags() {

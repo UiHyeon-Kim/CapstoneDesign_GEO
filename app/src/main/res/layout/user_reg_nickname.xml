@@ -33,7 +33,7 @@
         android:layout_marginRight="16dp"
         android:fontFamily="@font/notosans"
         android:includeFontPadding="false"
-        android:text="1/6 단계"
+        android:text="1/5 단계"
         android:textColor="@color/mainblue"
         android:textSize="18sp" />
 

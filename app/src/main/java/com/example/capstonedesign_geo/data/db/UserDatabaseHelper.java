@@ -17,7 +17,6 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_USER_TYPE = "user_type";
     public static final String COLUMN_AGE = "age";
     public static final String COLUMN_LOCATION = "location";
-    public static final String COLUMN_HAS_PET = "has_pet";
     public static final String COLUMN_FAVORITE_TAGS = "favorite_tags";
 
     // 테이블 생성
@@ -29,7 +28,6 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
             COLUMN_USER_TYPE + " INTEGER, " +
             COLUMN_AGE + " INTEGER, " +
             COLUMN_LOCATION + " TEXT, " +
-            COLUMN_HAS_PET + " INTEGER, " +
             COLUMN_FAVORITE_TAGS + " TEXT);";
 
     public UserDatabaseHelper(Context context) {
