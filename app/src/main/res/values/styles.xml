@@ -9,8 +9,8 @@
     </style>
 
     <!-- 투명 상태바 -->
-    <style name="TransparentStatusBarTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- 상태바를 투명으로 설정 -->
+    <style name="TransparentStatusBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
+         상태바를 투명으로 설정
         <item name="android:statusBarColor">@color/transparent</item>
         <!-- 상태바의 텍스트 색상(아이콘 색상)을 다크 모드로 설정 -->
         <item name="android:windowLightStatusBar">true</item>
@@ -27,7 +27,7 @@
         <item name="android:textSize">22sp</item>
     </style>
 
-    <style name="ToolbarStyles">
+    <style name="ToolbarStyles" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">56dp</item>
         <item name="android:background">@color/mainblue</item>
