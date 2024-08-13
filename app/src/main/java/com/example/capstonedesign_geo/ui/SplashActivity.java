@@ -23,6 +23,6 @@ public class SplashActivity extends AppCompatActivity {
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             startActivity(intent);
             finish();
-        }, 2000); // 1 second delay
+        }, 1500); // 1초 딜레이
     }
 }
