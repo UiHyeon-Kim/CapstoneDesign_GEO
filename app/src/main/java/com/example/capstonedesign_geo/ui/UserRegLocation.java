@@ -1,10 +1,13 @@
 package com.example.capstonedesign_geo.ui;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 
 import androidx.annotation.Nullable;
@@ -28,6 +31,9 @@ public class UserRegLocation extends AppCompatActivity {
     private CustomSpinnerAdapter districtAdapter;
     private String select;
     private Map<String, List<String>> cityToDistrictMap;
+    private String city;
+    private String district;
+    private String location;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -73,6 +79,7 @@ public class UserRegLocation extends AppCompatActivity {
                 } else { // 기본값인 경우
                     districtAdapter.updateData(new ArrayList<>(List.of(select)));
                 }
+                city = City; // 선택한 도시 저장
             }
 
             @Override
@@ -89,6 +96,7 @@ public class UserRegLocation extends AppCompatActivity {
                 } else { // 기본값이 아닌 경우
                     btnNext.setEnabled(true);
                 }
+                district = District;
             }
 
             @Override
@@ -98,8 +106,19 @@ public class UserRegLocation extends AppCompatActivity {
         });
 
         btnNext.setOnClickListener(view -> {
+            saveLocation(city, district);
             Intent intent = new Intent(UserRegLocation.this, UserRegFavorite.class);
             startActivity(intent);
         });
+
+        ImageButton btnBack = findViewById(R.id.backButton);
+        btnBack.setOnClickListener(view -> onBackPressed());
+    }
+
+    private void saveLocation(String city, String district) {
+        SharedPreferences sharedPreferences = getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("location", city + " " + district);
+        editor.apply();
     }
 }

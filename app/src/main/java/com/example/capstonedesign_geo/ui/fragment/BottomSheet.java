@@ -18,7 +18,6 @@ public class BottomSheet extends BottomSheetDialogFragment {
 
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,12 +27,12 @@ public class BottomSheet extends BottomSheetDialogFragment {
     @Nullable
     @Override
     public View onCreateView(@Nullable LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_bottom_sheet, container, false);
+                             @Nullable Bundle savedInstanceState) { // 프래그먼트가 화면에 표시될 때 호출
+        return inflater.inflate(R.layout.fragment_bottom_sheet, container, false); // 프래그먼트 레이아웃을 inflate
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) { // 뷰가 생성될 때 호출
         super.onViewCreated(view, savedInstanceState);
 
         //이제 여기에 bottomSheet에 있는 버튼들 기능을 넣으면 됩니다요 밑에는 예시

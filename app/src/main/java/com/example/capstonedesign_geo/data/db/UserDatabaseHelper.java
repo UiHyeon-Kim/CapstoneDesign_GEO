@@ -4,8 +4,10 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+// 사용자 정보를 저장할 데이터베이스 및 테이블 정의
 public class UserDatabaseHelper extends SQLiteOpenHelper {
 
+    // 데이터베이스 및 테이블 정보
     private static final String DATABASE_NAME = "UserInfo.db";
     private static final int DATABASE_VERSION = 1;
 
@@ -31,7 +33,7 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
             COLUMN_FAVORITE_TAGS + " TEXT);";
 
     public UserDatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION); // 데이터베이스 생성
     }
 
     @Override

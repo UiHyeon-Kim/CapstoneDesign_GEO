@@ -69,7 +69,6 @@ public class UserRegAge extends AppCompatActivity {
             String selectedYear = yearSpinner.getSelectedItem().toString();
             int age = currentYear - Integer.parseInt(selectedYear); // 현재 연도에서 선택한 연도를 빼서 나이 계산
             saveAge(age);
-
             Intent intent = new Intent(UserRegAge.this, UserRegLocation.class);
             startActivity(intent);
         });

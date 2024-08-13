@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name"></string>
+    <string name="app_name">지오</string>
     <string name="Greetings">내 근처의 장소들\n지오와 함께해요!</string>
     <string name="RegisterComplete">이제 시작해 볼까요?\n지오와 함께 찾아요</string>
     <string name="btnComplete">시 작 하 기</string>

@@ -1,5 +1,6 @@
 package com.example.capstonedesign_geo.data.Model;
 
+// 사용자 정보를 저장할 클래스
 public class UserInfo {
     private String userId;
     private String androidId;

@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.capstonedesign_geo.data.Model.UserInfo;
 import com.example.capstonedesign_geo.data.db.UserDatabaseHelper;
 
+// 사용자 정보를 저장해주는 클래스
 public class UserRepository {
     private UserDatabaseHelper dbHelper;
 

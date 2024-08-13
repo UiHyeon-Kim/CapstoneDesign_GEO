@@ -53,11 +53,6 @@ dependencies {
     implementation 'com.google.android.material:material:1.12.0' // ChipGroup
     implementation 'androidx.recyclerview:recyclerview:1.3.2' // 리사이클뷰
     implementation libs.coordinatorlayout
-    implementation 'androidx.sqlite:sqlite:2.4.0'
-    implementation 'com.google.android.material:material:1.12.0'
-    implementation libs.legacy.support.v4// ChipGroup
-    implementation 'com.google.android.material:material:1.12.0'
-    implementation libs.coordinatorlayout// ChipGroup
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
