@@ -51,7 +51,9 @@
                     android:text="닉네임"
                     android:textAlignment="viewStart"
                     android:textColor="#000000"
-                    android:textSize="25sp" />
+                    android:textSize="24sp"
+                    android:fontFamily="@font/notosans_bold"
+                    android:includeFontPadding="false" />
 
                 <TextView
                     android:id="@+id/a"
@@ -60,7 +62,9 @@
                     android:text="님,"
                     android:textAlignment="viewStart"
                     android:textColor="#000000"
-                    android:textSize="25sp" />
+                    android:textSize="24sp"
+                    android:fontFamily="@font/notosans_bold"
+                    android:includeFontPadding="false" />
 
             </LinearLayout>
 
@@ -72,8 +76,9 @@
                 android:layout_weight="1"
                 android:text="지오와 함께 여행을 떠나보아요!"
                 android:textColor="@color/mainblue"
-                android:textSize="10sp" />
-            />
+                android:textSize="18sp"
+                android:fontFamily="@font/notosans"
+                android:includeFontPadding="false" />
 
 
         </LinearLayout>
@@ -107,7 +112,9 @@
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:text="0"
                     android:textColor="@color/mainblue"
-                    android:textSize="34sp" />
+                    android:textSize="34sp"
+                    android:fontFamily="@font/notosans_bold"
+                    android:includeFontPadding="false" />
 
                 <TextView
                     android:id="@+id/textView16"
@@ -115,7 +122,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="내 찜"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/notosans"
+                    android:includeFontPadding="false" />
             </LinearLayout>
 
             <LinearLayout
@@ -133,14 +143,19 @@
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:text="0"
                     android:textColor="@color/mainblue"
-                    android:textSize="34sp" />
+                    android:textSize="34sp"
+                    android:fontFamily="@font/notosans_bold"
+                    android:includeFontPadding="false" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="최근 검색"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/notosans"
+                    android:includeFontPadding="false" />
             </LinearLayout>
         </LinearLayout>
 
@@ -178,7 +193,8 @@
                         android:text="경로"
                         android:textColor="@color/black"
                         android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:fontFamily="@font/notosans"
+                        android:includeFontPadding="false" />
 
                 </LinearLayout>
 
@@ -197,7 +213,8 @@
                         android:text="주변 장소"
                         android:textColor="@color/black"
                         android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:fontFamily="@font/notosans"
+                        android:includeFontPadding="false" />
 
                 </LinearLayout>
 
@@ -216,7 +233,8 @@
                         android:text="추천"
                         android:textColor="@color/black"
                         android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:fontFamily="@font/notosans"
+                        android:includeFontPadding="false" />
 
                 </LinearLayout>
 
@@ -242,8 +260,10 @@
                         android:drawableTop="@drawable/mainmenu_notice"
                         android:text="공지사항"
                         android:textColor="#919191"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/notosans_bold"
+                        android:includeFontPadding="false" />
 
                 </LinearLayout>
 
@@ -261,8 +281,10 @@
                         android:drawableTop="@drawable/mainmenu_policy"
                         android:text="이용정책"
                         android:textColor="#919191"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/notosans_bold"
+                        android:includeFontPadding="false" />
 
                 </LinearLayout>
 
@@ -280,8 +302,10 @@
                         android:drawableTop="@drawable/mainmenu_settings"
                         android:text="설정"
                         android:textColor="#919191"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/notosans_bold"
+                        android:includeFontPadding="false" />
 
                 </LinearLayout>
 

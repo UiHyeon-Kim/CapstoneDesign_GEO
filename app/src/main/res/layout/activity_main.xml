@@ -12,17 +12,17 @@
     <FrameLayout
         android:id="@+id/fragment_zone"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
     </FrameLayout>
-
     <Button
         android:id="@+id/menubutton"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/mainmenu_bottomsheetbutton" />
+        android:background="@drawable/mainmenu_bottomsheetbutton"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

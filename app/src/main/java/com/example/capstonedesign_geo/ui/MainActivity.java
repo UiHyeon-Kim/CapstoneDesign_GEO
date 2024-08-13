@@ -7,16 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.capstonedesign_geo.R;
 import com.example.capstonedesign_geo.ui.fragment.BottomSheet;
 import com.example.capstonedesign_geo.ui.fragment.NaverFragment;
+import com.example.capstonedesign_geo.utility.StatusBarKt;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -29,13 +26,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this); // 시스템 UI(네비, 상태 바 등)이 콘텐츠에 겹치지 않게 함
+        //EdgeToEdge.enable(this); // 시스템 UI(네비, 상태 바 등)이 콘텐츠에 겹치지 않게 함
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        /*ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets; // UI 요소가 시스템 UI에 가려지지 않게 함
-        });
+        });*/
+        StatusBarKt.setStatusBarColor(this, getResources().getColor(R.color.transparent));
 
         //네이버지도 fragment 인스턴스 적용
         NaverFragment naverFragment = new NaverFragment();
@@ -54,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // *********** 메인 액티비티 보고싶으면 아래 if문만 주석 처리 할 것 ************
-        /*if (isUserPreferencesComplete()) {  // 사용자 선호조 조사가 완료된 경우
+         /*if (isUserPreferencesComplete()) {  // 사용자 선호조 조사가 완료된 경우
             setContentView(R.layout.activity_main); // 메인 화면으로 이동
         } else {    // 사용자 선호도 조사가 완료되지 않은 경우 첫 번째 화면으로 이동
             Intent intent = new Intent(MainActivity.this, UserRegistration.class);
