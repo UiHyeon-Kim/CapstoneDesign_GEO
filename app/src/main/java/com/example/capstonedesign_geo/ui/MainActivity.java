@@ -1,13 +1,11 @@
 package com.example.capstonedesign_geo.ui;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,10 +17,6 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.capstonedesign_geo.R;
 import com.example.capstonedesign_geo.ui.fragment.BottomSheet;
 import com.example.capstonedesign_geo.ui.fragment.NaverFragment;
-import com.gun0912.tedpermission.PermissionListener;
-import com.gun0912.tedpermission.normal.TedPermission;
-
-import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -61,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
                 bottomsheet.show(getSupportFragmentManager(), bottomsheet.getTag());
             }
         });
+
+        //주석주석
 
         // *********** 메인 액티비티 보고싶으면 아래 if문만 주석 처리 할 것 ************
         /*if (isUserPreferencesComplete()) {  // 사용자 선호조 조사가 완료된 경우
