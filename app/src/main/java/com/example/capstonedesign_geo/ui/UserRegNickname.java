@@ -61,6 +61,14 @@ public class UserRegNickname extends AppCompatActivity {
         ImageButton btnBack = findViewById(R.id.backButton);
         btnBack.setOnClickListener(view -> onBackPressed());
 
+        // 닉네임 입력한 적이 있을 경우 닉네임 불러옴
+        String loadNickname = loadNickname();   // 닉네임 로드
+        if (loadNickname != null) {
+            editNickname.setText(loadNickname); // 로드한 닉네임을 EditText에 설정
+            editNickname.setSelection(loadNickname.length()); // 텍스트의 끝으로 커서 이동
+            passNickname(loadNickname, nicknameFeedback);
+        }
+
         // EditText 입력에 따른 처리를 하기 위한 이벤트 리스너
         editNickname.addTextChangedListener(new TextWatcher() {
             @Override
@@ -69,7 +77,7 @@ public class UserRegNickname extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int i, int i1, int i2) {
                 // 텍스트가 변경되는 동안의 상태 처리
-                if (s == null || s.length() == 0){  // 비밀번호가 입력되기 시작하면
+                if (s == null || s.length() == 0){  // 닉네임이 비어있을 경우
                     nicknameFeedback.setVisibility(View.GONE);
                 } else {
                     nicknameFeedback.setVisibility(View.VISIBLE);
@@ -90,6 +98,12 @@ public class UserRegNickname extends AppCompatActivity {
         editor.putString("androidId", androidId);
         editor.putString("userId", userId);
         editor.apply();
+    }
+
+    // 저장된 닉네임을 불러옴
+    private String loadNickname() {
+        SharedPreferences sharedPreferences = getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
+        return sharedPreferences.getString("nickname", null);
     }
 
     // EditText 입력에 따른 TextView 변경 함수

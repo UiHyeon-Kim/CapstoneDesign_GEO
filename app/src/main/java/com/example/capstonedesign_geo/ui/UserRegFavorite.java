@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.capstonedesign_geo.R;
 import com.example.capstonedesign_geo.utility.StatusBarKt;
+import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
 import java.util.ArrayList;
@@ -32,6 +33,17 @@ public class UserRegFavorite extends AppCompatActivity {
         selectedTags = new ArrayList<>();
 
         btnNext.setOnClickListener(view -> {
+            //new AlertDialog.Builder(UserRegFavorite.this);
+
+            selectedTags.clear();
+            int count = chipGroup.getChildCount();
+            for (int i=0; i<count; i++){
+                Chip chip = (Chip) chipGroup.getChildAt(i);
+                if (chip.isChecked()){
+                    selectedTags.add(chip.getText().toString());
+                }
+            }
+
             Intent intent = new Intent(UserRegFavorite.this, UserRegComplete.class);
             startActivity(intent);
         });
@@ -41,6 +53,6 @@ public class UserRegFavorite extends AppCompatActivity {
     }
 
     private void saveFavoriteTags(List<String> tags){
-
+        //SharedPreferences sharedPreferences = SharedPreferences
     }
 }

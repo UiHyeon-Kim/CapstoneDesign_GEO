@@ -45,7 +45,7 @@
         android:layout_marginRight="16dp"
         android:fontFamily="@font/notosans_bold"
         android:includeFontPadding="false"
-        android:text="거주지를 선택해 주세요!"
+        android:text="거주지역 선택해 주세요!"
         android:textColor="#000000"
         android:textSize="22sp" />
 
@@ -59,7 +59,7 @@
         android:layout_marginRight="16dp"
         android:fontFamily="@font/notosans"
         android:includeFontPadding="false"
-        android:text="거주지 주위 장소를 추천해줘요."
+        android:text="주변 장소를 추천해줘요."
         android:textColor="#000000"
         android:textSize="18sp" />
 

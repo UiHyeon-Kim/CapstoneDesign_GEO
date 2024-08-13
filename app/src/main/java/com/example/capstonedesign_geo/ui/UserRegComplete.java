@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,8 +19,10 @@ import com.example.capstonedesign_geo.utility.StatusBarKt;
 public class UserRegComplete extends AppCompatActivity {
 
     private Button btnComplete;
+    private TextView greeting;
     private UserRepository userRepository;
     private UserInfoTemp userInfoTemp;
+    private String nickname;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,8 +31,12 @@ public class UserRegComplete extends AppCompatActivity {
         StatusBarKt.setStatusBarColor(this, getResources().getColor(R.color.mainblue));
 
         btnComplete = findViewById(R.id.btnComplete);
+        greeting = findViewById(R.id.tvGreeting);
         userRepository = new UserRepository(this);
         userInfoTemp = getIntent().getParcelableExtra("userInfoTemp");
+
+        getNickname();
+        greeting.setText(nickname + getString(R.string.RegisterComplete1));
 
         btnComplete.setOnClickListener(view -> {
             UserInfo userInfo = new UserInfo(
@@ -63,5 +70,10 @@ public class UserRegComplete extends AppCompatActivity {
         String favoriteTags = sharedPreferences.getString("favoriteTags", null);
 
         UserInfo userInfo = new UserInfo(userId, androidId, nickname, userType, age, location,  favoriteTags);
+    }
+
+    private void getNickname() {
+        SharedPreferences sharedPreferences = getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
+        nickname = sharedPreferences.getString("nickname", null);
     }
 }

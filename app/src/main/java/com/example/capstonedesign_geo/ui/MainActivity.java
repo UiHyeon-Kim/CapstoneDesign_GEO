@@ -37,13 +37,10 @@ public class MainActivity extends AppCompatActivity {
             return insets; // UI 요소가 시스템 UI에 가려지지 않게 함
         });
 
-
         //네이버지도 fragment 인스턴스 적용
         NaverFragment naverFragment = new NaverFragment();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_zone, naverFragment).commit();
-
-
 
         //mainmenu bottomsheet
         menubutton = findViewById(R.id.menubutton);
@@ -55,8 +52,6 @@ public class MainActivity extends AppCompatActivity {
                 bottomsheet.show(getSupportFragmentManager(), bottomsheet.getTag());
             }
         });
-
-        //주석주석
 
         // *********** 메인 액티비티 보고싶으면 아래 if문만 주석 처리 할 것 ************
         /*if (isUserPreferencesComplete()) {  // 사용자 선호조 조사가 완료된 경우

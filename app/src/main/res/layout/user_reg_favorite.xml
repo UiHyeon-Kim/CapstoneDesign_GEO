@@ -76,9 +76,7 @@
             android:id="@+id/chip1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="음식점"
-            android:fontFamily="@font/notosans"
-            android:includeFontPadding="false"/>
+            android:text="음식점"/>
 
         <com.google.android.material.chip.Chip
             style="@style/ChipStyles"

@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">지오</string>
-    <string name="Greetings">내 근처의 장소들\n지오와 함께해요!</string>
-    <string name="RegisterComplete">이제 시작해 볼까요?\n지오와 함께 찾아요</string>
+    <string name="Greetings">내 근처의 장소들\n지오가 함께해요!</string>
+    <string name="RegisterComplete1">님\n만나서 반가워요!</string>"
+    <string name="RegisterComplete2">이제 시작해 볼까요?\n지오와 함께 찾아요</string>
     <string name="btnComplete">시 작 하 기</string>
     <string name="yearSelect">태어난 연도를 선택해주세요</string>
     <string name="locationSelect">거주지를 선택해주세요</string>
