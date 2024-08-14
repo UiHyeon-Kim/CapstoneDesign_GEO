@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,8 +20,6 @@ import androidx.core.content.ContextCompat;
 
 import com.example.capstonedesign_geo.R;
 import com.example.capstonedesign_geo.utility.StatusBarKt;
-
-import java.util.UUID;
 
 public class UserRegNickname extends AppCompatActivity {
 
@@ -45,13 +44,12 @@ public class UserRegNickname extends AppCompatActivity {
         // 기기 일련번호 가져오기
         androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
 
-        // 사용자 ID 생성 (UUID)
-        userId = UUID.randomUUID().toString();
-
         // 확인 버튼 이벤트 리스너
         btnNext.setOnClickListener(view -> {
             String nickname = editNickname.getText().toString();
-            saveNickname(nickname); // 닉네임 저장
+            saveNicknameId(nickname); // 닉네임 저장
+            Log.d("UserRegNickname", "닉네임: " + nickname);
+            Log.d("UserRegNickname", "기기 일련번호: " + androidId);
 
             Intent intent = new Intent(UserRegNickname.this, UserRegUserType.class);
             startActivity(intent);
@@ -91,12 +89,11 @@ public class UserRegNickname extends AppCompatActivity {
     }
 
     // editText에 적어둔 텍스트 저장해둠
-    private void saveNickname(String nickname){
+    private void saveNicknameId(String nickname){
         SharedPreferences sharedPreferences = getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("nickname", nickname);
         editor.putString("androidId", androidId);
-        editor.putString("userId", userId);
         editor.apply();
     }
 

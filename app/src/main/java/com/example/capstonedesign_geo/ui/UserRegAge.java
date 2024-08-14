@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -68,6 +69,7 @@ public class UserRegAge extends AppCompatActivity {
         btnNext.setOnClickListener(view -> {
             String selectedYear = yearSpinner.getSelectedItem().toString();
             int age = currentYear - Integer.parseInt(selectedYear); // 현재 연도에서 선택한 연도를 빼서 나이 계산
+            Log.d("UserRegAge", "나이: " + age);
             saveAge(age);
             Intent intent = new Intent(UserRegAge.this, UserRegLocation.class);
             startActivity(intent);

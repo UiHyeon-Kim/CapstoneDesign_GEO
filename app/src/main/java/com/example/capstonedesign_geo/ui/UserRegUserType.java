@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -68,6 +69,7 @@ public class UserRegUserType extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean("user_type",ut);
         editor.apply();
+        Log.d("UserRegUserType", "유저타입: " + ut);
     }
 
     private void getUserNickname(){

@@ -2,7 +2,9 @@ package com.example.capstonedesign_geo.ui;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageButton;
 
@@ -17,7 +19,9 @@ import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class UserRegFavorite extends AppCompatActivity {
 
@@ -49,6 +53,8 @@ public class UserRegFavorite extends AppCompatActivity {
         });
 
         btnNext.setOnClickListener(view -> {
+            saveFavoriteTags(); // 선택한 태그들을 저장
+
             new AlertDialog.Builder(UserRegFavorite.this)
                     .setTitle("가입을 완료 하시겠습니까?")
                     .setMessage("추후 설정에서 변경이 가능합니다.")
@@ -64,7 +70,7 @@ public class UserRegFavorite extends AppCompatActivity {
                         }
                     }).show();
 
-            // 선택한 태그들을 저장
+            /*// 선택한 태그들을 저장
             selectedTags.clear(); // 이전에 선택한 태그들을 초기화
             int count = chipGroup.getChildCount(); // 선택한 태그의 개수
             for (int i=0; i<count; i++){
@@ -72,14 +78,28 @@ public class UserRegFavorite extends AppCompatActivity {
                 if (chip.isChecked()){ // 선택한 경우
                     selectedTags.add(chip.getText().toString()); // 선택한 태그를 리스트에 추가
                 }
-            }
+            }*/
         });
 
         ImageButton btnBack = findViewById(R.id.backButton);
         btnBack.setOnClickListener(view -> onBackPressed());
     }
 
-    private void saveFavoriteTags(List<String> tags){
-        //SharedPreferences sharedPreferences = SharedPreferences
+    private void saveFavoriteTags(){
+        SharedPreferences sharedPreferences = getSharedPreferences("UserPreferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Set<String> selectedTags = new HashSet<>();
+
+        int count = chipGroup.getChildCount(); // 선택한 태그의 개수
+        for (int i=0; i<count; i++){
+            Chip chip = (Chip) chipGroup.getChildAt(i); // 선택한 태그를 가져옴
+            if (chip.isChecked()){ // 선택한 경우
+                selectedTags.add(chip.getText().toString()); // 선택한 태그를 리스트에 추가
+            }
+        }
+        Log.d("UserRegFavorite", "선택한 태그: " + selectedTags);
+
+        editor.putStringSet("favoriteTags", selectedTags);
+        editor.apply();
     }
 }

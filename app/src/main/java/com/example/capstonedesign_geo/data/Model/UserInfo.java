@@ -1,6 +1,10 @@
 package com.example.capstonedesign_geo.data.Model;
 
-// 사용자 정보를 저장할 클래스
+import java.util.Set;
+
+// 사용자의 데이터를 나타내는 데이터 모델 클래스
+// 데이터베이스에서 가져온 사용자 데이터를 객체 형태로 관리
+// 앱의 다른 곳에서 이 객체를 통해 사용자 데이터를 조작
 public class UserInfo {
     private String userId;
     private String androidId;
@@ -8,9 +12,9 @@ public class UserInfo {
     private boolean userType;
     private int age;
     private String location;
-    private String favoriteTags;
+    private Set<String> favoriteTags;
 
-    public UserInfo(String userId, String androidId, String nickname, boolean userType, int age, String location, String favoriteTags){
+    public UserInfo(String userId, String androidId, String nickname, boolean userType, int age, String location, Set<String> favoriteTags){
         this.userId = userId;
         this.androidId = androidId;
         this.nickname = nickname;
@@ -38,6 +42,7 @@ public class UserInfo {
     public String getLocation() {return location;}
     public void setLocation(String location) {this.location = location;}
 
-    public String getFavoriteTags() {return favoriteTags;}
-    public void setFavoriteTags(String favoriteTags) {this.favoriteTags = favoriteTags;}
+    public Set<String> getFavoriteTags() {return favoriteTags;}
+    public void setFavoriteTags(Set<String> favoriteTags) {this.favoriteTags = favoriteTags;}
+
 }

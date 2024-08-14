@@ -3,8 +3,10 @@ package com.example.capstonedesign_geo.data.db;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
-// 사용자 정보를 저장할 데이터베이스 및 테이블 정의
+// SQLite 데이터베이스를 생성하고 관리하는 클래스
+// 사용자 정보를 저장할 데이터베이스의 구조 정의
+// 데이터베이스가 처음 생성될 때, 구조가 업데이트 될 때의 작업을 함
+// 데이터베이스와의 연결을 관리 (읽기, 쓰기)
 public class UserDatabaseHelper extends SQLiteOpenHelper {
 
     // 데이터베이스 및 테이블 정보
@@ -24,8 +26,8 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
     // 테이블 생성
     private static final String TABLE_CREATE =
             "CREATE TABLE " + TABLE_USER + " (" +
-            COLUMN_USERID + " TEXT," +
-            COLUMN_ANDROIDID + "TEXT," +
+            COLUMN_USERID + " TEXT PRIMARY KEY," +
+            COLUMN_ANDROIDID + " TEXT," +
             COLUMN_NICKNAME + " TEXT, " +
             COLUMN_USER_TYPE + " INTEGER, " +
             COLUMN_AGE + " INTEGER, " +
@@ -38,13 +40,14 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(TABLE_CREATE);   // 테이블 생성
+        db.execSQL(TABLE_CREATE); // 테이블 생성
     }
-
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);   // 기존 테이블 삭제
-        onCreate(db);   // 새 테이블 생성
+        if (oldVersion < newVersion) {
+            db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);   // 기존 테이블 삭제
+            onCreate(db);   // 새 테이블 생성
+        }
     }
 }
 

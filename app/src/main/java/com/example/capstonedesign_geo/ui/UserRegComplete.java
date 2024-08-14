@@ -12,16 +12,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.capstonedesign_geo.R;
 import com.example.capstonedesign_geo.data.Model.UserInfo;
-import com.example.capstonedesign_geo.data.Model.UserInfoTemp;
 import com.example.capstonedesign_geo.data.repository.UserRepository;
 import com.example.capstonedesign_geo.utility.StatusBarKt;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class UserRegComplete extends AppCompatActivity {
 
     private Button btnComplete;
     private TextView greeting;
     private UserRepository userRepository;
-    private UserInfoTemp userInfoTemp;
     private String nickname;
 
     @Override
@@ -33,25 +34,15 @@ public class UserRegComplete extends AppCompatActivity {
         btnComplete = findViewById(R.id.btnComplete);
         greeting = findViewById(R.id.tvGreeting);
         userRepository = new UserRepository(this);
-        userInfoTemp = getIntent().getParcelableExtra("userInfoTemp");
 
+        // 설문조사 완료 환영 문구 출력
         getNickname();
         greeting.setText(nickname + getString(R.string.RegisterComplete1));
 
+        // 모든 사용자 정보 한 번에 저장
+        saveUserInfo();
+
         btnComplete.setOnClickListener(view -> {
-            UserInfo userInfo = new UserInfo(
-                userInfoTemp.getUserId(),
-                userInfoTemp.getAndroidId(),
-                userInfoTemp.getNickname(),
-                userInfoTemp.isUserType(),
-                userInfoTemp.getAge(),
-                userInfoTemp.getLocation(),
-                userInfoTemp.getFavoriteTags()
-            );
-            userRepository.saveUser(userInfo);
-
-            // saveUserInfo(); // 위 UserInfo 안되면 이것으로 하기
-
             Intent intent = new Intent(UserRegComplete.this, MainActivity.class);
             startActivity(intent);
             finish();
@@ -67,9 +58,11 @@ public class UserRegComplete extends AppCompatActivity {
         boolean userType = sharedPreferences.getBoolean("userType", false);
         int age = sharedPreferences.getInt("age", 0);
         String location = sharedPreferences.getString("location", null);
-        String favoriteTags = sharedPreferences.getString("favoriteTags", null);
+        Set<String> favoriteTags = sharedPreferences.getStringSet("favoriteTags", new HashSet<>());
 
         UserInfo userInfo = new UserInfo(userId, androidId, nickname, userType, age, location,  favoriteTags);
+
+        userRepository.saveUser(userInfo);
     }
 
     private void getNickname() {
