@@ -52,6 +52,7 @@ public class UserRegComplete extends AppCompatActivity {
     private void saveUserInfo() {
         SharedPreferences sharedPreferences = getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
 
+        // SharedPreferences로 저장한 UserPreferences의 사용자 정보 가져오기
         String userId = sharedPreferences.getString("userId", null);
         String androidId = sharedPreferences.getString("androidId", null);
         String nickname = sharedPreferences.getString("nickname", null);
@@ -60,7 +61,7 @@ public class UserRegComplete extends AppCompatActivity {
         String location = sharedPreferences.getString("location", null);
         Set<String> favoriteTags = sharedPreferences.getStringSet("favoriteTags", new HashSet<>());
 
-        UserInfo userInfo = new UserInfo(userId, androidId, nickname, userType, age, location,  favoriteTags);
+        UserInfo userInfo = new UserInfo(userId, androidId, nickname, userType, age, location, favoriteTags);
 
         userRepository.saveUser(userInfo);
     }

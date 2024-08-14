@@ -5,13 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -28,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
 
     BottomSheet bottomsheet;
     Button menubutton;
-    Toolbar toolbar;
 
     @SuppressLint("MissingInflatedId") // 에러 무시
     @Override
@@ -73,20 +70,15 @@ public class MainActivity extends AppCompatActivity {
     private boolean isUserPreferencesComplete() {
         SharedPreferences sharedPreferences = getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
 
-        String androidId = sharedPreferences.getString("androidId", null);
+        // SharedPreferences에서 저장된 사용자 데이터 가져오기
+        String androidId = sharedPreferences.getString("androidId", null); // 가져올 값과 기본값
         String nickname = sharedPreferences.getString("nickname", null);
         boolean userType = sharedPreferences.getBoolean("userType", false);
         int age = sharedPreferences.getInt("age", 0);
         String location = sharedPreferences.getString("location", null);
         Set<String> favoriteTags = sharedPreferences.getStringSet("favoriteTags", null);
 
-        Log.d("UserPreferences", "androidId: " + androidId);
-        Log.d("UserPreferences", "nickname: " + nickname);
-        Log.d("UserPreferences", "userType: " + userType);
-        Log.d("UserPreferences", "age: " + age);
-        Log.d("UserPreferences", "location: " + location);
-        Log.d("UserPreferences", "favoriteTags: " + favoriteTags);
-
+        // 아래 변수들의 값이 저장되어 있으면 선호도 조사 완료
         return androidId != null && nickname != null && location != null && age > 0;
     }
 }

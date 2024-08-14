@@ -31,7 +31,6 @@ class UserRegistration : AppCompatActivity() {
         val isPermission =
             sharedPreferences.getBoolean("permission_granted", false) // 권한 설정 여부 확인. 기본값 false
 
-
         // 권한 요청 결과를 처리하는 리스너
         val permissionListener = object : PermissionListener {
             override fun onPermissionGranted() { // 권한이 허용된 경우

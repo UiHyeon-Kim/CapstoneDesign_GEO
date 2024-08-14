@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -108,7 +107,6 @@ public class UserRegLocation extends AppCompatActivity {
 
         btnNext.setOnClickListener(view -> {
             saveLocation(city, district);
-            Log.d("UserRegLocation", "도시: " + city + ", 구: " + district);
 
             Intent intent = new Intent(UserRegLocation.this, UserRegFavorite.class);
             startActivity(intent);
