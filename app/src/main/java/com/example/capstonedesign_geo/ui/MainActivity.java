@@ -1,9 +1,6 @@
 package com.example.capstonedesign_geo.ui;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,8 +15,6 @@ import com.example.capstonedesign_geo.R;
 import com.example.capstonedesign_geo.ui.fragment.BottomSheet;
 import com.example.capstonedesign_geo.ui.fragment.NaverFragment;
 import com.example.capstonedesign_geo.utility.StatusBarKt;
-
-import java.util.Set;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -40,13 +35,23 @@ public class MainActivity extends AppCompatActivity {
         });
         StatusBarKt.setStatusBarColor(this, getResources().getColor(R.color.transparent));
 
+        //mainmenu bottomsheet
+        menubutton = findViewById(R.id.menubutton);
+
+        // *********** 메인 액티비티 보고싶으면 아래 if문만 주석 처리 할 것 ************
+        /*if (isUserPreferencesComplete()) {  // 사용자 선호조 조사가 완료된 경우
+            setContentView(R.layout.activity_main); // 메인 화면으로 이동
+        } else {    // 사용자 선호도 조사가 완료되지 않은 경우 첫 번째 화면으로 이동
+            Intent intent = new Intent(MainActivity.this, UserRegistration.class);
+            startActivity(intent);
+            overridePendingTransition(0,0); // 액티비티 전환시 애니메이션 삭제
+            finish(); // 현재 액티비티 종료
+        }*/
+
         //네이버지도 fragment 인스턴스 적용
         NaverFragment naverFragment = new NaverFragment();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_zone, naverFragment).commit();
-
-        //mainmenu bottomsheet
-        menubutton = findViewById(R.id.menubutton);
 
         menubutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,18 +61,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // *********** 메인 액티비티 보고싶으면 아래 if문만 주석 처리 할 것 ************
-        if (isUserPreferencesComplete()) {  // 사용자 선호조 조사가 완료된 경우
-            setContentView(R.layout.activity_main); // 메인 화면으로 이동
-        } else {    // 사용자 선호도 조사가 완료되지 않은 경우 첫 번째 화면으로 이동
-            Intent intent = new Intent(MainActivity.this, UserRegistration.class);
-            startActivity(intent);
-            overridePendingTransition(0,0); // 액티비티 전환시 애니메이션 삭제
-            finish(); // 현재 액티비티 종료
-        }
     }
     // SharedPreferences에 사용자 데이터가 모두 저장되어 있는지 확인
-    private boolean isUserPreferencesComplete() {
+    /*private boolean isUserPreferencesComplete() {
         SharedPreferences sharedPreferences = getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
 
         // SharedPreferences에서 저장된 사용자 데이터 가져오기
@@ -80,6 +76,6 @@ public class MainActivity extends AppCompatActivity {
 
         // 아래 변수들의 값이 저장되어 있으면 선호도 조사 완료
         return androidId != null && nickname != null && location != null && age > 0;
-    }
+    }*/
 }
 

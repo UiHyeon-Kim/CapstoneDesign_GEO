@@ -44,6 +44,7 @@ public class UserRegComplete extends AppCompatActivity {
 
         btnComplete.setOnClickListener(view -> {
             Intent intent = new Intent(UserRegComplete.this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
         });

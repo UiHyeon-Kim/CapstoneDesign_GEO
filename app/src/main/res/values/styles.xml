@@ -8,12 +8,6 @@
         <item name="colorAccent">@color/subblue</item>          <!-- 강조 색상 -->
     </style>
 
-    <style name="CapstoneDesign_GEO" parent="AppTheme">
-        <item name="android:statusBarColor">@color/transparent</item>
-        <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:windowFullscreen">true</item>
-    </style>
 
     <!-- 투명 상태바 -->
     <style name="TransparentStatusBarTheme" parent="Theme.AppCompat.Light.NoActionBar">

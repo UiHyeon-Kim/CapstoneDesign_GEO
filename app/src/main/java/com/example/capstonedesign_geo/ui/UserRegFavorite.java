@@ -38,14 +38,13 @@ public class UserRegFavorite extends AppCompatActivity {
         btnNext = findViewById(R.id.btnNext);
         selectedTags = new ArrayList<>();
 
-        // 칩 그룹 리스너
-        chipGroup.setOnCheckedChangeListener(new ChipGroup.OnCheckedChangeListener() {
+        // 칩 그룹 리스너`
+        chipGroup.setOnCheckedStateChangeListener(new ChipGroup.OnCheckedStateChangeListener() {
             @Override
-            public void onCheckedChanged(@NonNull ChipGroup group, int checkedId) { // 매개변수 1.선택한 칩 그룹 2.선택한 칩의 아이디
-                Chip checkedChip = group.findViewById(checkedId); // 선택한 칩을 가져옴
+            public void onCheckedChanged(@NonNull ChipGroup group, @NonNull List<Integer> checkedIds) {
+                Chip checkedChip = group.findViewById(checkedIds.get(0)); // 선택한 칩을 가져옴
                 if (checkedChip != null){ // 선택한 경우
                     /* 칩을 선택한 경우의 디자인 변경 코드 넣기 */
-
                     btnNext.setEnabled(true);
                 } else {
                     btnNext.setEnabled(false);
