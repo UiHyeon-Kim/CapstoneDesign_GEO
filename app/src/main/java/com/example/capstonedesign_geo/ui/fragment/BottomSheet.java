@@ -42,6 +42,62 @@ public class BottomSheet extends BottomSheetDialogFragment {
                 dismiss();
             }
         });*/
+
+        view.findViewById(R.id.btnZzim).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               // Intent intent = new Intent(BottomSheet.this, )
+            }
+        });
+
+        view.findViewById(R.id.btnRecentsearch).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        view.findViewById(R.id.btnRoot).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        view.findViewById(R.id.btnNearLocation).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        view.findViewById(R.id.btnRecommend).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        view.findViewById(R.id.btnAnnouncement).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        view.findViewById(R.id.btnPolicy).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        view.findViewById(R.id.btnSetting).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
 

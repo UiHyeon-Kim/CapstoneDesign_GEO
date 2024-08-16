@@ -104,12 +104,12 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/zzim"
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnZzim"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:background="@drawable/custom_ripple_effect_blue"
                     android:text="0"
                     android:textColor="@color/mainblue"
                     android:textSize="34sp"
@@ -135,12 +135,12 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/recentsearch"
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnRecentsearch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:background="@drawable/custom_ripple_effect_blue"
                     android:text="0"
                     android:textColor="@color/mainblue"
                     android:textSize="34sp"
@@ -185,9 +185,11 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnRoot"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="@drawable/custom_ripple_effect_blue"
                         android:backgroundTint="@color/white"
                         android:drawableTop="@drawable/mainmenu_path"
                         android:text="경로"
@@ -205,9 +207,11 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnNearLocation"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="@drawable/custom_ripple_effect_blue"
                         android:backgroundTint="@color/white"
                         android:drawableTop="@drawable/mainmenu_place"
                         android:text="주변 장소"
@@ -225,9 +229,11 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnRecommend"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="@drawable/custom_ripple_effect_blue"
                         android:backgroundTint="@color/white"
                         android:drawableTop="@drawable/mainmenu_recommend"
                         android:text="추천"
@@ -253,9 +259,11 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnAnnouncement"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="@drawable/custom_ripple_effect_grey"
                         android:backgroundTint="@color/white"
                         android:drawableTop="@drawable/mainmenu_notice"
                         android:text="공지사항"
@@ -274,9 +282,11 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnPolicy"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="@drawable/custom_ripple_effect_grey"
                         android:backgroundTint="@color/white"
                         android:drawableTop="@drawable/mainmenu_policy"
                         android:text="이용정책"
@@ -296,8 +306,10 @@
                     android:orientation="vertical">
 
                     <Button
+                        android:id="@+id/btnSetting"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="@drawable/custom_ripple_effect_grey"
                         android:backgroundTint="@color/white"
                         android:drawableTop="@drawable/mainmenu_settings"
                         android:text="설정"
