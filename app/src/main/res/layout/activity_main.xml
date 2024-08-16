@@ -13,16 +13,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/menubutton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/mainmenu_bottomsheetbutton"
+            tools:ignore="SpeakableTextPresentCheck" />
+
     </FrameLayout>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/menubutton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/mainmenu_bottomsheetbutton"
-        tools:ignore="SpeakableTextPresentCheck" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

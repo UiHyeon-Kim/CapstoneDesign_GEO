@@ -8,7 +8,6 @@
         <item name="colorAccent">@color/subblue</item>          <!-- 강조 색상 -->
     </style>
 
-
     <!-- 투명 상태바 -->
     <style name="TransparentStatusBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
          상태바를 투명으로 설정

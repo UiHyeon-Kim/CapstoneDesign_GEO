@@ -33,9 +33,7 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+    public void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,6 +48,8 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
         mapView.getMapAsync(this);
         //런타임 권한 처리를 위해 생성자에 액티비티 객체를 전달하고 권한 요청 코드를 지정해 줘야 한다
         locationSource = new FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE); // 위치 권한 요청
+
+        getActivity().getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
         return rootView;
     }
