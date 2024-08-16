@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -45,6 +46,13 @@ public class MainActivity extends AppCompatActivity {
 
         //mainmenu bottomsheet
         menubutton = findViewById(R.id.menubutton);
+        menubutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bottomsheet = new BottomSheet();
+                bottomsheet.show(getSupportFragmentManager(), bottomsheet.getTag());
+            }
+        });
 
         // *********** 메인 액티비티 보고싶으면 아래 if문만 주석 처리 할 것 ************
         if (isUserPreferencesComplete()) {  // 사용자 선호조 조사가 완료된 경우
@@ -53,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, UserRegistration.class);
             startActivity(intent);
             overridePendingTransition(0,0); // 액티비티 전환시 애니메이션 삭제
-            // finish(); // 현재 액티비티 종료
+            finish(); // 현재 액티비티 종료
         }
 
         //네이버지도 fragment 인스턴스 적용
@@ -63,9 +71,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-
+    protected void onResume() {
+        super.onResume();
+        //mainmenu bottomsheet
+        menubutton = findViewById(R.id.menubutton);
         menubutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
                 bottomsheet.show(getSupportFragmentManager(), bottomsheet.getTag());
             }
         });
-
     }
 
     // SharedPreferences에 사용자 데이터가 모두 저장되어 있는지 확인
@@ -88,8 +96,15 @@ public class MainActivity extends AppCompatActivity {
         String location = sharedPreferences.getString("location", null);
         Set<String> favoriteTags = sharedPreferences.getStringSet("favoriteTags", null);
 
+        Log.d("MainActivity", "androidId: " + androidId);
+        Log.d("MainActivity", "nickname: " + nickname);
+        Log.d("MainActivity", "userType: " + userType);
+        Log.d("MainActivity", "age: " + age);
+        Log.d("MainActivity", "location: " + location);
+        Log.d("MainActivity", "favoriteTags: " + favoriteTags);
+
         // 아래 변수들의 값이 저장되어 있으면 선호도 조사 완료
-        return androidId != null && nickname != null && location != null && age > 0;
+        return androidId != null && nickname != null && location != null && age > 0 && favoriteTags != null;
     }
 
     @Override

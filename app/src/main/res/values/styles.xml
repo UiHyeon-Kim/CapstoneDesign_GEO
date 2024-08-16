@@ -47,8 +47,8 @@
         <item name="chipMinHeight">40dp</item>
         <item name="chipStrokeWidth">2dp</item>
         <item name="chipStrokeColor">@color/mainblue</item>
-        <item name="chipBackgroundColor">@color/transparent</item>
-        <item name="background">@drawable/bg_chip</item>
+        <item name="chipBackgroundColor">@drawable/bg_chip</item>
+        <item name="android:textColor">@drawable/text_chip</item>
         <item name="android:textAppearance">@style/CustomChipTextAppearance</item>
     </style>
 

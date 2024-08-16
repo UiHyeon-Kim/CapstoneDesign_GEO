@@ -13,7 +13,7 @@ import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.normal.TedPermission
 
 class UserRegistration : AppCompatActivity() {
-    private lateinit var binding: UserRegistrationBinding
+    private lateinit var binding: UserRegistrationBinding;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +43,6 @@ class UserRegistration : AppCompatActivity() {
                     editor.apply()
                 }
             }
-
             override fun onPermissionDenied(deniedPermissions: List<String>) { // 권한이 거부된 경우
                 Toast.makeText(this@UserRegistration, "권한이 거부되었습니다.", Toast.LENGTH_SHORT).show()
                 finish()
