@@ -1,9 +1,12 @@
 package com.example.capstonedesign_geo.ui.fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,6 +17,9 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public class BottomSheet extends BottomSheetDialogFragment {
 
+    private TextView tvNickname;
+    private String nickname;
+
     public BottomSheet() {
 
     }
@@ -21,7 +27,6 @@ public class BottomSheet extends BottomSheetDialogFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Nullable
@@ -35,6 +40,9 @@ public class BottomSheet extends BottomSheetDialogFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) { // 뷰가 생성될 때 호출
         super.onViewCreated(view, savedInstanceState);
 
+        tvNickname = view.findViewById(R.id.nickname);
+        getNickname();
+
         //이제 여기에 bottomSheet에 있는 버튼들 기능을 넣으면 됩니다요 밑에는 예시
         /*view.findViewById(R.id.btn_close).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,7 +54,7 @@ public class BottomSheet extends BottomSheetDialogFragment {
         view.findViewById(R.id.btnZzim).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // Intent intent = new Intent(BottomSheet.this, )
+                //Intent intent = new Intent(BottomSheet.this, .class);
             }
         });
 
@@ -100,7 +108,9 @@ public class BottomSheet extends BottomSheetDialogFragment {
         });
     }
 
-
-
-
+    public void getNickname() {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
+        nickname = sharedPreferences.getString("nickname", null);
+        tvNickname.setText(nickname);
+    }
 }

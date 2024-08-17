@@ -1,6 +1,5 @@
 package com.example.capstonedesign_geo.ui;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private long backPressedTime; // 마지막 뒤로가기 누른 시간
     private Toast backToast; // 뒤로가기 메시지
 
-    @SuppressLint("MissingInflatedId") // 에러 무시
+    // @SuppressLint("MissingInflatedId") // 에러 무시
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
             return insets; // UI 요소가 시스템 UI에 가려지지 않게 함
         });
         StatusBarKt.setStatusBarColor(this, getResources().getColor(R.color.transparent));
+
+        // 앱의 다크모드 비활성화
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         //mainmenu bottomsheet
         menubutton = findViewById(R.id.menubutton);

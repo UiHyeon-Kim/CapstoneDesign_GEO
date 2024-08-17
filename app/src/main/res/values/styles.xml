@@ -10,7 +10,7 @@
 
     <!-- 투명 상태바 -->
     <style name="TransparentStatusBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
-         상태바를 투명으로 설정
+        <!-- 상태바를 투명으로 설정 -->
         <item name="android:statusBarColor">@color/transparent</item>
         <!-- 상태바의 텍스트 색상(아이콘 색상)을 다크 모드로 설정 -->
         <item name="android:windowLightStatusBar">true</item>
