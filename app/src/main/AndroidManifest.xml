@@ -36,6 +36,12 @@
         <activity android:name=".ui.UserRegLocation" />
         <activity android:name=".ui.UserRegFavorite" />
         <activity android:name=".ui.UserRegComplete" />
+        <activity android:name=".ui.fragment.BottomSheet" />
+        <activity android:name=".ui.fragment.NaverFragment" />
+        <activity android:name=".ui.PreferenceListActivity" />
+        <activity android:name=".ui.LocationInfoActiivty" />
+        <activity android:name=".ui.RecommendActivity" />
+        <activity android:name=".ui.SettingActivity" />
 
         <!-- 네이버지도 클라이언트 ID지정 -->
         <meta-data

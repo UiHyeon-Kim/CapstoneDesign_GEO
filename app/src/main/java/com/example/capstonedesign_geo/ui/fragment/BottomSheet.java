@@ -1,17 +1,22 @@
 package com.example.capstonedesign_geo.ui.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.capstonedesign_geo.R;
+import com.example.capstonedesign_geo.ui.PreferenceListActivity;
+import com.example.capstonedesign_geo.ui.RecommendActivity;
+import com.example.capstonedesign_geo.ui.SettingActivity;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 
@@ -19,6 +24,7 @@ public class BottomSheet extends BottomSheetDialogFragment {
 
     private TextView tvNickname;
     private String nickname;
+    private Button btnZzim, btnRecentsearch, btnRoot, btnNearLocation, btnRecommend, btnAnnouncement, btnPolicy, btnSetting;
 
     public BottomSheet() {
 
@@ -43,67 +49,70 @@ public class BottomSheet extends BottomSheetDialogFragment {
         tvNickname = view.findViewById(R.id.nickname);
         getNickname();
 
-        //이제 여기에 bottomSheet에 있는 버튼들 기능을 넣으면 됩니다요 밑에는 예시
-        /*view.findViewById(R.id.btn_close).setOnClickListener(new View.OnClickListener() {
+        btnZzim = view.findViewById(R.id.btnZzim);
+        btnZzim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dismiss();
-            }
-        });*/
-
-        view.findViewById(R.id.btnZzim).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Intent intent = new Intent(BottomSheet.this, .class);
+                Intent intent = new Intent(getActivity(), PreferenceListActivity.class);
+                startActivity(intent);
             }
         });
 
-        view.findViewById(R.id.btnRecentsearch).setOnClickListener(new View.OnClickListener() {
+        btnRecentsearch = view.findViewById(R.id.btnRecentsearch);
+        btnRecentsearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
             }
         });
 
-        view.findViewById(R.id.btnRoot).setOnClickListener(new View.OnClickListener() {
+        btnRoot = view.findViewById(R.id.btnRoot);
+        btnRoot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
             }
         });
 
-        view.findViewById(R.id.btnNearLocation).setOnClickListener(new View.OnClickListener() {
+        btnNearLocation = view.findViewById(R.id.btnNearLocation);
+        btnNearLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
             }
         });
 
-        view.findViewById(R.id.btnRecommend).setOnClickListener(new View.OnClickListener() {
+        btnRecommend = view.findViewById(R.id.btnRecommend);
+        btnRecommend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), RecommendActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnAnnouncement = view.findViewById(R.id.btnAnnouncement);
+        btnAnnouncement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
             }
         });
 
-        view.findViewById(R.id.btnAnnouncement).setOnClickListener(new View.OnClickListener() {
+        btnPolicy = view.findViewById(R.id.btnPolicy);
+        btnPolicy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
             }
         });
 
-        view.findViewById(R.id.btnPolicy).setOnClickListener(new View.OnClickListener() {
+        btnSetting = view.findViewById(R.id.btnSetting);
+        btnSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-            }
-        });
-
-        view.findViewById(R.id.btnSetting).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
+                Intent intent = new Intent(getActivity(), SettingActivity.class);
+                startActivity(intent);
             }
         });
     }

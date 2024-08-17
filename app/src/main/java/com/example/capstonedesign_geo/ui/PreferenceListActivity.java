@@ -7,10 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.capstonedesign_geo.R;
 
-public class RecommendActivity extends AppCompatActivity {
+public class PreferenceListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recommend);
+        setContentView(R.layout.activity_preference_list);
     }
 }
