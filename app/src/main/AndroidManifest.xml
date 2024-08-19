@@ -42,6 +42,7 @@
         <activity android:name=".ui.LocationInfoActiivty" />
         <activity android:name=".ui.RecommendActivity" />
         <activity android:name=".ui.SettingActivity" />
+        <activity android:name=".ui.PolicyActivity" />
 
         <!-- 네이버지도 클라이언트 ID지정 -->
         <meta-data

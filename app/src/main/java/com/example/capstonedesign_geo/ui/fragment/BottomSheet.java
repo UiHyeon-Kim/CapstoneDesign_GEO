@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.capstonedesign_geo.R;
+import com.example.capstonedesign_geo.ui.PolicyActivity;
 import com.example.capstonedesign_geo.ui.PreferenceListActivity;
 import com.example.capstonedesign_geo.ui.RecommendActivity;
 import com.example.capstonedesign_geo.ui.SettingActivity;
@@ -103,7 +104,8 @@ public class BottomSheet extends BottomSheetDialogFragment {
         btnPolicy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getActivity(), PolicyActivity.class);
+                startActivity(intent);
             }
         });
 
