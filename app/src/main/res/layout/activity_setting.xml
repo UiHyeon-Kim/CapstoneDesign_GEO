@@ -35,23 +35,20 @@
         android:textColor="#000000"
         android:textSize="24sp" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
+    <SeekBar
+        android:id="@+id/seekBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/btnSound"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="5dp"
-        android:layout_marginRight="16dp"
-        android:indeterminate="false"
-        android:indeterminateBehavior="repeat" />
+        android:layout_marginRight="16dp" />
 
     <TextView
         android:id="@+id/btnHaptic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/progressBar"
+        android:layout_below="@id/seekBar"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="16dp"
@@ -61,21 +58,20 @@
         android:textColor="#000000"
         android:textSize="24sp" />
 
-    <ProgressBar
-        android:id="@+id/progressBar2"
-        style="?android:attr/progressBarStyleHorizontal"
+    <SeekBar
+        android:id="@+id/seekBar2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/btnHaptic"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="5dp"
-        android:layout_marginRight="16dp" />
+        android:layout_marginRight="16dp"/>
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/progressBar2"
+        android:layout_below="@id/seekBar2"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:fontFamily="@font/notosans"

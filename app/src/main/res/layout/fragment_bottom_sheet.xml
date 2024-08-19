@@ -112,7 +112,7 @@
                     android:background="@drawable/custom_ripple_effect_blue"
                     android:text="0"
                     android:textColor="@color/mainblue"
-                    android:textSize="34sp"
+                    android:textSize="40sp"
                     android:fontFamily="@font/notosans_bold"
                     android:includeFontPadding="false" />
 
@@ -143,7 +143,7 @@
                     android:background="@drawable/custom_ripple_effect_blue"
                     android:text="0"
                     android:textColor="@color/mainblue"
-                    android:textSize="34sp"
+                    android:textSize="40sp"
                     android:fontFamily="@font/notosans_bold"
                     android:includeFontPadding="false" />
 
@@ -188,7 +188,7 @@
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btnRoot"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="100dp"
                         android:background="@drawable/custom_ripple_effect_blue"
                         android:backgroundTint="@color/white"
                         android:drawableTop="@drawable/mainmenu_path"
@@ -210,7 +210,7 @@
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btnNearLocation"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="100dp"
                         android:background="@drawable/custom_ripple_effect_blue"
                         android:backgroundTint="@color/white"
                         android:drawableTop="@drawable/mainmenu_place"
@@ -232,7 +232,7 @@
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btnRecommend"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="100dp"
                         android:background="@drawable/custom_ripple_effect_blue"
                         android:backgroundTint="@color/white"
                         android:drawableTop="@drawable/mainmenu_recommend"
@@ -305,7 +305,7 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btnSetting"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
