@@ -71,15 +71,6 @@ public class MainActivity extends AppCompatActivity {
             }
             return false;
         });
-        //mainmenu bottomsheet
-        /*menubutton = findViewById(R.id.menubutton);
-        menubutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                bottomsheet = new BottomSheet();
-                bottomsheet.show(getSupportFragmentManager(), bottomsheet.getTag());
-            }
-        });*/
 
         // *********** 메인 액티비티 보고싶으면 아래 if문만 주석 처리 할 것 ************
         if (isUserPreferencesComplete()) {  // 사용자 선호조 조사가 완료된 경우
@@ -121,15 +112,6 @@ public class MainActivity extends AppCompatActivity {
             }
             return false;
         });
-        //mainmenu bottomsheet
-       /* menubutton = findViewById(R.id.e);
-        menubutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                bottomsheet = new BottomSheet();
-                bottomsheet.show(getSupportFragmentManager(), bottomsheet.getTag());
-            }
-        });*/
     }
 
     // SharedPreferences에 사용자 데이터가 모두 저장되어 있는지 확인
