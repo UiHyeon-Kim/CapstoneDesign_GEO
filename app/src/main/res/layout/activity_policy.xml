@@ -25,7 +25,7 @@
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
         app:layout_constraintTop_toTopOf="@+id/toolbar"
-        app:srcCompat="@drawable/back_button" />
+        app:srcCompat="@drawable/icon_back_btn" />
 
     <ScrollView
         android:id="@+id/scrollView2"

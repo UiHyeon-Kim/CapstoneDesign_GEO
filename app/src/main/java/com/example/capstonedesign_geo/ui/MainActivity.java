@@ -3,10 +3,12 @@ package com.example.capstonedesign_geo.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
+import android.view.MotionEvent;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     private BottomSheet bottomsheet;
     private Button menubutton;
+    private EditText editSearch;
     private long backPressedTime; // 마지막 뒤로가기 누른 시간
     private Toast backToast; // 뒤로가기 메시지
 
@@ -47,15 +50,36 @@ public class MainActivity extends AppCompatActivity {
         // 앱의 다크모드 비활성화
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
+        editSearch = findViewById(R.id.editSearch);
+
+        Drawable[] drawables = editSearch.getCompoundDrawables();
+        Drawable leftIcon = drawables[0];
+        Drawable rightIcon = drawables[2];
+
+        editSearch.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+                // 오른쪽 아이콘 클릭
+                if (rightIcon != null && event.getRawX() >= (editSearch.getRight() - rightIcon.getBounds().width())) {
+                    return true;
+                }
+                // 왼쪽 아이콘 클릭
+                if (leftIcon != null && event.getRawX() <= (editSearch.getLeft() + leftIcon.getBounds().width())) {
+                    bottomsheet = new BottomSheet();
+                    bottomsheet.show(getSupportFragmentManager(), bottomsheet.getTag());
+                    return true;
+                }
+            }
+            return false;
+        });
         //mainmenu bottomsheet
-        menubutton = findViewById(R.id.menubutton);
+        /*menubutton = findViewById(R.id.menubutton);
         menubutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 bottomsheet = new BottomSheet();
                 bottomsheet.show(getSupportFragmentManager(), bottomsheet.getTag());
             }
-        });
+        });*/
 
         // *********** 메인 액티비티 보고싶으면 아래 if문만 주석 처리 할 것 ************
         if (isUserPreferencesComplete()) {  // 사용자 선호조 조사가 완료된 경우
@@ -76,15 +100,36 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        editSearch = findViewById(R.id.editSearch);
+
+        Drawable[] drawables = editSearch.getCompoundDrawables();
+        Drawable leftIcon = drawables[0];
+        Drawable rightIcon = drawables[2];
+
+        editSearch.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+                // 오른쪽 아이콘 클릭
+                if (rightIcon != null && event.getRawX() >= (editSearch.getRight() - rightIcon.getBounds().width())) {
+                    return true;
+                }
+                // 왼쪽 아이콘 클릭
+                if (leftIcon != null && event.getRawX() <= (editSearch.getLeft() + leftIcon.getBounds().width())) {
+                    bottomsheet = new BottomSheet();
+                    bottomsheet.show(getSupportFragmentManager(), bottomsheet.getTag());
+                    return true;
+                }
+            }
+            return false;
+        });
         //mainmenu bottomsheet
-        menubutton = findViewById(R.id.menubutton);
+       /* menubutton = findViewById(R.id.e);
         menubutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 bottomsheet = new BottomSheet();
                 bottomsheet.show(getSupportFragmentManager(), bottomsheet.getTag());
             }
-        });
+        });*/
     }
 
     // SharedPreferences에 사용자 데이터가 모두 저장되어 있는지 확인

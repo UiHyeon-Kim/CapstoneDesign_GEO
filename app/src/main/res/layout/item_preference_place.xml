@@ -85,7 +85,7 @@
         android:background="@color/transparent"
         android:minWidth="0dp"
         android:scaleType="fitEnd"
-        app:srcCompat="@drawable/zzim_icon" />
+        app:srcCompat="@drawable/icon_zzim" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button"

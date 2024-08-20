@@ -13,5 +13,5 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/geo_icon" />
+        app:srcCompat="@drawable/icon_geo" />
 </androidx.constraintlayout.widget.ConstraintLayout>
