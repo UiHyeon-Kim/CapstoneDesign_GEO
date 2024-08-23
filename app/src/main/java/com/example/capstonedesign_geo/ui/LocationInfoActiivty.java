@@ -11,6 +11,6 @@ public class LocationInfoActiivty extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_location_info);
+        setContentView(R.layout.activity_place_detailed_info);
     }
 }
