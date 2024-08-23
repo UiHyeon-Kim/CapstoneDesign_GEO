@@ -17,33 +17,53 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/editSearch"
-            android:layout_width="350dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:background="#00000000"
-            android:drawableLeft="@drawable/mainmenu_bottomsheetbutton"
-            android:drawableRight="@drawable/resize_icon_search"
-            android:drawablePadding="10dp"
-            android:ems="15"
-            android:hint="검색"
-            android:inputType="text"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp" />
+        <LinearLayout
+            android:id="@+id/linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="9"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnRoot"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="20dp"
-            android:text="경로" />
+            <EditText
+                android:id="@+id/editSearch"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="9"
+                android:background="@drawable/rounded_search_text"
+                android:drawableLeft="@drawable/mainmenu_bottomsheetbutton"
+                android:drawableRight="@drawable/resize_icon_search"
+                android:drawablePadding="15dp"
+                android:ems="20"
+                android:hint="검색"
+                android:inputType="text"
+                android:fontFamily="@font/notosans"
+                android:includeFontPadding="false"
+                android:paddingStart="8dp"
+                android:paddingEnd="10dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnRoot"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/rounded_button"
+                android:text="경로"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:fontFamily="@font/notosans_bold"
+                android:includeFontPadding="false"
+                android:padding="5dp"/>
+        </LinearLayout>
 
         <com.google.android.material.chip.ChipGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/editSearch">
+            android:layout_below="@id/linear"
+            android:layout_marginLeft="16dp">
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip"

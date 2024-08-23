@@ -46,31 +46,7 @@ public class MainActivity extends AppCompatActivity {
             return insets; // UI 요소가 시스템 UI에 가려지지 않게 함
         });
         StatusBarKt.setStatusBarColor(this, getResources().getColor(R.color.transparent));
-
-        // 앱의 다크모드 비활성화
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-
-        editSearch = findViewById(R.id.editSearch);
-
-        Drawable[] drawables = editSearch.getCompoundDrawables();
-        Drawable leftIcon = drawables[0];
-        Drawable rightIcon = drawables[2];
-
-        editSearch.setOnTouchListener((v, event) -> {
-            if (event.getAction() == MotionEvent.ACTION_UP) {
-                // 오른쪽 아이콘 클릭
-                if (rightIcon != null && event.getRawX() >= (editSearch.getRight() - rightIcon.getBounds().width())) {
-                    return true;
-                }
-                // 왼쪽 아이콘 클릭
-                if (leftIcon != null && event.getRawX() <= (editSearch.getLeft() + leftIcon.getBounds().width())) {
-                    bottomsheet = new BottomSheet();
-                    bottomsheet.show(getSupportFragmentManager(), bottomsheet.getTag());
-                    return true;
-                }
-            }
-            return false;
-        });
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO); // 앱의 다크모드 비활성화
 
         // *********** 메인 액티비티 보고싶으면 아래 if문만 주석 처리 할 것 ************
         if (isUserPreferencesComplete()) {  // 사용자 선호조 조사가 완료된 경우
@@ -93,21 +69,32 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         editSearch = findViewById(R.id.editSearch);
 
-        Drawable[] drawables = editSearch.getCompoundDrawables();
-        Drawable leftIcon = drawables[0];
-        Drawable rightIcon = drawables[2];
-
         editSearch.setOnTouchListener((v, event) -> {
             if (event.getAction() == MotionEvent.ACTION_UP) {
-                // 오른쪽 아이콘 클릭
-                if (rightIcon != null && event.getRawX() >= (editSearch.getRight() - rightIcon.getBounds().width())) {
-                    return true;
+                Drawable[] drawables = editSearch.getCompoundDrawables();
+                Drawable drawableLeft = drawables[0];
+                Drawable drawableRight = drawables[2];
+
+                // 터치된 위치의 X 좌표 가져오기
+                float x = event.getX();
+
+                // 추가 터치 영역 정의
+                int extraTouchAreaDp = 20;
+                float density = getResources().getDisplayMetrics().density;
+                int extraTouchAreaPx = (int) (extraTouchAreaDp * density + 0.5f);
+
+                // 왼쪽 아이콘 터치 영역
+                if (drawableLeft != null) {
+                    int drawableLeftEnd = editSearch.getPaddingLeft() + drawableLeft.getIntrinsicWidth();
+                    if (x >= (editSearch.getPaddingLeft() - extraTouchAreaPx) && x <= (drawableLeftEnd + extraTouchAreaPx)) {
+                        bottomsheet = new BottomSheet();
+                        bottomsheet.show(getSupportFragmentManager(), bottomsheet.getTag());
+                        return true;
+                    }
                 }
-                // 왼쪽 아이콘 클릭
-                if (leftIcon != null && event.getRawX() <= (editSearch.getLeft() + leftIcon.getBounds().width())) {
-                    bottomsheet = new BottomSheet();
-                    bottomsheet.show(getSupportFragmentManager(), bottomsheet.getTag());
-                    return true;
+
+                // 오른쪽 아이콘 클릭
+                if (drawableRight != null) {
                 }
             }
             return false;
