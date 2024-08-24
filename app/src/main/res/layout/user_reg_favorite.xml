@@ -76,7 +76,7 @@
             android:id="@+id/chip1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="음식점"/>
+            android:text="식당"/>
 
         <com.google.android.material.chip.Chip
             style="@style/ChipStyles"
@@ -111,42 +111,42 @@
             android:id="@+id/chip6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="문화시설" />
+            android:text="공연" />
 
         <com.google.android.material.chip.Chip
             style="@style/ChipStyles"
             android:id="@+id/chip7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="레포츠" />
+            android:text="전시회" />
 
         <com.google.android.material.chip.Chip
             style="@style/ChipStyles"
             android:id="@+id/chip8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="가족 여행" />
+            android:text="레포츠" />
 
         <com.google.android.material.chip.Chip
             style="@style/ChipStyles"
             android:id="@+id/chip9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="혼자 여행" />
+            android:text="가족 여행" />
 
         <com.google.android.material.chip.Chip
             style="@style/ChipStyles"
             android:id="@+id/chip10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="역사관광지" />
+            android:text="혼자 여행" />
 
         <com.google.android.material.chip.Chip
             style="@style/ChipStyles"
             android:id="@+id/chip11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="휴양관광지" />
+            android:text="관광지" />
 
         <com.google.android.material.chip.Chip
             style="@style/ChipStyles"

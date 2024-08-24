@@ -63,31 +63,49 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/linear"
-            android:layout_marginLeft="16dp">
+            android:layout_marginLeft="16dp"
+            app:chipSpacing="10dp"
+            app:singleSelection="false"
+            app:singleLine="true" >
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/chip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <com.google.android.material.chip.Chip
+                style="@style/ChipStyles"
                 android:id="@+id/chip14"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="식당"/>
 
             <com.google.android.material.chip.Chip
+                style="@style/ChipStyles"
                 android:id="@+id/chip15"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="카페"/>
+
+            <com.google.android.material.chip.Chip
+                style="@style/ChipStyles"
+                android:id="@+id/chip16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="편의점"/>
+
+            <com.google.android.material.chip.Chip
+                style="@style/ChipStyles"
+                android:id="@+id/chip17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="숙박"/>
+
         </com.google.android.material.chip.ChipGroup>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnFloating"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:text="Button" />
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/mainblue"/>
     </RelativeLayout>
 
 
