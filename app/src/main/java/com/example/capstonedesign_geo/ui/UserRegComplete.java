@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.capstonedesign_geo.R;
-import com.example.capstonedesign_geo.data.Model.UserInfo;
+import com.example.capstonedesign_geo.data.model.UserInfo;
 import com.example.capstonedesign_geo.data.repository.UserRepository;
 import com.example.capstonedesign_geo.utility.StatusBarKt;
 

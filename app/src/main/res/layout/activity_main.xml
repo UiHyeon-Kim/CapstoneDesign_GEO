@@ -59,44 +59,108 @@
                 android:padding="5dp"/>
         </LinearLayout>
 
-        <com.google.android.material.chip.ChipGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/linear"
-            android:layout_marginLeft="16dp"
-            app:chipSpacing="10dp"
-            app:singleSelection="false"
-            app:singleLine="true" >
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/linear">
 
-            <com.google.android.material.chip.Chip
-                style="@style/ChipStyles"
-                android:id="@+id/chip14"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="식당"/>
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <com.google.android.material.chip.Chip
-                style="@style/ChipStyles"
-                android:id="@+id/chip15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="카페"/>
+                <com.google.android.material.chip.ChipGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="5dp"
+                    app:chipSpacing="10dp"
+                    app:singleLine="true"
+                    app:singleSelection="false">
 
-            <com.google.android.material.chip.Chip
-                style="@style/ChipStyles"
-                android:id="@+id/chip16"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="편의점"/>
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip14"
+                        style="@style/ChipStyles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="식당"
+                        app:chipEndPadding="5dp"
+                        app:chipMinHeight="35dp"
+                        app:chipStartPadding="5dp" />
 
-            <com.google.android.material.chip.Chip
-                style="@style/ChipStyles"
-                android:id="@+id/chip17"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="숙박"/>
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip15"
+                        style="@style/ChipStyles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="카페"
+                        app:chipEndPadding="5dp"
+                        app:chipMinHeight="35dp"
+                        app:chipStartPadding="5dp" />
 
-        </com.google.android.material.chip.ChipGroup>
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip16"
+                        style="@style/ChipStyles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="편의점"
+                        app:chipEndPadding="5dp"
+                        app:chipMinHeight="35dp"
+                        app:chipStartPadding="5dp" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip17"
+                        style="@style/ChipStyles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="숙박"
+                        app:chipEndPadding="5dp"
+                        app:chipMinHeight="35dp"
+                        app:chipStartPadding="5dp" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip18"
+                        style="@style/ChipStyles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="테스트"
+                        app:chipEndPadding="5dp"
+                        app:chipMinHeight="35dp"
+                        app:chipStartPadding="5dp" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip19"
+                        style="@style/ChipStyles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="테스트"
+                        app:chipEndPadding="5dp"
+                        app:chipMinHeight="35dp"
+                        app:chipStartPadding="5dp" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip20"
+                        style="@style/ChipStyles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="테스트"
+                        app:chipEndPadding="5dp"
+                        app:chipMinHeight="35dp"
+                        app:chipStartPadding="5dp" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip21"
+                        style="@style/ChipStyles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="테스트"
+                        app:chipEndPadding="5dp"
+                        app:chipMinHeight="35dp"
+                        app:chipStartPadding="5dp" />
+
+                </com.google.android.material.chip.ChipGroup>
+            </LinearLayout>
+        </HorizontalScrollView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"

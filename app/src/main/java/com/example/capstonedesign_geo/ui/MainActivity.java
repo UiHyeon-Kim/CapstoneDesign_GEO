@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -46,9 +45,8 @@ public class MainActivity extends AppCompatActivity {
             return insets; // UI 요소가 시스템 UI에 가려지지 않게 함
         });
         StatusBarKt.setStatusBarColor(this, getResources().getColor(R.color.transparent));
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO); // 앱의 다크모드 비활성화
+        // AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO); // 앱의 다크모드 비활성화
 
-        // *********** 메인 액티비티 보고싶으면 아래 if문만 주석 처리 할 것 ************
         if (isUserPreferencesComplete()) {  // 사용자 선호조 조사가 완료된 경우
             setContentView(R.layout.activity_main); // 메인 화면으로 이동
         } else {    // 사용자 선호도 조사가 완료되지 않은 경우 첫 번째 화면으로 이동

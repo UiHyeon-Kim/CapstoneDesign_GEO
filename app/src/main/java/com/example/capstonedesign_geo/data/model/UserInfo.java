@@ -1,4 +1,4 @@
-package com.example.capstonedesign_geo.data.Model;
+package com.example.capstonedesign_geo.data.model;
 
 import java.util.Set;
 

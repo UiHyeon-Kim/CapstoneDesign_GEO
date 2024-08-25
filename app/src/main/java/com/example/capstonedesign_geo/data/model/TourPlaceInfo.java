@@ -1,4 +1,4 @@
-package com.example.capstonedesign_geo.data.Model;
+package com.example.capstonedesign_geo.data.model;
 
 public class TourPlaceInfo {
     private int placeId;        // 장소 아이디
@@ -18,6 +18,7 @@ public class TourPlaceInfo {
     private String placeKeyword;// 장소 키워드
     private double latitude;    // 위도(y)
     private double longitude;   // 경도(x)
+    // 운영시간 추가하기
 
     public TourPlaceInfo(int placeId, String placeName, String placeTel, String placeAddress, String placeDescription, int placeAreaCode, int placeCategory1, int placeCategory2, int placeCategory3, int placeType, int placeRadius, String placeUrl, String placeImgUrl, String placeThumbnailUrl, String placeKeyword, double latitude, double longitude) {
         this.placeId = placeId;

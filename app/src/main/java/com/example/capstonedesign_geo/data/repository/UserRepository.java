@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
 
-import com.example.capstonedesign_geo.data.Model.UserInfo;
+import com.example.capstonedesign_geo.data.model.UserInfo;
 import com.example.capstonedesign_geo.data.db.UserDatabaseHelper;
 
 import java.util.Arrays;

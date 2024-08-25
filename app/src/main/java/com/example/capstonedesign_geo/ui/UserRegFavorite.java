@@ -17,16 +17,13 @@ import com.example.capstonedesign_geo.utility.StatusBarKt;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class UserRegFavorite extends AppCompatActivity {
 
     private Button btnNext;
     private ChipGroup chipGroup;
-    private List<String> selectedTags;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,7 +33,6 @@ public class UserRegFavorite extends AppCompatActivity {
 
         chipGroup = findViewById(R.id.chipGroup);
         btnNext = findViewById(R.id.btnNext);
-        selectedTags = new ArrayList<>();
 
         chipGroup.setOnCheckedChangeListener(new ChipGroup.OnCheckedChangeListener() {
             @Override
@@ -49,18 +45,6 @@ public class UserRegFavorite extends AppCompatActivity {
                 }
             }
         });
-        // 칩 그룹 리스너
-        /*chipGroup.setOnCheckedStateChangeListener(new ChipGroup.OnCheckedStateChangeListener() {
-            @Override
-            public void onCheckedChanged(@NonNull ChipGroup group, @NonNull List<Integer> checkedIds) {
-                Chip checkedChip = group.findViewById(checkedIds.get(0)); // 선택한 칩을 가져옴
-                if (checkedChip != null){ // 선택한 경우
-                    btnNext.setEnabled(true);
-                } else {
-                    btnNext.setEnabled(false);
-                }
-            }
-        });*/
 
         btnNext.setOnClickListener(view -> {
             saveFavoriteTags(); // 선택한 태그들을 저장

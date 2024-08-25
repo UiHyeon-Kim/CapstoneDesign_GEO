@@ -7,6 +7,7 @@ import android.os.Looper;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.example.capstonedesign_geo.R;
 import com.example.capstonedesign_geo.utility.StatusBarKt;
@@ -18,6 +19,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         StatusBarKt.setStatusBarColor(this, getResources().getColor(R.color.transparent));
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO); // 앱의 다크모드 비활성화
 
         new Handler(Looper.getMainLooper()).postDelayed(() -> { // 1.5초 후에 실행
             Intent intent = new Intent(SplashActivity.this, MainActivity.class);
