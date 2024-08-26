@@ -7,7 +7,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -21,6 +20,7 @@ import com.example.capstonedesign_geo.R;
 import com.example.capstonedesign_geo.ui.fragment.BottomSheet;
 import com.example.capstonedesign_geo.ui.fragment.NaverFragment;
 import com.example.capstonedesign_geo.utility.StatusBarKt;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Set;
 
@@ -28,10 +28,10 @@ import java.util.Set;
 public class MainActivity extends AppCompatActivity {
 
     private BottomSheet bottomsheet;
-    private Button menubutton;
     private EditText editSearch;
     private long backPressedTime; // 마지막 뒤로가기 누른 시간
     private Toast backToast; // 뒤로가기 메시지
+    private FloatingActionButton temp;
 
     // @SuppressLint("MissingInflatedId") // 에러 무시
     @Override
@@ -60,12 +60,19 @@ public class MainActivity extends AppCompatActivity {
         NaverFragment naverFragment = new NaverFragment();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_zone, naverFragment).commit();
+
+        temp = findViewById(R.id.temp);
+        temp.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, ChatBotActivity.class);
+            startActivity(intent);
+        });
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         editSearch = findViewById(R.id.editSearch);
+        temp = findViewById(R.id.temp);
 
         editSearch.setOnTouchListener((v, event) -> {
             if (event.getAction() == MotionEvent.ACTION_UP) {
@@ -96,6 +103,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             return false;
+        });
+
+        temp.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, ChatBotActivity.class);
+            startActivity(intent);
         });
     }
 

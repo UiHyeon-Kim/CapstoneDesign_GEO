@@ -1,4 +1,4 @@
-package com.example.capstonedesign_geo.viewmodel;
+package com.example.capstonedesign_geo.data.model;
 
 public class Place {
     private String img;

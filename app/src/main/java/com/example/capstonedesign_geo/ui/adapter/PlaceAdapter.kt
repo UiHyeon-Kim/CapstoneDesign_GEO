@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.capstonedesign_geo.R
-import com.example.capstonedesign_geo.viewmodel.Place
+import com.example.capstonedesign_geo.data.model.Place
 
 
 class PlaceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

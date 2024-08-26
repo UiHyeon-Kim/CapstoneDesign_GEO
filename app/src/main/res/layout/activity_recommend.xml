@@ -22,6 +22,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
+            android:fontFamily="@font/notosans_bold"
+            android:includeFontPadding="false"
             android:text="오늘의 인기 장소"
             android:textSize="20sp" />
     </LinearLayout>
@@ -67,6 +69,8 @@
                         android:id="@+id/textView15"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/notosans"
+                        android:includeFontPadding="false"
                         android:text="식당"
                         android:textAlignment="center" />
 
@@ -88,6 +92,8 @@
                         android:id="@+id/textView16"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/notosans"
+                        android:includeFontPadding="false"
                         android:text="카페"
                         android:textAlignment="center" />
                 </LinearLayout>
@@ -108,6 +114,8 @@
                         android:id="@+id/textView17"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/notosans"
+                        android:includeFontPadding="false"
                         android:text="전시/문화"
                         android:textAlignment="center" />
                 </LinearLayout>
@@ -128,6 +136,8 @@
                         android:id="@+id/textView18"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/notosans"
+                        android:includeFontPadding="false"
                         android:text="쇼핑"
                         android:textAlignment="center" />
                 </LinearLayout>
@@ -148,6 +158,8 @@
                         android:id="@+id/textView19"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/notosans"
+                        android:includeFontPadding="false"
                         android:text="스포츠"
                         android:textAlignment="center" />
                 </LinearLayout>
@@ -166,6 +178,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="5"
+                    android:fontFamily="@font/notosans"
+                    android:includeFontPadding="false"
                     android:text="비오는 날 추천" />
 
                 <TextView
@@ -174,6 +188,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:layout_weight="0.5"
+                    android:fontFamily="@font/notosans"
+                    android:includeFontPadding="false"
                     android:text="더보기"
                     android:textAlignment="textEnd" />
             </LinearLayout>

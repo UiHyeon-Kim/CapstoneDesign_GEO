@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.capstonedesign_geo.R;
 import com.example.capstonedesign_geo.ui.adapter.PlaceAdapter;
 import com.example.capstonedesign_geo.utility.StatusBarKt;
-import com.example.capstonedesign_geo.viewmodel.Place;
+import com.example.capstonedesign_geo.data.model.Place;
 
 import java.util.ArrayList;
 
