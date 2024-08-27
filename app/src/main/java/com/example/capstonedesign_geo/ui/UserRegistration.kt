@@ -13,12 +13,12 @@ import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.normal.TedPermission
 
 class UserRegistration : AppCompatActivity() {
-    private lateinit var binding: UserRegistrationBinding;
+    private lateinit var binding: UserRegistrationBinding; // 뷰 바인딩 객체
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = UserRegistrationBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding = UserRegistrationBinding.inflate(layoutInflater) // 뷰 바인딩 초기화
+        setContentView(binding.root) // 뷰 바인딩 적용
         // 상태바 색상 변경
         setStatusBarColor(ContextCompat.getColor(this, R.color.transparent))
         // 코틀린 이벤트 리스너 - 인텐트

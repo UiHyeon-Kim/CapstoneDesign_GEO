@@ -14,7 +14,7 @@
             android:id="@+id/geoImg"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/rounded_geo"
+            android:background="@drawable/rounded_geo_profile"
             android:padding="3dp"
             android:scaleType="centerCrop"
             android:visibility="visible"
