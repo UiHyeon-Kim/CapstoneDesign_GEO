@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_zone, naverFragment).commit();
 
+        // 추후 플로팅 버튼 변경할 수 있음
         temp = findViewById(R.id.temp);
         temp.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, ChatBotActivity.class);
