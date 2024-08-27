@@ -66,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, ChatBotActivity.class);
             startActivity(intent);
         });
+
+
     }
 
     @Override
