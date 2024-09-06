@@ -11,8 +11,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.capstonedesign_geo.R;
-import com.example.capstonedesign_geo.data.model.UserInfo;
+import com.example.capstonedesign_geo.data.dao.UserDao;
+import com.example.capstonedesign_geo.data.model.User;
 import com.example.capstonedesign_geo.data.repository.UserRepository;
+import com.example.capstonedesign_geo.data.repository.UserRepositoryImpl;
 import com.example.capstonedesign_geo.utility.StatusBarKt;
 
 import java.util.HashSet;
@@ -24,6 +26,7 @@ public class UserRegComplete extends AppCompatActivity {
     private TextView greeting;
     private UserRepository userRepository;
     private String nickname;
+    private UserDao userDao;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,7 +36,8 @@ public class UserRegComplete extends AppCompatActivity {
 
         btnComplete = findViewById(R.id.btnComplete);
         greeting = findViewById(R.id.tvGreeting);
-        userRepository = new UserRepository(this);
+        userRepository = new UserRepositoryImpl(userDao);
+        User user = userRepository.getUserById("userId");
 
         // 설문조사 완료 환영 문구 출력
         getNickname();
@@ -62,9 +66,9 @@ public class UserRegComplete extends AppCompatActivity {
         String location = sharedPreferences.getString("location", null);
         Set<String> favoriteTags = sharedPreferences.getStringSet("favoriteTags", new HashSet<>());
 
-        UserInfo userInfo = new UserInfo(userId, androidId, nickname, userType, age, location, favoriteTags);
+        User user = new User(userId, androidId, nickname, userType, age, location);
 
-        userRepository.saveUser(userInfo);
+        userRepository.insertUser(user);
     }
 
     private void getNickname() {

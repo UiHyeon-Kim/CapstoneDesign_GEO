@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -15,21 +15,23 @@
         android:id="@+id/textView28"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_weight="2"
-        android:text="TextView"
-        android:textSize="18sp"
         android:fontFamily="@font/notosans_bold"
-        android:includeFontPadding="false" />
+        android:includeFontPadding="false"
+        android:text="TextView"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/textView29"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_weight="7"
-        android:text="TextView"
-        android:textSize="18sp"
-        android:maxLines="2"
         android:ellipsize="end"
         android:fontFamily="@font/notosans"
-        android:includeFontPadding="false" />
+        android:includeFontPadding="false"
+        android:maxLines="2"
+        android:text="TextView"
+        android:textSize="18sp" />
 </LinearLayout>

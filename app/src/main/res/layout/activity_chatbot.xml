@@ -16,12 +16,13 @@
 
     <EditText
         android:id="@+id/etChat"
-        android:layout_width="355dp"
+        android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@id/btnSend"
         android:background="@color/white"
         android:hint="채팅을 입력하세요"
-        android:paddingLeft="16dp"/>
+        android:paddingLeft="16dp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnSend"
