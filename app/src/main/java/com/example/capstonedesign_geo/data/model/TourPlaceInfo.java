@@ -76,9 +76,7 @@ public class TourPlaceInfo {
         return placeDescription;
     }
 
-    public void setPlaceDescription(String placeDescription) {
-        this.placeDescription = placeDescription;
-    }
+    public void setPlaceDescription(String placeDescription) { this.placeDescription = placeDescription; }
 
     public int getPlaceAreaCode() {
         return placeAreaCode;
@@ -148,9 +146,7 @@ public class TourPlaceInfo {
         return placeThumbnailUrl;
     }
 
-    public void setPlaceThumbnailUrl(String placeThumbnailUrl) {
-        this.placeThumbnailUrl = placeThumbnailUrl;
-    }
+    public void setPlaceThumbnailUrl(String placeThumbnailUrl) { this.placeThumbnailUrl = placeThumbnailUrl; }
 
     public String getPlaceKeyword() {
         return placeKeyword;

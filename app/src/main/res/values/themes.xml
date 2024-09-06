@@ -3,6 +3,8 @@
     <style name="Base.Theme.CapstoneDesign_GEO" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:statusBarColor">@color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="Theme.CapstoneDesign_GEO" parent="Base.Theme.CapstoneDesign_GEO" />

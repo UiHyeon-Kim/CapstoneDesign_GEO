@@ -1,22 +1,26 @@
 package com.example.capstonedesign_geo.data.model;
 
 public class Place {
-    private String img;
+    private String placeId;
+    private String placeImg;
     private String name;
     private String category;
     private String address;
     private String open;
 
-    public Place(String img, String name, String category, String address, String open) {
-        this.img = img;
+    public Place(String placeId, String placeImg, String name, String category, String address, String open) {
+        this.placeId = placeId;
+        this.placeImg = placeImg;
         this.name = name;
         this.category = category;
         this.address = address;
         this.open = open;
     }
 
-    public String getImg() {
-        return img;
+    public String getPlaceId() { return placeId; }
+
+    public String getPlaceImg() {
+        return placeImg;
     }
 
     public String getName() {

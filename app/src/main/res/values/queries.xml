@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="query_insert_userinfo">
+        INSERT INTO userInfo (userId, androidId, nickname, userType, age, location, favoriteTags)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+    </string>
+
+    <string name="query_update_userinfo">
+        UPDATE userInfo
+        SET androidId = ?, nickname = ?, userType = ?, age = ?, location = ?, favoriteTags = ?
+        WHERE userId = ?
+    </string>
+</resources>

@@ -29,7 +29,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
         return new MyViewHolder(view);
     }
 
-    @Override
+    @Override // 매개변수 : 1. holder: 현재 뷰 홀더 2. position: 현재 뷰의 위치
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         ChatMessage chatMessage = chatMessageList.get(position);
         if (chatMessage.getSender().equals("me")) {

@@ -35,7 +35,7 @@ class PlaceAdapter(private val places: List<Place>) : RecyclerView.Adapter<Place
         holder.placeOpen.text = place.open
 
         Glide.with(holder.itemView.context)
-            .load(place.img)
+            .load(place.placeImg)
             .into(holder.placeImg)
     }
 
