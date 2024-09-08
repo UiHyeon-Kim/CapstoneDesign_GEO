@@ -258,5 +258,6 @@ fabric.properties
 ### AndroidStudio Patch ###
 
 !/gradle/wrapper/gradle-wrapper.jar
+CapstoneDesign_GEO/app/src/main/res/values/secrets.xml
 
 # End of https://www.toptal.com/developers/gitignore/api/androidstudio,android,java,kotlin,gradle,groovy,windows
