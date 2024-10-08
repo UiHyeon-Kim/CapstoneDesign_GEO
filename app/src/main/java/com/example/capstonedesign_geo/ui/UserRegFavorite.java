@@ -1,7 +1,5 @@
 package com.example.capstonedesign_geo.ui;
 
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
@@ -9,7 +7,6 @@ import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.capstonedesign_geo.R;
@@ -20,7 +17,7 @@ import com.google.android.material.chip.ChipGroup;
 import java.util.HashSet;
 import java.util.Set;
 
-public class UserRegFavorite extends AppCompatActivity {
+public class UserRegFavorite extends AppCompatActivity implements ConfirmDialogInterface {
 
     private Button btnNext;
     private ChipGroup chipGroup;
@@ -49,8 +46,13 @@ public class UserRegFavorite extends AppCompatActivity {
         btnNext.setOnClickListener(view -> {
             saveFavoriteTags(); // 선택한 태그들을 저장
 
+            CustomDialog dialog = CustomDialog.newInstance("가입을 완료 하시겠습니까?", "추후 설정에서 변경이 가능합니다.");
+            dialog.setConfirmDialogInterface(this);
+            dialog.show(getFragmentManager(), "CustomDialog");
+
+
             // 대화상자
-            new AlertDialog.Builder(UserRegFavorite.this)
+            /*new AlertDialog.Builder(UserRegFavorite.this)
                     .setTitle("가입을 완료 하시겠습니까?")
                     .setMessage("추후 설정에서 변경이 가능합니다.")
                     .setPositiveButton("확인", new DialogInterface.OnClickListener() {
@@ -63,11 +65,16 @@ public class UserRegFavorite extends AppCompatActivity {
                         public void onClick(DialogInterface dialog, int i) {
                             dialog.dismiss(); // 다이얼로그 닫기
                         }
-                    }).show();
+                    }).show();*/
         });
 
         ImageButton btnBack = findViewById(R.id.backButton);
         btnBack.setOnClickListener(view -> onBackPressed());
+    }
+
+    @Override
+    public void onConfirmClick(@NonNull String item) {
+        System.out.println(item);
     }
 
     private void saveFavoriteTags(){

@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
         editSearch = findViewById(R.id.editSearch);
         temp = findViewById(R.id.temp);
 
+        // 검색 창 터치 이벤트
         editSearch.setOnTouchListener((v, event) -> {
             if (event.getAction() == MotionEvent.ACTION_UP) {
                 Drawable[] drawables = editSearch.getCompoundDrawables();
@@ -109,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
             return false;
         });
 
+        // 임시 챗봇 버튼 클릭 이벤트
         temp.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, ChatBotActivity.class);
             startActivity(intent);
@@ -138,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
         return androidId != null && nickname != null && location != null && age > 0 && favoriteTags != null;
     }
 
+    // 뒤로가기 버튼 지연 시간
     @Override
     public void onBackPressed() {
         if (backPressedTime + 2000 > System.currentTimeMillis()){ // 2초 이내에 뒤로가기 버튼을 눌렀을 경우
