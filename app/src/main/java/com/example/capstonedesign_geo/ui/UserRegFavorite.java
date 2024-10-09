@@ -1,5 +1,6 @@
 package com.example.capstonedesign_geo.ui;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
@@ -50,7 +51,6 @@ public class UserRegFavorite extends AppCompatActivity implements ConfirmDialogI
             dialog.setConfirmDialogInterface(this);
             dialog.show(getFragmentManager(), "CustomDialog");
 
-
             // 대화상자
             /*new AlertDialog.Builder(UserRegFavorite.this)
                     .setTitle("가입을 완료 하시겠습니까?")
@@ -74,7 +74,8 @@ public class UserRegFavorite extends AppCompatActivity implements ConfirmDialogI
 
     @Override
     public void onConfirmClick(@NonNull String item) {
-        System.out.println(item);
+        Intent intent = new Intent(this, UserRegComplete.class);
+        startActivity(intent);
     }
 
     private void saveFavoriteTags(){

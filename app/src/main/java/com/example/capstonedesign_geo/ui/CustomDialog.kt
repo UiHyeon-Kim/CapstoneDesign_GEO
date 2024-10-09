@@ -11,6 +11,7 @@ class CustomDialog: DialogFragment() {
 
     private var _binding: DialogCustomBinding? = null
     private val binding get() = _binding!!
+
     private var confirmDialogInterface: ConfirmDialogInterface? = null
     private var boldText: String = ""
     private var regularText: String = ""
@@ -22,18 +23,17 @@ class CustomDialog: DialogFragment() {
     }*/
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         _binding = DialogCustomBinding.inflate(inflater, container, false)
         val view = binding.root
 
+        // 배경을 투명하게. 다이얼로그를 둥글게 표현하기 위해 사용
+        dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
         boldText = arguments?.getString("boldText") ?: ""
         regularText = arguments?.getString("regularText").orEmpty()
 
-        // 배경을 투명하게. 다이얼로그를 둥글게 표현하기 위해 사용
-        dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
         binding.BoldText.text = boldText
         binding.RegularText.text = regularText
 
@@ -61,11 +61,9 @@ class CustomDialog: DialogFragment() {
         @JvmStatic
         fun newInstance(boldText: String, regularText: String): CustomDialog {
             val dialog = CustomDialog()
-            val fragment = CustomDialog()
             val args = Bundle()
             args.putString("boldText", boldText)
             args.putString("regularText", regularText)
-            fragment.arguments = args
             dialog.arguments = args
             return dialog
         }
