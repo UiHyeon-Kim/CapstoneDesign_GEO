@@ -5,6 +5,10 @@ plugins {
     id 'kotlin-kapt'
 }
 
+// local.properties 사용
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 android {
     namespace 'com.example.capstonedesign_geo'
     compileSdk 34
@@ -17,10 +21,14 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // api key 변수 지정
+        buildConfigField "String", "TOURAPI", properties['TourAPI_Key']
     }
 
     buildFeatures {
         compose true // 컴포즈 사용
+        buildConfig true
     }
 
     buildTypes {
@@ -67,6 +75,8 @@ dependencies {
     implementation libs.activity
     implementation libs.constraintlayout
     implementation libs.core.ktx
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0' // retrofit 의존성
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0' // 파일 변환
     implementation 'com.facebook.shimmer:shimmer:0.5.0' // 스켈레톤 ui
     implementation 'androidx.sqlite:sqlite:2.4.0' // sqlite
     implementation 'mysql:mysql-connector-java:5.1.49' // MySQL

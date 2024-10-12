@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- 네트워크 통신을 위해 사용 허가를 받는 권한 설정 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- 현재 위치 추적을 위해 사용 허가를 받는 권한 설정 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -15,6 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CapstoneDesign_GEO"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
         <activity
@@ -40,7 +44,7 @@
         <activity android:name=".ui.fragment.BottomSheet" />
         <activity android:name=".ui.fragment.NaverFragment" />
         <activity android:name=".ui.PreferenceListActivity" />
-        <activity android:name=".ui.LocationInfoActiivty" />
+        <activity android:name=".ui.PlaceDetailInfoActiivty" />
         <activity android:name=".ui.RecommendActivity" />
         <activity android:name=".ui.SettingActivity" />
         <activity android:name=".ui.PolicyActivity" />
