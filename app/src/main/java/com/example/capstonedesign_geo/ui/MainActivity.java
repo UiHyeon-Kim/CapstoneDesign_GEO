@@ -112,7 +112,8 @@ public class MainActivity extends AppCompatActivity {
 
         // 임시 챗봇 버튼 클릭 이벤트
         temp.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, ChatBotActivity.class);
+            //Intent intent = new Intent(MainActivity.this, ChatBotActivity.class);
+            Intent intent = new Intent(MainActivity.this, PlaceListActivity.class);
             startActivity(intent);
         });
     }
