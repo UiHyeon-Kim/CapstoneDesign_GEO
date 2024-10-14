@@ -2,6 +2,7 @@ package com.example.capstonedesign_geo.data.network
 
 import com.example.capstonedesign_geo.BuildConfig
 import com.example.capstonedesign_geo.data.model.TourApiResponse
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -25,7 +26,7 @@ interface TourApiService {
         @Query("cat2")cat2: String,               // 중분류
         @Query("cat3")cat3: String,               // 소분류
         @Query("_type")_type: String,             // 응답 데이터 형식
-    ): TourApiResponse // 응답 데이터 클래스
+    ): Response<TourApiResponse> // 응답 데이터 클래스
 
     // 장소 상세 정보 - TourAPI 공통 정보 조회
     @GET("detailCommon1?serviceKey=${BuildConfig.TOURAPI}")

@@ -45,7 +45,7 @@
         <activity android:name=".ui.fragment.NaverFragment" />
         <activity android:name=".ui.PreferenceListActivity" />
         <activity android:name=".ui.PlaceListActivity" />
-        <activity android:name=".ui.PlaceDetailActiivty" />
+        <activity android:name=".ui.PlaceDetailActivity" />
         <activity android:name=".ui.RecommendActivity" />
         <activity android:name=".ui.SettingActivity" />
         <activity android:name=".ui.PolicyActivity" />

@@ -1,5 +1,8 @@
 package com.example.capstonedesign_geo.data.network
 
+import com.example.capstonedesign_geo.data.model.Item
+import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -17,10 +20,14 @@ object RetrofitClient {
         return getRetrofit().create(TourApiService::class.java)
     }*/
 
+    val gson = GsonBuilder()
+        .registerTypeAdapter(object : TypeToken<List<Item>>() {}.type, ItemListDeserializer())
+        .create()
+
     private val retrofit by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
     }
 

@@ -1,5 +1,8 @@
 package com.example.capstonedesign_geo.data.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
 data class TourApiResponse(
     val response: Response
 )
@@ -14,16 +17,14 @@ data class Header (
 )
 
 data class Body (
-    val items: Items,
-    val numOfRows: Int,
-    val pageNo: Int,
-    val totalCount: Int
+    val items: Items
 )
 
 data class Items (
     val item: List<Item>
 )
 
+@Parcelize
 data class Item (
     val addr1: String,
     val addr2: String?,
@@ -46,7 +47,7 @@ data class Item (
     val tel: String?,
     val title: String,
     val zipcode: String?
-)
+): Parcelable
 
 
 /*
