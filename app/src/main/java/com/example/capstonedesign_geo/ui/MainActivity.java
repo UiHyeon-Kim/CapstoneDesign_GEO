@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         // 추후 플로팅 버튼 변경할 수 있음
         temp = findViewById(R.id.temp);
         temp.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, ChatBotActivity.class);
+            Intent intent = new Intent(MainActivity.this, Old_ChatBotActivity.class);
             startActivity(intent);
         });
 
@@ -154,5 +154,7 @@ public class MainActivity extends AppCompatActivity {
         }
         backPressedTime = System.currentTimeMillis(); // 현재 시간을 저장
     }
+
+
 }
 

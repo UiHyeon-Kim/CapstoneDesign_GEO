@@ -23,7 +23,8 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         // api key 변수 지정
-        buildConfigField "String", "TOURAPI", properties['TourAPI_Key']
+        // buildConfigField "String", "TOURAPI", properties['TourAPI_Key']
+        buildConfigField "String", "GEMINIAPI", properties['Gemini_Key']
     }
 
     buildFeatures {
@@ -75,9 +76,9 @@ dependencies {
     implementation libs.activity
     implementation libs.constraintlayout
     implementation libs.core.ktx
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0' // retrofit 의존성
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0' // JSON 파일 변환
-    implementation 'com.squareup.retrofit2:converter-simplexml:2.9.0' // XML 파일 변환
+    implementation 'com.google.ai.client.generativeai:generativeai:0.9.0'
+    implementation 'com.google.guava:guava:31.0.1-android'
+    implementation 'org.reactivestreams:reactive-streams:1.0.4'
     implementation 'com.facebook.shimmer:shimmer:0.5.0' // 스켈레톤 ui
     implementation 'androidx.sqlite:sqlite:2.4.0' // sqlite
     implementation 'mysql:mysql-connector-java:5.1.49' // MySQL

@@ -8,24 +8,24 @@
         android:id="@+id/toolbar"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/chatRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/etChat"
+        android:layout_above="@id/messageInput"
         android:layout_below="@id/toolbar" />
 
     <EditText
-        android:id="@+id/etChat"
+        android:id="@+id/messageInput"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@id/btnSend"
+        android:layout_toLeftOf="@id/buttonSend"
         android:background="@color/white"
         android:hint="채팅을 입력하세요"
         android:paddingLeft="16dp" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnSend"
+        android:id="@+id/buttonSend"
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_alignParentRight="true"
