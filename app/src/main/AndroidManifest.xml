@@ -49,7 +49,7 @@
         <activity android:name=".ui.RecommendActivity" />
         <activity android:name=".ui.SettingActivity" />
         <activity android:name=".ui.PolicyActivity" />
-        <activity android:name=".ui.Old_ChatBotActivity" />
+        <activity android:name=".ui.ChatBotActivity" />
 
         <!-- 네이버지도 클라이언트 ID지정 -->
         <meta-data

@@ -62,14 +62,6 @@ public class MainActivity extends AppCompatActivity {
         NaverFragment naverFragment = new NaverFragment();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_zone, naverFragment).commit();
-
-        // 추후 플로팅 버튼 변경할 수 있음
-        temp = findViewById(R.id.temp);
-        temp.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, Old_ChatBotActivity.class);
-            startActivity(intent);
-        });
-
     }
 
     @Override
@@ -112,8 +104,8 @@ public class MainActivity extends AppCompatActivity {
 
         // 임시 챗봇 버튼 클릭 이벤트
         temp.setOnClickListener(v -> {
-            //Intent intent = new Intent(MainActivity.this, ChatBotActivity.class);
-            Intent intent = new Intent(MainActivity.this, PlaceListActivity.class);
+            Intent intent = new Intent(MainActivity.this, ChatBotActivity.class);
+            //Intent intent = new Intent(MainActivity.this, PlaceListActivity.class);
             startActivity(intent);
         });
     }

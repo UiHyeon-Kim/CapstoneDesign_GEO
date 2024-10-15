@@ -15,14 +15,18 @@ class ChatViewModel(private val generativeModel: GenerativeModel) : ViewModel() 
     private val _uiState = MutableLiveData(ChatUiState(emptyList()))
     val uiState: LiveData<ChatUiState> = _uiState
 
-    init {
-        initializeChat()
-    }
+    init { initializeChat() }
 
-    private fun initializeChat() {
+    private fun initializeChat(){
+        val greetings = listOf(
+            "안녕하세요! 저는 지오라고 해요.\n무엇을 도와드릴까요?",
+            "안녕하세요! 저는 지오예요.\n\'망월사 맛집 찾아줘\'와 같이 질문해 보세요!",
+            "안녕하세요! 저는 지오예요.\n무엇을 도와드릴까요?"
+        )
+        val randomGreeting = greetings.random()
         val chatHistory = mutableListOf(
             ChatMessage(
-                text = "안녕하세요! 저는 GEO라고해요. 무엇을 도와드릴까요?",
+                text = randomGreeting,
                 participant = Participant.USER
             )
         )
@@ -42,10 +46,10 @@ class ChatViewModel(private val generativeModel: GenerativeModel) : ViewModel() 
 
         viewModelScope.launch {
             try {
-                val response = generativeModel.sendMessage(userMessage).text
+                val response = generativeModel.startChat().sendMessage(userMessage).text
                 val updatedStateAfterResponse = updatedState.copy() // Create another copy
                 updatedStateAfterResponse.replaceLastPendingMessage()
-                updatedStateAfterResponse.addMessage(ChatMessage(response, Participant.MODEL))
+                updatedStateAfterResponse.addMessage(ChatMessage(response ?: "", Participant.MODEL))
                 _uiState.postValue(updatedStateAfterResponse)
             } catch (e: Exception) {
                 val updatedStateAfterError = updatedState.copy() // Create another copy
