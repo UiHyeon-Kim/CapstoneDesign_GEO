@@ -31,24 +31,27 @@ class ChatViewModel(private val generativeModel: GenerativeModel) : ViewModel() 
 
     fun sendMessage(userMessage: String) {
         val currentState = _uiState.value ?: return
+        val updatedState = currentState.copy()
         val newMessage = ChatMessage(
             userMessage,
             Participant.USER,
             true
         )
-        currentState.addMessage(newMessage)
-        _uiState.value = currentState
+        updatedState.addMessage(newMessage)
+        _uiState.postValue(updatedState)
 
         viewModelScope.launch {
             try {
                 val response = generativeModel.sendMessage(userMessage).text
-                currentState.replaceLastPendingMessage()
-                currentState.addMessage(ChatMessage(response, Participant.MODEL))
-                _uiState.postValue(currentState)
+                val updatedStateAfterResponse = updatedState.copy() // Create another copy
+                updatedStateAfterResponse.replaceLastPendingMessage()
+                updatedStateAfterResponse.addMessage(ChatMessage(response, Participant.MODEL))
+                _uiState.postValue(updatedStateAfterResponse)
             } catch (e: Exception) {
-                currentState.replaceLastPendingMessage()
-                currentState.addMessage(ChatMessage(e.localizedMessage, Participant.ERROR))
-                _uiState.postValue(currentState)
+                val updatedStateAfterError = updatedState.copy() // Create another copy
+                updatedStateAfterError.replaceLastPendingMessage()
+                updatedStateAfterError.addMessage(ChatMessage(e.localizedMessage, Participant.ERROR))
+                _uiState.postValue(updatedStateAfterError)
             }
         }
     }
