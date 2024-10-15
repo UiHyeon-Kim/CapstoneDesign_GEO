@@ -6,17 +6,20 @@
     android:padding="16dp">
 
     <LinearLayout
+        android:id="@+id/chatHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        android:paddingBottom="1dp">
 
         <ImageView
             android:id="@+id/geoImg"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/rounded_geo_profile"
             android:padding="3dp"
             android:scaleType="centerCrop"
+            android:src="@drawable/icon_geo"
             android:visibility="visible"
             app:srcCompat="@drawable/icon_geo" />
 
@@ -25,29 +28,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="5dp"
             android:fontFamily="@font/notosans_bold"
             android:includeFontPadding="false"
             android:text="지오"
-            android:textSize="22sp"
+            android:textSize="20sp"
             android:visibility="visible" />
     </LinearLayout>
 
     <TextView
-        android:id="@+id/botMessage"
+        android:id="@+id/messageText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/userMessage"
+        android:layout_below="@id/chatHeader"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
         android:background="@drawable/bg_spinner"
         android:fontFamily="@font/notosans"
         android:includeFontPadding="false"
+        android:layout_marginLeft="16dp"
         android:padding="12dp"
-        android:text="안녕하세요! 저는 지오라고 해요!\n’망월사 맛집 찾아줘’ 와 같이
-질문해보세요!"
-        android:textSize="18sp"
-        android:visibility="visible" />
+        android:textSize="20sp" />
 
-    <TextView
+    <!--<TextView
         android:id="@+id/userMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,5 +63,5 @@
         android:text="안녕"
         android:textColor="@color/white"
         android:textSize="18sp"
-        android:visibility="visible" />
+        android:visibility="visible" />-->
 </RelativeLayout>
