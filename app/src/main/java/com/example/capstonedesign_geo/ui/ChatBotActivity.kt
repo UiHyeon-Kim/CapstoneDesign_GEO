@@ -49,10 +49,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.capstonedesign_geo.R
-import com.example.capstonedesign_geo.data.chat.ChatBubbleItem
-import com.example.capstonedesign_geo.data.chat.ChatList
 import com.example.capstonedesign_geo.data.chat.ChatMessage
-import com.example.capstonedesign_geo.data.chat.MessageInput
 import com.example.capstonedesign_geo.data.chat.Participant
 import com.example.capstonedesign_geo.viewmodel.ChatViewModel
 import com.example.capstonedesign_geo.viewmodel.GenerativeViewModelFactory
@@ -239,7 +236,6 @@ fun MessageInput(
     ) {*/
         Row(
             modifier = Modifier
-                .padding(16.dp)
                 .fillMaxWidth()
                 .height(56.dp)
         ) {
@@ -255,6 +251,7 @@ fun MessageInput(
                 modifier = Modifier
                     //.align(Alignment.CenterVertically)
                     .fillMaxWidth()
+                    .height(56.dp)
                     .weight(0.85f)
                     .background(Color.White)
             )
@@ -268,7 +265,7 @@ fun MessageInput(
                     }
                 },
                 modifier = Modifier
-                    .padding(start = 8.dp)
+                    //.padding(start = 8.dp)
                     //.align(Alignment.CenterVertically)
                     //.fillMaxWidth()
                     .background(Color(0xFF4F89F8))

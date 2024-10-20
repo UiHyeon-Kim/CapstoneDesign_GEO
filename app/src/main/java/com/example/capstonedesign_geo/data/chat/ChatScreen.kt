@@ -1,5 +1,6 @@
 package com.example.capstonedesign_geo.data.chat
 
+/*
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -202,3 +203,4 @@ fun MessageInput(
         }
     }
 }
+*/
