@@ -18,7 +18,7 @@ class ChatViewModel(
 ) : ViewModel() {
     private val chat = generativeModel.startChat(
         history = listOf(
-            content(role = "model") { text("안녕하세요 지오에요!\n 궁금하신게 있으신가요?") }
+            content(role = "model") { text("안녕하세요 지오에요!\n궁금하신게 있으신가요?") }
         )
     )
 
@@ -27,7 +27,7 @@ class ChatViewModel(
             // 초기 메시지 매핑
             ChatMessage(
                 text = content.parts.first().asTextOrNull() ?: "",
-                participant = /*if (content.role == "user") Participant.USER else */Participant.MODEL,
+                participant = if (content.role == "user") Participant.USER else Participant.MODEL,
                 isPending = false
             )
         }))

@@ -33,6 +33,7 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -60,6 +61,7 @@ import com.example.capstonedesign_geo.data.chat.ChatMessage
 import com.example.capstonedesign_geo.data.chat.Participant
 import com.example.capstonedesign_geo.viewmodel.ChatViewModel
 import com.example.capstonedesign_geo.viewmodel.GenerativeViewModelFactory
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import kotlinx.coroutines.launch
 
 class ChatBotActivity : AppCompatActivity() {
@@ -112,6 +114,14 @@ internal fun ChatRoute(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ChatTopBar(onBackClick: () -> Unit = {}) {
+    val systemUiController = rememberSystemUiController()
+
+    SideEffect {
+        systemUiController.setStatusBarColor(
+            color = Color(0xFF4F89F8),
+            darkIcons = false
+        )
+    }
     TopAppBar(title = { Text(text = "", modifier = Modifier.fillMaxWidth()) },
         navigationIcon = {
             androidx.compose.material3.IconButton(onClick = { onBackClick() }) {
@@ -148,12 +158,6 @@ fun ChatList(
 fun ChatBubbleItem(chatMessage: ChatMessage) {
     val isModelMessage = chatMessage.participant == Participant.MODEL ||
             chatMessage.participant == Participant.ERROR
-
-    /*val backgroundColor = when (chatMessage.participant) {
-        Participant.MODEL -> Color.Transparent
-        Participant.USER -> MaterialTheme.colorScheme.primary
-        Participant.ERROR -> MaterialTheme.colorScheme.errorContainer
-    }*/
 
     val backgroundColor = if (isModelMessage) {
         Color.Transparent
@@ -235,8 +239,6 @@ fun ChatBubbleItem(chatMessage: ChatMessage) {
                         fontFamily = notoSansFamily,
                         style = TextStyle(
                             fontSize = 16.sp
-                            //fontWeight = FontWeight.Normal,
-                            //includeFontPadding = false
                         )
                     )
                 }
