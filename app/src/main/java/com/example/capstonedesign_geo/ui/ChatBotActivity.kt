@@ -3,9 +3,7 @@ package com.example.capstonedesign_geo.ui
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -28,11 +26,12 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -42,11 +41,19 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.capstonedesign_geo.R
 import com.example.capstonedesign_geo.data.chat.ChatMessage
@@ -110,10 +117,13 @@ fun ChatTopBar(onBackClick: () -> Unit = {}) {
             androidx.compose.material3.IconButton(onClick = { onBackClick() }) {
                 Icon(
                     painter = painterResource(id = R.drawable.icon_back_btn),
-                    contentDescription = "Back"
+                    contentDescription = "Back",
+                    tint = Color.White,
+                    modifier = Modifier.size(40.dp)
                 )
             }
-        }
+        },
+        colors = TopAppBarDefaults.topAppBarColors(containerColor = Color(0xFF4F89F8))
     )
 }
 
@@ -164,9 +174,9 @@ fun ChatBubbleItem(chatMessage: ChatMessage) {
     }
 
     val bubbleShape = if (isModelMessage) {
-        RoundedCornerShape(4.dp, 20.dp, 20.dp, 20.dp)
+        RoundedCornerShape(20.dp, 20.dp, 20.dp, 20.dp)
     } else {
-        RoundedCornerShape(20.dp, 4.dp, 20.dp, 20.dp)
+        RoundedCornerShape(20.dp, 20.dp, 20.dp, 20.dp)
     }
 
     val horizontalAlignment = if (isModelMessage) {
@@ -186,35 +196,48 @@ fun ChatBubbleItem(chatMessage: ChatMessage) {
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.padding(bottom = 4.dp)
             ) {
-                Icon(painter = painterResource(id = R.drawable.icon_geo), contentDescription = "Geo", modifier = Modifier.size(50.dp))
-                Text(text = "지오", style = MaterialTheme.typography.bodySmall)
+                Icon(
+                    painter = painterResource(id = R.drawable.icon_geo),
+                    contentDescription = "Geo",
+                    modifier = Modifier.size(40.dp),
+                    tint = Color.Unspecified
+                )
+                Text(
+                    text = "지오",
+                    fontFamily = notoSansFamily,
+                    style = TextStyle(
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                )
             }
         }
-        /*Text(
-            text = chatMessage.participant.name,
-            style = MaterialTheme.typography.bodySmall,
-            modifier = Modifier.padding(bottom = 4.dp)
-        )*/
-        /*Row {
-            if (chatMessage.isPending) {
-                CircularProgressIndicator(
-                    modifier = Modifier
-                        .align(Alignment.CenterVertically)
-                        .padding(all = 8.dp)
-                )
-            }*/
             BoxWithConstraints {
                 Card(
                     shape = bubbleShape,
                     colors = CardDefaults.cardColors(containerColor = backgroundColor),
                     modifier = Modifier
-                        .border(BorderStroke(1.dp, borderColor))
+                        //.border(BorderStroke(2.dp, borderColor))
+                        .drawBehind {
+                            drawRoundRect(
+                                color = borderColor,
+                                size = size,
+                                cornerRadius = CornerRadius(20.dp.toPx(), 20.dp.toPx()),
+                                style = Stroke(width = 1.5.dp.toPx())
+                            )
+                        }
                         .widthIn(0.dp, maxWidth * 0.9f)
                 ) {
                     androidx.compose.material3.Text(
                         text = chatMessage.text,
                         color = textColor,
-                        modifier = Modifier.padding(16.dp)
+                        modifier = Modifier.padding(16.dp),
+                        fontFamily = notoSansFamily,
+                        style = TextStyle(
+                            fontSize = 16.sp
+                            //fontWeight = FontWeight.Normal,
+                            //includeFontPadding = false
+                        )
                     )
                 }
             }
@@ -240,20 +263,21 @@ fun MessageInput(
                 .height(56.dp)
         ) {
             // 메시지 입력 필드
-            OutlinedTextField(
+            TextField(
                 value = userMessage,
-                // label = { androidx.compose.material3.Text(stringResource(R.string.chat_label)) },
                 onValueChange = { userMessage = it },
-                /*keyboardOptions = KeyboardOptions(
-                    capitalization = KeyboardCapitalization.Sentences,
-                ),*/
                 placeholder = { Text(text = "메시지를 입력하세요") },
                 modifier = Modifier
-                    //.align(Alignment.CenterVertically)
                     .fillMaxWidth()
                     .height(56.dp)
-                    .weight(0.85f)
-                    .background(Color.White)
+                    .weight(0.85f),
+                colors = TextFieldDefaults.colors(
+                    focusedContainerColor = Color.White,
+                    unfocusedContainerColor = Color.White,
+                    cursorColor = Color.Black,
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Gray
+                )
             )
             // 전송 버튼
             IconButton(
@@ -282,3 +306,8 @@ fun MessageInput(
         }
     //}
 }
+
+val notoSansFamily = FontFamily(
+    Font(R.font.notosans_bold, FontWeight.Bold),
+    Font(R.font.notosans, FontWeight.Normal)
+)
