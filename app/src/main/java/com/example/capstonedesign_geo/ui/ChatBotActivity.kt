@@ -7,13 +7,18 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
@@ -46,6 +51,7 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
@@ -83,6 +89,8 @@ internal fun ChatRoute(
     val listState = rememberLazyListState()
     val coroutineScope = rememberCoroutineScope()
 
+    val imeNestedScrollConnection = rememberNestedScrollInteropConnection()
+
     Scaffold(
         topBar = {
             ChatTopBar()
@@ -98,7 +106,10 @@ internal fun ChatRoute(
                     }
                 }
             )
-        }
+        },
+        modifier = Modifier
+            .fillMaxSize()
+            .windowInsetsPadding(WindowInsets.systemBars.only(WindowInsetsSides.Bottom))
     ) { paddingValues ->
         Column(
             modifier = Modifier
@@ -254,11 +265,6 @@ fun MessageInput(
     resetScroll: () -> Unit = {}
 ) {
     var userMessage by rememberSaveable { mutableStateOf("") }
-
-    /*ElevatedCard(
-        modifier = Modifier
-            .fillMaxWidth()
-    ) {*/
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -291,22 +297,16 @@ fun MessageInput(
                     }
                 },
                 modifier = Modifier
-                    //.padding(start = 8.dp)
-                    //.align(Alignment.CenterVertically)
-                    //.fillMaxWidth()
                     .background(Color(0xFF4F89F8))
                     .fillMaxHeight()
-                    //.weight(0.15f)
             ) {
                 Icon(
                     Icons.Default.Send,
                     contentDescription = stringResource(R.string.action_send),
                     tint = Color.White
-                    //modifier = Modifier.background(MaterialTheme.colorScheme.primary)
                 )
             }
         }
-    //}
 }
 
 val notoSansFamily = FontFamily(
