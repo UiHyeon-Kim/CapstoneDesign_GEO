@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -66,9 +67,15 @@ public class UserRegComplete extends AppCompatActivity {
         String location = sharedPreferences.getString("location", null);
         Set<String> favoriteTags = sharedPreferences.getStringSet("favoriteTags", new HashSet<>());
 
-        User user = new User(userId, androidId, nickname, userType, age, location);
-
+        User user = new User(userId, androidId, nickname, userType, age, location, favoriteTags);
         userRepository.insertUser(user);
+
+        User savedUser = userRepository.getUserById(userId);
+        if (savedUser != null) {
+            Log.d("saveUserInfo", "User saved: " + savedUser.toString());
+        } else {
+            Log.e("saveUserInfo", "User not saved in the database.");
+        }
     }
 
     private void getNickname() {
