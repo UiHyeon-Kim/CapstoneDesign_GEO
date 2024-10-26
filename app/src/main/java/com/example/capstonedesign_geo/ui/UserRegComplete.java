@@ -1,5 +1,7 @@
 package com.example.capstonedesign_geo.ui;
 
+import static com.gun0912.tedpermission.provider.TedPermissionProvider.context;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,24 +12,24 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import com.example.capstonedesign_geo.R;
 import com.example.capstonedesign_geo.data.dao.UserDao;
+import com.example.capstonedesign_geo.data.db.GeoDatabase;
 import com.example.capstonedesign_geo.data.model.User;
 import com.example.capstonedesign_geo.data.repository.UserRepository;
 import com.example.capstonedesign_geo.data.repository.UserRepositoryImpl;
 import com.example.capstonedesign_geo.utility.StatusBarKt;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class UserRegComplete extends AppCompatActivity {
 
     private Button btnComplete;
     private TextView greeting;
-    private UserRepository userRepository;
     private String nickname;
-    private UserDao userDao;
+    private UserRepository userRepository;
+    private GeoDatabase db = Room.databaseBuilder(context.getApplicationContext(), GeoDatabase.class, "GeoDatabase").build();
+    private final UserDao userDao = db.userDao();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,8 +39,19 @@ public class UserRegComplete extends AppCompatActivity {
 
         btnComplete = findViewById(R.id.btnComplete);
         greeting = findViewById(R.id.tvGreeting);
-        userRepository = new UserRepositoryImpl(userDao);
-        User user = userRepository.getUserById("userId");
+
+        // User user = userRepository.getUserById("userId");
+        db = GeoDatabase.getInstance(this);
+        userRepository = new UserRepositoryImpl(db.userDao());
+
+        new Thread(() -> {
+            User user = userRepository.getUserById("userId");
+            if (user != null) {
+                Log.d("UserRegComplete", "User found in the database: " + user);
+            } else {
+                Log.e("UserRegComplete", "User not found in the database.");
+            }
+        }).start();
 
         // 설문조사 완료 환영 문구 출력
         getNickname();
@@ -65,14 +78,24 @@ public class UserRegComplete extends AppCompatActivity {
         boolean userType = sharedPreferences.getBoolean("userType", false);
         int age = sharedPreferences.getInt("age", 0);
         String location = sharedPreferences.getString("location", null);
-        Set<String> favoriteTags = sharedPreferences.getStringSet("favoriteTags", new HashSet<>());
+        // Set<String> favoriteTags = sharedPreferences.getStringSet("favoriteTags", new HashSet<>());
 
-        User user = new User(userId, androidId, nickname, userType, age, location, favoriteTags);
+        if (userId == null) {
+            Log.e("saveUserInfo", "UserId is null. Cannot create User instance.");
+            return;
+        }
+
+        User user = new User(userId, androidId, nickname, userType, age, location);
         userRepository.insertUser(user);
+
+        new Thread(() -> {
+            userDao.insertUser(user);
+            Log.d("saveUserInfo", "User saved to database: " + user);
+        }).start();
 
         User savedUser = userRepository.getUserById(userId);
         if (savedUser != null) {
-            Log.d("saveUserInfo", "User saved: " + savedUser.toString());
+            Log.d("saveUserInfo", "User saved: " + savedUser);
         } else {
             Log.e("saveUserInfo", "User not saved in the database.");
         }

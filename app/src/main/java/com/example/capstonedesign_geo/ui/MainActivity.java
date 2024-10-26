@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("MainActivity", "favoriteTags: " + favoriteTags);
 
         // 아래 변수들의 값이 저장되어 있으면 선호도 조사 완료
-        return androidId != null && nickname != null && location != null && age > 0 && favoriteTags != null;
+        return androidId != null && nickname != null && location != null && age > 0;// && favoriteTags != null;
     }
 
     // 뒤로가기 버튼 지연 시간

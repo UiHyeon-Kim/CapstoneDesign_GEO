@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -92,6 +93,8 @@ public class UserRegNickname extends AppCompatActivity {
         editor.putString("nickname", nickname);
         editor.putString("androidId", androidId);
         editor.apply();
+        Log.d("UserRegNickname", "닉네임: " + nickname);
+        Log.d("UserRegNickname", "기기 일련번호: " + androidId);
     }
 
     // 저장된 닉네임을 불러옴
