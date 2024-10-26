@@ -132,7 +132,6 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
                             return false;
                         }
                     });
-
                 }
             }
 
