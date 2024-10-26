@@ -6,9 +6,8 @@
     <string name="btnComplete">시 작 하 기</string>
     <string name="yearSelect">태어난 연도를 선택해주세요</string>
     <string name="locationSelect">거주지를 선택해주세요</string>
-    <string name="geoGreeting1">안녕하세요! 저는 지오라고 해요.\n\'망월사 맛집 알려줘\'와 같이 질문해보세요</string>
-    <string name="geoGreeting2">안녕하세요! 저는 지오예요!\n무엇을 도와드릴까요?</string>
-    <string name="geoGreeting3">안녕하세요! 저는 지오라고 해요.\n무엇을 도와드릴까요?</string>
+    <string name="chat_label">메시지를 입력하세요.</string>
+    <string name="action_send">전송</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

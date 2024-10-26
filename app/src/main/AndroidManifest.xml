@@ -32,7 +32,8 @@
         </activity>
         <activity
             android:name=".ui.MainActivity"
-            android:exported="false" />
+            android:exported="true" />
+
         <!-- 추가된 액티비티 선언 -->
         <activity android:name=".ui.UserRegistration" />
         <activity android:name=".ui.UserRegNickname" />
