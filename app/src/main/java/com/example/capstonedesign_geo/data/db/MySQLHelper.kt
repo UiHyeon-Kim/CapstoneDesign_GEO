@@ -1,20 +1,23 @@
-package com.example.capstonedesign_geo.data.db;
+package com.example.capstonedesign_geo.data.db
 
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.Connection
+import java.sql.DriverManager
+import java.sql.SQLException
 
-public class MySQLHelper {
-    private static final String URL = "jdbc:mysql://127.0.0.1:3306/geo_db";
-    private static final String USER = "geo";
-    private static final String PSWD = "0000";
+fun connectToDatabase(): Connection? {
+    var connectoin: Connection? = null
+    try {
+        Class.forName("com.mysql.jdbc.Driver")
 
-    public Connection connect() {
-        Connection connection = null;
-        try {
-            connection = DriverManager.getConnection(URL, USER, PSWD);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return connection;
+        val url = "jdbc:mysql://3.35.170.12:3306/Place"
+        val user = "Geo"
+        val password = "Gep2024"
+
+        connectoin = DriverManager.getConnection(url, user, password)
+    } catch (e: ClassNotFoundException) {
+        e.printStackTrace()
+    } catch (e: SQLException) {
+        e.printStackTrace()
     }
+    return connectoin
 }

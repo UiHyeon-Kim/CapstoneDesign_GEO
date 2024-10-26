@@ -17,7 +17,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.capstonedesign_geo.R;
-import com.example.capstonedesign_geo.data.db.MySQLHelper;
 import com.example.capstonedesign_geo.ui.fragment.BottomSheet;
 import com.example.capstonedesign_geo.ui.fragment.NaverFragment;
 import com.example.capstonedesign_geo.utility.StatusBarKt;
@@ -33,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     private long backPressedTime; // 마지막 뒤로가기 누른 시간
     private Toast backToast; // 뒤로가기 메시지
     private FloatingActionButton temp;
-    MySQLHelper mySQLHelper = new MySQLHelper();
 
     // @SuppressLint("MissingInflatedId") // 에러 무시
     @Override
