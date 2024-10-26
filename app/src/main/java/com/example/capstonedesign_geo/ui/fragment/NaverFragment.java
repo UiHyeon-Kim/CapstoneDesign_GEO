@@ -130,6 +130,7 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
                         {
                             Toast.makeText(getContext(), "마커" + naverMapInfo.get(finalI).gettitle() + "클릭", Toast.LENGTH_SHORT).show();
                             return false;
+
                         }
                     });
                 }
