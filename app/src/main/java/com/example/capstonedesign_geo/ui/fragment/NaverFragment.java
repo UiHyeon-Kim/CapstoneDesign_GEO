@@ -1,10 +1,13 @@
 package com.example.capstonedesign_geo.ui.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.capstonedesign_geo.R;
@@ -15,7 +18,15 @@ import com.naver.maps.map.MapView;
 import com.naver.maps.map.NaverMap;
 import com.naver.maps.map.OnMapReadyCallback;
 import com.naver.maps.map.UiSettings;
+import com.naver.maps.map.overlay.Marker;
+import com.naver.maps.map.overlay.Overlay;
 import com.naver.maps.map.util.FusedLocationSource;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class NaverFragment extends Fragment implements OnMapReadyCallback {
@@ -24,6 +35,9 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
     private FusedLocationSource locationSource; //위치를 반환하는 구현체
     private NaverMap naverMap;
     private MapView mapView; //지도 객체 변수
+
+    private NaverMapItem naverMapList;
+    private List<NaverMapData> naverMapInfo;
 
     public NaverFragment() { }
 
@@ -84,6 +98,50 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
         uiSettings.setScaleBarEnabled(true);        //축적바(그 얼마나 확대 했나~그거)
         uiSettings.setZoomControlEnabled(true);     //확대 축소 버튼
         uiSettings.setLocationButtonEnabled(true);  //현위치 버튼
+
+        //클라이언트 객체 생성
+        NaverMapApiInterface naverMapApiInterface = NaverMapRequest.getClient().create(NaverMapApiInterface.class);
+        // 응답을 받을 콜백 구현
+        Call<NaverMapItem> call = naverMapApiInterface.getMapData();
+        //클라이언트 객체가 제공하는 enqueue로 통신에 대한 요청, 응답 처리 방법 명시
+        call.enqueue(new Callback<NaverMapItem>() {
+            @Override
+            public void onResponse(Call<NaverMapItem> call, Response<NaverMapItem> response) {
+                naverMapList = response.body();
+                naverMapInfo = naverMapList.result;
+
+                // 토스트로 첫번째 행의 식당주소(StoreAddr) 띄우기
+                Toast.makeText(getContext(), String.valueOf(naverMapInfo.get(1).getmapx()), Toast.LENGTH_LONG).show();
+
+                // 마커 여러개 찍기
+                for(int i=0; i < naverMapInfo.size(); i++){
+                    Marker[] markers = new Marker[naverMapInfo.size()];
+
+                    markers[i] = new Marker();
+                    double lnt = naverMapInfo.get(i).getmapx();
+                    double lat = naverMapInfo.get(i).getmapy();
+                    markers[i].setPosition(new LatLng(lat, lnt));
+                    markers[i].setMap(naverMap);
+
+                    int finalI = i;
+                    markers[i].setOnClickListener(new Overlay.OnClickListener() {
+                        @Override
+                        public boolean onClick(@NonNull Overlay overlay)
+                        {
+                            Toast.makeText(getContext(), "마커" + naverMapInfo.get(finalI).gettitle() + "클릭", Toast.LENGTH_SHORT).show();
+                            return false;
+
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onFailure(Call<NaverMapItem> call, Throwable t) {
+                Log.e("API_ERROR", "통신 실패", t);
+                Toast.makeText(getContext(), "실패: " + t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
 

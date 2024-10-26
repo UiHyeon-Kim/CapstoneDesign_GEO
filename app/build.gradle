@@ -66,6 +66,10 @@ dependencies {
     implementation composeBom
     androidTestImplementation composeBom
 
+    implementation 'com.android.volley:volley-cronet:1.2.1' //volley 라이브러리
+    implementation 'com.squareup.retrofit2:retrofit:2.0.0' //retrofit 라이브러리
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0' //retrofit2는 HTTP통신을 간편하게 만들어주는 라이브러리
+    implementation 'com.google.code.gson:gson:2.8.9' //gson 라이브러리
     implementation 'androidx.appcompat:appcompat:1.7.0' // API 버전 호환성
     implementation 'com.google.android.material:material:1.12.0' //material라이브러리
     implementation 'io.github.ParkSangGwon:tedpermission-normal:3.3.0' //권한 설정 오픈소스
