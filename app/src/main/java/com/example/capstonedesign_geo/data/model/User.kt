@@ -11,4 +11,5 @@ data class User(
     val userType: Boolean,
     val age: Int,
     val location: String
+    // val favoriteTags: Set<String> = emptySet()
 )

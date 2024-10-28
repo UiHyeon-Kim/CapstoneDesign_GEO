@@ -3,6 +3,7 @@ package com.example.capstonedesign_geo.ui;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageButton;
 
@@ -51,21 +52,6 @@ public class UserRegFavorite extends AppCompatActivity implements ConfirmDialogI
             dialog.setConfirmDialogInterface(this);
             dialog.show(getFragmentManager(), "CustomDialog");
 
-            // 대화상자
-            /*new AlertDialog.Builder(UserRegFavorite.this)
-                    .setTitle("가입을 완료 하시겠습니까?")
-                    .setMessage("추후 설정에서 변경이 가능합니다.")
-                    .setPositiveButton("확인", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int i) {
-                            Intent intent = new Intent(UserRegFavorite.this, UserRegComplete.class);
-                            startActivity(intent);
-                        }
-                    })
-                    .setNegativeButton("취소", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int i) {
-                            dialog.dismiss(); // 다이얼로그 닫기
-                        }
-                    }).show();*/
         });
 
         ImageButton btnBack = findViewById(R.id.backButton);
@@ -90,7 +76,7 @@ public class UserRegFavorite extends AppCompatActivity implements ConfirmDialogI
                 selectedTags.add(chip.getText().toString()); // 선택한 태그를 리스트에 추가
             }
         }
-
+        Log.d("UserRegFavorite", "선택한 태그: " + selectedTags);
         editor.putStringSet("favoriteTags", selectedTags);
         editor.apply();
     }

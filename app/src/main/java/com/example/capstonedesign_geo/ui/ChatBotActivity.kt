@@ -1,5 +1,6 @@
 package com.example.capstonedesign_geo.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
@@ -51,6 +52,7 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -126,6 +128,7 @@ internal fun ChatRoute(
 @Composable
 fun ChatTopBar(onBackClick: () -> Unit = {}) {
     val systemUiController = rememberSystemUiController()
+    val context = LocalContext.current
 
     SideEffect {
         systemUiController.setStatusBarColor(
@@ -135,7 +138,11 @@ fun ChatTopBar(onBackClick: () -> Unit = {}) {
     }
     TopAppBar(title = { Text(text = "", modifier = Modifier.fillMaxWidth()) },
         navigationIcon = {
-            androidx.compose.material3.IconButton(onClick = { onBackClick() }) {
+            IconButton(onClick = {
+                val intent = Intent(context, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP// or Intent.FLAG_ACTIVITY_NEW_TASK
+                context.startActivity(intent)
+            } ) {
                 Icon(
                     painter = painterResource(id = R.drawable.icon_back_btn),
                     contentDescription = "Back",
