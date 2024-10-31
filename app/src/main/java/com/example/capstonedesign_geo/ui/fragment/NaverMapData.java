@@ -3,8 +3,8 @@ package com.example.capstonedesign_geo.ui.fragment;
 import com.google.gson.annotations.SerializedName;
 
 public class NaverMapData {
-    @SerializedName("num")
-    private int num;
+    @SerializedName("category")
+    private String category;
 
     @SerializedName("addr1")
     private String addr1;
@@ -36,8 +36,8 @@ public class NaverMapData {
     @SerializedName("disabled")
     private String disabled;
 
-    public int getnum() {
-        return num;
+    public String getcategory() {
+        return category;
     }
 
     public String getaddr1() {

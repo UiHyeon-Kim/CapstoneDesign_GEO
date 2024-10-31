@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.capstonedesign_geo.R;
@@ -18,8 +17,6 @@ import com.naver.maps.map.MapView;
 import com.naver.maps.map.NaverMap;
 import com.naver.maps.map.OnMapReadyCallback;
 import com.naver.maps.map.UiSettings;
-import com.naver.maps.map.overlay.Marker;
-import com.naver.maps.map.overlay.Overlay;
 import com.naver.maps.map.util.FusedLocationSource;
 
 import java.util.List;
@@ -110,10 +107,10 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
                 naverMapList = response.body();
                 naverMapInfo = naverMapList.result;
 
-                // 토스트로 첫번째 행의 식당주소(StoreAddr) 띄우기
-                Toast.makeText(getContext(), String.valueOf(naverMapInfo.get(1).getmapx()), Toast.LENGTH_LONG).show();
+                /*/ 토스트로 첫번째 행의 식당주소(StoreAddr) 띄우기
+                Toast.makeText(getContext(), String.valueOf(naverMapInfo.get(1).getmapx()), Toast.LENGTH_LONG).show();*/
 
-                // 마커 여러개 찍기
+                /*/ 마커 여러개 찍기
                 for(int i=0; i < naverMapInfo.size(); i++){
                     Marker[] markers = new Marker[naverMapInfo.size()];
 
@@ -133,7 +130,9 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
 
                         }
                     });
-                }
+                } */
+
+
             }
 
             @Override
