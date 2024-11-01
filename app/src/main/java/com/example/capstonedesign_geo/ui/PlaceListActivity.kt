@@ -15,12 +15,6 @@ class PlaceListActivity : AppCompatActivity() {
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        /*TourViewModel.tourItems.observe(this) { items ->
-            recyclerView.adpter = TourListAdapter(items) { selectedItem ->
-                val intent = Intent(this, PlaceDetailInfoActivity::class.java)
-                intent.putExtra("item", selectedItem)
-                startActivity(intent)
-            }
-        }*/
+
     }
 }

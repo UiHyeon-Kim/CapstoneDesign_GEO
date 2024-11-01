@@ -41,7 +41,8 @@
         <activity android:name=".ui.UserRegAge" />
         <activity android:name=".ui.UserRegLocation" />
         <activity android:name=".ui.UserRegFavorite" />
-        <activity android:name=".ui.UserRegComplete" />
+        <activity android:name=".ui.UserRegComplete"
+            android:exported="true"/>
         <activity android:name=".ui.fragment.BottomSheet" />
         <activity android:name=".ui.fragment.NaverFragment" />
         <activity android:name=".ui.PreferenceListActivity" />
@@ -50,7 +51,8 @@
         <activity android:name=".ui.RecommendActivity" />
         <activity android:name=".ui.SettingActivity" />
         <activity android:name=".ui.PolicyActivity" />
-        <activity android:name=".ui.ChatBotActivity" />
+        <activity android:name=".ui.ChatBotActivity"
+            android:exported="true"/>
 
         <!-- 네이버지도 클라이언트 ID지정 -->
         <meta-data

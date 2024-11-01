@@ -113,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
 
         // SharedPreferences에서 저장된 사용자 데이터 가져오기
+        String userId = sharedPreferences.getString("userId", null);
         String androidId = sharedPreferences.getString("androidId", null); // 가져올 값과 기본값
         String nickname = sharedPreferences.getString("nickname", null);
         boolean userType = sharedPreferences.getBoolean("userType", false);
@@ -120,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
         String location = sharedPreferences.getString("location", null);
         Set<String> favoriteTags = sharedPreferences.getStringSet("favoriteTags", null);
 
+        Log.d("MainActivity", "userId: " + userId);
         Log.d("MainActivity", "androidId: " + androidId);
         Log.d("MainActivity", "nickname: " + nickname);
         Log.d("MainActivity", "userType: " + userType);
@@ -145,6 +147,14 @@ public class MainActivity extends AppCompatActivity {
         backPressedTime = System.currentTimeMillis(); // 현재 시간을 저장
     }
 
+    // 프래그먼트에 chip 카테고리 전달
+    private void sendCategotyToFragment(String category) {
+        NaverFragment naverFragment = (NaverFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_zone);
+
+        if (naverFragment != null) {
+            // naverFragment.함수명(category);
+        }
+    }
 
 }
 

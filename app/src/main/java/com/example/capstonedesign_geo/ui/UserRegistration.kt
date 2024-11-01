@@ -57,7 +57,8 @@ class UserRegistration : AppCompatActivity() {
             // 요청할 권한 명시
             .setPermissions(
                 Manifest.permission.ACCESS_FINE_LOCATION,  // 정밀 위치 권한(GPS)
-                Manifest.permission.ACCESS_COARSE_LOCATION // 대략적인 위치 권한(네트워크)
+                Manifest.permission.ACCESS_COARSE_LOCATION,// 대략적인 위치 권한(네트워크)
+                Manifest.permission.INTERNET
             )
             .check() // 설정된 내용을 바탕으로 권한을 요청
     }

@@ -36,6 +36,8 @@ public class UserRegNickname extends AppCompatActivity {
         // 상태바 색 변경
         StatusBarKt.setStatusBarColor(this, getResources().getColor(R.color.mainblue));
 
+        // userId = UUID.randomUUID().toString();
+
         // 뷰와 db 초기화
         editNickname = findViewById(R.id.editNickname);
         nicknameFeedback = findViewById(R.id.nicknameFeedback);
@@ -90,9 +92,11 @@ public class UserRegNickname extends AppCompatActivity {
     private void saveNicknameId(String nickname){
         SharedPreferences sharedPreferences = getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
+        // editor.putString("userId", userId);
         editor.putString("nickname", nickname);
         editor.putString("androidId", androidId);
         editor.apply();
+        Log.d("UserRegNickname", "사용자 ID: " + userId);
         Log.d("UserRegNickname", "닉네임: " + nickname);
         Log.d("UserRegNickname", "기기 일련번호: " + androidId);
     }
