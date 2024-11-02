@@ -54,6 +54,9 @@
         <activity android:name=".ui.ChatBotActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".ui.fragment.MapInfoActivity"
+            android:theme="@style/AppTheme.Custom"/>
+
 
         <!-- 네이버지도 클라이언트 ID지정 -->
         <meta-data

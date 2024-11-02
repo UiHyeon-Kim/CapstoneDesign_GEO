@@ -23,6 +23,9 @@ public class NaverMapData {
     @SerializedName("hours")
     private String hours;
 
+    @SerializedName("firstimage")
+    private String firstimage;
+
     @SerializedName("mapx")
     private double mapx;
 
@@ -75,6 +78,12 @@ public class NaverMapData {
     public void setAddr2(String addr2) {
         this.addr2 = addr2;
     }
+
+    public String getFirstimage() {
+        return firstimage;
+    }
+
+    public void setFirstimage(String firstimage) {this.firstimage = firstimage;}
 
     public String getHours() {
         return hours;

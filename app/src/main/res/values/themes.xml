@@ -14,4 +14,10 @@
         <item name="android:spinnerMode">dropdown</item>        <!-- 드랍다운 형식과 팝업(다이얼로그)형태 선택 -->
         <item name="android:dropDownWidth">match_parent</item>  <!-- 드랍다운 메뉴 가로 길이 설정 -->
     </style>
+
+    <style name="AppTheme.Custom" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
 </resources>
