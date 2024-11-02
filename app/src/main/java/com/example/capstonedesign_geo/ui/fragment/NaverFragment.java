@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.example.capstonedesign_geo.R;
+import com.example.capstonedesign_geo.data.db.GeoDatabase;
 import com.naver.maps.geometry.LatLng;
 import com.naver.maps.map.CameraPosition;
 import com.naver.maps.map.LocationTrackingMode;
@@ -193,5 +194,18 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
     {
         super.onLowMemory();
         mapView.onLowMemory();
+    }
+
+    private void insertDataIntoLocalDatabase(List<NaverMapData> dataList) {
+        // Room 데이터베이스 인스턴스 가져오기
+        GeoDatabase db = GeoDatabase.getInstance(getContext());
+
+        // 백그라운드 스레드에서 데이터 삽입
+        new Thread(() -> {
+            NaverMapDataDao dao = db.naverMapDataDao();
+            for (NaverMapData item : dataList) {
+                dao.insert(item);
+            }
+        }).start();
     }
 }

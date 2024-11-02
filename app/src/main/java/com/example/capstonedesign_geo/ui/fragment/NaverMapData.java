@@ -1,8 +1,16 @@
 package com.example.capstonedesign_geo.ui.fragment;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.SerializedName;
 
+@Entity(tableName = "naver_map_data")
 public class NaverMapData {
+
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+
     @SerializedName("category")
     private String category;
 
@@ -36,45 +44,99 @@ public class NaverMapData {
     @SerializedName("disabled")
     private String disabled;
 
-    public String getcategory() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getCategory() {
         return category;
     }
 
-    public String getaddr1() {
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getAddr1() {
         return addr1;
     }
 
-    public String getaddr2() {
+    public void setAddr1(String addr1) {
+        this.addr1 = addr1;
+    }
+
+    public String getAddr2() {
         return addr2;
     }
 
-    public String gethours() {
+    public void setAddr2(String addr2) {
+        this.addr2 = addr2;
+    }
+
+    public String getHours() {
         return hours;
     }
 
-    public double getmapx() {
+    public void setHours(String hours) {
+        this.hours = hours;
+    }
+
+    public double getMapx() {
         return mapx;
     }
 
-    public double getmapy() { return mapy; }
+    public void setMapx(double mapx) {
+        this.mapx = mapx;
+    }
 
-    public String gettel() {
+    public double getMapy() {
+        return mapy;
+    }
+
+    public void setMapy(double mapy) {
+        this.mapy = mapy;
+    }
+
+    public String getTel() {
         return tel;
     }
 
-    public String gettitle() {
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public String getTitle() {
         return title;
     }
 
-    public String getcontent() {
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContent() {
         return content;
     }
 
-    public String getamenity() {
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getAmenity() {
         return amenity;
     }
 
-    public String getdisabled() {
+    public void setAmenity(String amenity) {
+        this.amenity = amenity;
+    }
+
+    public String getDisabled() {
         return disabled;
+    }
+
+    public void setDisabled(String disabled) {
+        this.disabled = disabled;
     }
 }
