@@ -53,9 +53,12 @@ class ChatViewModel(
                 _uiState.value.replaceLastPendingMessage()
 
                 response.text?.let { modelResponse ->
+
+                    val cleanedResponse = modelResponse.trim()
+
                     _uiState.value.addMessage(
                         ChatMessage(
-                            text = modelResponse,
+                            text = cleanedResponse,
                             participant = Participant.MODEL,
                             isPending = false
                         )
