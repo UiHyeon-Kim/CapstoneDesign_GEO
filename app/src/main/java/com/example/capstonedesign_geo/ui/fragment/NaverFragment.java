@@ -148,7 +148,6 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
 
 
             }
-
             @Override
             public void onFailure(Call<NaverMapItem> call, Throwable t) {
                 Log.e("API_ERROR", "통신 실패", t);
