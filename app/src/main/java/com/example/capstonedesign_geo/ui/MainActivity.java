@@ -95,6 +95,12 @@ public class MainActivity extends AppCompatActivity {
 
                 // 오른쪽 아이콘 클릭
                 if (drawableRight != null) {
+                    int drawableRightStart = editSearch.getWidth() - editSearch.getPaddingRight() - drawableRight.getIntrinsicWidth();
+                    if (x >= (drawableRightStart - extraTouchAreaPx) && x <= (editSearch.getWidth() + extraTouchAreaPx)) {
+                        Intent intent = new Intent(MainActivity.this, PlaceListActivity.class);
+                        startActivity(intent);
+                    }
+
                 }
             }
             return false;
