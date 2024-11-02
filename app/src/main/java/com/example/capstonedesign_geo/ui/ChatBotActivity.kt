@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -111,12 +112,14 @@ internal fun ChatRoute(
         },
         modifier = Modifier
             .fillMaxSize()
+            .imePadding()
             .windowInsetsPadding(WindowInsets.systemBars.only(WindowInsetsSides.Bottom))
     ) { paddingValues ->
         Column(
             modifier = Modifier
                 .padding(paddingValues)
                 .fillMaxSize()
+                .imePadding()
         ) {
             // Messages List
             ChatList(chatUiState.messages, listState)
