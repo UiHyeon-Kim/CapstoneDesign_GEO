@@ -1,6 +1,5 @@
 package com.example.capstonedesign_geo.viewmodel
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.capstonedesign_geo.data.chat.ChatMessage
@@ -11,6 +10,7 @@ import com.example.capstonedesign_geo.ui.fragment.NaverMapDataDao
 import com.google.ai.client.generativeai.GenerativeModel
 import com.google.ai.client.generativeai.type.asTextOrNull
 import com.google.ai.client.generativeai.type.content
+import com.gun0912.tedpermission.provider.TedPermissionProvider.context
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -20,8 +20,8 @@ import kotlinx.coroutines.withContext
 
 class ChatViewModel(
     generativeModel: GenerativeModel,
-    private val context: Context // ChatViewModel이 GeoDatabase에 접근하기 위해 Context 사용, chatViewModel 생성 시 Context 전달
 ) : ViewModel() {
+
     private val chat = generativeModel.startChat(
         history = listOf(
             content(role = "model") { text("안녕하세요 지오에요!\n궁금하신게 있으신가요?") }
