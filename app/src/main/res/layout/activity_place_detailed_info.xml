@@ -44,7 +44,7 @@
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/map_detail_title"
+                android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/notosans_bold"
@@ -58,7 +58,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView26"
+                    android:id="@+id/addr"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:includeFontPadding="false"
@@ -67,7 +67,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/textView27"
+                    android:id="@+id/category"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
@@ -130,10 +130,10 @@
                 android:layout_height="5dp"
                 android:background="@android:color/darker_gray" />
 
-<!--            <androidx.recyclerview.widget.RecyclerView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:overScrollMode="never" />-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

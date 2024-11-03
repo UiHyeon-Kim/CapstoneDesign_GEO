@@ -41,8 +41,9 @@
         <activity android:name=".ui.UserRegAge" />
         <activity android:name=".ui.UserRegLocation" />
         <activity android:name=".ui.UserRegFavorite" />
-        <activity android:name=".ui.UserRegComplete"
-            android:exported="true"/>
+        <activity
+            android:name=".ui.UserRegComplete"
+            android:exported="true" />
         <activity android:name=".ui.fragment.BottomSheet" />
         <activity android:name=".ui.fragment.NaverFragment" />
         <activity android:name=".ui.PreferenceListActivity" />

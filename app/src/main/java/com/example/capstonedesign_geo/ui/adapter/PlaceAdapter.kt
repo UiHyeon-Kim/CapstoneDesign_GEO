@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.capstonedesign_geo.R
 import com.example.capstonedesign_geo.ui.fragment.NaverMapData
 
@@ -19,8 +20,10 @@ class PlaceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val placePrefer = itemView.findViewById<ImageView>(R.id.placePrefer)
 }
 
-class PlaceAdapter(private val places: List<NaverMapData>) :
-    RecyclerView.Adapter<PlaceViewHolder>() {
+class PlaceAdapter(
+    private val places: List<NaverMapData>,
+    private val onItemClick: (NaverMapData) -> Unit
+) : RecyclerView.Adapter<PlaceViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaceViewHolder {
         val view =
@@ -35,10 +38,13 @@ class PlaceAdapter(private val places: List<NaverMapData>) :
         holder.placeAddr.text = place.addr1 + " " + place.addr2
         holder.placeOpen.text = place.hours
 
-
-        /*Glide.with(holder.itemView.context)
+        Glide.with(holder.itemView.context)
             .load(place.firstimage)
-            .into(holder.placeImg)*/
+            .into(holder.placeImg)
+
+        holder.itemView.setOnClickListener {
+            onItemClick(place)
+        }
     }
 
     override fun getItemCount(): Int = places.size
