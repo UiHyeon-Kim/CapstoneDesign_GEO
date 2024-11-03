@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.capstonedesign_geo.databinding.DialogCustomBinding
 
-class CustomDialog: DialogFragment() {
+class CustomDialog : DialogFragment() {
 
     private var _binding: DialogCustomBinding? = null
     private val binding get() = _binding!!
@@ -24,7 +24,7 @@ class CustomDialog: DialogFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = DialogCustomBinding.inflate(inflater, container, false)
         val view = binding.root
 

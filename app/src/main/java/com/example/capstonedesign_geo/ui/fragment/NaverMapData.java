@@ -1,12 +1,15 @@
 package com.example.capstonedesign_geo.ui.fragment;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
 
 @Entity(tableName = "naver_map_data")
-public class NaverMapData {
+public class NaverMapData implements Parcelable {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -22,6 +25,9 @@ public class NaverMapData {
 
     @SerializedName("hours")
     private String hours;
+
+    @SerializedName("firstimage")
+    private String firstimage;
 
     @SerializedName("mapx")
     private double mapx;
@@ -43,6 +49,58 @@ public class NaverMapData {
 
     @SerializedName("disabled")
     private String disabled;
+
+    protected NaverMapData(Parcel in) {
+        id = in.readInt();
+        category = in.readString();
+        addr1 = in.readString();
+        addr2 = in.readString();
+        hours = in.readString();
+        firstimage = in.readString();
+        mapx = in.readDouble();
+        mapy = in.readDouble();
+        tel = in.readString();
+        title = in.readString();
+        content = in.readString();
+        amenity = in.readString();
+        disabled = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(category);
+        dest.writeString(addr1);
+        dest.writeString(addr2);
+        dest.writeString(hours);
+        dest.writeString(firstimage);
+        dest.writeDouble(mapx);
+        dest.writeDouble(mapy);
+        dest.writeString(tel);
+        dest.writeString(title);
+        dest.writeString(content);
+        dest.writeString(amenity);
+        dest.writeString(disabled);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<NaverMapData> CREATOR = new Creator<NaverMapData>() {
+        @Override
+        public NaverMapData createFromParcel(Parcel in) {
+            return new NaverMapData(in);
+        }
+
+        @Override
+        public NaverMapData[] newArray(int size) {
+            return new NaverMapData[size];
+        }
+    };
+
+    public NaverMapData() {}
 
     public int getId() {
         return id;
@@ -75,6 +133,12 @@ public class NaverMapData {
     public void setAddr2(String addr2) {
         this.addr2 = addr2;
     }
+
+    public String getFirstimage() {
+        return firstimage;
+    }
+
+    public void setFirstimage(String firstimage) {this.firstimage = firstimage;}
 
     public String getHours() {
         return hours;

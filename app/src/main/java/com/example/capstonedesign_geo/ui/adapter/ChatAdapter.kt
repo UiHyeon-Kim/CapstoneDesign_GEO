@@ -7,15 +7,18 @@ import com.example.capstonedesign_geo.data.chat.ChatMessage
 import com.example.capstonedesign_geo.databinding.ItemChatMessageBinding
 
 // ChatAdapter: 채팅 메시지를 표시하는 리사이클러뷰 어댑터
-class ChatAdapter(private val messages: List<ChatMessage>) : RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
+class ChatAdapter(private val messages: List<ChatMessage>) :
+    RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
 
     // ChatViewHolder: 각 메시지 뷰를 보관하는 뷰홀더 클래스
-    class ChatViewHolder(val binding: ItemChatMessageBinding): RecyclerView.ViewHolder(binding.root)
+    class ChatViewHolder(val binding: ItemChatMessageBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     // onCreateViewHolder: 뷰홀더를 생성하는 메서드
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatViewHolder {
         // ItemChatMessageBinding을 사용하여 뷰바인딩을 설정
-        val binding = ItemChatMessageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemChatMessageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         // 생성된 뷰홀더를 반환
         return ChatViewHolder(binding)
     }

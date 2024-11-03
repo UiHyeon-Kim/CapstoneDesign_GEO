@@ -24,6 +24,7 @@ class GenerativeViewModelFactory(private val context: Context) : ViewModelProvid
                 // Context를 전달하여 ChatViewModel 생성
                 ChatViewModel(generativeModel, context)
             }
+
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         } as T
     }

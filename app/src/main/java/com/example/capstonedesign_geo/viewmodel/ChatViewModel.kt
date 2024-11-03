@@ -12,6 +12,7 @@ import com.example.capstonedesign_geo.ui.fragment.NaverMapDataDao
 import com.google.ai.client.generativeai.GenerativeModel
 import com.google.ai.client.generativeai.type.asTextOrNull
 import com.google.ai.client.generativeai.type.content
+import com.gun0912.tedpermission.provider.TedPermissionProvider.context
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -23,6 +24,7 @@ class ChatViewModel(
     generativeModel: GenerativeModel,
     private val context: Context // ChatViewModel이 GeoDatabase에 접근하기 위해 Context 사용, chatViewModel 생성 시 Context 전달
 ) : ViewModel() {
+
     private val chat = generativeModel.startChat(
         history = listOf(
             content(role = "model") { text("안녕하세요 지오에요!\n궁금하신게 있으신가요?") }
@@ -64,17 +66,14 @@ class ChatViewModel(
 
                 // 로컬 데이터베이스에서 데이터를 가져오기
                 val localData = fetchLocalData()
-                Log.d("ChatViewModel", "Local Data: $localData") // 로그 추가
-
-                // 모델 응답을 정리하고 로컬 데이터를 포함
                 response.text?.let { modelResponse ->
                     val cleanedResponse = modelResponse.trim()
                     val finalResponse = if (localData.isNotEmpty()) {
                         "$cleanedResponse\n\n추가 정보:\n${localData.joinToString("\n")}"
                     } else {
+                        modelResponse
                         cleanedResponse ?: "죄송해요, 정보를 찾을 수 없어요."
                     }
-                    Log.d("ChatViewModel", "Final Response: $finalResponse") // 로그 추가
 
                     // 최종 응답 메시지를 UI 상태에 추가
                     _uiState.value.addMessage(
@@ -93,7 +92,6 @@ class ChatViewModel(
                         participant = Participant.ERROR
                     )
                 )
-                Log.e("ChatViewModel", "Error: ${e.localizedMessage}") // 오류 로그 추가
             }
         }
     }
@@ -101,11 +99,7 @@ class ChatViewModel(
     // 로컬 데이터베이스에서 정보 가져오기
     private suspend fun fetchLocalData(): List<String> = withContext(Dispatchers.IO) {
         val dataList = naverMapDataDao.getAll()
-        // 로그 추가
-        Log.d("ChatViewModel", "Fetched data from DB: $dataList")
+        // 필요한 데이터 형식으로 변환 (예: 제목과 주소만 가져오기)
         dataList.map { "${it.title} - ${it.addr1}" }
     }
-
-
-
 }

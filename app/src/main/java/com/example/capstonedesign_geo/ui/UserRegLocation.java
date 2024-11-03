@@ -92,11 +92,9 @@ public class UserRegLocation extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String District = (String) parent.getItemAtPosition(position);
-                if (District.equals(select)) { // 기본값인 경우
-                    btnNext.setEnabled(false);
-                } else { // 기본값이 아닌 경우
-                    btnNext.setEnabled(true);
-                }
+                // 기본값인 경우
+                // 기본값이 아닌 경우
+                btnNext.setEnabled(!District.equals(select));
                 district = District;
             }
 

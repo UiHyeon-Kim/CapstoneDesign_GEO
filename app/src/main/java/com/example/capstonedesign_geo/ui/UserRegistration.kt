@@ -13,7 +13,7 @@ import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.normal.TedPermission
 
 class UserRegistration : AppCompatActivity() {
-    private lateinit var binding: UserRegistrationBinding; // 뷰 바인딩 객체
+    private lateinit var binding: UserRegistrationBinding // 뷰 바인딩 객체
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +35,8 @@ class UserRegistration : AppCompatActivity() {
         val permissionListener = object : PermissionListener {
             override fun onPermissionGranted() { // 권한이 허용된 경우
                 if (!isPermission) { // 이전에 허용된 적이 없는 경우에만
-                    Toast.makeText(this@UserRegistration, "권한 설정이 완료되었습니다.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@UserRegistration, "권한 설정이 완료되었습니다.", Toast.LENGTH_SHORT)
+                        .show()
 
                     // 권한이 허용된 적이 있음을 sharedPreferences에 저장
                     val editor = sharedPreferences.edit()
@@ -43,6 +44,7 @@ class UserRegistration : AppCompatActivity() {
                     editor.apply()
                 }
             }
+
             override fun onPermissionDenied(deniedPermissions: List<String>) { // 권한이 거부된 경우
                 Toast.makeText(this@UserRegistration, "권한이 거부되었습니다.", Toast.LENGTH_SHORT).show()
                 finish()

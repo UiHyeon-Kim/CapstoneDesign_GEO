@@ -11,7 +11,7 @@
     <FrameLayout
         android:id="@+id/fragment_zone"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -21,12 +21,12 @@
             android:id="@+id/linear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fitsSystemWindows="true"
-            android:weightSum="9"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
-            android:orientation="horizontal">
+            android:fitsSystemWindows="true"
+            android:orientation="horizontal"
+            android:weightSum="9">
 
             <EditText
                 android:id="@+id/editSearch"
@@ -38,10 +38,10 @@
                 android:drawableRight="@drawable/resize_icon_search"
                 android:drawablePadding="15dp"
                 android:ems="20"
-                android:hint="검색"
-                android:inputType="text"
                 android:fontFamily="@font/notosans"
+                android:hint="검색"
                 android:includeFontPadding="false"
+                android:inputType="text"
                 android:paddingStart="8dp"
                 android:paddingEnd="10dp" />
 
@@ -49,22 +49,22 @@
                 android:id="@+id/btnRoot"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
-                android:layout_weight="1"
                 android:layout_marginLeft="10dp"
+                android:layout_weight="1"
                 android:background="@drawable/rounded_button"
-                android:text="경로"
-                android:textColor="@color/white"
-                android:textSize="18sp"
                 android:fontFamily="@font/notosans_bold"
                 android:includeFontPadding="false"
-                android:padding="5dp"/>
+                android:padding="5dp"
+                android:text="경로"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
         </LinearLayout>
 
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="none"
-            android:layout_below="@id/linear">
+            android:layout_below="@id/linear"
+            android:scrollbars="none">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -173,7 +173,11 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
             android:fitsSystemWindows="true"
-            android:backgroundTint="@color/mainblue" />
+            android:padding="0dp"
+            app:backgroundTint="@color/mainblue"
+            app:iconSize="50dp"
+            app:srcCompat="@drawable/icon_geo"
+            app:tint="@null" />
     </RelativeLayout>
 
 

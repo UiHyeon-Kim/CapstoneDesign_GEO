@@ -17,11 +17,16 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.capstonedesign_geo.R;
+import com.example.capstonedesign_geo.data.db.GeoDatabase;
 import com.example.capstonedesign_geo.ui.fragment.BottomSheet;
 import com.example.capstonedesign_geo.ui.fragment.NaverFragment;
+import com.example.capstonedesign_geo.ui.fragment.NaverMapData;
+import com.example.capstonedesign_geo.ui.fragment.NaverMapDataDao;
 import com.example.capstonedesign_geo.utility.StatusBarKt;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 
@@ -31,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText editSearch;
     private long backPressedTime; // 마지막 뒤로가기 누른 시간
     private Toast backToast; // 뒤로가기 메시지
-    private FloatingActionButton temp;
+    private FloatingActionButton floatingActionButton;
 
     // @SuppressLint("MissingInflatedId") // 에러 무시
     @Override
@@ -52,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         } else {    // 사용자 선호도 조사가 완료되지 않은 경우 첫 번째 화면으로 이동
             Intent intent = new Intent(MainActivity.this, UserRegistration.class);
             startActivity(intent);
-            overridePendingTransition(0,0); // 액티비티 전환시 애니메이션 삭제
+            overridePendingTransition(0, 0); // 액티비티 전환시 애니메이션 삭제
             finish(); // 현재 액티비티 종료
         }
 
@@ -66,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         editSearch = findViewById(R.id.editSearch);
-        temp = findViewById(R.id.temp);
+        floatingActionButton = findViewById(R.id.temp);
 
         // 검색 창 터치 이벤트
         editSearch.setOnTouchListener((v, event) -> {
@@ -97,19 +102,34 @@ public class MainActivity extends AppCompatActivity {
                 if (drawableRight != null) {
                     int drawableRightStart = editSearch.getWidth() - editSearch.getPaddingRight() - drawableRight.getIntrinsicWidth();
                     if (x >= (drawableRightStart - extraTouchAreaPx) && x <= (editSearch.getWidth() + extraTouchAreaPx)) {
-                        Intent intent = new Intent(MainActivity.this, PlaceListActivity.class);
-                        startActivity(intent);
-                    }
 
+                        // 입력된 텍스트 가져오기
+                        String searchText = editSearch.getText().toString().trim();
+
+                        if (!searchText.isEmpty()) {
+                            // Room 데이터베이스 인스턴스 가져오기
+                            GeoDatabase db = GeoDatabase.getInstance(MainActivity.this);
+                            NaverMapDataDao dao = db.naverMapDataDao();
+
+                            // 검색 결과 가져오기
+                            new Thread(() -> {
+                                List<NaverMapData> searchResults = dao.searchByText("%" + searchText + "%");
+
+                                // 검색 결과를 PlaceListActivity로 전달
+                                Intent intent = new Intent(MainActivity.this, PlaceListActivity.class);
+                                intent.putParcelableArrayListExtra("searchResults", new ArrayList<>(searchResults));
+                                startActivity(intent);
+                            }).start();
+                        }
+                    }
                 }
             }
             return false;
         });
 
         // 임시 챗봇 버튼 클릭 이벤트
-        temp.setOnClickListener(v -> {
+        floatingActionButton.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, ChatBotActivity.class);
-            //Intent intent = new Intent(MainActivity.this, PlaceListActivity.class);
             startActivity(intent);
         });
     }
@@ -142,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
     // 뒤로가기 버튼 지연 시간
     @Override
     public void onBackPressed() {
-        if (backPressedTime + 2000 > System.currentTimeMillis()){ // 2초 이내에 뒤로가기 버튼을 눌렀을 경우
+        if (backPressedTime + 2000 > System.currentTimeMillis()) { // 2초 이내에 뒤로가기 버튼을 눌렀을 경우
             if (backToast != null) backToast.cancel(); // 이전 Toast가 있으면 취소
             super.onBackPressed(); // 앱 종료
             return;

@@ -55,11 +55,9 @@ public class UserRegAge extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // 항목을 선택했을 때
                 age = adapter.getCount();
-                if (position == 0) { // 기본값인 경우
-                    btnNext.setEnabled(false);
-                } else { // 기본값이 아닌 경우
-                    btnNext.setEnabled(true);
-                }
+                // 기본값인 경우
+                // 기본값이 아닌 경우
+                btnNext.setEnabled(position != 0);
             }
 
             @Override

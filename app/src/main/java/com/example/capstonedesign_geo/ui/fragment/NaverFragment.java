@@ -1,5 +1,6 @@
 package com.example.capstonedesign_geo.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.capstonedesign_geo.R;
@@ -18,6 +20,8 @@ import com.naver.maps.map.MapView;
 import com.naver.maps.map.NaverMap;
 import com.naver.maps.map.OnMapReadyCallback;
 import com.naver.maps.map.UiSettings;
+import com.naver.maps.map.overlay.Marker;
+import com.naver.maps.map.overlay.Overlay;
 import com.naver.maps.map.util.FusedLocationSource;
 
 import java.util.List;
@@ -120,34 +124,41 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
                 naverMapList = response.body();
                 naverMapInfo = naverMapList.result;
 
-                /*/ 토스트로 첫번째 행의 식당주소(StoreAddr) 띄우기
-                Toast.makeText(getContext(), String.valueOf(naverMapInfo.get(1).getmapx()), Toast.LENGTH_LONG).show();*/
-
-                /*/ 마커 여러개 찍기
+                // 마커 여러개 찍기
                 for(int i=0; i < naverMapInfo.size(); i++){
+
+                    final int index = i;
+
                     Marker[] markers = new Marker[naverMapInfo.size()];
 
                     markers[i] = new Marker();
-                    double lnt = naverMapInfo.get(i).getmapx();
-                    double lat = naverMapInfo.get(i).getmapy();
+                    double lnt = naverMapInfo.get(i).getMapx();
+                    double lat = naverMapInfo.get(i).getMapy();
                     markers[i].setPosition(new LatLng(lat, lnt));
                     markers[i].setMap(naverMap);
+                    markers[i].setCaptionText(naverMapInfo.get(i).getTitle());
 
-                    int finalI = i;
-                    markers[i].setOnClickListener(new Overlay.OnClickListener() {
+                    markers[i].setOnClickListener(new Overlay.OnClickListener() { //마커 클릭이벤트
                         @Override
                         public boolean onClick(@NonNull Overlay overlay)
-                        {
-                            Toast.makeText(getContext(), "마커" + naverMapInfo.get(finalI).gettitle() + "클릭", Toast.LENGTH_SHORT).show();
-                            return false;
+                        {//클릭시 밑에 장소 정보가 뜨게 하기
+                            Intent intent = new Intent(requireActivity(), MapInfoActivity.class);
 
+                            String mapInfoTitle = naverMapInfo.get(index).getTitle();
+                            String mapInfoAddr1 = naverMapInfo.get(index).getAddr1();
+                            String mapInfoAddr2 = naverMapInfo.get(index).getAddr2();
+                            String mapInfoTime = naverMapInfo.get(index).getHours();
+                            intent.putExtra("title", mapInfoTitle);
+                            intent.putExtra("addr1", mapInfoAddr1);
+                            intent.putExtra("addr2", mapInfoAddr2);
+                            intent.putExtra("time", mapInfoTime);
+                            startActivity(intent);
+                            return false;
                         }
                     });
-                } */
-
+                }
 
             }
-
             @Override
             public void onFailure(Call<NaverMapItem> call, Throwable t) {
                 Log.e("API_ERROR", "통신 실패", t);

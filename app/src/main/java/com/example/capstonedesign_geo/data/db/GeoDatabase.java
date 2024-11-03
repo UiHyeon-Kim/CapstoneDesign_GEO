@@ -15,15 +15,12 @@ import com.example.capstonedesign_geo.ui.fragment.NaverMapDataDao;
 public abstract class GeoDatabase extends RoomDatabase {
     private static volatile GeoDatabase INSTANCE;
 
-    public abstract UserDao userDao();
-    public abstract NaverMapDataDao naverMapDataDao();
-
     public static GeoDatabase getInstance(Context context) {
         if (INSTANCE == null) {
             synchronized (GeoDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            GeoDatabase.class, "GeoDatabase")
+                                    GeoDatabase.class, "GeoDatabase")
                             .fallbackToDestructiveMigration()
                             .build();
                 }
@@ -31,4 +28,8 @@ public abstract class GeoDatabase extends RoomDatabase {
         }
         return INSTANCE;
     }
+
+    public abstract UserDao userDao();
+
+    public abstract NaverMapDataDao naverMapDataDao();
 }

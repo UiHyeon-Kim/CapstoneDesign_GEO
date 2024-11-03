@@ -37,11 +37,8 @@ public class UserRegFavorite extends AppCompatActivity implements ConfirmDialogI
             @Override
             public void onCheckedChanged(@NonNull ChipGroup group, int checkedId) {
                 Chip checkedChip = group.findViewById(checkedId);
-                if (checkedChip != null) { // 선택한 경우
-                    btnNext.setEnabled(true);
-                } else {
-                    btnNext.setEnabled(false);
-                }
+                // 선택한 경우
+                btnNext.setEnabled(checkedChip != null);
             }
         });
 
@@ -64,15 +61,15 @@ public class UserRegFavorite extends AppCompatActivity implements ConfirmDialogI
         startActivity(intent);
     }
 
-    private void saveFavoriteTags(){
+    private void saveFavoriteTags() {
         SharedPreferences sharedPreferences = getSharedPreferences("UserPreferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         Set<String> selectedTags = new HashSet<>();
 
         int count = chipGroup.getChildCount(); // 선택한 태그의 개수
-        for (int i=0; i<count; i++){
+        for (int i = 0; i < count; i++) {
             Chip chip = (Chip) chipGroup.getChildAt(i); // 선택한 태그를 가져옴
-            if (chip.isChecked()){ // 선택한 경우
+            if (chip.isChecked()) { // 선택한 경우
                 selectedTags.add(chip.getText().toString()); // 선택한 태그를 리스트에 추가
             }
         }
