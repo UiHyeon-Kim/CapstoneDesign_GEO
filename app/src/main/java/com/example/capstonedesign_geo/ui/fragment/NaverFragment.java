@@ -144,10 +144,12 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
                         {//클릭시 밑에 장소 정보가 뜨게 하기
                             Intent intent = new Intent(requireActivity(), MapInfoActivity.class);
 
+                            String mapInfofirstimage = naverMapInfo.get(index).getFirstimage();
                             String mapInfoTitle = naverMapInfo.get(index).getTitle();
                             String mapInfoAddr1 = naverMapInfo.get(index).getAddr1();
                             String mapInfoAddr2 = naverMapInfo.get(index).getAddr2();
                             String mapInfoTime = naverMapInfo.get(index).getHours();
+                            intent.putExtra("firstimage", mapInfofirstimage);
                             intent.putExtra("title", mapInfoTitle);
                             intent.putExtra("addr1", mapInfoAddr1);
                             intent.putExtra("addr2", mapInfoAddr2);

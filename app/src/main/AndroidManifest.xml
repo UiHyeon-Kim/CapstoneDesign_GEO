@@ -56,6 +56,8 @@
             android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".ui.fragment.MapInfoActivity"
             android:theme="@style/AppTheme.Custom"/>
+        <activity
+            android:name=".ui.fragment.MapInfoDetail" android:exported="true"/>
 
 
         <!-- 네이버지도 클라이언트 ID지정 -->
