@@ -7,10 +7,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.capstonedesign_geo.R;
 
-public class PlaceDetailActiivty extends AppCompatActivity {
+public class PlaceDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_detailed_info);
+
+
     }
 }
