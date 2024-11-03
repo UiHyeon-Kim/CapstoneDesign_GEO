@@ -156,6 +156,7 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
                             intent.putExtra("time", mapInfoTime);
                             startActivity(intent);
                             return false;
+
                         }
                     });
                 }
