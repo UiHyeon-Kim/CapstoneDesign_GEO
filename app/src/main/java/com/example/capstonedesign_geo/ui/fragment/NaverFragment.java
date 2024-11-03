@@ -158,7 +158,6 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
                     });
                 }
 
-
             }
             @Override
             public void onFailure(Call<NaverMapItem> call, Throwable t) {
