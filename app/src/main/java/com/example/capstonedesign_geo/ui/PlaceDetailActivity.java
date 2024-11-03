@@ -28,7 +28,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
         TextView categoryTextView = findViewById(R.id.category);
         TextView addressTextView = findViewById(R.id.addr);
         //TextView hoursTextView = findViewById(R.id.hours);
-        ImageView imageView = findViewById(R.id.imageView);
+        ImageView imageView = findViewById(R.id.header_image);
 
         titleTextView.setText(title);
         categoryTextView.setText(category);

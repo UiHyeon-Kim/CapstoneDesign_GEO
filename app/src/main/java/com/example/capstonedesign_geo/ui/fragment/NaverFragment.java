@@ -41,24 +41,27 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
     private NaverMapItem naverMapList;
     private List<NaverMapData> naverMapInfo;
 
-    public NaverFragment() { }
+    public NaverFragment() {
+    }
 
-    public static NaverFragment newInstance(){ //프래그먼트 생성
+    public static NaverFragment newInstance() { //프래그먼트 생성
         NaverFragment fragment = new NaverFragment();
         return fragment;
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); }
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) { //프래그먼트가 화면에 표시될 때 호출
         // Inflate the layout for this fragment
         /* Inflate : xml에 표기된 레이아웃들을 메모리에 로딩된 후 객체화 시키는 과정 (Activity에서 setContentView()가 xml을 Inflate하는 동작)
-        *  쉽게 말해 layout에 그때그때 다른 layout을 집어넣을 수 있음.각기 다른 화면들을 한 화면에 동적으로 띄우고 싶은 경우 사용 */
+         *  쉽게 말해 layout에 그때그때 다른 layout을 집어넣을 수 있음.각기 다른 화면들을 한 화면에 동적으로 띄우고 싶은 경우 사용 */
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_naver, container, false); // 프래그먼트 레이아웃을 inflate
-        mapView = (MapView) rootView.findViewById(R.id.map_fragment);
+        mapView = rootView.findViewById(R.id.map_fragment);
         mapView.onCreate(savedInstanceState);
 
         mapView.getMapAsync(this);
@@ -71,7 +74,7 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
     }
 
     @Override
-    public void onMapReady(NaverMap naverMap){ // 지도가 준비되면 호출
+    public void onMapReady(NaverMap naverMap) { // 지도가 준비되면 호출
 
         this.naverMap = naverMap;
         naverMap.setLocationSource(locationSource); // 위치를 반환하는 구현체를 지정
@@ -81,7 +84,7 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
         naverMap.setMapType(NaverMap.MapType.Basic);
 
         //건물 표시
-        naverMap.setLayerGroupEnabled(naverMap.LAYER_GROUP_BUILDING, true);
+        naverMap.setLayerGroupEnabled(NaverMap.LAYER_GROUP_BUILDING, true);
 
         //실내지도표시
         naverMap.setIndoorEnabled(true);
@@ -125,7 +128,7 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
                 naverMapInfo = naverMapList.result;
 
                 // 마커 여러개 찍기
-                for(int i=0; i < naverMapInfo.size(); i++){
+                for (int i = 0; i < naverMapInfo.size(); i++) {
 
                     final int index = i;
 
@@ -140,8 +143,7 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
 
                     markers[i].setOnClickListener(new Overlay.OnClickListener() { //마커 클릭이벤트
                         @Override
-                        public boolean onClick(@NonNull Overlay overlay)
-                        {//클릭시 밑에 장소 정보가 뜨게 하기
+                        public boolean onClick(@NonNull Overlay overlay) {//클릭시 밑에 장소 정보가 뜨게 하기
                             Intent intent = new Intent(requireActivity(), MapInfoActivity.class);
 
                             String mapInfofirstimage = naverMapInfo.get(index).getFirstimage();
@@ -162,6 +164,7 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
                 }
 
             }
+
             @Override
             public void onFailure(Call<NaverMapItem> call, Throwable t) {
                 Log.e("API_ERROR", "통신 실패", t);
@@ -172,8 +175,7 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
     }
 
     @Override
-    public void onStart()
-    {
+    public void onStart() {
         String addr;
 
         super.onStart();
@@ -181,43 +183,37 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
     }
 
     @Override
-    public void onResume()
-    {
+    public void onResume() {
         super.onResume();
         mapView.onResume();
     }
 
     @Override
-    public void onPause()
-    {
+    public void onPause() {
         super.onPause();
         mapView.onPause();
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState)
-    {
+    public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         mapView.onSaveInstanceState(outState);
     }
 
     @Override
-    public void onStop()
-    {
+    public void onStop() {
         super.onStop();
         mapView.onStop();
     }
 
     @Override
-    public void onDestroyView()
-    {
+    public void onDestroyView() {
         super.onDestroyView();
         mapView.onDestroy();
     }
 
     @Override
-    public void onLowMemory()
-    {
+    public void onLowMemory() {
         super.onLowMemory();
         mapView.onLowMemory();
     }
@@ -230,10 +226,14 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
         new Thread(() -> {
             NaverMapDataDao dao = db.naverMapDataDao();
             for (NaverMapData item : dataList) {
-                dao.insert(item);
+                // 데이터가 존재하지 않을 때만 삽입
+                if (dao.getCountByTitle(item.getTitle()) == 0) {
+                    dao.insert(item);
+                }
             }
         }).start();
     }
+
     //데이터를 가져오고 로그 출력
     private void checkDataInLocalDatabase() {
         GeoDatabase db = GeoDatabase.getInstance(getContext());
