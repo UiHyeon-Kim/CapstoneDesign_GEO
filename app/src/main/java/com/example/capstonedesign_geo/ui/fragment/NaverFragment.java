@@ -109,6 +109,18 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
         call.enqueue(new Callback<NaverMapItem>() {
             @Override
             public void onResponse(Call<NaverMapItem> call, Response<NaverMapItem> response) {
+                //원격 DB의 데이터를 로컬 DB에 삽입하는 코드
+                if (response.isSuccessful() && response.body() != null) {
+                    List<NaverMapData> dataList = response.body().result;
+                    if (dataList != null && !dataList.isEmpty()) {
+                        // 데이터를 사용하거나 Room DB에 삽입
+                        insertDataIntoLocalDatabase(dataList);
+                    }
+                } else {
+                    // 오류 처리
+                    Log.e("LOCAL_DATABASE_ERROR", "로컬 DB 저장 실패");
+                }
+
                 naverMapList = response.body();
                 naverMapInfo = naverMapList.result;
 
@@ -220,4 +232,26 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
             }
         }).start();
     }
+    //데이터를 가져오고 로그 출력
+    private void checkDataInLocalDatabase() {
+        GeoDatabase db = GeoDatabase.getInstance(getContext());
+
+        // 백그라운드 스레드에서 데이터 가져오기
+        new Thread(() -> {
+            NaverMapDataDao dao = db.naverMapDataDao();
+            List<NaverMapData> dataList = dao.getAll();
+
+            // 데이터가 비어 있지 않은지 확인
+            if (dataList != null && !dataList.isEmpty()) {
+                // 데이터 로그 출력
+                for (NaverMapData data : dataList) {
+                    Log.d("LocalDB", "Title: " + data.getTitle() + ", Address: " + data.getAddr1());
+                }
+            } else {
+                Log.d("LocalDB", "No data found in the local database.");
+            }
+        }).start();
+    }
+
+
 }
