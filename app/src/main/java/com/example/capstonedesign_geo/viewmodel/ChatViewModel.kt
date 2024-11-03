@@ -61,17 +61,17 @@ class ChatViewModel(
         // 모델 응답 생성 및 로컬 데이터베이스 사용
         viewModelScope.launch {
             try {
-                // 사용자 메시지를 모델에 전달
                 val response = chat.sendMessage(userMessage)
 
-                // 로컬 데이터베이스에서 데이터를 가져오기
-                val localData = fetchLocalData()
+                // 특정 조건에서만 로컬 데이터베이스에서 데이터를 가져오기
+                val shouldIncludeLocalData = userMessage.contains("장소") || userMessage.contains("정보")
+                val localData = if (shouldIncludeLocalData) fetchLocalData() else emptyList()
+
                 response.text?.let { modelResponse ->
                     val cleanedResponse = modelResponse.trim()
                     val finalResponse = if (localData.isNotEmpty()) {
                         "$cleanedResponse\n\n추가 정보:\n${localData.joinToString("\n")}"
                     } else {
-                        modelResponse
                         cleanedResponse ?: "죄송해요, 정보를 찾을 수 없어요."
                     }
 
