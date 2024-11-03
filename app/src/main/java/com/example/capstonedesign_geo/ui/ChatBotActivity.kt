@@ -86,7 +86,10 @@ class ChatBotActivity : AppCompatActivity() {
 @Preview(showBackground = true)
 @Composable
 internal fun ChatRoute(
-    chatViewModel: ChatViewModel = viewModel(factory = GenerativeViewModelFactory)
+    chatViewModel: ChatViewModel = viewModel(factory = com.example.capstonedesign_geo.viewmodel.GenerativeViewModelFactory(
+        LocalContext.current
+    )
+    )
 ) {
     val chatUiState by chatViewModel.uiState.collectAsState()
     val listState = rememberLazyListState()

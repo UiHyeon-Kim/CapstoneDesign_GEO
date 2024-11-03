@@ -1,6 +1,7 @@
 package com.example.capstonedesign_geo.viewmodel
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.capstonedesign_geo.data.chat.ChatMessage
@@ -58,25 +59,27 @@ class ChatViewModel(
         // 모델 응답 생성 및 로컬 데이터베이스 사용
         viewModelScope.launch {
             try {
-                val response = chat.sendMessage(userMessage) // 사용자 메시지를 모델에 전달
+                // 사용자 메시지를 모델에 전달
+                val response = chat.sendMessage(userMessage)
 
-                _uiState.value.replaceLastPendingMessage()
-
-                // 로컬 데이터베이스에서 데이터를 가져와서 응답에 포함
+                // 로컬 데이터베이스에서 데이터를 가져오기
                 val localData = fetchLocalData()
+                Log.d("ChatViewModel", "Local Data: $localData") // 로그 추가
+
+                // 모델 응답을 정리하고 로컬 데이터를 포함
                 response.text?.let { modelResponse ->
-
                     val cleanedResponse = modelResponse.trim()
-
                     val finalResponse = if (localData.isNotEmpty()) {
-                        "$modelResponse\n\n추가 정보:\n${localData.joinToString("\n")}"
+                        "$cleanedResponse\n\n추가 정보:\n${localData.joinToString("\n")}"
                     } else {
-                        modelResponse ?: "죄송해요, 정보를 찾을 수 없어요."
+                        cleanedResponse ?: "죄송해요, 정보를 찾을 수 없어요."
                     }
+                    Log.d("ChatViewModel", "Final Response: $finalResponse") // 로그 추가
 
+                    // 최종 응답 메시지를 UI 상태에 추가
                     _uiState.value.addMessage(
                         ChatMessage(
-                            text = cleanedResponse,
+                            text = finalResponse,
                             participant = Participant.MODEL,
                             isPending = false
                         )
@@ -86,10 +89,11 @@ class ChatViewModel(
                 _uiState.value.replaceLastPendingMessage()
                 _uiState.value.addMessage(
                     ChatMessage(
-                        text = e.localizedMessage,
+                        text = e.localizedMessage ?: "오류가 발생했습니다.",
                         participant = Participant.ERROR
                     )
                 )
+                Log.e("ChatViewModel", "Error: ${e.localizedMessage}") // 오류 로그 추가
             }
         }
     }
@@ -97,7 +101,11 @@ class ChatViewModel(
     // 로컬 데이터베이스에서 정보 가져오기
     private suspend fun fetchLocalData(): List<String> = withContext(Dispatchers.IO) {
         val dataList = naverMapDataDao.getAll()
-        // 필요한 데이터 형식으로 변환 (예: 제목과 주소만 가져오기)
+        // 로그 추가
+        Log.d("ChatViewModel", "Fetched data from DB: $dataList")
         dataList.map { "${it.title} - ${it.addr1}" }
     }
+
+
+
 }
