@@ -19,10 +19,12 @@ class PlaceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val placePrefer = itemView.findViewById<ImageView>(R.id.placePrefer)
 }
 
-class PlaceAdapter(private val places: List<NaverMapData>) : RecyclerView.Adapter<PlaceViewHolder>() {
+class PlaceAdapter(private val places: List<NaverMapData>) :
+    RecyclerView.Adapter<PlaceViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaceViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_place_list, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_place_list, parent, false)
         return PlaceViewHolder(view)
     }
 

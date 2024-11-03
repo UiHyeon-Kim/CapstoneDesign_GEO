@@ -22,6 +22,7 @@ val GenerativeViewModelFactory = object : ViewModelProvider.Factory {
                 )
                 ChatViewModel(generativeModel)
             }
+
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         } as T
     }

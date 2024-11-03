@@ -27,7 +27,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Send
+import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -139,13 +139,14 @@ fun ChatTopBar(onBackClick: () -> Unit = {}) {
             darkIcons = false
         )
     }
-    TopAppBar(title = { Text(text = "", modifier = Modifier.fillMaxWidth()) },
+    TopAppBar(
+        title = { Text(text = "", modifier = Modifier.fillMaxWidth()) },
         navigationIcon = {
             IconButton(onClick = {
                 val intent = Intent(context, MainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP// or Intent.FLAG_ACTIVITY_NEW_TASK
                 context.startActivity(intent)
-            } ) {
+            }) {
                 Icon(
                     painter = painterResource(id = R.drawable.icon_back_btn),
                     contentDescription = "Back",
@@ -216,7 +217,7 @@ fun ChatBubbleItem(chatMessage: ChatMessage) {
             .padding(horizontal = 8.dp, vertical = 4.dp)
             .fillMaxWidth()
     ) {
-        if (isModelMessage){
+        if (isModelMessage) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.padding(bottom = 4.dp)
@@ -237,33 +238,33 @@ fun ChatBubbleItem(chatMessage: ChatMessage) {
                 )
             }
         }
-            BoxWithConstraints {
-                Card(
-                    shape = bubbleShape,
-                    colors = CardDefaults.cardColors(containerColor = backgroundColor),
-                    modifier = Modifier
-                        //.border(BorderStroke(2.dp, borderColor))
-                        .drawBehind {
-                            drawRoundRect(
-                                color = borderColor,
-                                size = size,
-                                cornerRadius = CornerRadius(20.dp.toPx(), 20.dp.toPx()),
-                                style = Stroke(width = 1.5.dp.toPx())
-                            )
-                        }
-                        .widthIn(0.dp, maxWidth * 0.9f)
-                ) {
-                    androidx.compose.material3.Text(
-                        text = chatMessage.text,
-                        color = textColor,
-                        modifier = Modifier.padding(16.dp),
-                        fontFamily = notoSansFamily,
-                        style = TextStyle(
-                            fontSize = 16.sp
+        BoxWithConstraints {
+            Card(
+                shape = bubbleShape,
+                colors = CardDefaults.cardColors(containerColor = backgroundColor),
+                modifier = Modifier
+                    //.border(BorderStroke(2.dp, borderColor))
+                    .drawBehind {
+                        drawRoundRect(
+                            color = borderColor,
+                            size = size,
+                            cornerRadius = CornerRadius(20.dp.toPx(), 20.dp.toPx()),
+                            style = Stroke(width = 1.5.dp.toPx())
                         )
+                    }
+                    .widthIn(0.dp, maxWidth * 0.9f)
+            ) {
+                Text(
+                    text = chatMessage.text,
+                    color = textColor,
+                    modifier = Modifier.padding(16.dp),
+                    fontFamily = notoSansFamily,
+                    style = TextStyle(
+                        fontSize = 16.sp
                     )
-                }
+                )
             }
+        }
         //}
     }
 }
@@ -275,48 +276,48 @@ fun MessageInput(
     resetScroll: () -> Unit = {}
 ) {
     var userMessage by rememberSaveable { mutableStateOf("") }
-        Row(
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(56.dp)
+    ) {
+        // 메시지 입력 필드
+        TextField(
+            value = userMessage,
+            onValueChange = { userMessage = it },
+            placeholder = { Text(text = "메시지를 입력하세요") },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(56.dp)
-        ) {
-            // 메시지 입력 필드
-            TextField(
-                value = userMessage,
-                onValueChange = { userMessage = it },
-                placeholder = { Text(text = "메시지를 입력하세요") },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(56.dp)
-                    .weight(0.85f),
-                colors = TextFieldDefaults.colors(
-                    focusedContainerColor = Color.White,
-                    unfocusedContainerColor = Color.White,
-                    cursorColor = Color.Black,
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Gray
-                )
+                .weight(0.85f),
+            colors = TextFieldDefaults.colors(
+                focusedContainerColor = Color.White,
+                unfocusedContainerColor = Color.White,
+                cursorColor = Color.Black,
+                focusedIndicatorColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Gray
             )
-            // 전송 버튼
-            IconButton(
-                onClick = {
-                    if (userMessage.isNotBlank()) {
-                        onSendMessage(userMessage)
-                        userMessage = ""
-                        resetScroll()
-                    }
-                },
-                modifier = Modifier
-                    .background(Color(0xFF4F89F8))
-                    .fillMaxHeight()
-            ) {
-                Icon(
-                    Icons.Default.Send,
-                    contentDescription = stringResource(R.string.action_send),
-                    tint = Color.White
-                )
-            }
+        )
+        // 전송 버튼
+        IconButton(
+            onClick = {
+                if (userMessage.isNotBlank()) {
+                    onSendMessage(userMessage)
+                    userMessage = ""
+                    resetScroll()
+                }
+            },
+            modifier = Modifier
+                .background(Color(0xFF4F89F8))
+                .fillMaxHeight()
+        ) {
+            Icon(
+                Icons.AutoMirrored.Filled.Send,
+                contentDescription = stringResource(R.string.action_send),
+                tint = Color.White
+            )
         }
+    }
 }
 
 val notoSansFamily = FontFamily(

@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         } else {    // 사용자 선호도 조사가 완료되지 않은 경우 첫 번째 화면으로 이동
             Intent intent = new Intent(MainActivity.this, UserRegistration.class);
             startActivity(intent);
-            overridePendingTransition(0,0); // 액티비티 전환시 애니메이션 삭제
+            overridePendingTransition(0, 0); // 액티비티 전환시 애니메이션 삭제
             finish(); // 현재 액티비티 종료
         }
 

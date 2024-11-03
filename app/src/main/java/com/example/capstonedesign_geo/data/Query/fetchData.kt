@@ -6,9 +6,10 @@ import java.sql.SQLException
 fun placeFetchData() {
     val connection = connectToDatabase()
     try {
-        connection?. let {
+        connection?.let {
             val statement = it.createStatement() // 쿼리를 실행하는 객체 생성
-            val resultSet = statement.executeQuery("SELECT addr1, addr2, hours, mapx, mapy, tel, title, content, amenity, disabled FROM TourAPIEX")
+            val resultSet =
+                statement.executeQuery("SELECT addr1, addr2, hours, mapx, mapy, tel, title, content, amenity, disabled FROM TourAPIEX")
 
             while (resultSet.next()) {
                 val addr1 = resultSet.getString("addr1")

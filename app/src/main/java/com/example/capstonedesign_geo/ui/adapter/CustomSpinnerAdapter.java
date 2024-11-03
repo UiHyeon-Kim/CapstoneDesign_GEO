@@ -13,8 +13,8 @@ import java.util.List;
 
 public class CustomSpinnerAdapter extends BaseAdapter {
 
-    private List<String> list;
-    private LayoutInflater inflater;
+    private final List<String> list;
+    private final LayoutInflater inflater;
     private String text;
 
     public CustomSpinnerAdapter(Context context, List<String> list) {

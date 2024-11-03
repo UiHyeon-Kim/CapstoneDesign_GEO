@@ -62,17 +62,17 @@ public class UserRegUserType extends AppCompatActivity {
         backButton.setOnClickListener(view -> onBackPressed());
     }
 
-    private void saveUsertype(boolean ut){
+    private void saveUsertype(boolean ut) {
         //문자를 적었을 때, 페이지 이동을 해도 남아있다. 이걸 안 하면 계속 재저장해야함
         SharedPreferences sharedPreferences = getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("user_type",ut);
+        editor.putBoolean("user_type", ut);
         editor.apply();
         Log.d("UserRegUserType", "유저타입: " + ut);
     }
 
     // 사용자의 닉네임을 불러오는 함수
-    private void getUserNickname(){
+    private void getUserNickname() {
         SharedPreferences prefs = getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
         nickname = prefs.getString("nickname", null);
     }

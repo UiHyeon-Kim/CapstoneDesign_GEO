@@ -11,7 +11,7 @@ fun Activity.setStatusBarColor(color: Int) {
         window.statusBarColor = color
 
         // 상태바 아이콘 색상 변경
-        if (color == ContextCompat.getColor(this, android.R.color.transparent)){
+        if (color == ContextCompat.getColor(this, android.R.color.transparent)) {
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         } else {
             window.decorView.systemUiVisibility = 0

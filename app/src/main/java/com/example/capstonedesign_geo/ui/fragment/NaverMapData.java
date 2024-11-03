@@ -56,7 +56,7 @@ public class NaverMapData implements Parcelable {
         addr1 = in.readString();
         addr2 = in.readString();
         hours = in.readString();
-        //firstimage = in.readString();
+        firstimage = in.readString();
         mapx = in.readDouble();
         mapy = in.readDouble();
         tel = in.readString();
@@ -73,7 +73,7 @@ public class NaverMapData implements Parcelable {
         dest.writeString(addr1);
         dest.writeString(addr2);
         dest.writeString(hours);
-        //dest.writeString(firstimage);
+        dest.writeString(firstimage);
         dest.writeDouble(mapx);
         dest.writeDouble(mapy);
         dest.writeString(tel);

@@ -11,7 +11,8 @@ fun searchPlace(
     val connection = connectToDatabase()
     try {
         connection?.let {
-            val query = StringBuilder("SELECT addr1, addr2, hours, mapx, mapy, tel, title, content, amenity, disabled FROM TourAPIEX WHERE 1=1")
+            val query =
+                StringBuilder("SELECT addr1, addr2, hours, mapx, mapy, tel, title, content, amenity, disabled FROM TourAPIEX WHERE 1=1")
 
             if (!title.isNullOrEmpty()) query.append(" AND title LIKE '%$title%'")
             if (!addr1.isNullOrEmpty()) query.append(" AND addr1 LIKE '%$addr1%'")

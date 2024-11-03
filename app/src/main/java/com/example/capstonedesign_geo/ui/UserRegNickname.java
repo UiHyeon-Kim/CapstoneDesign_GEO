@@ -75,7 +75,7 @@ public class UserRegNickname extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int i, int i1, int i2) {
                 // 텍스트가 변경되는 동안의 상태 처리
-                if (s == null || s.length() == 0){  // 닉네임이 비어있을 경우
+                if (s == null || s.length() == 0) {  // 닉네임이 비어있을 경우
                     nicknameFeedback.setVisibility(View.GONE);
                 } else {
                     nicknameFeedback.setVisibility(View.VISIBLE);
@@ -89,7 +89,7 @@ public class UserRegNickname extends AppCompatActivity {
     }
 
     // editText에 적어둔 텍스트 저장해둠
-    private void saveNicknameId(String nickname){
+    private void saveNicknameId(String nickname) {
         SharedPreferences sharedPreferences = getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         // editor.putString("userId", userId);

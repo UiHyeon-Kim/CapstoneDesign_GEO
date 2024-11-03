@@ -71,7 +71,7 @@ class ChatViewModel(
                     val finalResponse = if (localData.isNotEmpty()) {
                         "$modelResponse\n\n추가 정보:\n${localData.joinToString("\n")}"
                     } else {
-                        modelResponse ?: "죄송해요, 정보를 찾을 수 없어요."
+                        modelResponse
                     }
 
                     _uiState.value.addMessage(

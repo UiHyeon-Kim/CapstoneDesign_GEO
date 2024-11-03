@@ -33,7 +33,7 @@ public class PreferenceListActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         placeList = new ArrayList<>();
 
-        placeList.add(new Place("","https://example.com/image1.jpg", "이름", "카테고리", "주소", "오픈"));
+        placeList.add(new Place("", "https://example.com/image1.jpg", "이름", "카테고리", "주소", "오픈"));
 
         //adapter = new PlaceAdapter(placeList);
         recyclerView.setAdapter(adapter);
