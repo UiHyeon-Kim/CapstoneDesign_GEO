@@ -28,6 +28,8 @@ public class MapInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_info);
 
+        setFinishOnTouchOutside(true); // 외부 터치 시 닫히도록 설정
+
         getMapInfofirstimage = findViewById(R.id.map_info_firstimage);
         getMapInfoTitle = findViewById(R.id.map_info_title);
         getMapInfoAddr1 = findViewById(R.id.map_info_addr1);

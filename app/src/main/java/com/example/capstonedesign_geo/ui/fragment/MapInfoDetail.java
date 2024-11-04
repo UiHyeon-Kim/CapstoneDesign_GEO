@@ -28,11 +28,11 @@ public class MapInfoDetail extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        /*getMapInfofirstimage = findViewById(R.id.header_image);
-        getMapInfoTitle = findViewById(R.id.map_detail_title);
-        getMapInfoAddr1 = findViewById(R.id.map_detail_addr1);
-        getMapInfoAddr2 = findViewById(R.id.map_detail_addr2);
-        getMapInfoTime = findViewById(R.id.map_detail_time);*/
+        getMapInfofirstimage = findViewById(R.id.header_image);
+        getMapInfoTitle = findViewById(R.id.title);
+        getMapInfoAddr1 = findViewById(R.id.shortAddress);
+        getMapInfoAddr2 = findViewById(R.id.address);
+        getMapInfoTime = findViewById(R.id.hours);
 
         Intent intent = getIntent();
         String firstimage = intent.getStringExtra("firstimage");

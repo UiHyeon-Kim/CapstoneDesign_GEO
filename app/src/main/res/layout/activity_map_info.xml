@@ -7,7 +7,6 @@
     android:orientation="vertical"
     tools:context=".ui.fragment.MapInfoActivity"
     android:gravity="center_vertical"
-    android:layout_margin="15dp"
     android:background="@color/white"
     android:id="@+id/map_info_layout"
     android:onClick="onLinearLayoutClick">
@@ -15,12 +14,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@drawable/rounded_dialog"
+        android:clipToOutline="true">
         <ImageView
             android:id="@+id/map_info_firstimage"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:src="@android:drawable/ic_media_play"
+            android:scaleType="centerCrop"
             android:layout_gravity="center"/>
 
         <LinearLayout
@@ -35,35 +37,63 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="식당명"
-                android:textSize="16dp" />
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
 
-            <TextView
-                android:id="@+id/map_info_addr1"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="주소1"
-                android:textSize="12dp" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="주소: "
+                    android:textSize="14dp"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:id="@+id/map_info_addr1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="주소1"
+                    android:textSize="14dp"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
 
             <TextView
                 android:id="@+id/map_info_addr2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="주소2"
-                android:textSize="12dp" />
+                android:textSize="14dp"
+                android:textColor="@color/black" />
 
-            <TextView
-                android:id="@+id/map_info_time"
-                android:layout_width="match_parent"
+
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="영업시간"
-                android:textSize="12dp" />
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="영업시간: "
+                    android:textSize="14dp"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:id="@+id/map_info_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="영업시간"
+                    android:textSize="14dp"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
         </LinearLayout>
-        <ImageButton
-            android:id="@+id/map_info_button"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@android:drawable/ic_media_play"
-            android:layout_gravity="center"/>
+
     </LinearLayout>
 
 
