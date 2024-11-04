@@ -42,7 +42,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical" >
 
             <TextView
                 android:id="@+id/title"
@@ -98,23 +98,23 @@
                     android:text="찜하기" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button3"
+                    android:id="@+id/btnShare"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@color/transparent"
                     android:backgroundTint="@android:color/transparent"
-                    android:drawableTop="@drawable/icon_share"
+                    android:drawableTop="@drawable/icon_zzim"
                     android:text="공유하기" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button4"
+                    android:id="@+id/btnCall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@color/transparent"
                     android:backgroundTint="@android:color/transparent"
-                    android:drawableTop="@drawable/icon_call"
+                    android:drawableTop="@drawable/icon_zzim"
                     android:text="전화하기" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -124,7 +124,7 @@
                     android:layout_weight="1"
                     android:background="@color/transparent"
                     android:backgroundTint="@android:color/transparent"
-                    android:drawableTop="@drawable/icon_marker"
+                    android:drawableTop="@drawable/icon_road"
                     android:text="길찾기" />
             </LinearLayout>
 
