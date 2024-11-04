@@ -1,7 +1,5 @@
 package com.example.capstonedesign_geo.viewmodel
 
-import android.content.Context
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.capstonedesign_geo.data.chat.ChatMessage
@@ -22,7 +20,6 @@ import kotlinx.coroutines.withContext
 
 class ChatViewModel(
     generativeModel: GenerativeModel,
-    private val context: Context // ChatViewModel이 GeoDatabase에 접근하기 위해 Context 사용, chatViewModel 생성 시 Context 전달
 ) : ViewModel() {
 
     private val chat = generativeModel.startChat(
@@ -61,24 +58,25 @@ class ChatViewModel(
         // 모델 응답 생성 및 로컬 데이터베이스 사용
         viewModelScope.launch {
             try {
-                val response = chat.sendMessage(userMessage)
+                val response = chat.sendMessage(userMessage) // 사용자 메시지를 모델에 전달
 
-                // 특정 조건에서만 로컬 데이터베이스에서 데이터를 가져오기
-                val shouldIncludeLocalData = userMessage.contains("장소") || userMessage.contains("정보")
-                val localData = if (shouldIncludeLocalData) fetchLocalData() else emptyList()
+                _uiState.value.replaceLastPendingMessage()
 
+                // 로컬 데이터베이스에서 데이터를 가져와서 응답에 포함
+                val localData = fetchLocalData()
                 response.text?.let { modelResponse ->
+
                     val cleanedResponse = modelResponse.trim()
+
                     val finalResponse = if (localData.isNotEmpty()) {
-                        "$cleanedResponse\n\n추가 정보:\n${localData.joinToString("\n")}"
+                        "$modelResponse\n\n추가 정보:\n${localData.joinToString("\n")}"
                     } else {
-                        cleanedResponse ?: "죄송해요, 정보를 찾을 수 없어요."
+                        modelResponse
                     }
 
-                    // 최종 응답 메시지를 UI 상태에 추가
                     _uiState.value.addMessage(
                         ChatMessage(
-                            text = finalResponse,
+                            text = cleanedResponse,
                             participant = Participant.MODEL,
                             isPending = false
                         )
@@ -88,7 +86,7 @@ class ChatViewModel(
                 _uiState.value.replaceLastPendingMessage()
                 _uiState.value.addMessage(
                     ChatMessage(
-                        text = e.localizedMessage ?: "오류가 발생했습니다.",
+                        text = e.localizedMessage,
                         participant = Participant.ERROR
                     )
                 )

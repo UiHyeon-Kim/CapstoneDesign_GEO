@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.capstonedesign_geo.R;
+import com.example.capstonedesign_geo.ui.PlaceDetailActivity;
 
 public class MapInfoActivity extends AppCompatActivity {
     private ImageView getMapInfofirstimage;
@@ -39,6 +40,7 @@ public class MapInfoActivity extends AppCompatActivity {
         String addr1 = intent.getStringExtra("addr1");
         String addr2 = intent.getStringExtra("addr2");
         String time = intent.getStringExtra("time");
+        String category = intent.getStringExtra("category");
 
         getMapInfoTitle.setText(title);
         getMapInfoAddr1.setText(addr1);
@@ -68,12 +70,12 @@ public class MapInfoActivity extends AppCompatActivity {
 
     public void onLinearLayoutClick(View view) {
         // 클릭 시 실행할 코드
-        Intent intent = new Intent(getApplicationContext(), MapInfoDetail.class);
-        intent.putExtra("firstimage", getIntent().getStringExtra("firstimage"));
+        Intent intent = new Intent(getApplicationContext(), PlaceDetailActivity.class);
         intent.putExtra("title", getIntent().getStringExtra("title"));
-        intent.putExtra("addr1", getIntent().getStringExtra("addr1"));
-        intent.putExtra("addr2", getIntent().getStringExtra("addr2"));
+        intent.putExtra("category", getIntent().getStringExtra("category"));
+        intent.putExtra("address", getIntent().getStringExtra("addr1 + addr2"));
         intent.putExtra("time", getIntent().getStringExtra("time"));
+        intent.putExtra("firstimage", getIntent().getStringExtra("firstimage"));
         startActivity(intent);
     }
 }

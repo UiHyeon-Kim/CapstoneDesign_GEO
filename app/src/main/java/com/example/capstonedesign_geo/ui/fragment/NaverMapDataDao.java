@@ -18,4 +18,8 @@ public interface NaverMapDataDao {
     // 입력된 텍스트가 제목이나 주소에 포함된 데이터를 검색
     @Query("SELECT * FROM naver_map_data WHERE title LIKE :searchText OR addr1 LIKE :searchText")
     List<NaverMapData> searchByText(String searchText);
+
+    // 특정 데이터가 존재하는지 확인하는 쿼리
+    @Query("SELECT COUNT(*) FROM naver_map_data WHERE title = :title")
+    int getCountByTitle(String title);
 }

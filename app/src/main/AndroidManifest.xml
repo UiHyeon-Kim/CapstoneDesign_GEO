@@ -48,17 +48,20 @@
         <activity android:name=".ui.fragment.NaverFragment" />
         <activity android:name=".ui.PreferenceListActivity" />
         <activity android:name=".ui.PlaceListActivity" />
-        <activity android:name=".ui.PlaceDetailActiivty" />
+        <activity android:name=".ui.PlaceDetailActivity" />
         <activity android:name=".ui.RecommendActivity" />
         <activity android:name=".ui.SettingActivity" />
         <activity android:name=".ui.PolicyActivity" />
-        <activity android:name=".ui.ChatBotActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".ui.fragment.MapInfoActivity"
-            android:theme="@style/AppTheme.Custom"/>
         <activity
-            android:name=".ui.fragment.MapInfoDetail" android:exported="true"/>
+            android:name=".ui.ChatBotActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.fragment.MapInfoActivity"
+            android:theme="@style/AppTheme.Custom" />
+        <activity
+            android:name=".ui.fragment.MapInfoDetail"
+            android:exported="true" />
 
 
         <!-- 네이버지도 클라이언트 ID지정 -->

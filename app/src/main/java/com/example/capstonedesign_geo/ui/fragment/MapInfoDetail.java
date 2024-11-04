@@ -28,11 +28,11 @@ public class MapInfoDetail extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getMapInfofirstimage = findViewById(R.id.header_image);
+        /*getMapInfofirstimage = findViewById(R.id.header_image);
         getMapInfoTitle = findViewById(R.id.map_detail_title);
         getMapInfoAddr1 = findViewById(R.id.map_detail_addr1);
         getMapInfoAddr2 = findViewById(R.id.map_detail_addr2);
-        getMapInfoTime = findViewById(R.id.map_detail_time);
+        getMapInfoTime = findViewById(R.id.map_detail_time);*/
 
         Intent intent = getIntent();
         String firstimage = intent.getStringExtra("firstimage");
@@ -66,7 +66,6 @@ public class MapInfoDetail extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 
 }
