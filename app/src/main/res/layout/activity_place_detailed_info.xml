@@ -102,7 +102,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@color/transparent"
-                    android:drawableTop="@drawable/icon_zzim"
+                    android:backgroundTint="@android:color/transparent"
+                    android:drawableTop="@drawable/icon_share"
                     android:text="공유하기" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -111,7 +112,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@color/transparent"
-                    android:drawableTop="@drawable/icon_zzim"
+                    android:backgroundTint="@android:color/transparent"
+                    android:drawableTop="@drawable/icon_call"
                     android:text="전화하기" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -120,7 +122,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@color/transparent"
-                    android:drawableTop="@drawable/icon_zzim"
+                    android:backgroundTint="@android:color/transparent"
+                    android:drawableTop="@drawable/icon_road"
                     android:text="길찾기" />
             </LinearLayout>
 
