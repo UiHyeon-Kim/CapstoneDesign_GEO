@@ -123,7 +123,7 @@
                     android:layout_weight="1"
                     android:background="@color/transparent"
                     android:backgroundTint="@android:color/transparent"
-                    android:drawableTop="@drawable/icon_marker"
+                    android:drawableTop="@drawable/icon_road"
                     android:text="길찾기" />
             </LinearLayout>
 

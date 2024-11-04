@@ -76,7 +76,7 @@
         android:layout_marginRight="16dp"
         android:fontFamily="@font/notosans"
         android:includeFontPadding="false"
-        android:text="사용자 유형 재선택"
+        android:text="TextView"
         android:textColor="#000000"
         android:textSize="18sp" />
 
@@ -89,7 +89,7 @@
         android:layout_marginRight="16dp"
         android:fontFamily="@font/notosans"
         android:includeFontPadding="false"
-        android:text="초기화"
+        android:text="TextView"
         android:textColor="#000000"
         android:textSize="18sp" />
 
@@ -102,7 +102,7 @@
         android:layout_marginRight="16dp"
         android:fontFamily="@font/notosans"
         android:includeFontPadding="false"
-        android:text="개발정보"
+        android:text="TextView"
         android:textColor="#000000"
         android:textSize="18sp" />
 
