@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -65,6 +66,16 @@ public class MainActivity extends AppCompatActivity {
         NaverFragment naverFragment = new NaverFragment();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_zone, naverFragment).commit();
+
+        // btnRoot 버튼 초기화
+        Button btnRoot = findViewById(R.id.btnRoot);
+
+        // 버튼 클릭 이벤트 설정
+        btnRoot.setOnClickListener(v -> {
+            // NavigationActivity로 전환
+            Intent intent = new Intent(MainActivity.this, NavigationActivity.class);
+            startActivity(intent);
+        });
     }
 
     @Override
