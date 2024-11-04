@@ -2,16 +2,25 @@ package com.example.capstonedesign_geo.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.capstonedesign_geo.R;
+import com.example.capstonedesign_geo.ui.adapter.PlaceDetailAdapter;
 
 public class PlaceDetailActivity extends AppCompatActivity {
+
+    private RecyclerView recyclerView;
+    private PlaceDetailAdapter adapter;
+    private Button moreButton;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,5 +48,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
                 .load(imageUrl)
                 .into(imageView);
 
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 }
