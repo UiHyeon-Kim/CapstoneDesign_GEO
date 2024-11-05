@@ -2,6 +2,7 @@ package com.example.capstonedesign_geo.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.capstonedesign_geo.R
 import com.example.capstonedesign_geo.data.chat.ChatMessage
 import com.example.capstonedesign_geo.data.chat.ChatUiState
 import com.example.capstonedesign_geo.data.chat.Participant
@@ -57,7 +58,17 @@ class ChatViewModel(
 
         // 모델 응답 생성 및 로컬 데이터베이스 사용
         viewModelScope.launch {
-            try {
+            val response = processUserMessage(userMessage)
+            _uiState.value.replaceLastPendingMessage()
+
+            _uiState.value.addMessage(
+                ChatMessage(
+                    text = response,
+                    participant = Participant.MODEL,
+                    isPending = false
+                )
+            )
+            /*try {
                 val response = chat.sendMessage(userMessage) // 사용자 메시지를 모델에 전달
                 _uiState.value.replaceLastPendingMessage()
 
@@ -88,57 +99,45 @@ class ChatViewModel(
                         participant = Participant.ERROR
                     )
                 )
-            }
+            }*/
         }
     }
 
-    // 로컬 데이터베이스에서 정보 가져오기
-    private suspend fun fetchLocalData(): List<String> = withContext(Dispatchers.IO) {
-        val dataList = naverMapDataDao.getAll()
-        // 필요한 데이터 형식으로 변환 (예: 제목과 주소만 가져오기)
-        dataList.map { "${it.title} - ${it.addr1}" }
-    }
-
+    // 사용자의 메시지를 처리하고 로컬 데이터베이스에서 장소 정보를 검색
     private suspend fun processUserMessage(message: String): String = withContext(Dispatchers.IO) {
         val allPlace = naverMapDataDao.getAll()
+        val aftermessage = extractKeywordsFromMessage(message)
 
-        val splitMessage = message.split(" ")
-
+        // 메시지와 일치하는 장소를 필터링합니다.
         val matchPlaces = allPlace.filter { place ->
-            place.title.contains(message) ||
-                    place.category.contains(message) ||
-                    place.addr1.contains(message)
-        }
-        val matchPlaces2 = allPlace.filter { place ->
-            place.title in splitMessage || place.category in splitMessage || place.addr1 in splitMessage
-        }
-
-        if (matchPlaces.isNotEmpty()) {
-            return@withContext matchPlaces.joinToString("\n") { "${it.title} - ${it.addr1}" }
-        } else {
-            return@withContext "죄송해요, ${message}에 대한 정보를 찾을 수 없어요."
-        }
-
-        // 키워드 목록 정의
-        /*val keywords = listOf("식당", "카페", "공원", "쇼핑몰", "관광지")
-        val matchedKeyword = keywords.find { message.contains(it) }
-
-        if (matchedKeyword != null) {
-            // 키워드와 일치하는 장소를 데이터베이스에서 검색
-            val searchQuery = "%$matchedKeyword%" // LIKE 쿼리를 위한 검색어
-            val places = naverMapDataDao.searchByText(searchQuery)
-
-            if (places.isNotEmpty()) {
-                // 장소 정보를 문자열로 변환하여 반환
-                return@withContext places.joinToString("\n") { "${it.title} - ${it.addr1}" }
-            } else {
-                // 키워드에 해당하는 장소가 없는 경우
-                return@withContext "죄송해요, ${matchedKeyword}에 대한 정보를 찾을 수 없어요."
+            aftermessage.any { keyword ->
+                place.title.contains(keyword, ignoreCase = true) ||
+                        place.category.contains(keyword, ignoreCase = true) ||
+                        place.addr1.contains(keyword, ignoreCase = true) ||
+                        place.addr2.contains(keyword, ignoreCase = true) ||
+                        place.content.contains(keyword, ignoreCase = true) ||
+                        place.amenity.contains(keyword, ignoreCase = true)
             }
+        }
+
+        // 일치하는 장소가 있으면 최대 5개까지만 반환합니다.
+        if (matchPlaces.isNotEmpty()) {
+            return@withContext matchPlaces.take(5)
+                .joinToString("\n") { "${it.title} - ${it.addr1}" }
         } else {
-            // 키워드가 메시지에 없는 경우
-            return@withContext "죄송해요, 무슨 장소를 찾고 있는지 이해하지 못했어요. 다시 말씀해 주세요."
-        }*/
+            return@withContext "죄송해요, '${aftermessage}'에 대한 정보를 찾을 수 없어요."
+        }
     }
 
+    fun extractKeywordsFromMessage(message: String): List<String> {
+        // 조사나 불필요한 내용 제거
+        val particles = context.getString(R.string.postposition).split(", ").map { it.trim() }
+
+        // 아래 문자 단위로 문자열을 분리
+        val words = message.split(" ", "에 대해", "알려줘", "는", "가", "영업시간")
+
+        // 불필요한 단어를 제거한 후, 빈 문자열이 아닌 단어들만 반환합니다.
+        return words.map { it.trim() }
+            .filter { it.isNotEmpty() && !particles.contains(it) }
+    }
 }
