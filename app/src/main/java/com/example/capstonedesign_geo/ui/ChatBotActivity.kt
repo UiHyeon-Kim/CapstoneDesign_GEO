@@ -44,6 +44,7 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -57,6 +58,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -71,6 +73,7 @@ import com.example.capstonedesign_geo.data.chat.Participant
 import com.example.capstonedesign_geo.viewmodel.ChatViewModel
 import com.example.capstonedesign_geo.viewmodel.GenerativeViewModelFactory
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import io.noties.markwon.Markwon
 import kotlinx.coroutines.launch
 
 class ChatBotActivity : AppCompatActivity() {
@@ -181,6 +184,14 @@ fun ChatBubbleItem(chatMessage: ChatMessage) {
     val isModelMessage = chatMessage.participant == Participant.MODEL ||
             chatMessage.participant == Participant.ERROR
 
+    val context = LocalContext.current
+    val markwon = remember(context) { Markwon.create(context) }
+
+    val annotatedString = remember(chatMessage.text) {
+        val spannable = markwon.toMarkdown(chatMessage.text)
+        AnnotatedString.Builder().apply { append(spannable) }.toAnnotatedString()
+    }
+
     val backgroundColor = if (isModelMessage) {
         Color.Transparent
     } else {
@@ -255,7 +266,7 @@ fun ChatBubbleItem(chatMessage: ChatMessage) {
                     .widthIn(0.dp, maxWidth * 0.9f)
             ) {
                 Text(
-                    text = chatMessage.text,
+                    text = annotatedString,
                     color = textColor,
                     modifier = Modifier.padding(16.dp),
                     fontFamily = notoSansFamily,
@@ -265,7 +276,6 @@ fun ChatBubbleItem(chatMessage: ChatMessage) {
                 )
             }
         }
-        //}
     }
 }
 
@@ -324,3 +334,4 @@ val notoSansFamily = FontFamily(
     Font(R.font.notosans_bold, FontWeight.Bold),
     Font(R.font.notosans, FontWeight.Normal)
 )
+

@@ -84,7 +84,7 @@ dependencies {
     implementation libs.activity
     implementation libs.constraintlayout
     implementation libs.core.ktx
-//    implementation 'io.noties.markwon:core:4.6.2'
+    implementation 'io.noties.markwon:core:4.6.2'
 //    implementation 'io.noties.markwon:compose:4.6.2'
     implementation 'com.google.ai.client.generativeai:generativeai:0.9.0'
     implementation 'com.google.guava:guava:31.0.1-android'

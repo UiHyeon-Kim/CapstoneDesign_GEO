@@ -106,8 +106,8 @@ class ChatViewModel(
 
         val matchPlaces = allPlace.filter { place ->
             place.title.contains(message) ||
-            place.category.contains(message) ||
-            place.addr1.contains(message)
+                    place.category.contains(message) ||
+                    place.addr1.contains(message)
         }
         val matchPlaces2 = allPlace.filter { place ->
             place.title in splitMessage || place.category in splitMessage || place.addr1 in splitMessage
