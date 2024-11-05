@@ -60,122 +60,20 @@
                 android:textSize="18sp" />
         </LinearLayout>
 
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/linear"
-            android:scrollbars="none">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <com.google.android.material.chip.ChipGroup
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="5dp"
-                    app:chipSpacing="10dp"
-                    app:singleLine="true"
-                    app:singleSelection="false">
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip_restaurant"
-                        style="@style/ChipStyles"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="식당"
-                        app:chipEndPadding="5dp"
-                        app:chipMinHeight="35dp"
-                        app:chipStartPadding="5dp" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip_cafe"
-                        style="@style/ChipStyles"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="카페"
-                        app:chipEndPadding="5dp"
-                        app:chipMinHeight="35dp"
-                        app:chipStartPadding="5dp" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip_park"
-                        style="@style/ChipStyles"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="공원"
-                        app:chipEndPadding="5dp"
-                        app:chipMinHeight="35dp"
-                        app:chipStartPadding="5dp" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip_shopping"
-                        style="@style/ChipStyles"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="쇼핑"
-                        app:chipEndPadding="5dp"
-                        app:chipMinHeight="35dp"
-                        app:chipStartPadding="5dp" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip_lodging"
-                        style="@style/ChipStyles"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="숙박"
-                        app:chipEndPadding="5dp"
-                        app:chipMinHeight="35dp"
-                        app:chipStartPadding="5dp" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip_camping"
-                        style="@style/ChipStyles"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="캠핑"
-                        app:chipEndPadding="5dp"
-                        app:chipMinHeight="35dp"
-                        app:chipStartPadding="5dp" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip_sports"
-                        style="@style/ChipStyles"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="스포츠"
-                        app:chipEndPadding="5dp"
-                        app:chipMinHeight="35dp"
-                        app:chipStartPadding="5dp" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip_shinhan_univ"
-                        style="@style/ChipStyles"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="신한대"
-                        app:chipEndPadding="5dp"
-                        app:chipMinHeight="35dp"
-                        app:chipStartPadding="5dp" />
-
-                </com.google.android.material.chip.ChipGroup>
-            </LinearLayout>
-        </HorizontalScrollView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/temp"
+            android:id="@+id/btn_chatbot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:layout_marginRight="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="200dp"
             android:fitsSystemWindows="true"
             android:padding="0dp"
             app:backgroundTint="@color/mainblue"
             app:iconSize="50dp"
+            app:maxImageSize="56dp"
             app:srcCompat="@drawable/icon_geo"
             app:tint="@null" />
     </RelativeLayout>

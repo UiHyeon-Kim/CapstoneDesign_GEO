@@ -5,7 +5,7 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        style="@style/ToolbarStyles"/>
+        style="@style/ToolbarStyles" />
 
     <TextView
         android:id="@+id/textView37"
@@ -65,7 +65,7 @@
         android:layout_below="@id/btnHaptic"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="5dp"
-        android:layout_marginRight="16dp"/>
+        android:layout_marginRight="16dp" />
 
     <TextView
         android:id="@+id/textView9"
@@ -73,6 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/seekBar2"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="16dp"
         android:fontFamily="@font/notosans"
         android:includeFontPadding="false"
@@ -86,6 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textView9"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="16dp"
         android:fontFamily="@font/notosans"
         android:includeFontPadding="false"
@@ -99,6 +101,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textView10"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="16dp"
         android:fontFamily="@font/notosans"
         android:includeFontPadding="false"
