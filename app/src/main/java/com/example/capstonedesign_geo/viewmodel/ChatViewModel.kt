@@ -100,8 +100,27 @@ class ChatViewModel(
     }
 
     private suspend fun processUserMessage(message: String): String = withContext(Dispatchers.IO) {
+        val allPlace = naverMapDataDao.getAll()
+
+        val splitMessage = message.split(" ")
+
+        val matchPlaces = allPlace.filter { place ->
+            place.title.contains(message) ||
+            place.category.contains(message) ||
+            place.addr1.contains(message)
+        }
+        val matchPlaces2 = allPlace.filter { place ->
+            place.title in splitMessage || place.category in splitMessage || place.addr1 in splitMessage
+        }
+
+        if (matchPlaces.isNotEmpty()) {
+            return@withContext matchPlaces.joinToString("\n") { "${it.title} - ${it.addr1}" }
+        } else {
+            return@withContext "죄송해요, ${message}에 대한 정보를 찾을 수 없어요."
+        }
+
         // 키워드 목록 정의
-        val keywords = listOf("식당", "카페", "공원", "쇼핑몰", "관광지")
+        /*val keywords = listOf("식당", "카페", "공원", "쇼핑몰", "관광지")
         val matchedKeyword = keywords.find { message.contains(it) }
 
         if (matchedKeyword != null) {
@@ -119,7 +138,7 @@ class ChatViewModel(
         } else {
             // 키워드가 메시지에 없는 경우
             return@withContext "죄송해요, 무슨 장소를 찾고 있는지 이해하지 못했어요. 다시 말씀해 주세요."
-        }
+        }*/
     }
 
 }
