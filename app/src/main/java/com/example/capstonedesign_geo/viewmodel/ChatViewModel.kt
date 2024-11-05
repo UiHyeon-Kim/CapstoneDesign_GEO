@@ -1,5 +1,6 @@
 package com.example.capstonedesign_geo.viewmodel
 
+import androidx.compose.ui.text.AnnotatedString
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.capstonedesign_geo.R
@@ -122,10 +123,16 @@ class ChatViewModel(
 
         // 일치하는 장소가 있으면 최대 5개까지만 반환합니다.
         if (matchPlaces.isNotEmpty()) {
-            return@withContext matchPlaces.take(5)
-                .joinToString("\n") { "${it.title} - ${it.addr1}" }
+            val searchList = matchPlaces.take(5)
+                .joinToString("\n") {
+                    "${it.title}\n 주소: ${it.addr1} ${it.addr2}\n 전화번호: ${it.tel}\n 컨텐츠: ${it.content}"
+                }
+            val responseTemplete = randomAnswerFormat()
+            val annotatedString = AnnotatedString(responseTemplete)
+            return@withContext responseTemplete.format(searchList)
+
         } else {
-            return@withContext "죄송해요, '${aftermessage}'에 대한 정보를 찾을 수 없어요."
+            return@withContext randomEmptyAnswerFormat(aftermessage)
         }
     }
 
@@ -139,5 +146,22 @@ class ChatViewModel(
         // 불필요한 단어를 제거한 후, 빈 문자열이 아닌 단어들만 반환합니다.
         return words.map { it.trim() }
             .filter { it.isNotEmpty() && !particles.contains(it) }
+    }
+
+    fun randomAnswerFormat(): String {
+        return listOf(
+            "여기 찾으신 장소입니다! \n\n%s",
+            "이런 장소들을 찾았어요! \n\n%s",
+            "아래 장소들이 도움이 될 것 같아요! \n\n%s",
+            "이 장소들 어떠세요? \n\n%s",
+            "다음과 같은 장소들이 있어요! \n\n%s"
+        ).random()
+    }
+
+    fun randomEmptyAnswerFormat(message: List<String>): String {
+        return listOf(
+            "죄송해요, '${message.joinToString(", ")}'에 대한 정보를 찾을 수 없어요.ㅜㅜ",
+            "수정 필요"
+        ).random()
     }
 }
