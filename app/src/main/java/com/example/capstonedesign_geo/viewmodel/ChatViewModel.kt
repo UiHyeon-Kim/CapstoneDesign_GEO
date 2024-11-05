@@ -59,24 +59,22 @@ class ChatViewModel(
         viewModelScope.launch {
             try {
                 val response = chat.sendMessage(userMessage) // 사용자 메시지를 모델에 전달
-
                 _uiState.value.replaceLastPendingMessage()
 
+
                 // 로컬 데이터베이스에서 데이터를 가져와서 응답에 포함
-                val localData = fetchLocalData()
+                val localData = processUserMessage(userMessage)
                 response.text?.let { modelResponse ->
 
-                    val cleanedResponse = modelResponse.trim()
-
                     val finalResponse = if (localData.isNotEmpty()) {
-                        "$modelResponse\n\n추가 정보:\n${localData.joinToString("\n")}"
+                        "$modelResponse\n\n추가 정보:\n${localData}"
                     } else {
                         modelResponse
                     }
 
                     _uiState.value.addMessage(
                         ChatMessage(
-                            text = cleanedResponse,
+                            text = finalResponse,
                             participant = Participant.MODEL,
                             isPending = false
                         )
@@ -100,4 +98,28 @@ class ChatViewModel(
         // 필요한 데이터 형식으로 변환 (예: 제목과 주소만 가져오기)
         dataList.map { "${it.title} - ${it.addr1}" }
     }
+
+    private suspend fun processUserMessage(message: String): String = withContext(Dispatchers.IO) {
+        // 키워드 목록 정의
+        val keywords = listOf("식당", "카페", "공원", "쇼핑몰", "관광지")
+        val matchedKeyword = keywords.find { message.contains(it) }
+
+        if (matchedKeyword != null) {
+            // 키워드와 일치하는 장소를 데이터베이스에서 검색
+            val searchQuery = "%$matchedKeyword%" // LIKE 쿼리를 위한 검색어
+            val places = naverMapDataDao.searchByText(searchQuery)
+
+            if (places.isNotEmpty()) {
+                // 장소 정보를 문자열로 변환하여 반환
+                return@withContext places.joinToString("\n") { "${it.title} - ${it.addr1}" }
+            } else {
+                // 키워드에 해당하는 장소가 없는 경우
+                return@withContext "죄송해요, ${matchedKeyword}에 대한 정보를 찾을 수 없어요."
+            }
+        } else {
+            // 키워드가 메시지에 없는 경우
+            return@withContext "죄송해요, 무슨 장소를 찾고 있는지 이해하지 못했어요. 다시 말씀해 주세요."
+        }
+    }
+
 }
