@@ -16,7 +16,7 @@ val GenerativeViewModelFactory = object : ViewModelProvider.Factory {
         return when {
             modelClass.isAssignableFrom(ChatViewModel::class.java) -> {
                 val generativeModel = GenerativeModel(
-                    modelName = "gemini-1.5-flash-latest", // 사용할 모델 이름 (알아보고 바꾸기)
+                    modelName = "gemini-1.5-flash", // 사용할 모델 이름 (알아보고 바꾸기)
                     apiKey = BuildConfig.GEMINIAPI,
                     generationConfig = config
                 )
