@@ -1,6 +1,5 @@
 package com.example.capstonedesign_geo.viewmodel
 
-import androidx.compose.ui.text.AnnotatedString
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.capstonedesign_geo.R
@@ -46,61 +45,57 @@ class ChatViewModel(
     val uiState: StateFlow<ChatUiState> =
         _uiState.asStateFlow()
 
-    //사용자 메시지 전송
-    fun sendMessage(userMessage: String) {
-        // 사용자 메시지 추가
-        _uiState.value.addMessage(
-            ChatMessage(
-                text = userMessage,
-                participant = Participant.USER,
-                isPending = true
-            )
-        )
+//    // 장소에 대한 결과만 포함
+//    fun sendMessage(userMessage: String) {
+//        // 사용자 메시지 추가
+//        _uiState.value.addMessage(
+//            ChatMessage(
+//                text = userMessage,
+//                participant = Participant.USER,
+//                isPending = true
+//            )
+//        )
+//
+//        // 모델 응답 생성 및 로컬 데이터베이스 사용
+//        viewModelScope.launch {
+//            _uiState.value.replaceLastPendingMessage()
+//
+//            val localData = processUserMessage(userMessage)
+//
+//            _uiState.value.addMessage(
+//                ChatMessage(
+//                    text = localData,
+//                    participant = Participant.MODEL,
+//                    isPending = false
+//                )
+//            )
+//        }
+//    }
 
+    // 잼민이 대화 포함
+    fun sendMessage(userMessage: String) {
         // 모델 응답 생성 및 로컬 데이터베이스 사용
         viewModelScope.launch {
-            val response = processUserMessage(userMessage)
+            val response = chat.sendMessage(userMessage)
             _uiState.value.replaceLastPendingMessage()
 
-            _uiState.value.addMessage(
-                ChatMessage(
-                    text = response,
-                    participant = Participant.MODEL,
-                    isPending = false
-                )
-            )
-            /*try {
-                val response = chat.sendMessage(userMessage) // 사용자 메시지를 모델에 전달
-                _uiState.value.replaceLastPendingMessage()
+            val localData = processUserMessage(userMessage)
 
-
-                // 로컬 데이터베이스에서 데이터를 가져와서 응답에 포함
-                val localData = processUserMessage(userMessage)
-                response.text?.let { modelResponse ->
-
-                    val finalResponse = if (localData.isNotEmpty()) {
-                        "$modelResponse\n\n추가 정보:\n${localData}"
-                    } else {
-                        modelResponse
-                    }
-
-                    _uiState.value.addMessage(
-                        ChatMessage(
-                            text = finalResponse,
-                            participant = Participant.MODEL,
-                            isPending = false
-                        )
-                    )
+            response.text?.let { modelResponse ->
+                val finalResponse = if (localData.isNotEmpty()) {
+                    "$modelResponse\n\n추가 정보:\n${localData}"
+                } else {
+                    modelResponse
                 }
-            } catch (e: Exception) {
-                _uiState.value.replaceLastPendingMessage()
+
                 _uiState.value.addMessage(
                     ChatMessage(
-                        text = e.localizedMessage,
-                        participant = Participant.ERROR
+                        text = finalResponse,
+                        participant = Participant.MODEL,
+                        isPending = false
                     )
                 )
-            }*/
+            }
         }
     }
 
@@ -125,10 +120,9 @@ class ChatViewModel(
         if (matchPlaces.isNotEmpty()) {
             val searchList = matchPlaces.take(5)
                 .joinToString("\n") {
-                    "${it.title}\n 주소: ${it.addr1} ${it.addr2}\n 전화번호: ${it.tel}\n 컨텐츠: ${it.content}"
+                    "${it.title}\n\n 주소: ${it.addr1} ${it.addr2}\n\n 전화번호: ${it.tel}\n\n 컨텐츠: ${it.content}"
                 }
             val responseTemplete = randomAnswerFormat()
-            val annotatedString = AnnotatedString(responseTemplete)
             return@withContext responseTemplete.format(searchList)
 
         } else {
