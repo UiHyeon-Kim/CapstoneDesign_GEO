@@ -61,9 +61,8 @@
         </LinearLayout>
 
 
-
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/temp"
+            android:id="@+id/btn_chatbot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -74,8 +73,8 @@
             android:padding="0dp"
             app:backgroundTint="@color/mainblue"
             app:iconSize="50dp"
-            app:srcCompat="@drawable/icon_geo"
             app:maxImageSize="56dp"
+            app:srcCompat="@drawable/icon_geo"
             app:tint="@null" />
     </RelativeLayout>
 

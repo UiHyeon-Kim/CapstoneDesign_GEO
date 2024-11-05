@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         editSearch = findViewById(R.id.editSearch);
-        floatingActionButton = findViewById(R.id.temp);
+        floatingActionButton = findViewById(R.id.btn_chatbot);
 
         // 검색 창 터치 이벤트
         editSearch.setOnTouchListener((v, event) -> {
