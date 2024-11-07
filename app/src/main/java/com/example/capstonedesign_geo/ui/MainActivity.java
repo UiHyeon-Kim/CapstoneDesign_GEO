@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this); // 시스템 UI(네비, 상태 바 등)이 콘텐츠에 겹치지 않게 함
         setContentView(R.layout.activity_main);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -65,6 +67,13 @@ public class MainActivity extends AppCompatActivity {
         NaverFragment naverFragment = new NaverFragment();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_zone, naverFragment).commit();
+
+        Button btnRoot = findViewById(R.id.btnRoot);
+
+        btnRoot.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, NavigationActivity.class);
+            startActivity(intent);
+        });
     }
 
     @Override
@@ -72,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         editSearch = findViewById(R.id.editSearch);
         floatingActionButton = findViewById(R.id.btn_chatbot);
+
 
         // 검색 창 터치 이벤트
         editSearch.setOnTouchListener((v, event) -> {
