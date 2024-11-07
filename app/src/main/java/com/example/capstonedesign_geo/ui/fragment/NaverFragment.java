@@ -44,20 +44,17 @@ import retrofit2.Response;
 public class NaverFragment extends Fragment implements OnMapReadyCallback {
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000; //위치 권한 요청 코드
+    private final List<Marker> nmarker = new ArrayList<>(); // 모든 마커를 저장할 리스트
+    private final Map<String, Boolean> categoryVisibilityMap = new HashMap<>(); // 카테고리별 가시성 상태
     private FusedLocationSource locationSource; //위치를 반환하는 구현체
     private NaverMap naverMap;
     private MapView mapView; //지도 객체 변수
-
     private NaverMapItem naverMapList;
     private List<NaverMapData> naverMapInfo;
+    private boolean markersVisible = false; // 마커 초기 가시성 상태: false로 설정
 
     public NaverFragment() {
     }
-
-    private List<Marker> nmarker = new ArrayList<>(); // 모든 마커를 저장할 리스트
-    private boolean markersVisible = false; // 마커 초기 가시성 상태: false로 설정
-
-    private Map<String, Boolean> categoryVisibilityMap = new HashMap<>(); // 카테고리별 가시성 상태
 
     public static NaverFragment newInstance() { //프래그먼트 생성
         NaverFragment fragment = new NaverFragment();
@@ -154,7 +151,7 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
     }
 
     @Override
-    public void onMapReady(NaverMap naverMap){ // 지도가 준비되면 호출
+    public void onMapReady(NaverMap naverMap) { // 지도가 준비되면 호출
 
         this.naverMap = naverMap;
         naverMap.setLocationSource(locationSource); // 위치를 반환하는 구현체를 지정
@@ -164,7 +161,7 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
         naverMap.setMapType(NaverMap.MapType.Basic);
 
         //건물 표시
-        naverMap.setLayerGroupEnabled(naverMap.LAYER_GROUP_BUILDING, true);
+        naverMap.setLayerGroupEnabled(NaverMap.LAYER_GROUP_BUILDING, true);
 
         //실내지도표시
         naverMap.setIndoorEnabled(true);
@@ -199,11 +196,24 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
         call.enqueue(new Callback<NaverMapItem>() {
             @Override
             public void onResponse(Call<NaverMapItem> call, Response<NaverMapItem> response) {
+
+                //원격 DB의 데이터를 로컬 DB에 삽입하는 코드
+                if (response.isSuccessful() && response.body() != null) {
+                    List<NaverMapData> dataList = response.body().result;
+                    if (dataList != null && !dataList.isEmpty()) {
+                        // 데이터를 사용하거나 Room DB에 삽입
+                        insertDataIntoLocalDatabase(dataList);
+                    }
+                } else {
+                    // 오류 처리
+                    Log.e("LOCAL_DATABASE_ERROR", "로컬 DB 저장 실패");
+                }
+
                 naverMapList = response.body();
                 naverMapInfo = naverMapList.result;
 
                 // 마커 여러개 찍기
-                for(int i=0; i < naverMapInfo.size(); i++){
+                for (int i = 0; i < naverMapInfo.size(); i++) {
                     final int index = i;
                     Marker[] markers = new Marker[naverMapInfo.size()];
 
@@ -225,8 +235,7 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
 
                     markers[i].setOnClickListener(new Overlay.OnClickListener() { //마커 클릭이벤트
                         @Override
-                        public boolean onClick(@NonNull Overlay overlay)
-                        {
+                        public boolean onClick(@NonNull Overlay overlay) {
                             // 마커의 위치를 가져옴
                             LatLng markerPosition = markers[index].getPosition();
                             // CameraUpdate 객체를 사용해 마커 위치로 이동
