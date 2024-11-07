@@ -123,8 +123,8 @@ class ChatViewModel(
         // 일치하는 장소가 있으면 최대 5개까지만 반환합니다.
         if (matchPlaces.isNotEmpty()) {
             val searchList = matchPlaces.take(5)
-                .joinToString("\n") {
-                    "${it.title}\n 주소: ${it.addr1} ${it.addr2}\n 전화번호: ${it.tel}\n 컨텐츠: ${it.content}"
+                .joinToString(separator = "\n\n", prefix = "\n\n") {
+                    "\n\n${it.title}\n 주소: ${it.addr1}\n 전화번호: ${it.tel}\n 컨텐츠: ${it.content}"
                 }
             val responseTemplete = randomAnswerFormat()
             return@withContext responseTemplete.format(searchList)
@@ -148,24 +148,24 @@ class ChatViewModel(
 
     fun randomAnswerFormat(): String {
         return listOf(
-            "여기 찾으신 장소입니다! \n\n%s",
-            "이런 장소들을 찾았어요! \n\n%s",
-            "아래 장소들이 도움이 될 것 같아요! \n\n%s",
-            "이 장소들 어떠세요? \n\n%s",
-            "이런 곳은 어떠세요? \n\n%s",
-            "이곳들은 어떠신가요? \n\n%s",
-            "다음과 같은 장소들이 있어요! \n\n%s",
-            "다양한 선택지를 준비했어요! \n\n%s",
-            "좀 더 구체적인 정보를 드릴게요! \n\n%s",
-            "검색 결과를 보여드릴게요! \n\n%s",
-            "궁금해하시던 곳이죠? \n\n%s",
-            "짜잔! 여기 있습니다! \n\n%s",
-            "여기보세요!! \n\n%s",
-            "원하시는 곳이 여기 있네요! \n\n%s",
-            "이곳들을 추천해 드립니다. \n\n%s",
-            "관련된 장소 목록을 확인해 보세요! \n\n%s",
-            "아래 목록에서 선택해 보세요! \n\n%s",
-            "아래의 장소들을 확인해 보세요! \n\n%s"
+            "여기 찾으신 장소입니다! %s",
+            "이런 장소들을 찾았어요! %s",
+            "아래 장소들이 도움이 될 것 같아요! %s",
+            "이 장소들 어떠세요? %s",
+            "이런 곳은 어떠세요? %s",
+            "이곳들은 어떠신가요? %s",
+            "다음과 같은 장소들이 있어요! %s",
+            "다양한 선택지를 준비했어요! %s",
+            "좀 더 구체적인 정보를 드릴게요! %s",
+            "검색 결과를 보여드릴게요! %s",
+            "궁금해하시던 곳이죠? %s",
+            "짜잔! 여기 있습니다! %s",
+            "여기보세요!! %s",
+            "원하시는 곳이 여기 있네요! %s",
+            "이곳들을 추천해 드립니다. %s",
+            "관련된 장소 목록을 확인해 보세요! %s",
+            "아래 목록에서 선택해 보세요! %s",
+            "아래의 장소들을 확인해 보세요! %s"
         ).random()
     }
 

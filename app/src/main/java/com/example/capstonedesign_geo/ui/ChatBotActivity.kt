@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -28,6 +29,8 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Send
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -55,7 +58,6 @@ import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
@@ -95,7 +97,7 @@ internal fun ChatRoute(
     val listState = rememberLazyListState()
     val coroutineScope = rememberCoroutineScope()
 
-    val imeNestedScrollConnection = rememberNestedScrollInteropConnection()
+    var showCategoryButtons by remember { mutableStateOf(true) }
 
     Scaffold(
         topBar = {
@@ -105,6 +107,7 @@ internal fun ChatRoute(
             MessageInput(
                 onSendMessage = { inputText ->
                     chatViewModel.sendMessage(inputText)
+                    showCategoryButtons = false
                 },
                 resetScroll = {
                     coroutineScope.launch {
@@ -126,9 +129,29 @@ internal fun ChatRoute(
         ) {
             // Messages List
             ChatList(chatUiState.messages, listState)
+
+            if (showCategoryButtons) {
+                CategoryButtons(chatViewModel)
+            }
         }
     }
 }
+
+@Composable
+fun CategoryButtons(chatViewModel: ChatViewModel) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp),
+        horizontalArrangement = Arrangement.SpaceEvenly
+    ) {
+        val categories = listOf("식당", "카페", "공원", "쇼핑", "숙박")
+        categories.forEach { category ->
+            StyledCategoryButton(text = category, onClick = { chatViewModel.sendMessage(category) })
+        }
+    }
+}
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -335,3 +358,15 @@ val notoSansFamily = FontFamily(
     Font(R.font.notosans, FontWeight.Normal)
 )
 
+@Composable
+fun StyledCategoryButton(text: String, onClick: () -> Unit) {
+    Button(
+        onClick = onClick,
+        colors = ButtonDefaults.buttonColors(
+            containerColor = Color(0xFF4F89F8), // 버튼 배경색 설정
+            contentColor = Color.White // 텍스트 색상
+        )
+    ) {
+        Text(text = text)
+    }
+}
