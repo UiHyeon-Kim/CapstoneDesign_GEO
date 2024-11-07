@@ -109,7 +109,7 @@ class ChatViewModel(
         val aftermessage = extractKeywordsFromMessage(message)
 
         // 메시지와 일치하는 장소를 필터링합니다.
-        val matchPlaces = allPlace.filter { place ->
+        /*val matchPlaces = allPlace.filter { place ->
             aftermessage.any { keyword ->
                 place.title.contains(keyword, ignoreCase = true) ||
                         place.category.contains(keyword, ignoreCase = true) ||
@@ -118,12 +118,16 @@ class ChatViewModel(
                         place.content.contains(keyword, ignoreCase = true) ||
                         place.amenity.contains(keyword, ignoreCase = true)
             }
+        }*/
+
+        val matchPlaces = aftermessage.flatMap { keyword ->
+            naverMapDataDao.getRandomPlaces("%$keyword%")
         }
 
         // 일치하는 장소가 있으면 최대 5개까지만 반환합니다.
         if (matchPlaces.isNotEmpty()) {
             val searchList = matchPlaces.take(5)
-                .joinToString(separator = "\n\n", prefix = "\n\n") {
+                .joinToString("\n") {
                     "\n\n${it.title}\n 주소: ${it.addr1}\n 전화번호: ${it.tel}\n 컨텐츠: ${it.content}"
                 }
             val responseTemplete = randomAnswerFormat()
