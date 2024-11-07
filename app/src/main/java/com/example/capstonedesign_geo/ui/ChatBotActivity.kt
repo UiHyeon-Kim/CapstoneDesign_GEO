@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
@@ -233,20 +234,10 @@ fun ChatBubbleItem(chatMessage: ChatMessage) {
         Color.Transparent
     }
 
-    val bubbleShape = if (isModelMessage) {
-        RoundedCornerShape(20.dp, 20.dp, 20.dp, 20.dp)
-    } else {
-        RoundedCornerShape(20.dp, 20.dp, 20.dp, 20.dp)
-    }
-
-    val horizontalAlignment = if (isModelMessage) {
-        Alignment.Start
-    } else {
-        Alignment.End
-    }
+    val bubbleShape = RoundedCornerShape(20.dp)
 
     Column(
-        horizontalAlignment = horizontalAlignment,
+        horizontalAlignment = if (isModelMessage) Alignment.Start else Alignment.End,
         modifier = Modifier
             .padding(horizontal = 8.dp, vertical = 4.dp)
             .fillMaxWidth()
@@ -277,7 +268,6 @@ fun ChatBubbleItem(chatMessage: ChatMessage) {
                 shape = bubbleShape,
                 colors = CardDefaults.cardColors(containerColor = backgroundColor),
                 modifier = Modifier
-                    //.border(BorderStroke(2.dp, borderColor))
                     .drawBehind {
                         drawRoundRect(
                             color = borderColor,
@@ -288,19 +278,45 @@ fun ChatBubbleItem(chatMessage: ChatMessage) {
                     }
                     .widthIn(0.dp, maxWidth * 0.9f)
             ) {
-                Text(
-                    text = annotatedString,
-                    color = textColor,
-                    modifier = Modifier.padding(16.dp),
-                    fontFamily = notoSansFamily,
-                    style = TextStyle(
-                        fontSize = 16.sp
+                Column(
+                    modifier = Modifier.padding(16.dp)
+                ) {
+                    Text(
+                        text = annotatedString,
+                        color = textColor,
+                        fontFamily = notoSansFamily,
+                        style = TextStyle(fontSize = 16.sp)
                     )
-                )
+
+                    // 각 장소를 개별 Text로 표시하고 클릭 이벤트 설정
+                    chatMessage.places.forEach { place ->
+                        Text(
+                            text = "${place.title}\n주소: ${place.addr1}\n 전화번호: ${place.tel}\n",
+                            color = Color.Blue,
+                            style = TextStyle(fontSize = 16.sp),
+                            fontFamily = notoSansFamily,
+                            modifier = Modifier
+                                .padding(vertical = 4.dp)
+                                .clickable {
+                                    // 클릭 시 PlaceDetailActivity로 이동
+                                    val intent =
+                                        Intent(context, PlaceDetailActivity::class.java).apply {
+                                            putExtra("title", place.title)
+                                            putExtra("addr1", place.addr1)
+                                            putExtra("tel", place.tel)
+                                            putExtra("content", place.content)
+                                            putExtra("firstimage", place.firstimage)
+                                        }
+                                    context.startActivity(intent)
+                                }
+                        )
+                    }
+                }
             }
         }
     }
 }
+
 
 // 메시지 입력 컴포저블
 @Composable

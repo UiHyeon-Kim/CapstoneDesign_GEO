@@ -58,85 +58,37 @@ class ChatViewModel(
 
         // 모델 응답 생성 및 로컬 데이터베이스 사용
         viewModelScope.launch {
-            val response = processUserMessage(userMessage)
+            val responseMessage = processUserMessage(userMessage) // ChatMessage 타입으로 반환됨
             _uiState.value.replaceLastPendingMessage()
 
-            _uiState.value.addMessage(
-                ChatMessage(
-                    text = response,
-                    participant = Participant.MODEL,
-                    isPending = false
-                )
-            )
-            /*try {
-                val response = chat.sendMessage(userMessage) // 사용자 메시지를 모델에 전달
-                _uiState.value.replaceLastPendingMessage()
-
-
-                // 로컬 데이터베이스에서 데이터를 가져와서 응답에 포함
-                val localData = processUserMessage(userMessage)
-                response.text?.let { modelResponse ->
-
-                    val finalResponse = if (localData.isNotEmpty()) {
-                        "$modelResponse\n\n추가 정보:\n${localData}"
-                    } else {
-                        modelResponse
-                    }
-
-                    _uiState.value.addMessage(
-                        ChatMessage(
-                            text = finalResponse,
-                            participant = Participant.MODEL,
-                            isPending = false
-                        )
-                    )
-                }
-            } catch (e: Exception) {
-                _uiState.value.replaceLastPendingMessage()
-                _uiState.value.addMessage(
-                    ChatMessage(
-                        text = e.localizedMessage,
-                        participant = Participant.ERROR
-                    )
-                )
-            }*/
+            _uiState.value.addMessage(responseMessage)
         }
     }
 
     // 사용자의 메시지를 처리하고 로컬 데이터베이스에서 장소 정보를 검색
-    private suspend fun processUserMessage(message: String): String = withContext(Dispatchers.IO) {
-        val allPlace = naverMapDataDao.getAll()
-        val aftermessage = extractKeywordsFromMessage(message)
+    private suspend fun processUserMessage(message: String): ChatMessage =
+        withContext(Dispatchers.IO) {
+            val aftermessage = extractKeywordsFromMessage(message)
 
-        // 메시지와 일치하는 장소를 필터링합니다.
-        /*val matchPlaces = allPlace.filter { place ->
-            aftermessage.any { keyword ->
-                place.title.contains(keyword, ignoreCase = true) ||
-                        place.category.contains(keyword, ignoreCase = true) ||
-                        place.addr1.contains(keyword, ignoreCase = true) ||
-                        place.addr2.contains(keyword, ignoreCase = true) ||
-                        place.content.contains(keyword, ignoreCase = true) ||
-                        place.amenity.contains(keyword, ignoreCase = true)
+            // 메시지와 일치하는 장소를 필터링하여 5개 가져옴
+            val matchPlaces = aftermessage.flatMap { keyword ->
+                naverMapDataDao.getRandomPlaces("%$keyword%")
+            }.take(5)
+
+            if (matchPlaces.isNotEmpty()) {
+                val responseTemplate = randomAnswerFormat().format("")
+                return@withContext ChatMessage(
+                    text = responseTemplate,
+                    participant = Participant.MODEL,
+                    places = matchPlaces // 장소 리스트 전달
+                )
+            } else {
+                return@withContext ChatMessage(
+                    text = randomEmptyAnswerFormat(aftermessage),
+                    participant = Participant.MODEL
+                )
             }
-        }*/
-
-        val matchPlaces = aftermessage.flatMap { keyword ->
-            naverMapDataDao.getRandomPlaces("%$keyword%")
         }
-
-        // 일치하는 장소가 있으면 최대 5개까지만 반환합니다.
-        if (matchPlaces.isNotEmpty()) {
-            val searchList = matchPlaces.take(5)
-                .joinToString("\n") {
-                    "\n\n${it.title}\n 주소: ${it.addr1}\n 전화번호: ${it.tel}\n 컨텐츠: ${it.content}"
-                }
-            val responseTemplete = randomAnswerFormat()
-            return@withContext responseTemplete.format(searchList)
-
-        } else {
-            return@withContext randomEmptyAnswerFormat(aftermessage)
-        }
-    }
 
     fun extractKeywordsFromMessage(message: String): List<String> {
         // 조사나 불필요한 내용 제거
