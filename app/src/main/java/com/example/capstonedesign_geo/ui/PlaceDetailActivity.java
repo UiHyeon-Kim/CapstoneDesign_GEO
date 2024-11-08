@@ -1,12 +1,14 @@
 package com.example.capstonedesign_geo.ui;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.bumptech.glide.Glide;
 import com.example.capstonedesign_geo.R;
@@ -38,11 +40,6 @@ public class PlaceDetailActivity extends AppCompatActivity {
         TextView amenityTextView = findViewById(R.id.amenity);
         TextView shortAddrTextView = findViewById(R.id.shortAddress);
         TextView descriptionTextView = findViewById(R.id.description);
-//        CollapsingToolbarLayout toolbar = findViewById(R.id.toolbar_layout);
-
-//        toolbar.setTitle(title);
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setTitle(title);
 
         titleTextView.setText(title);
         categoryTextView.setText(category);
@@ -57,5 +54,35 @@ public class PlaceDetailActivity extends AppCompatActivity {
                 .load(imageUrl)
                 .into(imageView);
 
+        AppCompatButton btnShare = findViewById(R.id.btnShare);
+        btnShare.setOnClickListener(v -> {
+            String shareTitle = title;
+            String shareAddress = addr1;
+            String shareTel = tel;
+
+            String shareText = "장소 이름: " + shareTitle + "\n주소: " + shareAddress + "\n전화번호: " + shareTel;
+
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "장소 공유");
+            shareIntent.putExtra(Intent.EXTRA_TEXT, shareText);
+            startActivity(Intent.createChooser(shareIntent, "공유하기"));
+        });
+
+        AppCompatButton btnCall = findViewById(R.id.btnCall);
+        btnCall.setOnClickListener(v -> {
+            String phoneNumber = tel;
+            Intent callIntent = new Intent(Intent.ACTION_DIAL);
+            callIntent.setData(Uri.parse("tel:" + phoneNumber));
+            startActivity(callIntent);
+        });
+
+        AppCompatButton btnNavigate = findViewById(R.id.btnNavigate);
+        btnNavigate.setOnClickListener(v -> {
+            Intent naviIntent = new Intent(PlaceDetailActivity.this, NavigationActivity.class);
+            naviIntent.putExtra("place_name", "장소 이름");
+            startActivity(naviIntent);
+        });
     }
+
 }
