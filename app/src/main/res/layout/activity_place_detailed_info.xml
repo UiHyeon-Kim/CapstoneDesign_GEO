@@ -11,13 +11,14 @@
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="wrap_content"
             app:layout_scrollFlags="scroll|enterAlways">
 
             <ImageView
                 android:id="@+id/header_image"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
+                android:layout_marginTop="45dp"
                 android:src="@drawable/googleg_disabled_color_18"
                 app:layout_collapseMode="pin" />
 
