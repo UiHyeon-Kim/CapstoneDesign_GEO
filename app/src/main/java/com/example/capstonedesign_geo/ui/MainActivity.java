@@ -183,14 +183,5 @@ public class MainActivity extends AppCompatActivity {
         backPressedTime = System.currentTimeMillis(); // 현재 시간을 저장
     }
 
-    // 프래그먼트에 chip 카테고리 전달
-    private void sendCategotyToFragment(String category) {
-        NaverFragment naverFragment = (NaverFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_zone);
-
-        if (naverFragment != null) {
-            // naverFragment.함수명(category);
-        }
-    }
-
 }
 

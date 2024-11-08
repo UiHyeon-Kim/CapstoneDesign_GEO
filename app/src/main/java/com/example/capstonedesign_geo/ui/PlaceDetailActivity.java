@@ -38,10 +38,11 @@ public class PlaceDetailActivity extends AppCompatActivity {
         TextView amenityTextView = findViewById(R.id.amenity);
         TextView shortAddrTextView = findViewById(R.id.shortAddress);
         TextView descriptionTextView = findViewById(R.id.description);
-        /*Toolbar toolbar = findViewById(R.id.toolbar);
+//        CollapsingToolbarLayout toolbar = findViewById(R.id.toolbar_layout);
 
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("상단 바 제목");*/
+//        toolbar.setTitle(title);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setTitle(title);
 
         titleTextView.setText(title);
         categoryTextView.setText(category);

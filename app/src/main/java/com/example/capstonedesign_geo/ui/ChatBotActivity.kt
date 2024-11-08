@@ -338,6 +338,11 @@ fun ChatBubbleItem(chatMessage: ChatMessage) {
                                 fontFamily = notoSansFamily,
                                 style = TextStyle(fontSize = 16.sp)
                             )
+                            Text(
+                                text = "컨텐츠: ${place.content}",
+                                fontFamily = notoSansFamily,
+                                style = TextStyle(fontSize = 16.sp)
+                            )
                         }
                     }
                 }
