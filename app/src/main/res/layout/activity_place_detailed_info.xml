@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -51,13 +50,17 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/notosans_bold"
                 android:includeFontPadding="false"
+                android:paddingLeft="10dp"
                 android:text="지수네 마라탕"
                 android:textSize="24sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="3dp">
 
                 <TextView
                     android:id="@+id/shortAddress"
@@ -87,7 +90,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:paddingBottom="8dp">
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button2"
@@ -132,7 +137,7 @@
             <View
                 android:id="@+id/view"
                 android:layout_width="match_parent"
-                android:layout_height="5dp"
+                android:layout_height="3dp"
                 android:background="@android:color/darker_gray" />
 
             <LinearLayout
@@ -142,7 +147,9 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp">
 
                     <ImageView
                         android:id="@+id/imageView1"
@@ -179,7 +186,9 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp">
 
                     <ImageView
                         android:id="@+id/imageView2"
@@ -216,7 +225,9 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp">
 
                     <ImageView
                         android:id="@+id/imageView3"
@@ -253,7 +264,9 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp">
 
                     <ImageView
                         android:id="@+id/imageView4"
@@ -290,7 +303,9 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp">
 
                     <ImageView
                         android:id="@+id/imageView5"
@@ -308,7 +323,7 @@
                         android:layout_weight="2"
                         android:fontFamily="@font/notosans_bold"
                         android:includeFontPadding="false"
-                        android:text="설명"
+                        android:text="콘텐츠"
                         android:textSize="18sp" />
 
                     <TextView
@@ -327,7 +342,7 @@
 
             </LinearLayout>
 
-            <LinearLayout
+            <!--<LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -345,25 +360,25 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="9"
                     android:text="TextView" />
-            </LinearLayout>
+            </LinearLayout>-->
 
             <GridView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:numColumns="2" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <!--<androidx.appcompat.widget.AppCompatButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="더보기" />
+                android:text="더보기" />-->
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@android:color/darker_gray" />
 
-            <LinearLayout
+            <!--<LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
@@ -381,7 +396,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Button" />
-            </LinearLayout>
+            </LinearLayout>-->
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

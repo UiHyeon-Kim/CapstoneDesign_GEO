@@ -70,6 +70,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import coil.compose.AsyncImage
 import com.example.capstonedesign_geo.R
 import com.example.capstonedesign_geo.data.chat.ChatMessage
 import com.example.capstonedesign_geo.data.chat.Participant
@@ -263,6 +264,7 @@ fun ChatBubbleItem(chatMessage: ChatMessage) {
                 )
             }
         }
+
         BoxWithConstraints {
             Card(
                 shape = bubbleShape,
@@ -277,10 +279,9 @@ fun ChatBubbleItem(chatMessage: ChatMessage) {
                         )
                     }
                     .widthIn(0.dp, maxWidth * 0.9f)
+                    .padding(8.dp)
             ) {
-                Column(
-                    modifier = Modifier.padding(16.dp)
-                ) {
+                Column(modifier = Modifier.padding(16.dp)) {
                     Text(
                         text = annotatedString,
                         color = textColor,
@@ -288,17 +289,12 @@ fun ChatBubbleItem(chatMessage: ChatMessage) {
                         style = TextStyle(fontSize = 16.sp)
                     )
 
-                    // 각 장소를 개별 Text로 표시하고 클릭 이벤트 설정
                     chatMessage.places.forEach { place ->
-                        Text(
-                            text = "${place.title}\n주소: ${place.addr1}\n 전화번호: ${place.tel}\n",
-                            color = Color.Blue,
-                            style = TextStyle(fontSize = 16.sp),
-                            fontFamily = notoSansFamily,
+                        Column(
                             modifier = Modifier
-                                .padding(vertical = 4.dp)
+                                .fillMaxWidth()
+                                .padding(vertical = 5.dp)
                                 .clickable {
-                                    // 클릭 시 PlaceDetailActivity로 이동
                                     val intent =
                                         Intent(context, PlaceDetailActivity::class.java).apply {
                                             putExtra("title", place.title)
@@ -306,10 +302,43 @@ fun ChatBubbleItem(chatMessage: ChatMessage) {
                                             putExtra("tel", place.tel)
                                             putExtra("content", place.content)
                                             putExtra("firstimage", place.firstimage)
+                                            putExtra("category", place.category)
+                                            putExtra("amenity", place.amenity)
+                                            putExtra("hours", place.hours)
                                         }
                                     context.startActivity(intent)
                                 }
-                        )
+                        ) {
+                            // 이미지 표시 (Coil 사용)
+                            if (!place.firstimage.isNullOrEmpty()) {
+                                AsyncImage(
+                                    model = place.firstimage,
+                                    contentDescription = null,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .height(200.dp)
+                                        .padding(bottom = 8.dp)
+                                )
+                            }
+
+                            Text(
+                                text = place.title,
+                                style = TextStyle(fontSize = 18.sp, fontWeight = FontWeight.Bold),
+                                fontFamily = notoSansFamily,
+                                modifier = Modifier.padding(bottom = 4.dp)
+                            )
+                            Text(
+                                text = "주소: ${place.addr1}",
+                                style = TextStyle(fontSize = 16.sp),
+                                fontFamily = notoSansFamily,
+                                modifier = Modifier.padding(bottom = 4.dp)
+                            )
+                            Text(
+                                text = "전화번호: ${place.tel}",
+                                fontFamily = notoSansFamily,
+                                style = TextStyle(fontSize = 16.sp)
+                            )
+                        }
                     }
                 }
             }

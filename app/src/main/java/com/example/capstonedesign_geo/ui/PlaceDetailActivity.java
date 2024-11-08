@@ -22,12 +22,12 @@ public class PlaceDetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String title = intent.getStringExtra("title");
         String category = intent.getStringExtra("category");
-        String address = intent.getStringExtra("address");
         String hours = intent.getStringExtra("hours");
-        String imageUrl = intent.getStringExtra("imageUrl");
+        String imageUrl = intent.getStringExtra("firstimage");
         String tel = intent.getStringExtra("tel");
         String amenity = intent.getStringExtra("amenity");
-        String shortAddr = intent.getStringExtra("shortAddr");
+        String addr1 = intent.getStringExtra("addr1");
+        String content = intent.getStringExtra("content");
 
         TextView titleTextView = findViewById(R.id.title);
         TextView categoryTextView = findViewById(R.id.category);
@@ -37,6 +37,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
         TextView telTextView = findViewById(R.id.tel);
         TextView amenityTextView = findViewById(R.id.amenity);
         TextView shortAddrTextView = findViewById(R.id.shortAddress);
+        TextView descriptionTextView = findViewById(R.id.description);
         /*Toolbar toolbar = findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
@@ -44,11 +45,12 @@ public class PlaceDetailActivity extends AppCompatActivity {
 
         titleTextView.setText(title);
         categoryTextView.setText(category);
-        addressTextView.setText(address);
+        addressTextView.setText(addr1);
         hoursTextView.setText(hours);
         telTextView.setText(tel);
         amenityTextView.setText(amenity);
-        shortAddrTextView.setText(shortAddr);
+        shortAddrTextView.setText(addr1);
+        descriptionTextView.setText(content);
 
         Glide.with(this)
                 .load(imageUrl)
