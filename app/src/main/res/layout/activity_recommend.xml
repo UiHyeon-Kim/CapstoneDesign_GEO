@@ -8,7 +8,7 @@
 
     <Toolbar
         android:layout_width="match_parent"
-        android:layout_height="56dp" />
+        android:layout_height="20dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,8 +24,9 @@
             android:layout_weight="1"
             android:fontFamily="@font/notosans_bold"
             android:includeFontPadding="false"
+            android:paddingLeft="10dp"
             android:text="오늘의 인기 장소"
-            android:textSize="20sp" />
+            android:textSize="24sp" />
     </LinearLayout>
 
     <ScrollView
@@ -69,7 +70,8 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:scaleType="centerCrop"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        app:srcCompat="@drawable/icon_restaurant_100"
+                        tools:srcCompat="@drawable/icon_restaurant_100" />
 
                     <TextView
                         android:id="@+id/textView15"
@@ -79,7 +81,8 @@
                         android:fontFamily="@font/notosans"
                         android:includeFontPadding="false"
                         android:text="식당"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -98,7 +101,8 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:scaleType="centerCrop"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        app:srcCompat="@drawable/icon_cafe_100"
+                        tools:srcCompat="@drawable/icon_cafe_100" />
 
                     <TextView
                         android:id="@+id/textView16"
@@ -108,7 +112,8 @@
                         android:fontFamily="@font/notosans"
                         android:includeFontPadding="false"
                         android:text="카페"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -126,7 +131,8 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:scaleType="centerCrop"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        app:srcCompat="@drawable/icon_culture_100"
+                        tools:srcCompat="@drawable/icon_culture_100" />
 
                     <TextView
                         android:id="@+id/textView17"
@@ -136,7 +142,8 @@
                         android:fontFamily="@font/notosans"
                         android:includeFontPadding="false"
                         android:text="전시/문화"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -154,7 +161,8 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:scaleType="centerCrop"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        app:srcCompat="@drawable/icon_shop_100"
+                        tools:srcCompat="@drawable/icon_shop_100" />
 
                     <TextView
                         android:id="@+id/textView18"
@@ -164,7 +172,8 @@
                         android:fontFamily="@font/notosans"
                         android:includeFontPadding="false"
                         android:text="쇼핑"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -182,7 +191,8 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:scaleType="centerCrop"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        app:srcCompat="@drawable/icon_sports_100"
+                        tools:srcCompat="@drawable/icon_sports_100" />
 
                     <TextView
                         android:id="@+id/textView19"
@@ -192,7 +202,8 @@
                         android:fontFamily="@font/notosans"
                         android:includeFontPadding="false"
                         android:text="스포츠"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:textSize="16sp" />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -209,9 +220,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="5"
-                    android:fontFamily="@font/notosans"
+                    android:fontFamily="@font/notosans_bold"
                     android:includeFontPadding="false"
-                    android:text="비오는 날 추천" />
+                    android:paddingLeft="10dp"
+                    android:text="비오는 날 추천"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/more1"
@@ -322,9 +335,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="5"
-                    android:fontFamily="@font/notosans"
+                    android:fontFamily="@font/notosans_bold"
                     android:includeFontPadding="false"
-                    android:text="비오는 날 추천" />
+                    android:paddingLeft="10dp"
+                    android:text="지수의 추천"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/more2"
