@@ -44,6 +44,9 @@ public class NaverMapData implements Parcelable {
     @SerializedName("content")
     private String content;
 
+    @SerializedName("disabled_content")
+    private String disabled_content;
+
     @SerializedName("amenity")
     private String amenity;
 
@@ -62,6 +65,7 @@ public class NaverMapData implements Parcelable {
         tel = in.readString();
         title = in.readString();
         content = in.readString();
+        disabled_content = in.readString();
         amenity = in.readString();
         disabled = in.readString();
     }
@@ -79,6 +83,7 @@ public class NaverMapData implements Parcelable {
         dest.writeString(tel);
         dest.writeString(title);
         dest.writeString(content);
+        dest.writeString(disabled_content);
         dest.writeString(amenity);
         dest.writeString(disabled);
     }
@@ -186,6 +191,14 @@ public class NaverMapData implements Parcelable {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getDisabled_content() {
+        return disabled_content;
+    }
+
+    public void setDisabled_content(String content) {
+        this.disabled_content = disabled_content;
     }
 
     public String getAmenity() {
