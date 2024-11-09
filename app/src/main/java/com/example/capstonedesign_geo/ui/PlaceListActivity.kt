@@ -27,13 +27,13 @@ class PlaceListActivity : AppCompatActivity() {
         adapter = PlaceAdapter(placeList) { place ->
             val intent = Intent(this, PlaceDetailActivity::class.java).apply {
                 putExtra("title", place.title)
-                putExtra("category", place.category)
-                putExtra("shortAddr", place.addr1)
-                putExtra("address", "${place.addr1} ${place.addr2}")
-                putExtra("hours", place.hours)
+                putExtra("addr1", place.addr1)
                 putExtra("tel", place.tel)
+                putExtra("content", place.content)
+                putExtra("firstimage", place.firstimage)
+                putExtra("category", place.category)
                 putExtra("amenity", place.amenity)
-                putExtra("imageUrl", place.firstimage)
+                putExtra("hours", place.hours)
             }
             startActivity(intent)
         }
