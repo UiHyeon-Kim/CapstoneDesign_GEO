@@ -50,6 +50,7 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000; //위치 권한 요청 코드
     private final List<Marker> nmarker = new ArrayList<>(); // 모든 마커를 저장할 리스트
     private final Map<String, Boolean> categoryVisibilityMap = new HashMap<>(); // 카테고리별 가시성 상태
+    private final Map<String, Boolean> disabledVisibilityMap = new HashMap<>(); // 카테고리별 가시성 상태
     private FusedLocationSource locationSource; //위치를 반환하는 구현체
     private NaverMap naverMap;
     private MapView mapView; //지도 객체 변수
@@ -109,7 +110,7 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
         Chip Category_Library = view.findViewById(R.id.chip_Library);
         Chip Category_shinhan_univ = view.findViewById(R.id.chip_shinhan_univ);
 
-        // 클릭 이벤트 설정
+        // 전체 마커 클릭 이벤트 설정
         chipCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,7 +119,7 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
             }
         });
 
-        // all이외의 카테고리 클릭이벤트
+
         categoryVisibilityMap.put("category_restaurant", false);
         Category_restaurant.setOnClickListener(v -> toggleMarkersByCategory("식당"));
 
@@ -250,6 +251,7 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
                     // 각 마커에 카테고리를 태그로 설정
                     markers[i].setTag(naverMapInfo.get(i).getCategory());
 
+
                     markers[i].setOnClickListener(new Overlay.OnClickListener() { //마커 클릭이벤트
                         @Override
                         public boolean onClick(@NonNull Overlay overlay) {
@@ -315,6 +317,7 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
             }
         }
     }
+
 
     @Override
     public void onStart() {

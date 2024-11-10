@@ -82,6 +82,7 @@
                     app:chipMinHeight="35dp"
                     app:chipStartPadding="5dp" />
 
+
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_restaurant"
                     style="@style/ChipStyles"
