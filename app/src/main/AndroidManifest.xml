@@ -10,6 +10,12 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
 
     <application
         android:allowBackup="true"
@@ -54,6 +60,7 @@
         <activity android:name=".ui.RecommendActivity" />
         <activity android:name=".ui.SettingActivity" />
         <activity android:name=".ui.PolicyActivity" />
+        <activity android:name=".ui.RecentSearchActivity" />
         <activity
             android:name=".ui.ChatBotActivity"
             android:exported="true"

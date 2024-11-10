@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import com.example.capstonedesign_geo.R;
 import com.example.capstonedesign_geo.ui.NavigationActivity;
 import com.example.capstonedesign_geo.ui.PolicyActivity;
+import com.example.capstonedesign_geo.ui.PreferenceListActivity;
 import com.example.capstonedesign_geo.ui.RecommendActivity;
 import com.example.capstonedesign_geo.ui.SettingActivity;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
@@ -25,7 +26,7 @@ public class BottomSheet extends BottomSheetDialogFragment {
 
     private TextView tvNickname;
     private String nickname;
-    private Button btnZzim, btnRecentsearch, btnRoot, btnRecommend, btnAnnouncement, btnPolicy, btnSetting;
+    private Button btnZzim, btnRecentsearch, btnRoot, btnNearLocation, btnRecommend, btnAnnouncement, btnPolicy, btnSetting;
 
     public BottomSheet() {
 
@@ -54,7 +55,8 @@ public class BottomSheet extends BottomSheetDialogFragment {
         btnRecentsearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getActivity(), RecentSearchActivity.class);
+                startActivity(intent);
             }
         });
 
