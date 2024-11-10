@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.capstonedesign_geo.R;
 import com.example.capstonedesign_geo.utility.PreferenceUtils;
 
-public class SettingActivity extends AppCompatActivity {
+public class SettingActivity extends AppCompatActivity implements ConfirmDialogInterface {
 
     private AudioManager audioManager;
     private Vibrator vibrator;
@@ -44,9 +44,25 @@ public class SettingActivity extends AppCompatActivity {
         SeekBar vibrationSeekBar = findViewById(R.id.seekBar_vibration);
         setupVibrationSeekBar(vibrationSeekBar);
 
-        // 사용자 유형 재선택 버튼 클릭 이벤트 처리
+        // 초기화 버튼 클릭 이벤트 처리
         TextView btnResetPreferences = findViewById(R.id.btnResetPreferences);
-        btnResetPreferences.setOnClickListener(v -> resetPreferences());
+        btnResetPreferences.setOnClickListener(v -> showResetConfirmationDialog());
+    }
+
+    // 커스텀 다이얼로그 호출
+    private void showResetConfirmationDialog() {
+        CustomDialog dialog = CustomDialog.newInstance(
+                "설정을 초기화 하시겠습니까?",
+                "이 작업은 되돌릴 수 없습니다."
+        );
+        dialog.setConfirmDialogInterface(this);
+        dialog.show(getFragmentManager(), "CustomDialog");
+    }
+
+    // 다이얼로그에서 확인 버튼 클릭 시 호출
+    @Override
+    public void onConfirmClick(String item) {
+        resetPreferences();
     }
 
     private void resetPreferences() {
@@ -54,6 +70,7 @@ public class SettingActivity extends AppCompatActivity {
         PreferenceUtils.clearPreferences(this);
         Toast.makeText(this, "설정이 초기화되었습니다.", Toast.LENGTH_SHORT).show();
 
+        // UserRegistration 액티비티로 이동
         Intent intent = new Intent(SettingActivity.this, UserRegistration.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
@@ -62,7 +79,6 @@ public class SettingActivity extends AppCompatActivity {
 
     // 소리 조절 SeekBar 설정 함수
     private void setupVolumeSeekBar(SeekBar volumeSeekBar) {
-        // STREAM_MUSIC의 최대 볼륨과 현재 볼륨 가져오기
         int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
         int currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
 
@@ -72,7 +88,6 @@ public class SettingActivity extends AppCompatActivity {
         volumeSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                // 볼륨을 조절하고 UI에 표시
                 audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, progress, AudioManager.FLAG_SHOW_UI);
             }
 
@@ -88,7 +103,7 @@ public class SettingActivity extends AppCompatActivity {
 
     // 진동 세기 조절 SeekBar 설정 함수
     private void setupVibrationSeekBar(SeekBar vibrationSeekBar) {
-        vibrationSeekBar.setMax(255); // 진동 세기 범위 (0~255)
+        vibrationSeekBar.setMax(255);
         vibrationSeekBar.setProgress(128);
 
         vibrationSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
