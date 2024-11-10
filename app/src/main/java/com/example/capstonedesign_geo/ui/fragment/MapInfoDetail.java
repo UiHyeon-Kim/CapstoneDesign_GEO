@@ -2,12 +2,10 @@ package com.example.capstonedesign_geo.ui.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.example.capstonedesign_geo.R;
@@ -19,20 +17,25 @@ public class MapInfoDetail extends AppCompatActivity {
     private TextView getMapInfoAddr1;
     private TextView getMapInfoAddr2;
     private TextView getMapInfoTime;
+    private TextView getMapInfoCategory;
+    private TextView getMapInfoTel;
+    private TextView getMapInfoContent;
+    private TextView getMapInfoAmenity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_detailed_info);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
         getMapInfofirstimage = findViewById(R.id.header_image);
         getMapInfoTitle = findViewById(R.id.title);
         getMapInfoAddr1 = findViewById(R.id.shortAddress);
         getMapInfoAddr2 = findViewById(R.id.address);
         getMapInfoTime = findViewById(R.id.hours);
+        getMapInfoCategory = findViewById(R.id.category);
+        getMapInfoTel = findViewById(R.id.tel);
+        getMapInfoContent = findViewById(R.id.description);
+        getMapInfoAmenity = findViewById(R.id.amenity);
 
         Intent intent = getIntent();
         String firstimage = intent.getStringExtra("firstimage");
@@ -40,32 +43,27 @@ public class MapInfoDetail extends AppCompatActivity {
         String addr1 = intent.getStringExtra("addr1");
         String addr2 = intent.getStringExtra("addr2");
         String time = intent.getStringExtra("time");
+        String category = intent.getStringExtra("category");
+        String tel = intent.getStringExtra("tel");
+        String content = intent.getStringExtra("content");
+        String amenity = intent.getStringExtra("amenity");
 
         getMapInfoTitle.setText(title);
         getMapInfoAddr1.setText(addr1);
         getMapInfoAddr2.setText(addr2);
         getMapInfoTime.setText(time);
+        getMapInfoCategory.setText(category);
+        getMapInfoTel.setText(tel);
+        getMapInfoContent.setText(content);
+        getMapInfoAmenity.setText(amenity);
         Glide.with(this)
                 .load(firstimage) // 이미지 URL
                 .into(getMapInfofirstimage); // ImageView에 설정
 
-        // 뒤로가기 버튼 활성화
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
-        }
 
     }
 
-    // 뒤로가기 버튼 클릭 이벤트 처리
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            onBackPressed(); // 뒤로가기 동작
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+
 
 
 }

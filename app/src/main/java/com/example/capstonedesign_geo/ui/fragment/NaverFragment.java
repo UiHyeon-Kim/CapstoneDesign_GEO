@@ -250,7 +250,7 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
                             String mapInfoTitle = naverMapInfo.get(index).getTitle();
                             String mapInfoAddr1 = naverMapInfo.get(index).getAddr1();
                             String mapInfoAddr2 = naverMapInfo.get(index).getAddr2();
-                            String mapInfoTime = naverMapInfo.get(index).getHours();
+                            String mapInfohours = naverMapInfo.get(index).getHours();
                             intent.putExtra("title", mapInfoTitle);
                             intent.putExtra("addr1", mapInfoAddr1);
                             intent.putExtra("tel", naverMapInfo.get(index).getTel());
@@ -260,7 +260,7 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
                             intent.putExtra("amenity", naverMapInfo.get(index).getAmenity());
                             intent.putExtra("hours", naverMapInfo.get(index).getHours());
                             intent.putExtra("addr2", mapInfoAddr2);
-                            intent.putExtra("time", mapInfoTime);
+                            intent.putExtra("hours", mapInfohours);
                             startActivity(intent);
                             return false;
                         }

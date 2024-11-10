@@ -133,12 +133,12 @@ public class NavigationActivity extends AppCompatActivity implements OnMapReadyC
                     markers[i].setIcon(MarkerIcons.BLACK);
                     markers[i].setIconTintColor(ContextCompat.getColor(context, R.color.mainblue));
 
-                    // 초기에는 지도에 표시하지 않음
-//                    markers[i].setMap(null);
-                    nmarker.add(markers[i]); // 리스트에 추가
+//                    // 초기에는 지도에 표시하지 않음
+////                    markers[i].setMap(null);
+//                    nmarker.add(markers[i]); // 리스트에 추가
 
-                    // 각 마커에 카테고리를 태그로 설정
-                    markers[i].setTag(naverMapInfo.get(i).getCategory());
+//                    // 각 마커에 카테고리를 태그로 설정
+//                    markers[i].setTag(naverMapInfo.get(i).getCategory());
 
                     markers[i].setOnClickListener(new Overlay.OnClickListener() { //마커 클릭이벤트
                         @Override

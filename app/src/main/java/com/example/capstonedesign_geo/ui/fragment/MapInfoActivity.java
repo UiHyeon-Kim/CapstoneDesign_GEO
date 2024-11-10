@@ -21,7 +21,8 @@ public class MapInfoActivity extends AppCompatActivity {
     private TextView getMapInfoTitle;
     private TextView getMapInfoAddr1;
     private TextView getMapInfoAddr2;
-    private TextView getMapInfoTime;
+    private TextView getMapInfohours;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,20 +35,20 @@ public class MapInfoActivity extends AppCompatActivity {
         getMapInfoTitle = findViewById(R.id.map_info_title);
         getMapInfoAddr1 = findViewById(R.id.map_info_addr1);
         getMapInfoAddr2 = findViewById(R.id.map_info_addr2);
-        getMapInfoTime = findViewById(R.id.map_info_time);
+        getMapInfohours = findViewById(R.id.map_info_time);
 
         Intent intent = getIntent();
         String firstimage = intent.getStringExtra("firstimage");
         String title = intent.getStringExtra("title");
         String addr1 = intent.getStringExtra("addr1");
         String addr2 = intent.getStringExtra("addr2");
-        String time = intent.getStringExtra("time");
-        String category = intent.getStringExtra("category");
+        String hours = intent.getStringExtra("hours");
+
 
         getMapInfoTitle.setText(title);
         getMapInfoAddr1.setText(addr1);
         getMapInfoAddr2.setText(addr2);
-        getMapInfoTime.setText(time);
+        getMapInfohours.setText(hours);
         Glide.with(this)
                 .load(firstimage) // 이미지 URL
                 .into(getMapInfofirstimage); // ImageView에 설정
@@ -71,13 +72,18 @@ public class MapInfoActivity extends AppCompatActivity {
     }
 
     public void onLinearLayoutClick(View view) {
-        // 클릭 시 실행할 코드
+        // 클릭 시 실행할 코드(상세정보 창으로 선택한 장소 정보 보내기)
         Intent intent = new Intent(getApplicationContext(), PlaceDetailActivity.class);
+        intent.putExtra("firstimage", getIntent().getStringExtra("firstimage"));
         intent.putExtra("title", getIntent().getStringExtra("title"));
         intent.putExtra("category", getIntent().getStringExtra("category"));
-        intent.putExtra("address", getIntent().getStringExtra("addr1 + addr2"));
-        intent.putExtra("time", getIntent().getStringExtra("time"));
-        intent.putExtra("firstimage", getIntent().getStringExtra("firstimage"));
+        intent.putExtra("addr1", getIntent().getStringExtra("addr1"));
+        intent.putExtra("addr2", getIntent().getStringExtra("addr2"));
+        intent.putExtra("hours", getIntent().getStringExtra("hours"));
+        intent.putExtra("category", getIntent().getStringExtra("category"));
+        intent.putExtra("tel", getIntent().getStringExtra("tel"));
+        intent.putExtra("content", getIntent().getStringExtra("content"));
+        intent.putExtra("amenity", getIntent().getStringExtra("amenity"));
         startActivity(intent);
     }
 }
