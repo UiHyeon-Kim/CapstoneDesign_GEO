@@ -11,6 +11,11 @@
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -54,6 +59,7 @@
         <activity android:name=".ui.RecommendActivity" />
         <activity android:name=".ui.SettingActivity" />
         <activity android:name=".ui.PolicyActivity" />
+        <activity android:name=".ui.RecentSearchActivity" />
         <activity
             android:name=".ui.ChatBotActivity"
             android:exported="true"

@@ -68,7 +68,7 @@
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/notosans_thin"
                 android:includeFontPadding="false"
-                android:text="본 이용 정책은 [서비스명] (이하 &quot;지오&quot;)의 이용 조건과 개발자와 사용자의 권리 및 의무를 규정하기 위해 작성되었습니다. 서비스는 [GUI]에 의해 개발 및 운영됩니다"
+                android:text="본 이용 정책은 GEO (이하 &quot;지오&quot;)의 이용 조건과 개발자와 사용자의 권리 및 의무를 규정하기 위해 작성되었습니다. 서비스는 [GUI]에 의해 개발 및 운영됩니다"
                 android:textSize="20sp" />
 
             <TextView
@@ -88,7 +88,7 @@
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/notosans_thin"
                 android:includeFontPadding="false"
-                android:text="지오는 [서비스 설명]을 의미하며, 사용자가 제공하는 위치 정보 및 간략한 정보를 바탕으로 [서비스 목적]을 제공합니다."
+                android:text="지오는 챗봇을 의미하며, 사용자가 제공하는 위치 정보 및 간략한 정보를 바탕으로 장소 정보를 제공합니다."
                 android:textSize="20sp" />
 
             <TextView
@@ -235,7 +235,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="10dp"
-                android:background="@android:color/darker_gray"/>
+                android:background="@android:color/darker_gray" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -251,7 +251,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginBottom="30dp"
-                android:background="@android:color/darker_gray"/>
+                android:background="@android:color/darker_gray" />
 
         </LinearLayout>
     </ScrollView>
