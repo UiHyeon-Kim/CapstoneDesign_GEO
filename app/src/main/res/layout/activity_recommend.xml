@@ -48,11 +48,16 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray" />
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp">
 
                 <LinearLayout
@@ -69,9 +74,10 @@
                         android:id="@+id/restorentImage"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
+                        android:padding="10dp"
                         android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/icon_restaurant_100"
-                        tools:srcCompat="@drawable/icon_restaurant_100" />
+                        app:srcCompat="@drawable/icon_restaurant2"
+                        tools:srcCompat="@drawable/icon_restaurant2" />
 
                     <TextView
                         android:id="@+id/textView15"
@@ -100,9 +106,10 @@
                         android:id="@+id/cafeImage"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
+                        android:padding="10dp"
                         android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/icon_cafe_100"
-                        tools:srcCompat="@drawable/icon_cafe_100" />
+                        app:srcCompat="@drawable/icon_cafe2"
+                        tools:srcCompat="@drawable/icon_cafe2" />
 
                     <TextView
                         android:id="@+id/textView16"
@@ -130,9 +137,10 @@
                         android:id="@+id/cultureImgae"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
+                        android:padding="10dp"
                         android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/icon_culture_100"
-                        tools:srcCompat="@drawable/icon_culture_100" />
+                        app:srcCompat="@drawable/icon_culture2"
+                        tools:srcCompat="@drawable/icon_culture2" />
 
                     <TextView
                         android:id="@+id/textView17"
@@ -160,9 +168,10 @@
                         android:id="@+id/shoppingImage"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
+                        android:padding="10dp"
                         android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/icon_shop_100"
-                        tools:srcCompat="@drawable/icon_shop_100" />
+                        app:srcCompat="@drawable/icon_shop2"
+                        tools:srcCompat="@drawable/icon_shop2" />
 
                     <TextView
                         android:id="@+id/textView18"
@@ -190,9 +199,10 @@
                         android:id="@+id/sportsImage"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
+                        android:padding="10dp"
                         android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/icon_sports_100"
-                        tools:srcCompat="@drawable/icon_sports_100" />
+                        app:srcCompat="@drawable/icon_sports2"
+                        tools:srcCompat="@drawable/icon_sports2" />
 
                     <TextView
                         android:id="@+id/textView19"
@@ -206,6 +216,12 @@
                         android:textSize="16sp" />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/gray" />
 
             <LinearLayout
                 android:layout_width="match_parent"
