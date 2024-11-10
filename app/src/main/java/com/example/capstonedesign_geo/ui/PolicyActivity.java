@@ -1,6 +1,7 @@
 package com.example.capstonedesign_geo.ui;
 
 import android.os.Bundle;
+import android.widget.ImageButton;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,5 +15,8 @@ public class PolicyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_policy);
         StatusBarKt.setStatusBarColor(this, getResources().getColor(R.color.mainblue));
+
+        ImageButton btnBack = findViewById(R.id.backButton);
+        btnBack.setOnClickListener(view -> onBackPressed());
     }
 }

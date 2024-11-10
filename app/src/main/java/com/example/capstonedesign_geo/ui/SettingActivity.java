@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.capstonedesign_geo.R;
 import com.example.capstonedesign_geo.utility.PreferenceUtils;
+import com.example.capstonedesign_geo.utility.StatusBarKt;
 
 public class SettingActivity extends AppCompatActivity implements ConfirmDialogInterface {
 
@@ -25,6 +27,7 @@ public class SettingActivity extends AppCompatActivity implements ConfirmDialogI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
+        StatusBarKt.setStatusBarColor(this, getResources().getColor(R.color.mainblue));
 
         // AudioManager 초기화
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
@@ -47,6 +50,9 @@ public class SettingActivity extends AppCompatActivity implements ConfirmDialogI
         // 초기화 버튼 클릭 이벤트 처리
         TextView btnResetPreferences = findViewById(R.id.btnResetPreferences);
         btnResetPreferences.setOnClickListener(v -> showResetConfirmationDialog());
+
+        ImageButton btnBack = findViewById(R.id.backButton);
+        btnBack.setOnClickListener(view -> onBackPressed());
     }
 
     // 커스텀 다이얼로그 호출

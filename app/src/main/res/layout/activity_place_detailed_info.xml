@@ -31,6 +31,19 @@
 
             </androidx.appcompat.widget.Toolbar>
 
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/toolbar"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="#00000000"
+                android:contentDescription=" "
+                android:padding="8dp"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/icon_back_btn" />
+
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -162,9 +175,9 @@
                         android:layout_weight="2"
                         android:fontFamily="@font/notosans_bold"
                         android:includeFontPadding="false"
+                        android:paddingLeft="10sp"
                         android:text="주소"
-                        android:textSize="18sp"
-                        android:paddingLeft="10sp"/>
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/address"
@@ -183,8 +196,8 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#D3D3D3"
-                    android:layout_marginVertical="8dp"/>
+                    android:layout_marginVertical="8dp"
+                    android:background="#D3D3D3" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -200,9 +213,9 @@
                         android:layout_weight="2"
                         android:fontFamily="@font/notosans_bold"
                         android:includeFontPadding="false"
+                        android:paddingLeft="10sp"
                         android:text="전화번호"
-                        android:textSize="18sp"
-                        android:paddingLeft="10sp"/>
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/tel"
@@ -221,8 +234,8 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#D3D3D3"
-                    android:layout_marginVertical="8dp"/>
+                    android:layout_marginVertical="8dp"
+                    android:background="#D3D3D3" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -238,9 +251,9 @@
                         android:layout_weight="2"
                         android:fontFamily="@font/notosans_bold"
                         android:includeFontPadding="false"
+                        android:paddingLeft="10sp"
                         android:text="영업시간"
-                        android:textSize="18sp"
-                        android:paddingLeft="10sp"/>
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/hours"
@@ -259,8 +272,8 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#D3D3D3"
-                    android:layout_marginVertical="8dp"/>
+                    android:layout_marginVertical="8dp"
+                    android:background="#D3D3D3" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -276,9 +289,9 @@
                         android:layout_weight="2"
                         android:fontFamily="@font/notosans_bold"
                         android:includeFontPadding="false"
+                        android:paddingLeft="10sp"
                         android:text="부가정보"
-                        android:textSize="18sp"
-                        android:paddingLeft="10sp"/>
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/amenity"
@@ -297,8 +310,8 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#D3D3D3"
-                    android:layout_marginVertical="8dp"/>
+                    android:layout_marginVertical="8dp"
+                    android:background="#D3D3D3" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -314,9 +327,9 @@
                         android:layout_weight="2"
                         android:fontFamily="@font/notosans_bold"
                         android:includeFontPadding="false"
+                        android:paddingLeft="10sp"
                         android:text="설명"
-                        android:textSize="18sp"
-                        android:paddingLeft="10sp"/>
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/description"
@@ -329,8 +342,7 @@
                         android:includeFontPadding="false"
                         android:inputType="textLongMessage|textMultiLine"
                         android:text="TextView"
-                        android:textSize="18sp"
-                        />
+                        android:textSize="18sp" />
                 </LinearLayout>
 
             </LinearLayout>
