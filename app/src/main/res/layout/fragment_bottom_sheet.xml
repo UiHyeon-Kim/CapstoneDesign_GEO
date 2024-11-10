@@ -91,81 +91,6 @@
 
 
         <LinearLayout
-            android:id="@+id/two"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnZzim"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@drawable/custom_ripple_effect_blue"
-                    android:text="0"
-                    android:textColor="@color/mainblue"
-                    android:textSize="40sp"
-                    android:fontFamily="@font/notosans_bold"
-                    android:includeFontPadding="false" />
-
-                <TextView
-                    android:id="@+id/textView16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="내 찜"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/notosans"
-                    android:includeFontPadding="false" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnRecentsearch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@drawable/custom_ripple_effect_blue"
-                    android:text="0"
-                    android:textColor="@color/mainblue"
-                    android:textSize="40sp"
-                    android:fontFamily="@font/notosans_bold"
-                    android:includeFontPadding="false" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="최근 검색"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/notosans"
-                    android:includeFontPadding="false" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_centerInParent="true"
-            android:background="@color/subblue" />
-
-        <LinearLayout
             android:id="@+id/three"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -193,6 +118,7 @@
                         android:backgroundTint="@color/white"
                         android:drawableTop="@drawable/mainmenu_path"
                         android:text="경로"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp"
                         android:fontFamily="@font/notosans"
@@ -208,17 +134,27 @@
                     android:orientation="vertical">
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btnNearLocation"
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
+                        android:id="@+id/btnRecentsearch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:background="@drawable/custom_ripple_effect_blue"
-                        android:backgroundTint="@color/white"
-                        android:drawableTop="@drawable/mainmenu_place"
-                        android:text="주변 장소"
-                        android:textColor="@color/black"
+                        android:text="0"
+                        android:textColor="@color/mainblue"
+                        android:textSize="50sp"
+                        android:fontFamily="@font/notosans_bold"
+                        android:includeFontPadding="false" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="최근 검색"
+                        android:textStyle="bold"
                         android:textSize="20sp"
                         android:fontFamily="@font/notosans"
-                        android:includeFontPadding="false" />
+                        android:includeFontPadding="false"
+                        android:layout_marginBottom="10dp"/>
 
                 </LinearLayout>
 
@@ -237,6 +173,7 @@
                         android:backgroundTint="@color/white"
                         android:drawableTop="@drawable/mainmenu_recommend"
                         android:text="추천"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp"
                         android:fontFamily="@font/notosans"

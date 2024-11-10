@@ -16,7 +16,6 @@ import androidx.annotation.Nullable;
 import com.example.capstonedesign_geo.R;
 import com.example.capstonedesign_geo.ui.NavigationActivity;
 import com.example.capstonedesign_geo.ui.PolicyActivity;
-import com.example.capstonedesign_geo.ui.PreferenceListActivity;
 import com.example.capstonedesign_geo.ui.RecommendActivity;
 import com.example.capstonedesign_geo.ui.SettingActivity;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
@@ -26,7 +25,7 @@ public class BottomSheet extends BottomSheetDialogFragment {
 
     private TextView tvNickname;
     private String nickname;
-    private Button btnZzim, btnRecentsearch, btnRoot, btnNearLocation, btnRecommend, btnAnnouncement, btnPolicy, btnSetting;
+    private Button btnZzim, btnRecentsearch, btnRoot, btnRecommend, btnAnnouncement, btnPolicy, btnSetting;
 
     public BottomSheet() {
 
@@ -51,15 +50,6 @@ public class BottomSheet extends BottomSheetDialogFragment {
         tvNickname = view.findViewById(R.id.nickname);
         getNickname();
 
-        btnZzim = view.findViewById(R.id.btnZzim);
-        btnZzim.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), PreferenceListActivity.class);
-                startActivity(intent);
-            }
-        });
-
         btnRecentsearch = view.findViewById(R.id.btnRecentsearch);
         btnRecentsearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,13 +67,6 @@ public class BottomSheet extends BottomSheetDialogFragment {
             }
         });
 
-        btnNearLocation = view.findViewById(R.id.btnNearLocation);
-        btnNearLocation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
 
         btnRecommend = view.findViewById(R.id.btnRecommend);
         btnRecommend.setOnClickListener(new View.OnClickListener() {

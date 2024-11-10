@@ -30,6 +30,10 @@ import com.naver.maps.map.overlay.Marker;
 import com.naver.maps.map.overlay.Overlay;
 import com.naver.maps.map.util.FusedLocationSource;
 import com.naver.maps.map.util.MarkerIcons;
+import com.naver.maps.map.widget.CompassView;
+import com.naver.maps.map.widget.LocationButtonView;
+import com.naver.maps.map.widget.ScaleBarView;
+import com.naver.maps.map.widget.ZoomControlView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -59,10 +63,12 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
     public static NaverFragment newInstance() { //프래그먼트 생성
         NaverFragment fragment = new NaverFragment();
         return fragment;
+
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
     }
 
@@ -148,6 +154,8 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
 
         categoryVisibilityMap.put("category_shinhan_univ", false);
         Category_shinhan_univ.setOnClickListener(v -> toggleMarkersByCategory("신한대"));
+
+
     }
 
     @Override
@@ -176,10 +184,19 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
         naverMap.setCameraPosition(cameraPosition);
 
         UiSettings uiSettings = naverMap.getUiSettings(); //UI컨트롤 활성화 객체
-        uiSettings.setCompassEnabled(true);         //나침판
-        uiSettings.setScaleBarEnabled(true);        //축적바(그 얼마나 확대 했나~그거)
-        uiSettings.setZoomControlEnabled(true);     //확대 축소 버튼
-        uiSettings.setLocationButtonEnabled(true);  //현위치 버튼
+        uiSettings.setCompassEnabled(false);         //나침판
+        uiSettings.setScaleBarEnabled(false);        //축적바(그 얼마나 확대 했나~그거)
+        uiSettings.setZoomControlEnabled(false);     //확대 축소 버튼
+        uiSettings.setLocationButtonEnabled(false);  //현위치 버튼
+
+        CompassView compassView = getView().findViewById(R.id.compass);
+        compassView.setMap(naverMap);
+        ScaleBarView scaleBarView = getView().findViewById(R.id.scalebar);
+        scaleBarView.setMap(naverMap);
+        ZoomControlView zoomcontrolView = getView().findViewById(R.id.zoom);
+        zoomcontrolView.setMap(naverMap);
+        LocationButtonView locationButtonView = getView().findViewById(R.id.location);
+        locationButtonView.setMap(naverMap);
 
 
         // 초기 상태에서는 마커를 추가하되, 표시하지 않음

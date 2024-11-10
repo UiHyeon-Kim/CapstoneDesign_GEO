@@ -66,7 +66,7 @@ public class MapInfoActivity extends AppCompatActivity {
         int height = displayMetrics.heightPixels;
 
         // 레이아웃 크기와 위치 설정
-        getWindow().setLayout((int) Math.round(width * 0.9), (int) Math.round(height * 0.22));
+        getWindow().setLayout((int) Math.round(width * 1), (int) Math.round(height * 0.22));
         getWindow().setGravity(Gravity.BOTTOM);
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
