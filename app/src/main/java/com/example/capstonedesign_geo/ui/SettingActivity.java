@@ -1,16 +1,20 @@
 package com.example.capstonedesign_geo.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.widget.SeekBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.capstonedesign_geo.R;
+import com.example.capstonedesign_geo.utility.PreferenceUtils;
 
 public class SettingActivity extends AppCompatActivity {
 
@@ -39,6 +43,21 @@ public class SettingActivity extends AppCompatActivity {
         // 진동 세기 조절 SeekBar 설정
         SeekBar vibrationSeekBar = findViewById(R.id.seekBar_vibration);
         setupVibrationSeekBar(vibrationSeekBar);
+
+        // 사용자 유형 재선택 버튼 클릭 이벤트 처리
+        TextView btnResetPreferences = findViewById(R.id.btnResetPreferences);
+        btnResetPreferences.setOnClickListener(v -> resetPreferences());
+    }
+
+    private void resetPreferences() {
+        // SharedPreferences 초기화
+        PreferenceUtils.clearPreferences(this);
+        Toast.makeText(this, "설정이 초기화되었습니다.", Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(SettingActivity.this, UserRegistration.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
     }
 
     // 소리 조절 SeekBar 설정 함수
