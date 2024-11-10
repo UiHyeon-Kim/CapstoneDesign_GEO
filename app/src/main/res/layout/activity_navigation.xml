@@ -32,7 +32,7 @@
             android:orientation="vertical"
             android:layout_marginEnd="16dp">
 
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/startLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
                 android:textColor="@android:color/black"
                 android:textSize="16dp" />
 
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/endLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

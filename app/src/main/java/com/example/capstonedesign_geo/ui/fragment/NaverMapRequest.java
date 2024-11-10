@@ -15,17 +15,46 @@ public class NaverMapRequest {
             .build();
 
     public static String BASE_URL = "http://3.35.170.12/"; //데이터가 담긴 서버 주소
+    public static final String NAVER_MAP_BASE_URL = "https://naveropenapi.apigw.ntruss.com/map-direction/v1/driving/";
 
-    private static Retrofit retrofit; //retrofit 객체를 저장할 retrofit 타입의 변수
+    private static Retrofit dataRetrofit;
+    private static Retrofit naverMapRetrofit;
+
+
     public static Retrofit getClient(){
-
-        if(retrofit == null){
-            retrofit = new Retrofit.Builder() //retrofit 객체 생성
-                    .baseUrl(BASE_URL) //어떤 서버BASEURL로 네트워크 통신을 할 것인지 설정
+        if (dataRetrofit == null) {
+            dataRetrofit = new Retrofit.Builder()
+                    .baseUrl(BASE_URL)
                     .client(okHttpClient)
-                    .addConverterFactory(GsonConverterFactory.create()) //통신 완료 후, 어떤 converter로 데이터를 parsing할 것인지
-                    .build(); //통신하여 데이터를 파싱한 retrofit 객체 생성 완료-!
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
         }
-        return retrofit;
+        return dataRetrofit;
     }
-}
+
+
+
+        // 네이버 지도 API 전용 클라이언트 생성 메서드
+    public static Retrofit getNaverMapClient() {
+        if (naverMapRetrofit == null) {
+            naverMapRetrofit = new Retrofit.Builder()
+                    .baseUrl(NAVER_MAP_BASE_URL)
+                    .client(okHttpClient)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+        }
+        return naverMapRetrofit;
+    }
+
+    }
+//    public static Retrofit getClient(){
+//        if(retrofit == null){
+//            retrofit = new Retrofit.Builder() //retrofit 객체 생성
+//                    .baseUrl(BASE_URL) //어떤 서버BASEURL로 네트워크 통신을 할 것인지 설정
+//                    .client(okHttpClient)
+//                    .addConverterFactory(GsonConverterFactory.create()) //통신 완료 후, 어떤 converter로 데이터를 parsing할 것인지
+//                    .build(); //통신하여 데이터를 파싱한 retrofit 객체 생성 완료-!
+//        }
+//        return retrofit;
+//    }
+

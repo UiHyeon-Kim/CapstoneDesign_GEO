@@ -190,6 +190,7 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
     private void initializeMarkers() {
         //클라이언트 객체 생성
         NaverMapApiInterface naverMapApiInterface = NaverMapRequest.getClient().create(NaverMapApiInterface.class);
+
         // 응답을 받을 콜백 구현
         Call<NaverMapItem> call = naverMapApiInterface.getMapData();
         //클라이언트 객체가 제공하는 enqueue로 통신에 대한 요청, 응답 처리 방법 명시
@@ -197,20 +198,32 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onResponse(Call<NaverMapItem> call, Response<NaverMapItem> response) {
 
-                //원격 DB의 데이터를 로컬 DB에 삽입하는 코드
-                if (response.isSuccessful() && response.body() != null) {
-                    List<NaverMapData> dataList = response.body().result;
-                    if (dataList != null && !dataList.isEmpty()) {
-                        // 데이터를 사용하거나 Room DB에 삽입
-                        insertDataIntoLocalDatabase(dataList);
-                    }
-                } else {
-                    // 오류 처리
-                    Log.e("LOCAL_DATABASE_ERROR", "로컬 DB 저장 실패");
-                }
-
                 naverMapList = response.body();
                 naverMapInfo = naverMapList.result;
+
+                if (response.isSuccessful() && response.body() != null) {
+                    naverMapList = response.body();
+
+                    // null 체크 추가
+                    if (naverMapList != null && naverMapList.result != null && !naverMapList.result.isEmpty()) {
+                        List<NaverMapData> dataList = naverMapList.result;
+
+                        // 데이터를 사용하거나 Room DB에 삽입
+                        insertDataIntoLocalDatabase(dataList);
+
+                        // 마커 업데이트
+                        naverMapInfo = dataList;
+                        addMarkersToMap();
+                    } else {
+                        Log.e("API_RESPONSE", "Response result is null or empty");
+                        Toast.makeText(getContext(), "데이터를 찾을 수 없습니다.", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Log.e("API_RESPONSE", "Response failed or body is null");
+                    Toast.makeText(getContext(), "API 응답 실패", Toast.LENGTH_SHORT).show();
+                }
+
+
 
                 // 마커 여러개 찍기
                 for (int i = 0; i < naverMapInfo.size(); i++) {
@@ -379,6 +392,48 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
             }
         }).start();
     }
+
+    private void addMarkersToMap() {
+        if (naverMapInfo == null || naverMapInfo.isEmpty()) return;
+
+        for (int i = 0; i < naverMapInfo.size(); i++) {
+            final int index = i;
+            Marker marker = new Marker();
+
+            double lng = naverMapInfo.get(i).getMapx();
+            double lat = naverMapInfo.get(i).getMapy();
+            marker.setPosition(new LatLng(lat, lng));
+            marker.setMap(naverMap);
+            marker.setCaptionText(naverMapInfo.get(i).getTitle());
+            marker.setIcon(MarkerIcons.BLACK);
+            marker.setIconTintColor(ContextCompat.getColor(context, R.color.mainblue));
+
+            // 각 마커에 태그 설정
+            marker.setTag(naverMapInfo.get(i).getCategory());
+
+            // 마커 클릭 이벤트
+            marker.setOnClickListener(overlay -> {
+                LatLng markerPosition = marker.getPosition();
+                CameraUpdate cameraUpdate = CameraUpdate.scrollTo(markerPosition).animate(CameraAnimation.Easing);
+                naverMap.moveCamera(cameraUpdate);
+
+                // 장소 정보를 MapInfoActivity로 전달
+                Intent intent = new Intent(requireActivity(), MapInfoActivity.class);
+                intent.putExtra("title", naverMapInfo.get(index).getTitle());
+                intent.putExtra("addr1", naverMapInfo.get(index).getAddr1());
+                intent.putExtra("tel", naverMapInfo.get(index).getTel());
+                intent.putExtra("content", naverMapInfo.get(index).getContent());
+                intent.putExtra("firstimage", naverMapInfo.get(index).getFirstimage());
+                startActivity(intent);
+
+                return false;
+            });
+
+            // 마커 리스트에 추가
+            nmarker.add(marker);
+        }
+    }
+
 
 
 }
