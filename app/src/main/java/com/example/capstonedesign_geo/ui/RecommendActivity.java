@@ -74,7 +74,7 @@ public class RecommendActivity extends AppCompatActivity {
         });
         cultureImgae.setOnClickListener(v -> {
             Intent intent = new Intent(this, PlaceListActivity.class);
-            intent.putExtra("category", "전시/문화");
+            intent.putExtra("category", "문화");
             startActivity(intent);
         });
         shoppingImage.setOnClickListener(v -> {
