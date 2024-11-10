@@ -6,11 +6,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.widget.ImageButton;
 import android.widget.SeekBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.capstonedesign_geo.R;
+import com.example.capstonedesign_geo.utility.StatusBarKt;
 
 public class SettingActivity extends AppCompatActivity {
 
@@ -21,6 +23,7 @@ public class SettingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
+        StatusBarKt.setStatusBarColor(this, getResources().getColor(R.color.mainblue));
 
         // AudioManager 초기화
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
@@ -39,6 +42,9 @@ public class SettingActivity extends AppCompatActivity {
         // 진동 세기 조절 SeekBar 설정
         SeekBar vibrationSeekBar = findViewById(R.id.seekBar_vibration);
         setupVibrationSeekBar(vibrationSeekBar);
+
+        ImageButton btnBack = findViewById(R.id.backButton);
+        btnBack.setOnClickListener(view -> onBackPressed());
     }
 
     // 소리 조절 SeekBar 설정 함수
@@ -58,10 +64,12 @@ public class SettingActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
         });
     }
 
@@ -77,10 +85,12 @@ public class SettingActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
         });
     }
 

@@ -34,7 +34,7 @@ public class MapInfoDetail extends AppCompatActivity {
         getMapInfoTime = findViewById(R.id.hours);
         getMapInfoCategory = findViewById(R.id.category);
         getMapInfoTel = findViewById(R.id.tel);
-        getMapInfoContent = findViewById(R.id.description);
+        getMapInfoContent = findViewById(R.id.disabledescription);
         getMapInfoAmenity = findViewById(R.id.amenity);
 
         Intent intent = getIntent();
@@ -62,8 +62,6 @@ public class MapInfoDetail extends AppCompatActivity {
 
 
     }
-
-
 
 
 }

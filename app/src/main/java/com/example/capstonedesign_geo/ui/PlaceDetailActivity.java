@@ -40,7 +40,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
         TextView telTextView = findViewById(R.id.tel);
         TextView amenityTextView = findViewById(R.id.amenity);
         TextView shortAddrTextView = findViewById(R.id.shortAddress);
-        TextView descriptionTextView = findViewById(R.id.description);
+        TextView descriptionTextView = findViewById(R.id.disabledescription);
 
         titleTextView.setText(title);
         categoryTextView.setText(category);

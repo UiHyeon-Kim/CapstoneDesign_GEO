@@ -2,11 +2,12 @@ package com.example.capstonedesign_geo.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.capstonedesign_geo.R
 import com.example.capstonedesign_geo.data.db.GeoDatabase
 import com.example.capstonedesign_geo.ui.adapter.PlaceAdapter
 import com.example.capstonedesign_geo.ui.fragment.NaverMapData
@@ -17,6 +18,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+
 class PlaceListActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
@@ -26,10 +28,10 @@ class PlaceListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_place_list)
-        this.setStatusBarColor(resources.getColor(R.color.mainblue))
+        setContentView(com.example.capstonedesign_geo.R.layout.activity_place_list)
+        this.setStatusBarColor(resources.getColor(com.example.capstonedesign_geo.R.color.mainblue))
 
-        recyclerView = findViewById(R.id.recyclerView)
+        recyclerView = findViewById(com.example.capstonedesign_geo.R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         adapter = PlaceAdapter(placeList) { place ->
@@ -67,6 +69,9 @@ class PlaceListActivity : AppCompatActivity() {
             // 데이터가 없을 경우 안내 메시지
             Toast.makeText(this, "결과를 찾을 수 없습니다.", Toast.LENGTH_SHORT).show()
         }
+
+        val btnBack = findViewById<ImageButton>(com.example.capstonedesign_geo.R.id.backButton)
+        btnBack.setOnClickListener { view: View? -> onBackPressed() }
     }
 
     // 특정 카테고리에 맞는 장소를 데이터베이스에서 가져오는 함수
