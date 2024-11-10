@@ -15,7 +15,7 @@ public class NaverMapRequest {
             .build();
 
     public static String BASE_URL = "http://3.35.170.12/"; //데이터가 담긴 서버 주소
-    public static final String NAVER_MAP_BASE_URL = "https://naveropenapi.apigw.ntruss.com/map-direction/v1/driving/";
+    private static final String NAVER_MAP_BASE_URL = "https://naveropenapi.apigw.ntruss.com/map-direction/v1/";
 
     private static Retrofit dataRetrofit;
     private static Retrofit naverMapRetrofit;
@@ -35,16 +35,16 @@ public class NaverMapRequest {
 
 
         // 네이버 지도 API 전용 클라이언트 생성 메서드
-    public static Retrofit getNaverMapClient() {
-        if (naverMapRetrofit == null) {
-            naverMapRetrofit = new Retrofit.Builder()
-                    .baseUrl(NAVER_MAP_BASE_URL)
-                    .client(okHttpClient)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
+        public static Retrofit getNaverMapClient() {
+            if (naverMapRetrofit == null) {
+                naverMapRetrofit = new Retrofit.Builder()
+                        .baseUrl(NAVER_MAP_BASE_URL) // 슬래시 추가됨
+                        .client(okHttpClient)
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+            }
+            return naverMapRetrofit;
         }
-        return naverMapRetrofit;
-    }
 
     }
 //    public static Retrofit getClient(){

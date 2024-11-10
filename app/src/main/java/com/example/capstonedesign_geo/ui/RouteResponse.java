@@ -11,10 +11,18 @@ public class RouteResponse {
     }
 
     public static class Route {
-        private List<RoutePoint> points;
+        private List<RouteItem> traoptimal;
 
-        public List<RoutePoint> getPoints() {
-            return points;
+        public List<RouteItem> getTraoptimal() {
+            return traoptimal;
+        }
+    }
+
+    public static class RouteItem {
+        private List<RoutePoint> path;
+
+        public List<RoutePoint> getPath() {
+            return path;
         }
     }
 

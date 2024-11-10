@@ -13,12 +13,12 @@ public interface NaverMapApiInterface {
     @GET("db.php")
     Call<NaverMapItem> getMapData();
 
-    @GET("v1/driving")
+    @GET("driving")
     Call<RouteResponse> getRoute(
+            @Header("X-NCP-APIGW-API-KEY-ID") String clientId,
+            @Header("X-NCP-APIGW-API-KEY") String clientSecret,
             @Query("start") String start,
             @Query("goal") String end,
-            @Query("option") String option,
-            @Header("X-NCP-APIGW-API-KEY-ID") String clientId,
-            @Header("X-NCP-APIGW-API-KEY") String clientSecret
+            @Query("option") String option
     );
 }
