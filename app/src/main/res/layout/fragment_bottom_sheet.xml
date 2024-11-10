@@ -126,37 +126,6 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btnRecentsearch"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:background="@drawable/custom_ripple_effect_blue"
-                        android:text="0"
-                        android:textColor="@color/mainblue"
-                        android:textSize="50sp"
-                        android:fontFamily="@font/notosans_bold"
-                        android:includeFontPadding="false" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="최근 검색"
-                        android:textStyle="bold"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/notosans"
-                        android:includeFontPadding="false"
-                        android:layout_marginBottom="10dp"/>
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
