@@ -106,17 +106,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingTop="10dp"
-                android:paddingBottom="8dp">
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_zzim"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/transparent"
-                    android:drawableTop="@drawable/icon_zzim"
-                    android:text="찜하기" />
+                android:paddingTop="12dp"
+                android:paddingBottom="10dp">
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnShare"
