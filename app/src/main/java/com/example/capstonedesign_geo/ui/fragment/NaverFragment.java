@@ -251,9 +251,14 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
                             String mapInfoAddr1 = naverMapInfo.get(index).getAddr1();
                             String mapInfoAddr2 = naverMapInfo.get(index).getAddr2();
                             String mapInfoTime = naverMapInfo.get(index).getHours();
-                            intent.putExtra("firstimage", mapInfofirstimage);
                             intent.putExtra("title", mapInfoTitle);
                             intent.putExtra("addr1", mapInfoAddr1);
+                            intent.putExtra("tel", naverMapInfo.get(index).getTel());
+                            intent.putExtra("content", naverMapInfo.get(index).getContent());
+                            intent.putExtra("firstimage", mapInfofirstimage);
+                            intent.putExtra("category", naverMapInfo.get(index).getCategory());
+                            intent.putExtra("amenity", naverMapInfo.get(index).getAmenity());
+                            intent.putExtra("hours", naverMapInfo.get(index).getHours());
                             intent.putExtra("addr2", mapInfoAddr2);
                             intent.putExtra("time", mapInfoTime);
                             startActivity(intent);

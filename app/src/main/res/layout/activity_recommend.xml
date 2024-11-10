@@ -8,13 +8,13 @@
 
     <Toolbar
         android:layout_width="match_parent"
-        android:layout_height="56dp" />
+        android:layout_height="20dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="5dp">
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/textView25"
@@ -24,8 +24,9 @@
             android:layout_weight="1"
             android:fontFamily="@font/notosans_bold"
             android:includeFontPadding="false"
+            android:paddingLeft="10dp"
             android:text="오늘의 인기 장소"
-            android:textSize="20sp" />
+            android:textSize="24sp" />
     </LinearLayout>
 
     <ScrollView
@@ -36,15 +37,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/imageRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:clipToPadding="false"
                 android:orientation="horizontal"
                 android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:clipToPadding="false"/>
+                android:paddingRight="10dp" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -58,15 +60,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toLeftOf="@id/ll2">
+                    app:layout_constraintRight_toLeftOf="@id/ll2"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
-                        android:id="@+id/imageView7"
+                        android:id="@+id/restorentImage"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:scaleType="centerCrop"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        app:srcCompat="@drawable/icon_restaurant_100"
+                        tools:srcCompat="@drawable/icon_restaurant_100" />
 
                     <TextView
                         android:id="@+id/textView15"
@@ -76,7 +81,8 @@
                         android:fontFamily="@font/notosans"
                         android:includeFontPadding="false"
                         android:text="식당"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -85,15 +91,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toRightOf="@id/ll1"
-                    app:layout_constraintRight_toLeftOf="@id/ll3">
+                    app:layout_constraintRight_toLeftOf="@id/ll3"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
-                        android:id="@+id/imageView8"
+                        android:id="@+id/cafeImage"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:scaleType="centerCrop"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        app:srcCompat="@drawable/icon_cafe_100"
+                        tools:srcCompat="@drawable/icon_cafe_100" />
 
                     <TextView
                         android:id="@+id/textView16"
@@ -103,7 +112,8 @@
                         android:fontFamily="@font/notosans"
                         android:includeFontPadding="false"
                         android:text="카페"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -111,15 +121,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toRightOf="@id/ll2"
-                    app:layout_constraintRight_toLeftOf="@id/ll4">
+                    app:layout_constraintRight_toLeftOf="@id/ll4"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
-                        android:id="@+id/imageView9"
+                        android:id="@+id/cultureImgae"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:scaleType="centerCrop"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        app:srcCompat="@drawable/icon_culture_100"
+                        tools:srcCompat="@drawable/icon_culture_100" />
 
                     <TextView
                         android:id="@+id/textView17"
@@ -129,7 +142,8 @@
                         android:fontFamily="@font/notosans"
                         android:includeFontPadding="false"
                         android:text="전시/문화"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -137,15 +151,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toRightOf="@id/ll3"
-                    app:layout_constraintRight_toLeftOf="@id/ll5">
+                    app:layout_constraintRight_toLeftOf="@id/ll5"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
-                        android:id="@+id/imageView10"
+                        android:id="@+id/shoppingImage"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:scaleType="centerCrop"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        app:srcCompat="@drawable/icon_shop_100"
+                        tools:srcCompat="@drawable/icon_shop_100" />
 
                     <TextView
                         android:id="@+id/textView18"
@@ -155,7 +172,8 @@
                         android:fontFamily="@font/notosans"
                         android:includeFontPadding="false"
                         android:text="쇼핑"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -163,15 +181,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toRightOf="@id/ll4"
-                    app:layout_constraintRight_toRightOf="parent">
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
-                        android:id="@+id/imageView11"
+                        android:id="@+id/sportsImage"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:scaleType="centerCrop"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        app:srcCompat="@drawable/icon_sports_100"
+                        tools:srcCompat="@drawable/icon_sports_100" />
 
                     <TextView
                         android:id="@+id/textView19"
@@ -181,16 +202,17 @@
                         android:fontFamily="@font/notosans"
                         android:includeFontPadding="false"
                         android:text="스포츠"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:textSize="16sp" />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
                 android:layout_marginTop="13dp"
-                android:layout_marginBottom="3dp">
+                android:layout_marginBottom="3dp"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/textView20"
@@ -198,12 +220,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="5"
-                    android:fontFamily="@font/notosans"
+                    android:fontFamily="@font/notosans_bold"
                     android:includeFontPadding="false"
-                    android:text="비오는 날 추천" />
+                    android:paddingLeft="10dp"
+                    android:text="비오는 날 추천"
+                    android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/textView21"
+                    android:id="@+id/more1"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
@@ -226,17 +250,17 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:layout_marginLeft="10dp">
+                        android:layout_marginLeft="10dp"
+                        android:orientation="vertical">
 
                         <ImageView
-                            android:id="@+id/imageView12"
+                            android:id="@+id/placeImage1"
                             android:layout_width="150dp"
                             android:layout_height="100dp"
                             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
                         <TextView
-                            android:id="@+id/textView22"
+                            android:id="@+id/placeText1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="TextView" />
@@ -248,13 +272,13 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:id="@+id/imageView13"
+                            android:id="@+id/placeImage2"
                             android:layout_width="150dp"
                             android:layout_height="100dp"
                             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
                         <TextView
-                            android:id="@+id/textView23"
+                            android:id="@+id/placeText2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="TextView" />
@@ -266,13 +290,128 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:id="@+id/imageView14"
+                            android:id="@+id/placeImage3"
                             android:layout_width="150dp"
                             android:layout_height="100dp"
                             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
                         <TextView
-                            android:id="@+id/textView24"
+                            android:id="@+id/placeText3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/placeImage4"
+                            android:layout_width="150dp"
+                            android:layout_height="100dp"
+                            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+                        <TextView
+                            android:id="@+id/placeText4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+                    </LinearLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="3dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/notosans_bold"
+                    android:includeFontPadding="false"
+                    android:paddingLeft="10dp"
+                    android:text="지수의 추천"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/more2"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/notosans"
+                    android:includeFontPadding="false"
+                    android:text="더보기"
+                    android:textAlignment="textEnd" />
+            </LinearLayout>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/placeImage5"
+                            android:layout_width="150dp"
+                            android:layout_height="100dp"
+                            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+                        <TextView
+                            android:id="@+id/placeText5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/placeImage6"
+                            android:layout_width="150dp"
+                            android:layout_height="100dp"
+                            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+                        <TextView
+                            android:id="@+id/placeText6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/placeImage7"
+                            android:layout_width="150dp"
+                            android:layout_height="100dp"
+                            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+                        <TextView
+                            android:id="@+id/placeText7"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="TextView" />
