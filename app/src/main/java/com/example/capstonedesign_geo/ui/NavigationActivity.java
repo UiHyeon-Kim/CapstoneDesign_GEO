@@ -68,7 +68,6 @@ public class NavigationActivity extends AppCompatActivity implements OnMapReadyC
     private PolylineOverlay polylineOverlay = null;
     Button searchButton;
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -154,14 +153,6 @@ public class NavigationActivity extends AppCompatActivity implements OnMapReadyC
     // 1. 경로를 찾는 메소드
     private void findRoute() {
 
-//        String start = startLocation.getText().toString();
-//        String end = endLocation.getText().toString();
-
-//        if (start.isEmpty() || end.isEmpty()) {
-//            Toast.makeText(this, "출발지와 도착지를 입력하세요.", Toast.LENGTH_SHORT).show();
-//            return;
-//        }
-
         if (isRequestInProgress) {
             Toast.makeText(this, "경로를 요청 중입니다. 잠시만 기다려주세요.", Toast.LENGTH_SHORT).show();
             return;
@@ -194,15 +185,15 @@ public class NavigationActivity extends AppCompatActivity implements OnMapReadyC
         Log.d("API_DES_REQUEST", "Start: " + start + ", End: " + end);
         Log.d("API_REQUEST_COORDS", "Start Coordinates: " + start);
         Log.d("API_REQUEST_COORDS", "End Coordinates: " + end);
-        Log.d("API_REQUEST_HEADERS", "Client ID: jbhzsc7nk4, Client Secret: 2LbdnqflVOtaMupOcZdgDX1Tz2Z4jQLc3OLDfcAX");
+        Log.d("API_REQUEST_HEADERS", "Client ID: 0yifu42mpr, Client Secret: SsQNtA2mNLUOmsqVBVCwwYs6bc3SzoeQM9IKrYHe");
 
 
         Retrofit retrofit =  NaverMapRequest.getNaverMapClient();
         NaverMapApiInterface apiService = retrofit.create(NaverMapApiInterface.class);
 
         Call<RouteResponse> call = apiService.getRoute(
-                "jbhzsc7nk4", // 네이버 API Client ID
-                "2LbdnqflVOtaMupOcZdgDX1Tz2Z4jQLc3OLDfcAX", // 네이버 API Client Secret
+                "0yifu42mpr", // 네이버 API Client ID
+                "SsQNtA2mNLUOmsqVBVCwwYs6bc3SzoeQM9IKrYHe", // 네이버 API Client Secret
                 start,
                 end,
                 option
@@ -215,6 +206,16 @@ public class NavigationActivity extends AppCompatActivity implements OnMapReadyC
                 searchButton.setEnabled(true);
 
                 if (response.isSuccessful() && response.body() != null) {
+                    // API 응답 JSON 로그 출력
+                    try {
+                        String rawJson = response.raw().body() != null ? response.raw().body().string() : "No Body";
+                        Log.d("RAW_API_RESPONSE", rawJson);
+                    } catch (Exception e) {
+                        Log.e("API_RESPONSE_ERROR", "Error reading raw response", e);
+                    }
+
+                    // API 응답 데이터 확인 (디버그 로그 추가)
+                    Log.d("API_RESPONSE", "RouteResponse: " + new Gson().toJson(response.body()));
                     Log.d("API_SUCCESS", "Route data: " + response.body().toString());
                     displayRouteOnMap(response.body());
                 } else {
@@ -245,12 +246,20 @@ public class NavigationActivity extends AppCompatActivity implements OnMapReadyC
     private void displayRouteOnMap(RouteResponse routeResponse) {
         try {
             if (routeResponse == null || routeResponse.getRoute() == null) {
+                Log.e("NAVIGATION_ERROR", "경로 데이터를 가져올 수 없습니다.");
                 Toast.makeText(this, "경로 데이터를 가져올 수 없습니다.", Toast.LENGTH_SHORT).show();
                 return;
             }
 
             List<RouteResponse.RouteItem> routeItems = routeResponse.getRoute().getTraoptimal();
-            if (routeItems == null || routeItems.isEmpty()) return;
+            if (routeItems == null || routeItems.isEmpty()) {
+                Log.e("NAVIGATION_ERROR2", "유효한 경로 데이터를 찾을 수 없습니다.");
+                Toast.makeText(this, "유효한 경로 데이터를 찾을 수 없습니다.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // 경로 아이템을 로그로 출력
+            Log.d("API_ROUTE_ITEMS", "Route Items Count: " + routeItems.size());
 
             RouteResponse.RouteItem routeItem = routeItems.get(0);
             List<RouteResponse.RoutePoint> path = routeItem.getPath();
@@ -258,6 +267,8 @@ public class NavigationActivity extends AppCompatActivity implements OnMapReadyC
             List<LatLng> latLngList = new ArrayList<>();
             for (RouteResponse.RoutePoint point : path) {
                 latLngList.add(new LatLng(point.getLatitude(), point.getLongitude()));
+                // 각 경로 점을 로그로 출력
+                Log.d("MAP_POINT", "Lat: " + point.getLatitude() + ", Lng: " + point.getLongitude());
             }
 
             if (polylineOverlay != null) polylineOverlay.setMap(null);
@@ -274,60 +285,6 @@ public class NavigationActivity extends AppCompatActivity implements OnMapReadyC
             Log.e("NAVIGATION_ERROR", "경로 표시 중 오류 발생", e);
         }
     }
-//        if (routeResponse == null || routeResponse.getRoute() == null) {
-//            Log.e("NAVIGATION_ERROR", "경로 데이터를 가져올 수 없습니다.");
-//            Toast.makeText(this, "경로 데이터를 가져올 수 없습니다.", Toast.LENGTH_SHORT).show();
-//            return;
-//        }
-//
-//        // 응답 데이터를 로그로 출력 (전체 RouteResponse 데이터)
-//        Log.d("API_RESPONSE", "RouteResponse: " + new Gson().toJson(routeResponse));
-//
-//        List<RouteResponse.RouteItem> routeItems = routeResponse.getRoute().getTraoptimal();
-//        if (routeItems == null || routeItems.isEmpty()) {
-//            Log.e("NAVIGATION_ERROR", "유효한 경로 데이터를 찾을 수 없습니다.");
-//            return;
-//        }
-//
-//        RouteResponse.RouteItem routeItem = routeItems.get(0);
-//        List<RouteResponse.RoutePoint> path = routeItem.getPath();
-//        if (path == null || path.isEmpty()) {
-//            Log.e("NAVIGATION_ERROR", "경로 점 데이터를 가져올 수 없습니다.");
-//            return;
-//        }
-//
-//        // 경로 점 목록의 크기를 로그로 출력
-//        Log.d("MAP_COORDS", "Path Points Count: " + path.size());
-//
-//        // Polyline 그리기
-//        List<LatLng> latLngList = new ArrayList<>();
-//        for (RouteResponse.RoutePoint point : path) {
-//            latLngList.add(new LatLng(point.getLatitude(), point.getLongitude()));
-//            // 각 경로 점을 로그로 출력
-//            Log.d("MAP_POINT", "Lat: " + point.getLatitude() + ", Lng: " + point.getLongitude());
-//        }
-//
-//        if (polylineOverlay != null) {
-//            polylineOverlay.setMap(null); // 기존 Polyline 제거
-//        }
-//
-//        polylineOverlay = new PolylineOverlay();
-//        polylineOverlay.setCoords(latLngList);
-//        polylineOverlay.setColor(Color.BLUE);
-//        polylineOverlay.setWidth(10);
-//        polylineOverlay.setMap(naverMap);
-//
-//        adjustCameraToRoute(latLngList);
-//
-//        Log.d("NAVIGATION_SUCCESS", "경로가 지도에 성공적으로 표시되었습니다.");
-//
-//        // 지도의 중심을 경로의 중간 지점으로 이동
-//        if (!latLngList.isEmpty()) {
-//            naverMap.moveCamera(CameraUpdate.scrollTo(latLngList.get(latLngList.size() / 2)));
-//        }
-
-
-
 
 
     private String getAddressFromLatLng(LatLng latLng) {
@@ -364,7 +321,8 @@ public class NavigationActivity extends AppCompatActivity implements OnMapReadyC
         }
 
         LatLngBounds bounds = boundsBuilder.build();
-        naverMap.moveCamera(CameraUpdate.fitBounds(bounds, 100));
+        CameraUpdate cameraUpdate = CameraUpdate.fitBounds(bounds, 100);
+        naverMap.moveCamera(cameraUpdate);
     }
 
 

@@ -47,14 +47,3 @@ public class NaverMapRequest {
         }
 
     }
-//    public static Retrofit getClient(){
-//        if(retrofit == null){
-//            retrofit = new Retrofit.Builder() //retrofit 객체 생성
-//                    .baseUrl(BASE_URL) //어떤 서버BASEURL로 네트워크 통신을 할 것인지 설정
-//                    .client(okHttpClient)
-//                    .addConverterFactory(GsonConverterFactory.create()) //통신 완료 후, 어떤 converter로 데이터를 parsing할 것인지
-//                    .build(); //통신하여 데이터를 파싱한 retrofit 객체 생성 완료-!
-//        }
-//        return retrofit;
-//    }
-
