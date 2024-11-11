@@ -11,9 +11,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.capstonedesign_geo.R;
-import com.example.capstonedesign_geo.utility.StatusBarKt;
 
 public class SettingActivity extends AppCompatActivity {
 
@@ -88,8 +86,6 @@ public class SettingActivity extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {}
         });
-    }
-
     }
 
     // 진동 세기 설정 함수
