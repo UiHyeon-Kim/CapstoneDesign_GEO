@@ -3,6 +3,7 @@ package com.example.capstonedesign_geo.ui;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -39,7 +40,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
         TextView telTextView = findViewById(R.id.tel);
         TextView amenityTextView = findViewById(R.id.amenity);
         TextView shortAddrTextView = findViewById(R.id.shortAddress);
-        TextView descriptionTextView = findViewById(R.id.description);
+        TextView descriptionTextView = findViewById(R.id.disabledescription);
 
         titleTextView.setText(title);
         categoryTextView.setText(category);
@@ -83,6 +84,9 @@ public class PlaceDetailActivity extends AppCompatActivity {
             naviIntent.putExtra("place_name", "장소 이름");
             startActivity(naviIntent);
         });
+
+        ImageButton btnBack = findViewById(R.id.backButton);
+        btnBack.setOnClickListener(view -> onBackPressed());
     }
 
 }

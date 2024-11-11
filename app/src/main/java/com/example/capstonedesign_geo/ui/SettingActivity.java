@@ -6,11 +6,14 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.capstonedesign_geo.R;
+import com.example.capstonedesign_geo.utility.StatusBarKt;
 
 public class SettingActivity extends AppCompatActivity {
 
@@ -39,6 +42,9 @@ public class SettingActivity extends AppCompatActivity {
         // 진동 세기 조절 SeekBar 설정
         SeekBar vibrationSeekBar = findViewById(R.id.seekBar_vibration);
         setupVibrationSeekBar(vibrationSeekBar);
+
+        ImageButton btnBack = findViewById(R.id.backButton);
+        btnBack.setOnClickListener(view -> onBackPressed());
     }
 
     // 소리 조절 SeekBar 설정 함수
@@ -82,6 +88,8 @@ public class SettingActivity extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {}
         });
+    }
+
     }
 
     // 진동 세기 설정 함수

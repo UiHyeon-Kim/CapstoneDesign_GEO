@@ -16,12 +16,6 @@ class CustomDialog : DialogFragment() {
     private var boldText: String = ""
     private var regularText: String = ""
 
-    /*init {
-        this.confirmDialogInterface = confirmDialogInterface
-        this.boldText = boldText
-        this.regularText = regularText
-    }*/
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {

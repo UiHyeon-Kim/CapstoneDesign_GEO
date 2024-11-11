@@ -30,6 +30,10 @@ import com.naver.maps.map.overlay.Marker;
 import com.naver.maps.map.overlay.Overlay;
 import com.naver.maps.map.util.FusedLocationSource;
 import com.naver.maps.map.util.MarkerIcons;
+import com.naver.maps.map.widget.CompassView;
+import com.naver.maps.map.widget.LocationButtonView;
+import com.naver.maps.map.widget.ScaleBarView;
+import com.naver.maps.map.widget.ZoomControlView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,6 +50,7 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000; //위치 권한 요청 코드
     private final List<Marker> nmarker = new ArrayList<>(); // 모든 마커를 저장할 리스트
     private final Map<String, Boolean> categoryVisibilityMap = new HashMap<>(); // 카테고리별 가시성 상태
+    private final Map<String, Boolean> disabledVisibilityMap = new HashMap<>(); // 카테고리별 가시성 상태
     private FusedLocationSource locationSource; //위치를 반환하는 구현체
     private NaverMap naverMap;
     private MapView mapView; //지도 객체 변수
@@ -59,10 +64,12 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
     public static NaverFragment newInstance() { //프래그먼트 생성
         NaverFragment fragment = new NaverFragment();
         return fragment;
+
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
     }
 
@@ -103,7 +110,7 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
         Chip Category_Library = view.findViewById(R.id.chip_Library);
         Chip Category_shinhan_univ = view.findViewById(R.id.chip_shinhan_univ);
 
-        // 클릭 이벤트 설정
+        // 전체 마커 클릭 이벤트 설정
         chipCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,7 +119,7 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
             }
         });
 
-        // all이외의 카테고리 클릭이벤트
+
         categoryVisibilityMap.put("category_restaurant", false);
         Category_restaurant.setOnClickListener(v -> toggleMarkersByCategory("식당"));
 
@@ -148,6 +155,8 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
 
         categoryVisibilityMap.put("category_shinhan_univ", false);
         Category_shinhan_univ.setOnClickListener(v -> toggleMarkersByCategory("신한대"));
+
+
     }
 
     @Override
@@ -176,10 +185,19 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
         naverMap.setCameraPosition(cameraPosition);
 
         UiSettings uiSettings = naverMap.getUiSettings(); //UI컨트롤 활성화 객체
-        uiSettings.setCompassEnabled(true);         //나침판
-        uiSettings.setScaleBarEnabled(true);        //축적바(그 얼마나 확대 했나~그거)
-        uiSettings.setZoomControlEnabled(true);     //확대 축소 버튼
-        uiSettings.setLocationButtonEnabled(true);  //현위치 버튼
+        uiSettings.setCompassEnabled(false);         //나침판
+        uiSettings.setScaleBarEnabled(false);        //축적바(그 얼마나 확대 했나~그거)
+        uiSettings.setZoomControlEnabled(false);     //확대 축소 버튼
+        uiSettings.setLocationButtonEnabled(false);  //현위치 버튼
+
+        CompassView compassView = getView().findViewById(R.id.compass);
+        compassView.setMap(naverMap);
+        ScaleBarView scaleBarView = getView().findViewById(R.id.scalebar);
+        scaleBarView.setMap(naverMap);
+        ZoomControlView zoomcontrolView = getView().findViewById(R.id.zoom);
+        zoomcontrolView.setMap(naverMap);
+        LocationButtonView locationButtonView = getView().findViewById(R.id.location);
+        locationButtonView.setMap(naverMap);
 
 
         // 초기 상태에서는 마커를 추가하되, 표시하지 않음
@@ -246,6 +264,7 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
                     // 각 마커에 카테고리를 태그로 설정
                     markers[i].setTag(naverMapInfo.get(i).getCategory());
 
+
                     markers[i].setOnClickListener(new Overlay.OnClickListener() { //마커 클릭이벤트
                         @Override
                         public boolean onClick(@NonNull Overlay overlay) {
@@ -263,7 +282,7 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
                             String mapInfoTitle = naverMapInfo.get(index).getTitle();
                             String mapInfoAddr1 = naverMapInfo.get(index).getAddr1();
                             String mapInfoAddr2 = naverMapInfo.get(index).getAddr2();
-                            String mapInfoTime = naverMapInfo.get(index).getHours();
+                            String mapInfohours = naverMapInfo.get(index).getHours();
                             intent.putExtra("title", mapInfoTitle);
                             intent.putExtra("addr1", mapInfoAddr1);
                             intent.putExtra("tel", naverMapInfo.get(index).getTel());
@@ -273,7 +292,7 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
                             intent.putExtra("amenity", naverMapInfo.get(index).getAmenity());
                             intent.putExtra("hours", naverMapInfo.get(index).getHours());
                             intent.putExtra("addr2", mapInfoAddr2);
-                            intent.putExtra("time", mapInfoTime);
+                            intent.putExtra("hours", mapInfohours);
                             startActivity(intent);
                             return false;
                         }
@@ -311,6 +330,7 @@ public class NaverFragment extends Fragment implements OnMapReadyCallback {
             }
         }
     }
+
 
     @Override
     public void onStart() {

@@ -4,8 +4,8 @@
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.Toolbar
-        style="@style/ToolbarStyles"
-        android:id="@+id/toolbar"/>
+        android:id="@+id/toolbar"
+        style="@style/ToolbarStyles" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatRecyclerView"
@@ -30,6 +30,6 @@
         android:layout_height="56dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:background="@color/mainblue"/>
+        android:background="@color/mainblue" />
 
 </RelativeLayout>
