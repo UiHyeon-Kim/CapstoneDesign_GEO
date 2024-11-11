@@ -1,6 +1,7 @@
 package com.example.capstonedesign_geo.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -8,13 +9,16 @@ import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.capstonedesign_geo.R;
+import com.example.capstonedesign_geo.utility.PreferenceUtils;
 import com.example.capstonedesign_geo.utility.StatusBarKt;
 
-public class SettingActivity extends AppCompatActivity {
+public class SettingActivity extends AppCompatActivity implements ConfirmDialogInterface {
 
     private AudioManager audioManager;
     private Vibrator vibrator;
@@ -45,6 +49,37 @@ public class SettingActivity extends AppCompatActivity {
 
         ImageButton btnBack = findViewById(R.id.backButton);
         btnBack.setOnClickListener(view -> onBackPressed());
+
+        // 초기화 버튼 클릭 이벤트 처리
+        TextView btnResetPreferences = findViewById(R.id.btnResetPreferences);
+        btnResetPreferences.setOnClickListener(v -> showResetConfirmationDialog());
+    }
+
+    // 커스텀 다이얼로그 호출
+    private void showResetConfirmationDialog() {
+        CustomDialog dialog = CustomDialog.newInstance(
+                "설정을 초기화 하시겠습니까?",
+                "이 작업은 되돌릴 수 없습니다."
+        );
+        dialog.setConfirmDialogInterface(this);
+        dialog.show(getFragmentManager(), "CustomDialog");
+    }
+
+    // 다이얼로그에서 확인 버튼 클릭 시 호출
+    @Override
+    public void onConfirmClick(String item) {
+        resetPreferences();
+    }
+
+    private void resetPreferences() {
+        // SharedPreferences 초기화
+        PreferenceUtils.clearPreferences(this);
+        Toast.makeText(this, "설정이 초기화되었습니다.", Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(SettingActivity.this, UserRegistration.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
     }
 
     // 소리 조절 SeekBar 설정 함수
