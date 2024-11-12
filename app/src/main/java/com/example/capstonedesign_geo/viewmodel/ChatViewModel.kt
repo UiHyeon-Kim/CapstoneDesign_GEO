@@ -95,7 +95,7 @@ class ChatViewModel(
         val particles = context.getString(R.string.postposition).split(", ").map { it.trim() }
 
         // 아래 문자 단위로 문자열을 분리
-        val words = message.split(" ", "에 대해", "알려줘", "는", "가", "영업시간")
+        val words = message.split(" ", "에 대해", "알려줘", "는", "가", "영업시간", "도", "에는", "에서")
 
         // 불필요한 단어를 제거한 후, 빈 문자열이 아닌 단어들만 반환합니다.
         return words.map { it.trim() }

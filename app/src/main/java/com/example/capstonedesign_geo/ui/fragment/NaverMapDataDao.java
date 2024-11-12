@@ -26,7 +26,7 @@ public interface NaverMapDataDao {
     @Query("SELECT * FROM naver_map_data WHERE category LIKE :searchText OR title LIKE :searchText OR addr1 LIKE :searchText")
     List<NaverMapData> searchByText(String searchText);
 
-    @Query("SELECT * FROM naver_map_data WHERE category LIKE :searchText OR title LIKE :searchText OR addr1 LIKE :searchText ORDER BY RANDOM() LIMIT 5")
+    @Query("SELECT * FROM naver_map_data WHERE category LIKE :searchText OR title LIKE :searchText OR addr1 LIKE :searchText OR content LIKE :searchText OR disabled_content LIKE :searchText ORDER BY RANDOM() LIMIT 5")
     List<NaverMapData> getRandomPlaces(String searchText);
 
     // 특정 데이터가 존재하는지 확인하는 쿼리

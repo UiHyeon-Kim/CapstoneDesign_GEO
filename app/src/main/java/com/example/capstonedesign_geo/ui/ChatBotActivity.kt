@@ -25,6 +25,7 @@ import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -141,15 +142,17 @@ internal fun ChatRoute(
 
 @Composable
 fun CategoryButtons(chatViewModel: ChatViewModel) {
-    Row(
+    LazyRow(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp),
-        horizontalArrangement = Arrangement.SpaceEvenly
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         val categories = listOf("식당", "카페", "공원", "쇼핑", "숙박")
-        categories.forEach { category ->
-            StyledCategoryButton(text = category, onClick = { chatViewModel.sendMessage(category) })
+        items(categories) { category ->
+            StyledCategoryButton(text = category) {
+                chatViewModel.sendMessage(category)
+            }
         }
     }
 }
