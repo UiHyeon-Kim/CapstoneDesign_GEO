@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=waving&color=4F89F8&text=GEO&fontColor=ffffff)
+![header](https://capsule-render.vercel.app/api?type=waving&color=4F89F8&height=230&text=GEO&fontColor=ffffff&fontAlignY=40&fontSize=90&animation=fadeIn)
 
 
 <p align="center">
