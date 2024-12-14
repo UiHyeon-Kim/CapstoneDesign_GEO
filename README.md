@@ -28,9 +28,10 @@ GEO는 사용자의 위치를 중심으로 정보를 제공하는 스마트폰 �
 ---
 
 ### 앱 구성
-![image](https://github.com/user-attachments/assets/671cd094-69d0-43bd-a15c-ed36c8fe133e)
-![image](https://github.com/user-attachments/assets/8764e4d1-7ef4-4b03-81f1-4257c73d743b)
-![image](https://github.com/user-attachments/assets/519d36ab-13f4-4543-be66-e9e5bdb7a817)
+
+![image](https://github.com/user-attachments/assets/02269051-51df-4523-9b4a-b2d6a9697000)
+![image](https://github.com/user-attachments/assets/5ab33af1-d735-4f81-abfe-5bff35361389)
+![image](https://github.com/user-attachments/assets/d3f7dc81-3d63-4361-b3bc-1d4f0445ec10)
 
 ---
 
