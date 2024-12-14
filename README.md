@@ -1,5 +1,5 @@
 ![header](https://capsule-render.vercel.app/api?type=waving&color=4F89F8&height=230&text=GEO&fontColor=ffffff&fontAlignY=40&fontSize=90&animation=fadeIn)
-<!-- 내용을 더 넣는다면 기술을 사용한 이유, 소개 영상, 앱 구성 사진 등 -->
+<!-- 내용을 더 넣는다면 기술을 사용한 이유, 소개 영상 등 -->
 # 챗봇 안내 지도 어플리케이션
 ### 📖 개요
 - 개발 기간: 2024년 03월 ~ 2024년 11월 (총 9개월)
@@ -24,6 +24,13 @@ GEO는 사용자의 위치를 중심으로 정보를 제공하는 스마트폰 �
 </p>
 
 ![image](https://github.com/user-attachments/assets/d2349ee0-e25d-4ced-945e-6aa7599868ee)
+
+---
+
+### 앱 구성
+![image](https://github.com/user-attachments/assets/671cd094-69d0-43bd-a15c-ed36c8fe133e)
+![image](https://github.com/user-attachments/assets/8764e4d1-7ef4-4b03-81f1-4257c73d743b)
+![image](https://github.com/user-attachments/assets/519d36ab-13f4-4543-be66-e9e5bdb7a817)
 
 ---
 
